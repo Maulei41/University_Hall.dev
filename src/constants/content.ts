@@ -380,7 +380,7 @@ export const STATS: StatItem[] = [
   },
   {
     label: 'Alumni',
-    value: '8000+',
+    value: '600+',
     description: 'Global network of distinguished graduates',
   },
 ]
@@ -517,7 +517,7 @@ export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
   {
     id: 'quo-vadis',
     title: 'Quo Vadis — Student Mentorship Project',
-    imageSrc: '/Mentorship/Quo_Vadis.jpeg',
+    images: ['/Mentorship/Quo_Vadis_1.jpeg','/Mentorship/Quo_Vadis_2.jpg', "/Mentorship/Quo_Vadis_3.JPG"],
     description:
       'University Hall highly cherishes the value of university education for our deepened knowledge and broadened horizons. Therefore, in early 2024, a group of UHall-lites edified in hall education, joining forces with aspiring talents from school, prepared this student mentorship programme, \'Quo Vadis\', an HKU Student Mentorship Projects for Youths from Multi-ethnic Groups in the Pokfulam Community. It aims to establish connections between HKU and the Pokfulam Community. Our mentors run monthly workshops, forums and outings, such that participants can widen their outlook to co-curricular learning from multiple perspectives. Through heartfelt exchanges throughout the year, we also anticipate stronger ties between mentees and mentors who would stand by them as they progress. In 2025, the project extends into Yuen Long District, further benefiting more secondary students.',
     details: [

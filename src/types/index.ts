@@ -84,7 +84,9 @@ export interface MentorshipProgram {
   title: string
   description: string
   details: string[]
+  imageId?: string
   imageSrc?: string
+  images?: string[]
 }
 
 export interface CommitteeMember {

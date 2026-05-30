@@ -1,0 +1,336 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - link "University Hall" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: /about
+        - link "Facilities" [ref=e10] [cursor=pointer]:
+          - /url: /facilities
+        - link "Events" [ref=e11] [cursor=pointer]:
+          - /url: /events
+        - link "News" [ref=e12] [cursor=pointer]:
+          - /url: /news
+        - link "People" [ref=e13] [cursor=pointer]:
+          - /url: /people
+        - link "Mentorship" [ref=e14] [cursor=pointer]:
+          - /url: /mentorship
+        - link "Apply" [ref=e15] [cursor=pointer]:
+          - /url: /apply
+  - main [ref=e16]:
+    - generic [ref=e135]:
+      - img "University Hall heritage building" [ref=e137]
+      - generic [ref=e140]:
+        - heading "University Hall" [level=1] [ref=e142]
+        - paragraph [ref=e143]: Premier residential college since 1912, fostering scholarly excellence, vibrant community, and transformational character development.
+        - generic [ref=e144]:
+          - link "Apply Now" [ref=e145] [cursor=pointer]:
+            - /url: /apply
+            - button "Apply Now" [ref=e146]:
+              - text: Apply Now
+              - img [ref=e147]
+          - button "Tour the Hall" [ref=e149] [cursor=pointer]:
+            - img [ref=e150]
+            - text: Tour the Hall
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - generic [ref=e154]: "1956"
+            - generic [ref=e155]: Since
+            - generic [ref=e156]: Serving residential scholars for over a century
+          - generic [ref=e157]:
+            - generic [ref=e158]: 100+
+            - generic [ref=e159]: Residents
+            - generic [ref=e160]: Diverse community from multiple disciplines
+          - generic [ref=e161]:
+            - generic [ref=e162]: "4"
+            - generic [ref=e163]: Fellows
+            - generic [ref=e164]: Dedicated mentors and academic advisors
+          - generic [ref=e165]:
+            - generic [ref=e166]: 8000+
+            - generic [ref=e167]: Alumni
+            - generic [ref=e168]: Global network of distinguished graduates
+    - generic [ref=e170]:
+      - generic [ref=e171]:
+        - heading "The UH Experience" [level=2] [ref=e173]
+        - paragraph [ref=e175]: Beyond dormitory living, University Hall offers a comprehensive residential education experience combining academic excellence with vibrant community life.
+      - generic [ref=e177]:
+        - generic [ref=e180]:
+          - generic [ref=e181]: 📚
+          - heading "Academic Excellence" [level=3] [ref=e182]
+          - paragraph [ref=e183]: Mentorship from leading scholars, specialized seminars, and intellectual community supporting rigorous learning.
+        - generic [ref=e186]:
+          - generic [ref=e187]: 🤝
+          - heading "Vibrant Community" [level=3] [ref=e188]
+          - paragraph [ref=e189]: Rich cultural programming, social events, and residential traditions fostering meaningful connections.
+        - generic [ref=e192]:
+          - generic [ref=e193]: ⭐
+          - heading "Character Development" [level=3] [ref=e194]
+          - paragraph [ref=e195]: Leadership opportunities, ethical mentoring, and experiences shaping responsible global citizens.
+    - generic [ref=e197]:
+      - generic [ref=e199]:
+        - heading "Our Heritage" [level=2] [ref=e200]
+        - paragraph [ref=e201]: Over a century of scholarly tradition and residential excellence
+      - generic [ref=e202]:
+        - generic [ref=e205]:
+          - generic [ref=e206]: 1861–1867
+          - heading "The Beginning of Douglas Castle" [level=3] [ref=e207]
+          - paragraph [ref=e208]: The story of UHall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city’s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence. Completed around 1864, the house was designed to command sweeping views of the sea and surrounding landscape. Although Lapraik spent little time there before retiring to Britain, the castle became the foundation of what would later become University Hall.
+        - generic [ref=e213]:
+          - generic [ref=e214]: "1894"
+          - heading "From Castle to Nazareth House" [level=3] [ref=e215]
+          - paragraph [ref=e216]: After Lapraik’s death, the property eventually passed into new hands during a period of significant social and historical change. In 1894, amid the bubonic plague outbreak in Hong Kong, the French Mission purchased Douglas Castle and transformed it into Nazareth House. The building was expanded to include a chapel and a printing house, while parts of the original castle were retained within the new complex. For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages. The site developed a rhythm of prayer, study, and labour, and became an important part of the French Mission’s work in Hong Kong.
+        - generic [ref=e221]:
+          - generic [ref=e222]: early 1950s
+          - heading "Wartime Disruption and Change" [level=3] [ref=e223]
+          - paragraph [ref=e224]: The Second World War brought a period of disruption. During the Japanese occupation of Hong Kong, Nazareth was requisitioned and its operations were suspended. After the war, the French Mission resumed its work briefly, but the changing political climate in mainland China made missionary activity increasingly difficult. By the early 1950s, the mission could no longer sustain its original purpose, and the property was eventually put up for sale. This opened the door to a new chapter in the life of the building.
+        - generic [ref=e229]:
+          - generic [ref=e230]: 1954-1956
+          - heading "The Birth of University Hall" [level=3] [ref=e231]
+          - paragraph [ref=e232]: In 1954, the University of Hong Kong acquired the site and gave it a new life as a student residence. This transition marked the beginning of University hall as it is known today. Rather than replacing the old building entirely, the University chose to adapt it. The chapel was converted into a dining hall, the crypt became a common room, and the existing structure was furnished for student accommodation. When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, the Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.
+        - generic [ref=e237]:
+          - generic [ref=e238]: "1995"
+          - heading "Heritage Recognition" [level=3] [ref=e239]
+          - paragraph [ref=e240]: In recognition of its architectural and historical importance, University Hall was declared a historical monument in 1995. This designation affirmed its significance not only as a former colonial and missionary building, but also as a living residence that continues to serve students today. The Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.
+        - generic [ref=e245]:
+          - generic [ref=e246]: Today
+          - heading "University Hall Today" [level=3] [ref=e247]
+          - paragraph [ref=e248]: Today, UHall continues to house more than 100 male students and remains one of the most distinctive residential halls at HKU. Our Hall continues to embody a balance of tradition and transformation, offering students a place where the past is not forgotten, but lived alongside the present. From Douglas Castle to Nazareth House to University Hall, the building has changed names and functions, but its story has always been one of endurance. For those who call it home, University Hall remains a place where history is not only remembered, but carried forward.
+    - generic [ref=e252]:
+      - generic [ref=e254]:
+        - heading "Spaces of Excellence" [level=2] [ref=e255]
+        - paragraph [ref=e256]: Heritage architecture meeting contemporary residential standards
+      - generic [ref=e257]:
+        - generic [ref=e259]:
+          - img "Grand Dining Hall" [ref=e260]:
+            - generic [ref=e262]:
+              - paragraph [ref=e263]: "Image: dining_hall"
+              - paragraph [ref=e264]: 400 × 300px
+          - heading "Grand Dining Hall" [level=4] [ref=e266]
+        - generic [ref=e268]:
+          - img "Academic Library" [ref=e269]:
+            - generic [ref=e271]:
+              - paragraph [ref=e272]: "Image: library"
+              - paragraph [ref=e273]: 400 × 300px
+          - heading "Academic Library" [level=4] [ref=e275]
+        - generic [ref=e277]:
+          - img "Recreation Facilities" [ref=e278]:
+            - generic [ref=e280]:
+              - paragraph [ref=e281]: "Image: recreation"
+              - paragraph [ref=e282]: 400 × 300px
+          - heading "Recreation Facilities" [level=4] [ref=e284]
+        - generic [ref=e286]:
+          - img "Residential Suites" [ref=e287]:
+            - generic [ref=e289]:
+              - paragraph [ref=e290]: "Image: accommodation"
+              - paragraph [ref=e291]: 400 × 300px
+          - heading "Residential Suites" [level=4] [ref=e293]
+        - generic [ref=e295]:
+          - img "Common Spaces" [ref=e296]:
+            - generic [ref=e298]:
+              - paragraph [ref=e299]: "Image: common_rooms"
+              - paragraph [ref=e300]: 400 × 300px
+          - heading "Common Spaces" [level=4] [ref=e302]
+        - generic [ref=e304]:
+          - img "Community Center" [ref=e305]:
+            - generic [ref=e307]:
+              - paragraph [ref=e308]: "Image: community_center"
+              - paragraph [ref=e309]: 400 × 300px
+          - heading "Community Center" [level=4] [ref=e311]
+    - generic [ref=e313]:
+      - generic [ref=e315]:
+        - heading "Resident Voices" [level=2] [ref=e316]
+        - paragraph [ref=e317]: Experiences from our residential community
+      - generic [ref=e319]:
+        - generic [ref=e321]:
+          - paragraph [ref=e322]: “University Hall transformed my university experience. The intellectual community, mentorship from fellows, and lifelong friendships created here are invaluable.”
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: Sarah Wong
+            - paragraph [ref=e325]: Class of 2023
+        - generic [ref=e327]:
+          - paragraph [ref=e328]: “What struck me most was the genuine sense of belonging. From formal dinners to late-night study sessions, every moment contributed to my growth.”
+          - generic [ref=e329]:
+            - paragraph [ref=e330]: Adrian Lee
+            - paragraph [ref=e331]: Class of 2022
+        - generic [ref=e333]:
+          - paragraph [ref=e334]: “The mentorship from academic fellows and the scholarly atmosphere at University Hall shaped my academic trajectory and professional aspirations.”
+          - generic [ref=e335]:
+            - paragraph [ref=e336]: Dr. Natasha Ivanov
+            - paragraph [ref=e337]: Class of 2019, now Lecturer at HKU
+    - generic [ref=e339]:
+      - generic [ref=e341]:
+        - heading "Hall Traditions" [level=2] [ref=e342]
+        - paragraph [ref=e343]: Time-honoured events and gatherings that define the University Hall experience
+      - generic [ref=e345]:
+        - generic [ref=e348]:
+          - generic [ref=e349]: Social
+          - paragraph [ref=e350]: Monthly
+          - heading "High Table Dinner" [level=4] [ref=e351]
+          - paragraph
+          - link "Learn More" [ref=e352] [cursor=pointer]:
+            - /url: /events
+            - text: Learn More
+            - img [ref=e353]
+        - generic [ref=e357]:
+          - generic [ref=e358]: Social
+          - paragraph [ref=e359]: Annual
+          - heading "Founders' Nite" [level=4] [ref=e360]
+          - paragraph
+          - link "Learn More" [ref=e361] [cursor=pointer]:
+            - /url: /events
+            - text: Learn More
+            - img [ref=e362]
+        - generic [ref=e366]:
+          - generic [ref=e367]: Social
+          - paragraph [ref=e368]: Annual
+          - heading "Castlers' Nite" [level=4] [ref=e369]
+          - paragraph
+          - link "Learn More" [ref=e370] [cursor=pointer]:
+            - /url: /events
+            - text: Learn More
+            - img [ref=e371]
+      - link "View All Traditions" [ref=e374] [cursor=pointer]:
+        - /url: /events
+        - button "View All Traditions" [ref=e375]:
+          - text: View All Traditions
+          - img [ref=e376]
+    - generic [ref=e380]:
+      - heading "Ready to Join Our Community?" [level=2] [ref=e381]
+      - paragraph [ref=e382]: University Hall seeks scholars and leaders committed to excellence, community, and character. Begin your journey with us.
+      - generic [ref=e383]:
+        - link "Apply Now" [ref=e384] [cursor=pointer]:
+          - /url: /apply
+          - button "Apply Now" [ref=e385]:
+            - text: Apply Now
+            - img [ref=e386]
+        - link "Get in Touch" [ref=e388] [cursor=pointer]:
+          - /url: /contact
+          - button "Get in Touch" [ref=e389]
+  - contentinfo [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - heading "University Hall" [level=3] [ref=e23]
+          - paragraph [ref=e24]: Premier residential college fostering scholarly excellence, community, and character development since 1912.
+        - generic [ref=e25]:
+          - heading "Navigation" [level=4] [ref=e26]
+          - list [ref=e27]:
+            - listitem [ref=e28]:
+              - link "Home" [ref=e29] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e30]:
+              - link "About" [ref=e31] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e32]:
+              - link "Facilities" [ref=e33] [cursor=pointer]:
+                - /url: /facilities
+            - listitem [ref=e34]:
+              - link "Events" [ref=e35] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e36]:
+              - link "News" [ref=e37] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e38]:
+              - link "People" [ref=e39] [cursor=pointer]:
+                - /url: /people
+            - listitem [ref=e40]:
+              - link "Mentorship" [ref=e41] [cursor=pointer]:
+                - /url: /mentorship
+            - listitem [ref=e42]:
+              - link "Apply" [ref=e43] [cursor=pointer]:
+                - /url: /apply
+        - generic [ref=e44]:
+          - heading "Contact" [level=4] [ref=e45]
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - img [ref=e48]
+              - generic [ref=e51]: University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong
+            - listitem [ref=e52]:
+              - img [ref=e53]
+              - link "+852 2595 0966" [ref=e55] [cursor=pointer]:
+                - /url: tel:+852 2595 0966
+            - listitem [ref=e56]:
+              - img [ref=e57]
+              - link "uhall@connect.hku.hk" [ref=e60] [cursor=pointer]:
+                - /url: mailto:uhall@connect.hku.hk
+            - listitem [ref=e61]:
+              - img [ref=e62]
+              - generic [ref=e65]:
+                - paragraph [ref=e66]:
+                  - strong [ref=e67]: "Weekdays:"
+                  - text: 9:00 AM - 5:00 PM
+                - paragraph [ref=e68]:
+                  - strong [ref=e69]: "Weekends:"
+                  - text: 9:00 AM - 12:30 PM
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - link "Instagram" [ref=e72] [cursor=pointer]:
+            - /url: https://www.instagram.com/universityhall_hku/
+            - img [ref=e73]
+            - generic [ref=e76]: Instagram
+          - link "Facebook" [ref=e77] [cursor=pointer]:
+            - /url: https://www.facebook.com/uhall.hku/#
+            - img [ref=e78]
+            - generic [ref=e80]: Facebook
+          - link "Youtube" [ref=e81] [cursor=pointer]:
+            - /url: https://www.youtube.com/@universityhallhku2902/videos
+            - img [ref=e82]
+            - generic [ref=e84]: Youtube
+        - paragraph [ref=e85]: © 2026 University Hall, The University of Hong Kong. All rights reserved.
+      - generic [ref=e86]:
+        - heading "Visit Us" [level=3] [ref=e87]
+        - paragraph [ref=e88]: University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong
+        - generic [ref=e89]:
+          - generic [ref=e91]:
+            - heading "Getting Here" [level=4] [ref=e92]
+            - table [ref=e93]:
+              - rowgroup [ref=e94]:
+                - row "Modes of Travel Routes From" [ref=e95]:
+                  - columnheader "Modes of Travel" [ref=e96]
+                  - columnheader "Routes" [ref=e97]
+                  - columnheader "From" [ref=e98]
+              - rowgroup [ref=e99]:
+                - row "Bus 4 4X 7 37A 40 40M 90B 91 30X 970 970X 973 Main Campus" [ref=e100]:
+                  - cell "Bus" [ref=e101]
+                  - cell "4 4X 7 37A 40 40M 90B 91 30X 970 970X 973" [ref=e102]:
+                    - generic [ref=e103]:
+                      - generic [ref=e104]: "4"
+                      - generic [ref=e105]: 4X
+                      - generic [ref=e106]: "7"
+                      - generic [ref=e107]: 37A
+                      - generic [ref=e108]: "40"
+                      - generic [ref=e109]: 40M
+                      - generic [ref=e110]: 90B
+                      - generic [ref=e111]: "91"
+                      - generic [ref=e112]: 30X
+                      - generic [ref=e113]: "970"
+                      - generic [ref=e114]: 970X
+                      - generic [ref=e115]: "973"
+                  - cell "Main Campus" [ref=e116]
+                - row "Bus A10 Hong Kong Airport" [ref=e117]:
+                  - cell "Bus" [ref=e118]
+                  - cell "A10" [ref=e119]:
+                    - generic [ref=e121]: A10
+                  - cell "Hong Kong Airport" [ref=e122]
+          - generic [ref=e126]:
+            - generic:
+              - region "Map" [ref=e127]
+              - button "Map marker" [ref=e390] [cursor=pointer]:
+                - img [ref=e391]
+            - generic:
+              - generic [ref=e128]:
+                - button "Zoom in" [ref=e129] [cursor=pointer]
+                - button "Zoom out" [ref=e131] [cursor=pointer]
+                - button "Drag to rotate map, click to reset north" [ref=e133]
+              - group [ref=e409]:
+                - generic "Toggle attribution" [ref=e410] [cursor=pointer]
+                - generic [ref=e411]:
+                  - link "OpenFreeMap" [ref=e412] [cursor=pointer]:
+                    - /url: https://openfreemap.org
+                  - link "© OpenMapTiles" [ref=e413] [cursor=pointer]:
+                    - /url: https://www.openmaptiles.org/
+                  - text: Data from
+                  - link "OpenStreetMap" [ref=e414] [cursor=pointer]:
+                    - /url: https://www.openstreetmap.org/copyright

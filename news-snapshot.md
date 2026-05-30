@@ -1,0 +1,250 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - link "University Hall" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: /about
+        - link "Facilities" [ref=e10] [cursor=pointer]:
+          - /url: /facilities
+        - link "Events" [ref=e11] [cursor=pointer]:
+          - /url: /events
+        - link "News" [ref=e12] [cursor=pointer]:
+          - /url: /news
+        - link "People" [ref=e13] [cursor=pointer]:
+          - /url: /people
+        - link "Mentorship" [ref=e14] [cursor=pointer]:
+          - /url: /mentorship
+        - link "Apply" [ref=e15] [cursor=pointer]:
+          - /url: /apply
+  - main [ref=e16]:
+    - generic [ref=e137]:
+      - heading "News" [level=1] [ref=e138]
+      - paragraph [ref=e139]: Meet the sports and cultural teams that represent University Hall — from the competitive Old Ball squads to the developmental New Ball teams and our creative cultural groups.
+    - generic [ref=e141]:
+      - heading "Hall Team" [level=2] [ref=e143]
+      - generic [ref=e144]:
+        - button "All" [ref=e145] [cursor=pointer]
+        - button "Old Ball" [ref=e146] [cursor=pointer]
+        - button "New Ball" [ref=e147] [cursor=pointer]
+        - button "Culture" [ref=e148] [cursor=pointer]
+        - button "Seasonal Team" [ref=e149] [cursor=pointer]
+      - generic [ref=e151]:
+        - button "View details for Basketball Team" [ref=e154] [cursor=pointer]:
+          - img "Basketball Team" [ref=e156]:
+            - generic [ref=e158]:
+              - paragraph [ref=e159]: "Image: recreation"
+              - paragraph [ref=e160]: 400 × 250px
+          - generic [ref=e161]: Old Ball
+          - heading "Basketball Team" [level=3] [ref=e162]
+          - paragraph [ref=e163]: We’re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀
+        - button "View details for Football Team" [ref=e166] [cursor=pointer]:
+          - img "Football Team" [ref=e168]:
+            - generic [ref=e170]:
+              - paragraph [ref=e171]: "Image: recreation"
+              - paragraph [ref=e172]: 400 × 250px
+          - generic [ref=e173]: Old Ball
+          - heading "Football Team" [level=3] [ref=e174]
+          - paragraph [ref=e175]: As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.
+        - button "View details for Hockey Team" [ref=e178] [cursor=pointer]:
+          - img "Hockey Team" [ref=e180]:
+            - generic [ref=e182]:
+              - paragraph [ref=e183]: "Image: recreation"
+              - paragraph [ref=e184]: 400 × 250px
+          - generic [ref=e185]: New Ball
+          - heading "Hockey Team" [level=3] [ref=e186]
+          - paragraph [ref=e187]: Do you know what HKU stands for? It is HocKey team of Uhall. Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.
+        - button "View details for Lacrosse Team" [ref=e190] [cursor=pointer]:
+          - img "Lacrosse Team" [ref=e192]:
+            - generic [ref=e194]:
+              - paragraph [ref=e195]: "Image: recreation"
+              - paragraph [ref=e196]: 400 × 250px
+          - generic [ref=e197]: New Ball
+          - heading "Lacrosse Team" [level=3] [ref=e198]
+          - paragraph
+        - button "View details for Softball Team" [ref=e201] [cursor=pointer]:
+          - img "Softball Team" [ref=e203]
+          - generic [ref=e204]: New Ball
+          - heading "Softball Team" [level=3] [ref=e205]
+          - paragraph [ref=e206]: Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.🥎
+        - button "View details for Bridge Team" [ref=e209] [cursor=pointer]:
+          - img "Bridge Team" [ref=e211]:
+            - generic [ref=e213]:
+              - paragraph [ref=e214]: "Image: common_rooms"
+              - paragraph [ref=e215]: 400 × 250px
+          - generic [ref=e216]: Culture
+          - heading "Bridge Team" [level=3] [ref=e217]
+          - paragraph [ref=e218]: Join the U Hall bridge team, where logic meets strategy; where tactic meets teamwork; where sharp minds collaborate. Bring your curiosity, sharpen your skills, and be part of our team that turns every contract into a successful bid!
+        - button "View details for Band Team" [ref=e221] [cursor=pointer]:
+          - img "Band Team" [ref=e223]:
+            - generic [ref=e225]:
+              - paragraph [ref=e226]: "Image: dining_hall"
+              - paragraph [ref=e227]: 400 × 250px
+          - generic [ref=e228]: Culture
+          - heading "Band Team" [level=3] [ref=e229]
+          - paragraph [ref=e230]: Bringing together music lovers with passion, energy, and Hall spirit, UHall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!
+        - button "View details for Dance Team" [ref=e233] [cursor=pointer]:
+          - img "Dance Team" [ref=e235]:
+            - generic [ref=e237]:
+              - paragraph [ref=e238]: "Image: common_rooms"
+              - paragraph [ref=e239]: 400 × 250px
+          - generic [ref=e240]: Culture
+          - heading "Dance Team" [level=3] [ref=e241]
+          - paragraph [ref=e242]: Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!✨
+        - button "View details for Dragon Boat" [ref=e245] [cursor=pointer]:
+          - img "Dragon Boat" [ref=e247]:
+            - generic [ref=e249]:
+              - paragraph [ref=e250]: "Image: library"
+              - paragraph [ref=e251]: 400 × 250px
+          - generic [ref=e252]: Seasonal Team
+          - heading "Dragon Boat" [level=3] [ref=e253]
+          - paragraph [ref=e254]: Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!
+    - generic [ref=e257]:
+      - generic [ref=e258]:
+        - heading "Programme" [level=2] [ref=e259]
+        - paragraph [ref=e260]: Affiliated Membership
+        - paragraph [ref=e261]: Affiliated Membership offers a pathway for students in HKU who are not currently living in University Hall to maintain a meaningful connection with the Hall community.
+        - list [ref=e262]:
+          - listitem [ref=e263]:
+            - generic [ref=e265]: Successful applicants through the system only
+          - listitem [ref=e266]:
+            - generic [ref=e268]: Non-residential members of University Hall
+          - listitem [ref=e269]:
+            - generic [ref=e271]: Allow students in HKU who are not living in University Hall currently to remain a connection with the Hall community
+          - listitem [ref=e272]:
+            - generic [ref=e274]: Approved by the Hall to participate in selected aspects of hall life, including access to designated hall facilities and participation in hall activities, events and team practices, subject to hall rules, hall operation, and the Hall's final discretion
+          - listitem [ref=e275]:
+            - generic [ref=e277]: Does not confer residential status and does not entitle the member to accommodation in the Hall, except where overnight stay is separately applied for and approved
+      - img "Affiliated Membership programme" [ref=e280]:
+        - generic [ref=e282]:
+          - paragraph [ref=e283]: "Image: affiliated_membership"
+          - paragraph [ref=e284]: 16 × 10px
+  - contentinfo [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - heading "University Hall" [level=3] [ref=e23]
+          - paragraph [ref=e24]: Premier residential college fostering scholarly excellence, community, and character development since 1912.
+        - generic [ref=e25]:
+          - heading "Navigation" [level=4] [ref=e26]
+          - list [ref=e27]:
+            - listitem [ref=e28]:
+              - link "Home" [ref=e29] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e30]:
+              - link "About" [ref=e31] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e32]:
+              - link "Facilities" [ref=e33] [cursor=pointer]:
+                - /url: /facilities
+            - listitem [ref=e34]:
+              - link "Events" [ref=e35] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e36]:
+              - link "News" [ref=e37] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e38]:
+              - link "People" [ref=e39] [cursor=pointer]:
+                - /url: /people
+            - listitem [ref=e40]:
+              - link "Mentorship" [ref=e41] [cursor=pointer]:
+                - /url: /mentorship
+            - listitem [ref=e42]:
+              - link "Apply" [ref=e43] [cursor=pointer]:
+                - /url: /apply
+        - generic [ref=e44]:
+          - heading "Contact" [level=4] [ref=e45]
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - img [ref=e48]
+              - generic [ref=e51]: University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong
+            - listitem [ref=e52]:
+              - img [ref=e53]
+              - link "+852 2595 0966" [ref=e55] [cursor=pointer]:
+                - /url: tel:+852 2595 0966
+            - listitem [ref=e56]:
+              - img [ref=e57]
+              - link "uhall@connect.hku.hk" [ref=e60] [cursor=pointer]:
+                - /url: mailto:uhall@connect.hku.hk
+            - listitem [ref=e61]:
+              - img [ref=e62]
+              - generic [ref=e65]:
+                - paragraph [ref=e66]:
+                  - strong [ref=e67]: "Weekdays:"
+                  - text: 9:00 AM - 5:00 PM
+                - paragraph [ref=e68]:
+                  - strong [ref=e69]: "Weekends:"
+                  - text: 9:00 AM - 12:30 PM
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - link "Instagram" [ref=e72] [cursor=pointer]:
+            - /url: https://www.instagram.com/universityhall_hku/
+            - img [ref=e73]
+            - generic [ref=e76]: Instagram
+          - link "Facebook" [ref=e77] [cursor=pointer]:
+            - /url: https://www.facebook.com/uhall.hku/#
+            - img [ref=e78]
+            - generic [ref=e80]: Facebook
+          - link "Youtube" [ref=e81] [cursor=pointer]:
+            - /url: https://www.youtube.com/@universityhallhku2902/videos
+            - img [ref=e82]
+            - generic [ref=e84]: Youtube
+        - paragraph [ref=e85]: © 2026 University Hall, The University of Hong Kong. All rights reserved.
+      - generic [ref=e86]:
+        - heading "Visit Us" [level=3] [ref=e87]
+        - paragraph [ref=e88]: University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong
+        - generic [ref=e89]:
+          - generic [ref=e91]:
+            - heading "Getting Here" [level=4] [ref=e92]
+            - table [ref=e93]:
+              - rowgroup [ref=e94]:
+                - row "Modes of Travel Routes From" [ref=e95]:
+                  - columnheader "Modes of Travel" [ref=e96]
+                  - columnheader "Routes" [ref=e97]
+                  - columnheader "From" [ref=e98]
+              - rowgroup [ref=e99]:
+                - row "Bus 4 4X 7 37A 40 40M 90B 91 30X 970 970X 973 Main Campus" [ref=e100]:
+                  - cell "Bus" [ref=e101]
+                  - cell "4 4X 7 37A 40 40M 90B 91 30X 970 970X 973" [ref=e102]:
+                    - generic [ref=e103]:
+                      - generic [ref=e104]: "4"
+                      - generic [ref=e105]: 4X
+                      - generic [ref=e106]: "7"
+                      - generic [ref=e107]: 37A
+                      - generic [ref=e108]: "40"
+                      - generic [ref=e109]: 40M
+                      - generic [ref=e110]: 90B
+                      - generic [ref=e111]: "91"
+                      - generic [ref=e112]: 30X
+                      - generic [ref=e113]: "970"
+                      - generic [ref=e114]: 970X
+                      - generic [ref=e115]: "973"
+                  - cell "Main Campus" [ref=e116]
+                - row "Bus A10 Hong Kong Airport" [ref=e117]:
+                  - cell "Bus" [ref=e118]
+                  - cell "A10" [ref=e119]:
+                    - generic [ref=e121]: A10
+                  - cell "Hong Kong Airport" [ref=e122]
+          - generic [ref=e126]:
+            - generic:
+              - region "Map" [ref=e127]
+              - button "Map marker" [ref=e285] [cursor=pointer]:
+                - img [ref=e286]
+            - generic:
+              - generic [ref=e128]:
+                - button "Zoom in" [ref=e129] [cursor=pointer]
+                - button "Zoom out" [ref=e131] [cursor=pointer]
+                - button "Drag to rotate map, click to reset north" [ref=e133]
+              - group [ref=e304]:
+                - generic "Toggle attribution" [ref=e305] [cursor=pointer]
+                - generic [ref=e306]:
+                  - link "OpenFreeMap" [ref=e307] [cursor=pointer]:
+                    - /url: https://openfreemap.org
+                  - link "© OpenMapTiles" [ref=e308] [cursor=pointer]:
+                    - /url: https://www.openmaptiles.org/
+                  - text: Data from
+                  - link "OpenStreetMap" [ref=e309] [cursor=pointer]:
+                    - /url: https://www.openstreetmap.org/copyright

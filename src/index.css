@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text-primary font-serif;
+  }
+
+  h1 {
+    @apply font-display text-5xl lg:text-6xl font-bold tracking-tight text-brand-text-primary;
+  }
+
+  h2 {
+    @apply font-display text-4xl lg:text-5xl font-semibold tracking-tight text-brand-text-primary;
+  }
+
+  h3 {
+    @apply font-display text-2xl lg:text-3xl font-semibold text-brand-text-primary;
+  }
+
+  h4 {
+    @apply font-display text-xl font-semibold text-brand-text-primary;
+  }
+
+  h5, h6 {
+    @apply font-display font-semibold text-brand-text-primary;
+  }
+
+  p {
+    @apply text-base lg:text-lg leading-relaxed text-brand-text-muted;
+  }
+
+  a {
+    @apply transition-colors duration-base;
+  }
+
+  button {
+    @apply transition-all duration-base;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply w-full max-w-6xl mx-auto px-5 lg:px-10;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-brand-gold text-brand-bg font-display font-semibold rounded-card hover:bg-brand-gold-light transition-colors duration-base;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 border-2 border-brand-gold text-brand-gold font-display font-semibold rounded-card hover:bg-brand-gold hover:text-brand-bg transition-all duration-base;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-2 text-brand-text-primary hover:text-brand-gold transition-colors duration-base;
+  }
+
+  .card-base {
+    @apply bg-brand-surface border border-brand-border rounded-card p-6 shadow-card transition-all duration-base;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-gold to-brand-emerald bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-base;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

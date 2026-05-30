@@ -1,0 +1,103 @@
+export interface TimelineEvent {
+  year: number | string
+  title: string
+  description: string
+}
+
+export interface Facility {
+  id: string
+  category: string
+  title: string
+  description: string
+  imageId: string
+  features: string[]
+}
+
+export interface HallTradition {
+  id: string
+  title: string
+  description: string
+  category: string
+  frequency: 'Annual' | 'Bi-Annual' | 'Monthly' | 'One-Time'
+  established?: string
+  imageId: string
+  featured?: boolean
+}
+
+export interface HallEvent {
+  id: string
+  title: string
+  description: string
+  category: string
+  location: string
+  imageId: string
+  rsvpLink?: string
+  featured?: boolean
+}
+
+export interface Person {
+  id: string
+  name: string
+  title: string
+  bio: string
+  role: 'warden' | 'Tutor' | 'staff' | 'student-association' | 'alumni-association'
+  imageId?: string
+  imageSrc?: string
+}
+
+export interface Testimonial {
+  id: string
+  quote: string
+  author: string
+  role: string
+}
+
+export interface StatItem {
+  label: string
+  value: string
+  description: string
+}
+
+export interface NavLink {
+  label: string
+  href: string
+}
+
+export interface FormData {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+export interface HallTeam {
+  id: string
+  name: string
+  description: string
+  category: 'Old Ball' | 'New Ball' | 'Culture' | "Seasonal Team"
+  imageId: string
+  imageSrc?: string
+}
+
+export interface MentorshipProgram {
+  id: string
+  title: string
+  description: string
+  details: string[]
+  imageSrc?: string
+}
+
+export interface CommitteeMember {
+  name: string
+  title: string
+}
+
+export interface Association {
+  id: string
+  name: string
+  description: string
+  mission: string
+  activities: string[]
+  contactEmail?: string
+  website?: string
+}

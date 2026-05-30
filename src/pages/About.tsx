@@ -99,11 +99,9 @@ const About: React.FC = () => {
             className="text-center max-w-3xl mx-auto py-12"
           >
             <p className="text-3xl lg:text-4xl font-display font-semibold text-brand-gold italic mb-6">
-              "We are not merely a college. We are a community dedicated to the pursuit of
-              excellence, the cultivation of character, and the preparation of leaders for an
-              interconnected world."
+              "Welcome to University Hall! We are the smallest and most intimate halls at HKU, where you really can know everyone by name. We live in one of the oldest, coolest buildings in Hong Kong, and we eat meals together in a refurbished religious chapel. The jungle is at our back door (with wild boars and porcupines), for hiking and running. We are also committed to lead at HKU by giving equal opportunity for everyone - it doesn't matter if you are local or non-local. We are all brothers. Come join and become part of a long tradition of respected and prestigious Castlers!"
             </p>
-            <p className="text-brand-text-muted">— University Hall Mission</p>
+            <p className="text-brand-text-muted">— Warden Message</p>
           </motion.div>
         </Container>
       </Section>

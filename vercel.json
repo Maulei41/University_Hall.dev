@@ -5,5 +5,8 @@
   "framework": "vite",
   "env": {
     "VITE_API_URL": "https://api.example.com"
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

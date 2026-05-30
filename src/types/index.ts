@@ -40,7 +40,7 @@ export interface Person {
   name: string
   title: string
   bio: string
-  role: 'warden' | 'Tutor' | 'staff' | 'student-association' | 'alumni-association'
+  role: 'warden' | 'Tutor' | 'Hall Officer' | 'student-association' | 'alumni-association'
   imageId?: string
   imageSrc?: string
 }

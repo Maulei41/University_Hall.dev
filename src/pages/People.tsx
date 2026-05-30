@@ -12,17 +12,19 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
       return { label: "Students' Association", className: 'bg-red-800 text-white' }
     case 'alumni-association':
       return { label: 'Alumni Association', className: 'bg-indigo-600 text-white' }
-    case 'staff':
-      return { label: 'Staff', className: 'bg-zinc-400 text-brand-bg' }
+    case 'Hall Officer':
+      return { label: 'Hall Officer', className: 'bg-zinc-400 text-brand-bg' }
     case 'warden':
       return { label: 'Warden', className: 'bg-brand-gold text-brand-bg' }
     case 'Tutor':
       return { label: 'Tutor', className: 'bg-brand-emerald text-brand-bg' }
+    default:
+      return { label: role, className: 'bg-zinc-400 text-brand-bg' }
   }
 }
 
 const People: React.FC = () => {
-  const [selectedRole, setSelectedRole] = useState<string | null>(null)
+  const [selectedRole, setSelectedRole] = useState<string | null>('warden')
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null)
   const roles = Array.from(new Set(PEOPLE.map((p) => p.role)))
   const filteredPeople = selectedRole ? PEOPLE.filter((p) => p.role === selectedRole) : PEOPLE
@@ -52,27 +54,17 @@ const People: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap gap-3 mb-12 justify-center lg:justify-start"
           >
-            <button
-              onClick={() => setSelectedRole(null)}
-              className={`px-6 py-3 rounded-card font-serif font-semibold transition-all ${
-                selectedRole === null
-                  ? 'bg-brand-gold text-brand-bg shadow-lg'
-                  : 'bg-brand-surface border border-brand-border text-brand-text-primary hover:border-brand-gold'
-              }`}
-            >
-              All Team Members
-            </button>
             {roles.map((role) => (
               <button
                 key={role}
-                onClick={() => setSelectedRole(role)}
+                onClick={() => setSelectedRole(selectedRole === role ? null : role)}
                 className={`px-6 py-3 rounded-card font-serif font-semibold transition-all capitalize ${
                   selectedRole === role
                     ? 'bg-brand-gold text-brand-bg shadow-lg'
                     : 'bg-brand-surface border border-brand-border text-brand-text-primary hover:border-brand-gold'
                 }`}
               >
-                {role}s
+                {role}
               </button>
             ))}
           </motion.div>
@@ -120,7 +112,7 @@ const People: React.FC = () => {
                         <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(person.role).className}`}>
                           {roleLabel(person.role).label}
                         </span>
-                      ) : person.role === 'staff' ? (
+                      ) : person.role === 'Hall Officer' ? (
                         <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(person.role).className}`}>
                           {roleLabel(person.role).label}
                         </span>
@@ -184,7 +176,7 @@ const People: React.FC = () => {
 
             {/* Content */}
             <div className="p-6 sm:p-8">
-              {selectedPerson.role === 'student-association' || selectedPerson.role === 'alumni-association' || selectedPerson.role === 'staff' ? (
+              {selectedPerson.role === 'student-association' || selectedPerson.role === 'alumni-association' || selectedPerson.role === 'Hall Officer' ? (
                 <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(selectedPerson.role).className}`}>
                   {roleLabel(selectedPerson.role).label}
                 </span>

@@ -31,7 +31,7 @@ const Homepage: React.FC = () => {
             className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-bg via-brand-bg/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-bg/40 to-brand-bg" />
         </div>
 
         <Container className="relative z-10">
@@ -89,60 +89,60 @@ const Homepage: React.FC = () => {
       </ParallexSection>
 
       {/* Features Section */}
-      <Section className="bg-brand-surface">
-        <Container>
-          <motion.div className="text-center mb-16">
-            <FadeInUp>
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                The UH Experience
-              </h2>
-            </FadeInUp>
-            <FadeInUp delay={0.2}>
-              <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-                Beyond dormitory living, University Hall offers a comprehensive residential
-                education experience combining academic excellence with vibrant community life.
-              </p>
-            </FadeInUp>
-          </motion.div>
+      {/*<Section className="bg-brand-surface">*/}
+      {/*  <Container>*/}
+      {/*    <motion.div className="text-center mb-16">*/}
+      {/*      <FadeInUp>*/}
+      {/*        <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">*/}
+      {/*          The UH Experience*/}
+      {/*        </h2>*/}
+      {/*      </FadeInUp>*/}
+      {/*      <FadeInUp delay={0.2}>*/}
+      {/*        <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">*/}
+      {/*          Beyond dormitory living, University Hall offers a comprehensive residential*/}
+      {/*          education experience combining academic excellence with vibrant community life.*/}
+      {/*        </p>*/}
+      {/*      </FadeInUp>*/}
+      {/*    </motion.div>*/}
 
-          <StaggerContainer>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: 'Academic Excellence',
-                  description:
-                    'Mentorship from leading scholars, specialized seminars, and intellectual community supporting rigorous learning.',
-                  icon: '📚',
-                },
-                {
-                  title: 'Vibrant Community',
-                  description:
-                    'Rich cultural programming, social events, and residential traditions fostering meaningful connections.',
-                  icon: '🤝',
-                },
-                {
-                  title: 'Character Development',
-                  description:
-                    'Leadership opportunities, ethical mentoring, and experiences shaping responsible global citizens.',
-                  icon: '⭐',
-                },
-              ].map((feature) => (
-                <StaggerItem key={feature.title}>
-                  <ScaleOnHover>
-                    <div className="card-base card-hover h-full">
-                      <div className="text-4xl mb-4">{feature.icon}</div>
-                      <h3 className="font-display text-2xl font-semibold text-brand-gold mb-3">
-                        {feature.title}
-                      </h3>
-                      <p className="text-brand-text-muted">{feature.description}</p>
-                    </div>
-                  </ScaleOnHover>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
-        </Container>
-      </Section>
+      {/*    <StaggerContainer>*/}
+      {/*      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">*/}
+      {/*        {[*/}
+      {/*          {*/}
+      {/*            title: 'Academic Excellence',*/}
+      {/*            description:*/}
+      {/*              'Mentorship from leading scholars, specialized seminars, and intellectual community supporting rigorous learning.',*/}
+      {/*            icon: '📚',*/}
+      {/*          },*/}
+      {/*          {*/}
+      {/*            title: 'Vibrant Community',*/}
+      {/*            description:*/}
+      {/*              'Rich cultural programming, social events, and residential traditions fostering meaningful connections.',*/}
+      {/*            icon: '🤝',*/}
+      {/*          },*/}
+      {/*          {*/}
+      {/*            title: 'Character Development',*/}
+      {/*            description:*/}
+      {/*              'Leadership opportunities, ethical mentoring, and experiences shaping responsible global citizens.',*/}
+      {/*            icon: '⭐',*/}
+      {/*          },*/}
+      {/*        ].map((feature) => (*/}
+      {/*          <StaggerItem key={feature.title}>*/}
+      {/*            <ScaleOnHover>*/}
+      {/*              <div className="card-base card-hover h-full">*/}
+      {/*                <div className="text-4xl mb-4">{feature.icon}</div>*/}
+      {/*                <h3 className="font-display text-2xl font-semibold text-brand-gold mb-3">*/}
+      {/*                  {feature.title}*/}
+      {/*                </h3>*/}
+      {/*                <p className="text-brand-text-muted">{feature.description}</p>*/}
+      {/*              </div>*/}
+      {/*            </ScaleOnHover>*/}
+      {/*          </StaggerItem>*/}
+      {/*        ))}*/}
+      {/*      </div>*/}
+      {/*    </StaggerContainer>*/}
+      {/*  </Container>*/}
+      {/*</Section>*/}
 
       {/* Timeline Section */}
       <Section className="bg-brand-surface">

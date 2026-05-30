@@ -258,13 +258,14 @@ export const PEOPLE: Person[] = [
     role: 'warden',
     imageId: 'person_warden',
     imageSrc: '/People/Warden.jpeg',
+    description:"\"Welcome to University Hall! We are the smallest and most intimate halls at HKU, where you really can know everyone by name. We live in one of the oldest, coolest buildings in Hong Kong, and we eat meals together in a refurbished religious chapel. The jungle is at our back door (with wild boars and porcupines), for hiking and running. We are also committed to lead at HKU by giving equal opportunity for everyone - it doesn't matter if you are local or non-local. We are all brothers. Come join and become part of a long tradition of respected and prestigious Castlers!\""
   },
   {
-    id: 'Senior-Resident-Tutor 劉山',
-    name: 'Mr. Sam Liu',
+    id: 'Senior-Resident-Tutor ',
+    name: 'Mr. Sam Liu 劉山',
     title: 'Senior Resident Tutor',
     bio: 'Lecturer, Faculty of Law.',
-    role: 'Tutor',
+    role: 'Tutoring Group',
     imageId: 'person_Sam',
     imageSrc: '/People/Sam_Liu.jpg',
   },
@@ -273,7 +274,7 @@ export const PEOPLE: Person[] = [
     name: 'Dr. Vincent Chan Nok Hang 陳諾衡',
     title: 'Resident Tutor',
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
-    role: 'Tutor',
+    role: 'Tutoring Group',
     imageId: 'person_fellow_1',
     imageSrc: "/People/Vincent_Chan.jpg"
   },
@@ -281,16 +282,17 @@ export const PEOPLE: Person[] = [
     id: 'Tutor-1',
     name: 'Mr. Chan Sai Wai 陳世煒',
     title: 'Residential fellow',
-    bio: 'Tutor- PGDE-HKU, BSc-HKU',
-    role: 'Tutor',
+    bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
+    role: 'Tutoring Group',
     imageId: 'person_fellow_2',
+    description: "As a Junior Tutor, I bring my passion for science education and commitment to fostering student growth in our hall community. Having served as Sports Captain during my university years, I experienced firsthand how hall life is a transformative space for developing leadership abilities and learning to be a contributive community member. These experiences proved invaluable to my teaching career, shaping my understanding of holistic student development. I believe residential halls offer unique opportunities for personal growth beyond academics. I look forward to supporting our residents in their academic journeys while encouraging them to embrace the full spectrum of learning experiences that hall life provides"
   },
   {
     id: 'Tutor-2',
     name: 'Mr. Jason Wong 黃靖軒',
     title: 'Residential fellow',
     bio: 'BSc-HKU',
-    role: 'Tutor',
+    role: 'Tutoring Group',
     imageId: 'person_counselor',
     imageSrc: '/People/Jason_Wong.jpeg',
   },
@@ -397,23 +399,6 @@ export const NAV_LINKS = [
 ]
 
 export const HALL_TEAMS: HallTeam[] = [
-  // Old Ball
-  {
-    id: 'old-ball-basketball',
-    name: 'Basketball Team ',
-    description:
-      'We’re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀',
-    category: 'Old Ball',
-    imageId: 'recreation',
-  },
-  {
-    id: 'old-ball-football',
-    name: 'Football Team',
-    description:
-      'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
-    category: 'Old Ball',
-    imageId: 'recreation',
-  },
 
 
   // New Ball
@@ -421,7 +406,7 @@ export const HALL_TEAMS: HallTeam[] = [
     id: 'new-ball-Hockey',
     name: 'Hockey Team',
     description:
-      'Do you know what HKU stands for? It is HocKey team of Uhall. Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
+      ' Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball',
     imageId: 'recreation',
   },
@@ -429,9 +414,9 @@ export const HALL_TEAMS: HallTeam[] = [
     id: 'new-ball-Lacrosse',
     name: 'Lacrosse Team',
     description:
-      '',
+      'Lacrosse Grind Begins Today! Lacrosse team is where boys become men and brotherhood is built. Join us to experience the thrill of this prestigious sport!',
     category: 'New Ball',
-    imageId: 'recreation',
+    imageId: 'Uhall_Lacrosse',
   },
   {
     id: 'new-ball-Softball',
@@ -439,8 +424,25 @@ export const HALL_TEAMS: HallTeam[] = [
     description:
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.🥎',
     category: 'New Ball',
-    imageId: 'recreation',
+    imageId: 'Uhall_Softball',
     imageSrc: '/News/Uhall_Softball.jpg',
+  },
+  // Old Ball
+  {
+    id: 'old-ball-basketball',
+    name: 'Basketball Team ',
+    description:
+        'We’re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀',
+    category: 'Old Ball',
+    imageId: 'recreation',
+  },
+  {
+    id: 'old-ball-football',
+    name: 'Football Team',
+    description:
+        'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
+    category: 'Old Ball',
+    imageId: 'recreation',
   },
 
   // Culture

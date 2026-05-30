@@ -16,8 +16,8 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
       return { label: 'Hall Officer', className: 'bg-zinc-400 text-brand-bg' }
     case 'warden':
       return { label: 'Warden', className: 'bg-brand-gold text-brand-bg' }
-    case 'Tutor':
-      return { label: 'Tutor', className: 'bg-brand-emerald text-brand-bg' }
+    case 'Tutoring Group':
+      return { label: 'Tutoring Group', className: 'bg-brand-emerald text-brand-bg' }
     default:
       return { label: role, className: 'bg-zinc-400 text-brand-bg' }
   }
@@ -196,6 +196,12 @@ const People: React.FC = () => {
               <p className="font-serif text-brand-gold font-semibold text-lg mb-6">
                 {selectedPerson.title}
               </p>
+
+              {selectedPerson.description && (
+                <p className="text-brand-text-muted text-sm leading-relaxed mb-4 italic">
+                  {selectedPerson.description}
+                </p>
+              )}
 
               {selectedPerson.bio && (
                 <p className="text-brand-text-muted leading-relaxed whitespace-pre-line">

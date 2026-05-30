@@ -1,37 +1,14 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, CheckCircle } from 'lucide-react'
-import { Container, Section, Button } from '@components/common/index'
-import { FadeInUp, StaggerContainer, StaggerItem } from '@components/animations/index'
-import { FAQ_ITEMS } from '@constants/content'
+import { ChevronDown } from 'lucide-react'
+import { Container, Section } from '@components/common/index'
+import { FadeInUp } from '@components/animations/index'
+import MapSection from '@components/common/MapSection'
+import { FAQ_ITEMS, OFFICE_INFO } from '@constants/content'
 
 const Apply: React.FC = () => {
   const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null)
-  const [formStep, setFormStep] = useState(1)
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    school: '',
-    major: '',
-    year: '',
-    statement: '',
-  })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const applicationSteps = [
-    { step: 1, title: 'Personal Information', description: 'Basic details about you' },
-    { step: 2, title: 'Academic Background', description: 'Your academic information' },
-    { step: 3, title: 'Personal Statement', description: 'Tell us about yourself' },
-    { step: 4, title: 'Review & Submit', description: 'Confirm your application' },
-  ]
 
   return (
     <>
@@ -46,294 +23,22 @@ const Apply: React.FC = () => {
               Join our residential community dedicated to academic excellence, character development,
               and lifelong friendships.
             </p>
+            <a
+              href="https://sweb.hku.hk/hallapp/servlet/hall_app/menu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-8 px-8 py-4 bg-brand-gold text-brand-bg font-serif font-semibold rounded-card hover:bg-brand-gold-light transition-colors shadow-lg text-lg"
+            >
+              Apply Now
+            </a>
           </FadeInUp>
         </Container>
       </Section>
 
-      {/* Application Requirements */}
-      <Section>
-        <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Who Should Apply?
-              </h2>
-            </div>
-          </FadeInUp>
 
-          <StaggerContainer>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: 'Current HKU Students',
-                  description:
-                    'All currently enrolled undergraduate and postgraduate students are welcome to apply.',
-                },
-                {
-                  title: 'Academic Excellence',
-                  description:
-                    'We seek students committed to scholarly achievement and intellectual engagement.',
-                },
-                {
-                  title: 'Community Contributors',
-                  description:
-                    'Your participation in residential programming and community life is essential.',
-                },
-                {
-                  title: 'Character & Leadership',
-                  description:
-                    'We value integrity, respect, and a commitment to making our community stronger.',
-                },
-              ].map((requirement) => (
-                <StaggerItem key={requirement.title}>
-                  <motion.div
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="card-base card-hover"
-                  >
-                    <h4 className="font-display text-xl font-semibold text-brand-gold mb-3">
-                      {requirement.title}
-                    </h4>
-                    <p className="text-brand-text-muted">{requirement.description}</p>
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
-        </Container>
-      </Section>
-
-      {/* Application Timeline */}
-      <Section className="bg-brand-surface">
-        <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Application Process
-              </h2>
-            </div>
-          </FadeInUp>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row justify-between items-center gap-6 mb-16"
-          >
-            {applicationSteps.map((item, idx) => (
-              <div key={item.step} className="flex flex-col items-center flex-1">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className={`w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-lg mb-4 ${
-                    formStep >= item.step
-                      ? 'bg-brand-gold text-brand-bg'
-                      : 'bg-brand-surface border border-brand-border text-brand-text-muted'
-                  }`}
-                >
-                  {formStep > item.step ? <CheckCircle size={28} /> : item.step}
-                </motion.div>
-                <h4 className="font-display font-semibold text-brand-text-primary text-center mb-1">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-brand-text-muted text-center">{item.description}</p>
-                {idx < applicationSteps.length - 1 && (
-                  <div className="hidden md:block absolute w-12 h-1 bg-gradient-to-r from-brand-gold to-transparent ml-20" />
-                )}
-              </div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* Application Form */}
-      <Section>
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto card-base"
-          >
-            <h3 className="font-display text-2xl font-semibold text-brand-gold mb-8">
-              {applicationSteps[formStep - 1].title}
-            </h3>
-
-            <form className="space-y-6">
-              {/* Step 1: Personal Information */}
-              {formStep === 1 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-6"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder="First Name"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                    />
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder="Last Name"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                    />
-                  </div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                  />
-                </motion.div>
-              )}
-
-              {/* Step 2: Academic Background */}
-              {formStep === 2 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-6"
-                >
-                  <input
-                    type="text"
-                    name="school"
-                    placeholder="Faculty/School"
-                    value={formData.school}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                  />
-                  <input
-                    type="text"
-                    name="major"
-                    placeholder="Major/Field of Study"
-                    value={formData.major}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all"
-                  />
-                  <select
-                    name="year"
-                    value={formData.year}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary focus:outline-none focus:border-brand-gold transition-all"
-                  >
-                    <option value="">Select Year of Study</option>
-                    <option value="year1">Year 1</option>
-                    <option value="year2">Year 2</option>
-                    <option value="year3">Year 3</option>
-                    <option value="year4">Year 4</option>
-                    <option value="postgrad">Postgraduate</option>
-                  </select>
-                </motion.div>
-              )}
-
-              {/* Step 3: Personal Statement */}
-              {formStep === 3 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-4"
-                >
-                  <div>
-                    <label className="block font-serif font-semibold text-brand-text-primary mb-2">
-                      Why do you want to join University Hall?
-                    </label>
-                    <textarea
-                      name="statement"
-                      value={formData.statement}
-                      onChange={handleChange}
-                      rows={8}
-                      placeholder="Share your thoughts about residential community, academic goals, and what you hope to contribute..."
-                      className="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-card text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:border-brand-gold transition-all resize-none"
-                    />
-                    <p className="text-xs text-brand-text-muted mt-2">
-                      {formData.statement.length} / 1000 characters
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 4: Review */}
-              {formStep === 4 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-4"
-                >
-                  <div className="bg-brand-bg border border-brand-border rounded-card p-6">
-                    <h4 className="font-display font-semibold text-brand-gold mb-4">
-                      Application Summary
-                    </h4>
-                    <div className="space-y-3 text-sm">
-                      <p className="text-brand-text-muted">
-                        <strong>Name:</strong> {formData.firstName} {formData.lastName}
-                      </p>
-                      <p className="text-brand-text-muted">
-                        <strong>Email:</strong> {formData.email}
-                      </p>
-                      <p className="text-brand-text-muted">
-                        <strong>School:</strong> {formData.school || 'Not specified'}
-                      </p>
-                      <p className="text-brand-text-muted">
-                        <strong>Major:</strong> {formData.major || 'Not specified'}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-brand-text-muted">
-                    By clicking submit, you agree to our application terms and conditions.
-                  </p>
-                </motion.div>
-              )}
-
-              {/* Navigation Buttons */}
-              <div className="flex gap-4 justify-between pt-8 border-t border-brand-border">
-                <Button
-                  variant="secondary"
-                  onClick={() => setFormStep(Math.max(1, formStep - 1))}
-                  disabled={formStep === 1}
-                  className="disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Previous
-                </Button>
-                {formStep < 4 ? (
-                  <Button
-                    variant="primary"
-                    onClick={() => setFormStep(Math.min(4, formStep + 1))}
-                  >
-                    Next
-                  </Button>
-                ) : (
-                  <Button variant="primary">Submit Application</Button>
-                )}
-              </div>
-            </form>
-          </motion.div>
-        </Container>
-      </Section>
 
       {/* FAQ Section */}
-      <Section className="bg-brand-surface">
+      <Section >
         <Container>
           <FadeInUp>
             <div className="text-center mb-16">
@@ -385,6 +90,99 @@ const Apply: React.FC = () => {
               </motion.div>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      {/* Visit Us */}
+      <Section className="bg-brand-surface">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-2 text-center">
+              Visit Us
+            </h2>
+            <p className="text-brand-text-muted text-center text-sm mb-8">
+              {OFFICE_INFO.address}
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-stretch">
+              {/* Travel Info Table */}
+              <div className="lg:col-span-3 overflow-x-auto">
+                <div className="bg-brand-bg rounded-card p-6 h-full border border-brand-border">
+                  <h3 className="font-display font-semibold text-brand-text-primary mb-4">
+                    Getting Here
+                  </h3>
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-brand-border">
+                        <th className="pb-3 font-display font-semibold text-brand-text-primary pr-3">
+                          Modes of Travel
+                        </th>
+                        <th className="pb-3 font-display font-semibold text-brand-text-primary pr-3">
+                          Routes
+                        </th>
+                        <th className="pb-3 font-display font-semibold text-brand-text-primary text-right whitespace-nowrap">
+                          From
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-brand-border">
+                      <tr className="hover:bg-brand-surface/30 transition-colors">
+                        <td className="py-3 pr-3 font-serif font-semibold text-brand-text-primary">
+                          Bus
+                        </td>
+                        <td className="py-3 pr-3">
+                          <div className="flex flex-wrap gap-1.5">
+                            {['4','4X','7','37A','40','40M','90B','91','30X','970','970X','973'].map((r) => (
+                              <span
+                                key={r}
+                                className="inline-block px-2 py-0.5 bg-brand-surface border border-brand-border rounded text-xs font-mono text-brand-text-muted"
+                              >
+                                {r}
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                        <td className="py-3 text-right whitespace-nowrap">
+                          <span className="font-mono text-brand-gold font-semibold">Main Campus</span>
+                        </td>
+                      </tr>
+                      <tr className="hover:bg-brand-surface/30 transition-colors">
+                        <td className="py-3 pr-3 font-serif font-semibold text-brand-text-primary">
+                          Bus
+                        </td>
+                        <td className="py-3 pr-3">
+                          <div className="flex flex-wrap gap-1.5">
+                            {['A10'].map((r) => (
+                              <span
+                                key={r}
+                                className="inline-block px-2 py-0.5 bg-brand-surface border border-brand-border rounded text-xs font-mono text-brand-text-muted"
+                              >
+                                {r}
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                        <td className="py-3 text-right whitespace-nowrap">
+                          <span className="font-mono text-brand-gold font-semibold">Hong Kong Airport</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div className="lg:col-span-2">
+                <div className="h-72 lg:h-full min-h-[250px] rounded-card overflow-hidden border border-brand-border">
+                  <MapSection />
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </Container>
       </Section>
     </>

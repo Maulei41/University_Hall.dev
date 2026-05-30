@@ -275,6 +275,7 @@ export const PEOPLE: Person[] = [
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
     role: 'Tutor',
     imageId: 'person_fellow_1',
+    imageSrc: "/People/Vincent_Chan.jpg"
   },
   {
     id: 'Tutor-1',
@@ -320,21 +321,21 @@ export const PEOPLE: Person[] = [
   { id: 'sa-Past-Committee-Representative', name: 'Yu Pak Hin', title: 'Past Committee Representative — Students\' Association', bio: '', role: 'student-association' },
 
   // Alumni Association
-  { id: 'aa-chair', name: 'Mr. SIT Loi-keung, Ken', title: 'Chairman — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-vice-chair-1', name: 'Mr. SHEK Ming-san', title: 'Vice Chairman — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Vice-chair-2', name: 'Mr. CHEUNG Che-tsuen, Desmond', title: 'Vice Chairman — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Secretary', name: 'Mr. Ng Cheuk Sau Joseph', title: 'Honorary Secretary — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Treasurer', name: 'Mr. SHIH Chi-san, Michael', title: 'Honorary Treasurer — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-1', name: 'Dr. CHENG Shing-kwong, Eric', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-2', name: 'Dr. Wai Heung-on, Jonathan', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-3', name: 'Mr. Danny Tsoi', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-4', name: 'Mr. Vincent Tang', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-5', name: 'Dr. WONG Lap-ching', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-6', name: 'Mr. Tristan Lau', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-7', name: 'Mr. CHEN Songyong, Jack', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-8', name: 'Mr. YUNG Albert', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-9', name: 'Mr. TSE Ho-yin, Alfred', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
-  { id: 'aa-Director-10', name: 'Dr. CHAN Nok-hang, Vincent', title: 'Director — Alumni Association', bio: '', role: 'alumni-association' },
+  { id: 'aa-chair', name: 'Mr. SIT Loi-keung, Ken', title: 'Chairman — Alumni Association', bio: '', role: 'alumni-association', imageId:"aa-chair", imageSrc: "/People/Ken_Sit.jpg" },
+  { id: 'aa-vice-chair-1', name: 'Mr. SHEK Ming-san', title: 'Vice Chairman — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-vice-chair-1", imageSrc: "/People/Shek_Ming_San.jpg" },
+  { id: 'aa-Vice-chair-2', name: 'Mr. CHEUNG Che-tsuen, Desmond', title: 'Vice Chairman — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-vice-chair-2", imageSrc: "/People/Desmond_Cheung.jpg" },
+  { id: 'aa-Secretary', name: 'Mr. Ng Cheuk Sau Joseph', title: 'Honorary Secretary — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Secretary", imageSrc: "/People/Joseph_Ng.jpg"},
+  { id: 'aa-Treasurer', name: 'Mr. SHIH Chi-san, Michael', title: 'Honorary Treasurer — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Treasurer", imageSrc: "/People/Michael_Shih.jpg" },
+  { id: 'aa-Director-1', name: 'Dr. CHENG Shing-kwong, Eric', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-1", imageSrc: "/People/Eric_Cheng.jpg" },
+  { id: 'aa-Director-2', name: 'Dr. Wai Heung-on, Jonathan', title: 'Director — Alumni Association', bio: '', role: 'alumni-association',  imageId: "aa-Director-2", imageSrc: "/People/Jonathan_Wai.jpg"},
+  { id: 'aa-Director-3', name: 'Mr. Danny Tsoi', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-3", imageSrc: "/People/Danny_Tsoi.jpg" },
+  { id: 'aa-Director-4', name: 'Mr. Vincent Tang', title: 'Director — Alumni Association', bio: '', role: 'alumni-association',imageId: "aa-Director-4", imageSrc: "/People/Vincent_Tang.jpg" },
+  { id: 'aa-Director-5', name: 'Dr. WONG Lap-ching', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-5", imageSrc: "/People/Wong_Lap_ching.jpg" },
+  { id: 'aa-Director-6', name: 'Mr. Tristan Lau', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-6", imageSrc: "/People/Tristan_Lau.jpg" },
+  { id: 'aa-Director-7', name: 'Mr. CHEN Songyong, Jack', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-7", imageSrc: "/People/Jack_Chen.jpg" },
+  { id: 'aa-Director-8', name: 'Mr. YUNG Albert', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-8", imageSrc: "/People/Albert_Yung.jpg" },
+  { id: 'aa-Director-9', name: 'Mr. TSE Ho-yin, Alfred', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-9", imageSrc: "/People/Alfred_Tse.jpg" },
+  { id: 'aa-Director-10', name: 'Dr. CHAN Nok-hang, Vincent', title: 'Director — Alumni Association', bio: '', role: 'alumni-association', imageId: "aa-Director-10", imageSrc: "/People/Vincent_Chan.jpg" },
 ]
 
 export const TESTIMONIALS: Testimonial[] = [

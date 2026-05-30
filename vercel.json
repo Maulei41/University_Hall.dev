@@ -3,10 +3,7 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "framework": "vite",
-  "env": [
-    {
-      "key": "VITE_API_URL",
-      "value": "https://api.example.com"
-    }
-  ]
+  "env": {
+    "VITE_API_URL": "https://api.example.com"
+  }
 }

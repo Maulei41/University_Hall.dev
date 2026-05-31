@@ -391,7 +391,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Facilities', href: '/facilities' },
-  { label: 'Events', href: '/events' },
+  { label: 'Events & Traditions', href: '/events' },
   { label: 'News', href: '/news' },
   { label: 'People', href: '/people' },
   { label: 'Mentorship', href: '/mentorship' },
@@ -500,6 +500,19 @@ export const AFFILIATED_MEMBERSHIP = {
     'Does not confer residential status and does not entitle the member to accommodation in the Hall, except where overnight stay is separately applied for and approved',
   ],
   imageId: 'affiliated_membership',
+  howToApply: {
+    download: {
+      label: 'Download Application Form',
+      description: 'Download the Affiliated Membership application form in PDF format. Fill in all required fields carefully.',
+      href: '/forms/affiliated-membership-application.pdf',
+    },
+    submitMethod: [
+      'Submit the completed application form via email to uhall@connect.hku.hk',
+      'Alternatively, submit the hard copy to the Hall Office during office hours',
+      'Applications are reviewed by the Hall Management Committee',
+      'Successful applicants will be notified via email within 2–3 weeks',
+    ],
+  },
 }
 
 export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [

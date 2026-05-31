@@ -1,8 +1,14 @@
-import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Suspense, lazy, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
 // Lazy load pages for code splitting
 const Homepage = lazy(() => import('@pages/Homepage'))
@@ -13,6 +19,8 @@ const News = lazy(() => import('@pages/News'))
 const People = lazy(() => import('@pages/People'))
 const Mentorship = lazy(() => import('@pages/Mentorship'))
 const Apply = lazy(() => import('@pages/Apply'))
+const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
+const TourHall = lazy(() => import('@pages/TourHall'))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-brand-bg flex items-center justify-center">
@@ -27,6 +35,7 @@ const LoadingSpinner = () => (
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-brand-bg">
         <Header />
         <main className="flex-1">
@@ -40,6 +49,8 @@ export default function App() {
               <Route path="/people" element={<People />} />
               <Route path="/mentorship" element={<Mentorship />} />
               <Route path="/apply" element={<Apply />} />
+              <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
+              <Route path="/tour-the-hall" element={<TourHall />} />
             </Routes>
           </Suspense>
         </main>

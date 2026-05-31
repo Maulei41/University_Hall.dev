@@ -8,7 +8,7 @@ import { EVENTS, TRADITIONS } from '@constants/content'
 const frequencyColors: Record<string, 'gold' | 'emerald' | 'muted'> = {
   Annual: 'gold',
   'Bi-Annual': 'emerald',
-  Monthly: 'muted',
+  Monthly: 'emerald',
 }
 
 const Events: React.FC = () => {
@@ -36,7 +36,7 @@ const Events: React.FC = () => {
               Events & Traditions
             </h1>
             <p className="text-xl text-brand-text-muted max-w-2xl">
-              From annual High Table Dinners to weekly hall gatherings — explore the events
+              From Monthly High Table Dinners to Annual Reunion Dinner — explore the events
               and time-honoured traditions that define life at University Hall.
             </p>
           </FadeInUp>

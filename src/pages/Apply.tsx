@@ -31,11 +31,15 @@ const Apply: React.FC = () => {
             >
               Apply Now
             </a>
+            <a
+              href="/affiliated-membership"
+              className="inline-block mt-4 ml-0 lg:ml-4 px-8 py-4 border-2 border-brand-gold text-brand-gold font-serif font-semibold rounded-card hover:bg-brand-gold hover:text-brand-bg transition-colors shadow-lg text-lg"
+            >
+              Affiliated Membership →
+            </a>
           </FadeInUp>
         </Container>
       </Section>
-
-
 
       {/* FAQ Section */}
       <Section >

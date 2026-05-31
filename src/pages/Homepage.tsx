@@ -31,7 +31,7 @@ const Homepage: React.FC = () => {
             className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-bg/40 to-brand-bg" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-bg/30 via-brand-bg/70 to-brand-surface" />
         </div>
 
         <Container className="relative z-10">
@@ -63,9 +63,11 @@ const Homepage: React.FC = () => {
                   Apply Now <ArrowRight size={18} className="ml-2 inline" />
                 </Button>
               </Link>
-              <Button variant="secondary" className="w-full sm:w-auto">
-                <Play size={18} className="mr-2 inline" /> Tour the Hall
-              </Button>
+              <Link to="/tour-the-hall">
+                <Button variant="secondary" className="w-full sm:w-auto">
+                  <Play size={18} className="mr-2 inline" /> Tour the Hall
+                </Button>
+              </Link>
             </div>
 
             <div className="mt-16 flex flex-col sm:flex-row gap-8">
@@ -324,8 +326,8 @@ const Homepage: React.FC = () => {
                   Apply Now <ArrowRight size={18} className="ml-2 inline" />
                 </Button>
               </Link>
-              <Link to="/contact">
-                <Button variant="secondary">Get in Touch</Button>
+              <Link to="/affiliated-membership">
+                <Button variant="secondary">Affiliated Membership <ArrowRight size={18} className="ml-2 inline" /></Button>
               </Link>
             </div>
           </motion.div>

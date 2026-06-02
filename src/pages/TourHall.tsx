@@ -132,7 +132,7 @@ const TourHall: React.FC = () => {
 
               <div className="mt-10">
                 <p className="text-brand-text-muted text-sm mb-4">
-                  Office Hours: {OFFICE_INFO.hours.weekday} (Weekdays) · {OFFICE_INFO.hours.weekend} (Saturdays)
+                  Office Hours: {OFFICE_INFO.hours.weekday} (Weekdays)
                 </p>
                 <Link
                   to="/apply"

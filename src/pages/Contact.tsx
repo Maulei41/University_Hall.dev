@@ -93,9 +93,6 @@ const Contact: React.FC = () => {
                   <p className="text-brand-text-muted">
                     <strong>Weekdays:</strong> {OFFICE_INFO.hours.weekday}
                   </p>
-                  <p className="text-brand-text-muted">
-                    <strong>Weekends:</strong> {OFFICE_INFO.hours.weekend}
-                  </p>
                 </div>
               </div>
             </div>

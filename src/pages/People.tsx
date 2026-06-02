@@ -26,7 +26,7 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
 const People: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<string | null>('warden')
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null)
-  const roles = Array.from(new Set(PEOPLE.map((p) => p.role)))
+  const roles = Array.from(new Set(PEOPLE.map((p) => p.role))).filter((r) => r !== 'alumni-association')
   const filteredPeople = selectedRole ? PEOPLE.filter((p) => p.role === selectedRole) : PEOPLE
 
   return (
@@ -108,10 +108,6 @@ const People: React.FC = () => {
                         <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(person.role).className}`}>
                           {roleLabel(person.role).label}
                         </span>
-                      ) : person.role === 'alumni-association' ? (
-                        <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(person.role).className}`}>
-                          {roleLabel(person.role).label}
-                        </span>
                       ) : person.role === 'Hall Officer' ? (
                         <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(person.role).className}`}>
                           {roleLabel(person.role).label}
@@ -176,7 +172,7 @@ const People: React.FC = () => {
 
             {/* Content */}
             <div className="p-6 sm:p-8">
-              {selectedPerson.role === 'student-association' || selectedPerson.role === 'alumni-association' || selectedPerson.role === 'Hall Officer' ? (
+              {selectedPerson.role === 'student-association' || selectedPerson.role === 'Hall Officer' ? (
                 <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(selectedPerson.role).className}`}>
                   {roleLabel(selectedPerson.role).label}
                 </span>

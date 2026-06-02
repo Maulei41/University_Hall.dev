@@ -78,6 +78,8 @@ export interface HallTeam {
   category: 'Old Ball' | 'New Ball' | 'Culture' | "Seasonal Team"
   imageId: string
   imageSrc?: string
+  /** Multiple images — renders an inline carousel instead of a single image */
+  images?: string[]
 }
 
 export interface MentorshipProgram {

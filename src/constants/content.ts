@@ -392,7 +392,7 @@ export const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Facilities', href: '/facilities' },
   { label: 'Events & Traditions', href: '/events' },
-  { label: 'News', href: '/news' },
+  { label: 'Life', href: '/life' },
   { label: 'People', href: '/people' },
   { label: 'Mentorship', href: '/mentorship' },
   { label: 'Apply', href: '/apply' },
@@ -409,6 +409,7 @@ export const HALL_TEAMS: HallTeam[] = [
       ' Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball',
     imageId: 'recreation',
+    images: ['/Life/Uhall_Hockey_1.jpeg', '/Life/Uhall_Hockey_2.jpeg'],
   },
   {
     id: 'new-ball-Lacrosse',
@@ -417,6 +418,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Lacrosse Grind Begins Today! Lacrosse team is where boys become men and brotherhood is built. Join us to experience the thrill of this prestigious sport!',
     category: 'New Ball',
     imageId: 'Uhall_Lacrosse',
+    imageSrc: '/Life/Uhall_Lacrosse.jpeg',
   },
   {
     id: 'new-ball-Softball',
@@ -425,16 +427,17 @@ export const HALL_TEAMS: HallTeam[] = [
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.🥎',
     category: 'New Ball',
     imageId: 'Uhall_Softball',
-    imageSrc: '/News/Uhall_Softball.jpg',
+    images: ['/Life/Uhall_Softball_1.jpg', '/Life/Uhall_Softball_2.jpeg'],
   },
   // Old Ball
   {
     id: 'old-ball-basketball',
     name: 'Basketball Team ',
     description:
-        'We’re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀',
+        'We\'re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀',
     category: 'Old Ball',
     imageId: 'recreation',
+    imageSrc: '/Life/Uhall_Basketball.jpeg',
   },
   {
     id: 'old-ball-football',
@@ -443,6 +446,7 @@ export const HALL_TEAMS: HallTeam[] = [
         'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
     category: 'Old Ball',
     imageId: 'recreation',
+    imageSrc: '/Life/Uhall_Football.jpeg',
   },
 
   // Culture
@@ -461,6 +465,7 @@ export const HALL_TEAMS: HallTeam[] = [
         'Bring your curiosity, sharpen your skills, and be part of our team that turns every contract into a successful bid!',
     category: 'Culture',
     imageId: 'common_rooms',
+    imageSrc: '/Life/Uhall_Bridge.jpeg',
   },
   {
     id: 'culture-band',
@@ -469,6 +474,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Bringing together music lovers with passion, energy, and Hall spirit, UHall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!',
     category: 'Culture',
     imageId: 'dining_hall',
+    imageSrc: '/Life/Uhall_Band.jpeg',
   },
   {
     id: 'culture-dance',
@@ -477,6 +483,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!✨',
     category: 'Culture',
     imageId: 'common_rooms',
+    imageSrc: '/Life/Uhall_Dance.jpeg',
   },
   {
     id: 'seasonal-dragon-boat',
@@ -485,6 +492,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!',
     category: 'Seasonal Team',
     imageId: 'library',
+    imageSrc: '/Life/Uhall_DragonBoat.jpeg',
   },
 ]
 

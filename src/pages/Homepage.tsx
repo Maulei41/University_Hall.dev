@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
 import {
   Container,
@@ -20,6 +20,16 @@ import {
 } from '@components/animations/index'
 import { STATS, TIMELINE_EVENTS, TESTIMONIALS, TRADITIONS } from '@constants/content'
 const Homepage: React.FC = () => {
+  const textScrollRef = React.useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: textScrollRef,
+    offset: ['start end', 'end start'],
+  })
+  const rows = Array.from({ length: 8 }, (_, i) => {
+    const isReverse = i % 2 === 1
+    return useTransform(scrollYProgress, [0, 1], isReverse ? ['-60%', '10%'] : ['10%', '-60%'])
+  })
+
   return (
     <>
       {/* Hero Section */}
@@ -89,6 +99,41 @@ const Homepage: React.FC = () => {
           </motion.div>
         </Container>
       </ParallexSection>
+
+      {/* Text Scroll Section — 8 rows */}
+      <section
+        ref={textScrollRef}
+        className="relative bg-brand-surface py-12 md:py-16 overflow-hidden"
+      >
+        <div className="flex flex-col gap-4 md:gap-6">
+          {rows.map((x, rowIndex) => (
+            <div key={rowIndex} className="whitespace-nowrap">
+              <motion.div
+                style={{ x }}
+                className="inline-flex items-center gap-8 md:gap-12 pr-8 md:pr-12"
+              >
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`text-[clamp(60px,10vw,140px)] font-display font-bold leading-none select-none ${
+                      i % 2 === 0
+                        ? 'text-white'
+                        : 'text-transparent'
+                    }`}
+                    style={
+                      i % 2 === 1
+                        ? { WebkitTextStroke: '1.5px rgba(0,0,0,1)' }
+                        : undefined
+                    }
+                  >
+                    UNIVERSITY HALL
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Features Section */}
       {/*<Section className="bg-brand-surface">*/}

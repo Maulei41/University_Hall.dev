@@ -15,7 +15,7 @@ const Homepage = lazy(() => import('@pages/Homepage'))
 const About = lazy(() => import('@pages/About'))
 const Facilities = lazy(() => import('@pages/Facilities'))
 const Events = lazy(() => import('@pages/Events'))
-const News = lazy(() => import('@pages/News'))
+const Life = lazy(() => import('@pages/Life'))
 const People = lazy(() => import('@pages/People'))
 const Mentorship = lazy(() => import('@pages/Mentorship'))
 const Apply = lazy(() => import('@pages/Apply'))
@@ -45,7 +45,7 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/facilities" element={<Facilities />} />
               <Route path="/events" element={<Events />} />
-              <Route path="/news" element={<News />} />
+              <Route path="/life" element={<Life />} />
               <Route path="/people" element={<People />} />
               <Route path="/mentorship" element={<Mentorship />} />
               <Route path="/apply" element={<Apply />} />

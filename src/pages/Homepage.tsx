@@ -15,7 +15,7 @@ import {
   StaggerItem,
   ScaleOnHover,
   ParallexSection,
-  TimelineNode,
+  HorizontalTimeline,
   GalleryGrid,
 } from '@components/animations/index'
 import { STATS, TIMELINE_EVENTS, TESTIMONIALS, TRADITIONS } from '@constants/content'
@@ -191,29 +191,12 @@ const Homepage: React.FC = () => {
       {/*  </Container>*/}
       {/*</Section>*/}
 
-      {/* Timeline Section */}
+      {/* Timeline Section — Anne Frank House style */}
       <Section className="bg-brand-surface">
         <Container>
           <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">Our Heritage</h2>
-              <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-                Over a century of scholarly tradition and residential excellence
-              </p>
-            </div>
+            <HorizontalTimeline events={TIMELINE_EVENTS} />
           </FadeInUp>
-
-          <div className="space-y-8">
-            {TIMELINE_EVENTS.map((event, idx) => (
-              <TimelineNode
-                key={event.year}
-                year={event.year}
-                title={event.title}
-                description={event.description}
-                isRight={idx % 2 === 1}
-              />
-            ))}
-          </div>
         </Container>
       </Section>
 

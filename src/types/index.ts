@@ -2,6 +2,8 @@ export interface TimelineEvent {
   year: number | string
   title: string
   description: string
+  imageId?: string
+  imageSrc?: string
 }
 
 export interface Facility {

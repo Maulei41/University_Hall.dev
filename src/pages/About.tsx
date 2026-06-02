@@ -64,7 +64,7 @@ const About: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Timeline */}
+      {/* Timeline — vertical with continuous center line */}
       <Section className="bg-brand-surface">
         <Container>
           <FadeInUp>
@@ -75,21 +75,29 @@ const About: React.FC = () => {
             </div>
           </FadeInUp>
 
-          <div className="space-y-12">
+          <>
             {TIMELINE_EVENTS.map((event, idx) => (
-              <TimelineNode
-                key={event.year}
-                year={event.year}
-                title={event.title}
-                description={event.description}
-                isRight={idx % 2 === 1}
-              />
+              <React.Fragment key={event.year}>
+                <TimelineNode
+                  year={event.year}
+                  title={event.title}
+                  description={event.description}
+                  imageId={event.imageId}
+                  imageSrc={event.imageSrc}
+                  isRight={idx % 2 === 1}
+                  isFirst={idx === 0}
+                  isLast={idx === TIMELINE_EVENTS.length - 1}
+                />
+                {idx < TIMELINE_EVENTS.length - 1 && (
+                  <div className="flex justify-center" aria-hidden="true">
+                    <div className="w-px h-12 bg-brand-gold/30" />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
-          </div>
+          </>
         </Container>
       </Section>
-
-
 
       {/* Values Quote */}
       <Section>

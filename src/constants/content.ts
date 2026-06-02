@@ -4,16 +4,18 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
   {
     year: '1861–1867',
     title: 'The Beginning of Douglas Castle',
-    description: 'The story of UHall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city’s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence.\n' +
+    description: 'The story of UHall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city\'s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence.\n' +
         '\n' +
         'Completed around 1864, the house was designed to command sweeping views of the sea and surrounding landscape. Although Lapraik spent little time there before retiring to Britain, the castle became the foundation of what would later become University Hall.',
+    imageId: 'dining_hall',
   },
   {
     year: 1894,
     title: 'From Castle to Nazareth House',
-    description: 'After Lapraik’s death, the property eventually passed into new hands during a period of significant social and historical change. In 1894, amid the bubonic plague outbreak in Hong Kong, the French Mission purchased Douglas Castle and transformed it into Nazareth House. The building was expanded to include a chapel and a printing house, while parts of the original castle were retained within the new complex.\n' +
+    description: 'After Lapraik\'s death, the property eventually passed into new hands during a period of significant social and historical change. In 1894, amid the bubonic plague outbreak in Hong Kong, the French Mission purchased Douglas Castle and transformed it into Nazareth House. The building was expanded to include a chapel and a printing house, while parts of the original castle were retained within the new complex.\n' +
         '\n' +
-        'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages. The site developed a rhythm of prayer, study, and labour, and became an important part of the French Mission’s work in Hong Kong.',
+        'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages.',
+    imageId: 'common_rooms',
   },
   {
     year: "early 1950s",
@@ -21,6 +23,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description: 'The Second World War brought a period of disruption. During the Japanese occupation of Hong Kong, Nazareth was requisitioned and its operations were suspended. After the war, the French Mission resumed its work briefly, but the changing political climate in mainland China made missionary activity increasingly difficult.\n' +
         '\n' +
         'By the early 1950s, the mission could no longer sustain its original purpose, and the property was eventually put up for sale. This opened the door to a new chapter in the life of the building.',
+    imageId: 'library',
   },
   {
     year: '1954-1956',
@@ -28,6 +31,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description: 'In 1954, the University of Hong Kong acquired the site and gave it a new life as a student residence. This transition marked the beginning of University hall as it is known today. Rather than replacing the old building entirely, the University chose to adapt it. The chapel was converted into a dining hall, the crypt became a common room, and the existing structure was furnished for student accommodation.\n' +
         '\n' +
         'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, the Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
+    imageId: 'dining_hall',
   },
   {
     year: 1995,
@@ -35,6 +39,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description: 'In recognition of its architectural and historical importance, University Hall was declared a historical monument in 1995. This designation affirmed its significance not only as a former colonial and missionary building, but also as a living residence that continues to serve students today.\n' +
         '\n' +
         'The Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
+    imageId: 'library',
   },
   {
     year: "Today",
@@ -42,6 +47,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description: 'Today, UHall continues to house more than 100 male students and remains one of the most distinctive residential halls at HKU. Our Hall continues to embody a balance of tradition and transformation, offering students a place where the past is not forgotten, but lived alongside the present.\n' +
         '\n' +
         'From Douglas Castle to Nazareth House to University Hall, the building has changed names and functions, but its story has always been one of endurance. For those who call it home, University Hall remains a place where history is not only remembered, but carried forward.',
+    imageId: 'common_rooms',
   },
 ]
 

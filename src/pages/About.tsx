@@ -116,8 +116,8 @@ const About: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Three Treasures of University Hall */}
-      <Section>
+      {/* Three Treasures of University Hall — Hall Team layout */}
+      <Section className="bg-brand-surface">
         <Container>
           <FadeInUp>
             <div className="text-center mb-16">
@@ -132,46 +132,57 @@ const About: React.FC = () => {
             </div>
           </FadeInUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-12">
             {HALL_TREASURES.map((treasure, idx) => (
               <motion.div
                 key={treasure.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
-                className="card-base card-hover flex flex-col h-full cursor-pointer"
-                onClick={() => setSelectedTreasure(treasure)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter') setSelectedTreasure(treasure) }}
-                aria-label={`View details for ${treasure.name}`}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
-                <div className="overflow-hidden rounded-card mb-6">
-                  {treasure.imageSrc ? (
-                    <img
-                      src={treasure.imageSrc}
-                      alt={treasure.name}
-                      className="w-full object-cover"
-                      style={{ aspectRatio: '16 / 10' }}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <ImagePlaceholder
-                      width={16}
-                      height={10}
-                      imageId={treasure.imageId}
-                      alt={treasure.name}
-                      className="rounded-card"
-                    />
-                  )}
-                </div>
-                <h3 className="font-display text-xl font-semibold text-brand-gold mb-4">
-                  {treasure.name}
-                </h3>
-                <p className="text-brand-text-muted text-sm leading-relaxed flex-1 line-clamp-3">
-                  {treasure.description}
-                </p>
+                {/* Image side */}
+                <ScaleOnHover className={idx % 2 === 1 ? 'lg:order-2' : ''}>
+                  <div
+                    className="rounded-card overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedTreasure(treasure)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter') setSelectedTreasure(treasure) }}
+                    aria-label={`View details for ${treasure.name}`}
+                  >
+                    {treasure.imageSrc ? (
+                      <img
+                        src={treasure.imageSrc}
+                        alt={treasure.name}
+                        className="w-full object-cover"
+                        style={{ aspectRatio: '500 / 400' }}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <ImagePlaceholder
+                        width={500}
+                        height={400}
+                        imageId={treasure.imageId}
+                        alt={treasure.name}
+                        className="rounded-card"
+                      />
+                    )}
+                  </div>
+                </ScaleOnHover>
+
+                {/* Content side */}
+                <FadeInUp delay={0.2}>
+                  <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
+                    <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
+                      {treasure.name}
+                    </h3>
+                    <p className="text-brand-text-muted text-lg leading-relaxed whitespace-pre-line">
+                      {treasure.description}
+                    </p>
+                  </div>
+                </FadeInUp>
               </motion.div>
             ))}
           </div>

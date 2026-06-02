@@ -93,7 +93,6 @@ export const Footer: React.FC = () => {
                 <Clock size={16} className="text-brand-gold flex-shrink-0 mt-0.5" />
                 <div className="text-brand-text-muted">
                   <p><strong className="text-brand-text-primary">Weekdays:</strong> {OFFICE_INFO.hours.weekday}</p>
-                  <p><strong className="text-brand-text-primary">Weekends:</strong> {OFFICE_INFO.hours.weekend}</p>
                 </div>
               </li>
             </ul>

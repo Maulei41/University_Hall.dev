@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
-import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import { Container, Section, ImagePlaceholder } from '@components/common/index'
+import { FadeInUp } from '@components/animations/index'
 import { MENTORSHIP_PROGRAMS } from '@constants/content'
 
-const Mentorship: React.FC = () => {
+const Alumni: React.FC = () => {
   const hkuProgram = MENTORSHIP_PROGRAMS.find((p) => p.id === 'hku-mentorship')!
-  const quoVadis = MENTORSHIP_PROGRAMS.find((p) => p.id === 'quo-vadis')!
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 
   return (
     <>
@@ -16,12 +14,12 @@ const Mentorship: React.FC = () => {
         <Container>
           <FadeInUp>
             <h1 className="font-display text-5xl lg:text-6xl font-bold text-brand-text-primary mb-6">
-              Mentorship Programmes
+              Alumni
             </h1>
             <p className="text-xl text-brand-text-muted max-w-3xl">
-              At University Hall, mentorship is at the heart of our residential experience.
-              We believe that guidance from experienced academics, alumni, and peers transforms
-              university life into a journey of discovery and growth.
+              University Hall&apos;s alumni network spans generations of graduates who continue
+              to support the hall through mentorship, guidance, and active engagement with
+              current residents.
             </p>
           </FadeInUp>
         </Container>
@@ -82,81 +80,6 @@ const Mentorship: React.FC = () => {
         </Container>
       </Section>
 
-      {/* ===== QUO VADIS ===== */}
-      <Section className="bg-brand-surface" id="quo-vadis">
-        <Container>
-          <FadeInUp>
-            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-6">
-              {quoVadis.title}
-            </h2>
-            <p className="text-brand-text-muted leading-relaxed mb-10 max-w-4xl">
-              {quoVadis.description}
-            </p>
-          </FadeInUp>
-
-          {/* Photo Gallery Grid */}
-          <StaggerContainer>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {quoVadis.images?.map((src, idx) => (
-                <StaggerItem key={idx}>
-                  <ScaleOnHover>
-                    <motion.div
-                      className="card-base card-hover cursor-pointer overflow-hidden"
-                      onClick={() => setSelectedPhoto(src)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPhoto(src) }}
-                      aria-label="View photo"
-                    >
-                      <img
-                        src={src}
-                        alt={`${quoVadis.title} — photo ${idx + 1}`}
-                        className="w-full object-cover"
-                        style={{ aspectRatio: '4 / 3' }}
-                        loading="lazy"
-                      />
-                    </motion.div>
-                  </ScaleOnHover>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
-
-          {/* Details */}
-          <div className="max-w-3xl">
-            <h3 className="font-display text-2xl font-semibold text-brand-text-primary mb-6">
-              About the Programme
-            </h3>
-            <ul className="space-y-4">
-              {quoVadis.details.map((detail, idx) => (
-                <motion.li
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="flex items-start gap-4 text-brand-text-muted"
-                >
-                  <span className="w-2 h-2 rounded-full bg-brand-gold flex-shrink-0 mt-2.5" />
-                  <span>{detail}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Photo Lightbox Modal */}
-      <Modal isOpen={!!selectedPhoto} onClose={() => setSelectedPhoto(null)} maxWidth="2xl">
-        {selectedPhoto && (
-          <img
-            src={selectedPhoto}
-            alt="Quo Vadis — photo"
-            className="w-full h-auto rounded-t-card"
-          />
-        )}
-      </Modal>
-
       {/* CTA */}
       <Section>
         <Container>
@@ -184,4 +107,4 @@ const Mentorship: React.FC = () => {
   )
 }
 
-export default Mentorship
+export default Alumni

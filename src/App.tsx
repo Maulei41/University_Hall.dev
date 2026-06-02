@@ -17,7 +17,7 @@ const Facilities = lazy(() => import('@pages/Facilities'))
 const Events = lazy(() => import('@pages/Events'))
 const Life = lazy(() => import('@pages/Life'))
 const People = lazy(() => import('@pages/People'))
-const Mentorship = lazy(() => import('@pages/Mentorship'))
+const Alumni = lazy(() => import('@pages/Alumni'))
 const Apply = lazy(() => import('@pages/Apply'))
 const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
 const TourHall = lazy(() => import('@pages/TourHall'))
@@ -47,7 +47,7 @@ export default function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/life" element={<Life />} />
               <Route path="/people" element={<People />} />
-              <Route path="/mentorship" element={<Mentorship />} />
+              <Route path="/alumni" element={<Alumni />} />
               <Route path="/apply" element={<Apply />} />
               <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
               <Route path="/tour-the-hall" element={<TourHall />} />

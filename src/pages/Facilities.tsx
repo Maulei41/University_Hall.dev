@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Container, Section, ImagePlaceholder, Badge, Modal } from '@components/common/index'
+import { Container, Section, ImagePlaceholder, Badge } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
-import { FACILITIES, HALL_TREASURES } from '@constants/content'
-import type { HallTreasure } from '@constants/content'
+import { FACILITIES } from '@constants/content'
 
 const Facilities: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('Dining')
-  const [selectedTreasure, setSelectedTreasure] = useState<HallTreasure | null>(null)
   const categories = Array.from(new Set(FACILITIES.map((f) => f.category)))
   const selectedFacilities = FACILITIES.filter((f) => f.category === selectedCategory)
 
@@ -149,106 +147,6 @@ const Facilities: React.FC = () => {
         </Container>
       </Section>
 
-      {/* ===== THREE TREASURES ===== */}
-      <Section>
-        <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Three Treasures of University Hall
-              </h2>
-              <p className="text-lg text-brand-text-muted max-w-3xl mx-auto">
-                Within the hallowed halls of University Hall lie three cherished treasures — 
-                architectural marvels, whimsical traditions, and the enduring spirit of those 
-                who shaped this community.
-              </p>
-            </div>
-          </FadeInUp>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {HALL_TREASURES.map((treasure, idx) => (
-              <motion.div
-                key={treasure.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
-                className="card-base card-hover flex flex-col h-full cursor-pointer"
-                onClick={() => setSelectedTreasure(treasure)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter') setSelectedTreasure(treasure) }}
-                aria-label={`View details for ${treasure.name}`}
-              >
-                <div className="overflow-hidden rounded-card mb-6">
-                  {treasure.imageSrc ? (
-                    <img
-                      src={treasure.imageSrc}
-                      alt={treasure.name}
-                      className="w-full object-cover"
-                      style={{ aspectRatio: '16 / 10' }}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <ImagePlaceholder
-                      width={16}
-                      height={10}
-                      imageId={treasure.imageId}
-                      alt={treasure.name}
-                      className="rounded-card"
-                    />
-                  )}
-                </div>
-                <h3 className="font-display text-xl font-semibold text-brand-gold mb-4">
-                  {treasure.name}
-                </h3>
-                <p className="text-brand-text-muted text-sm leading-relaxed flex-1 line-clamp-3">
-                  {treasure.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Treasure Detail Modal */}
-      <Modal
-        isOpen={!!selectedTreasure}
-        onClose={() => setSelectedTreasure(null)}
-      >
-        {selectedTreasure && (
-          <>
-            {/* Photo */}
-            <div className="w-full">
-              {selectedTreasure.imageSrc ? (
-                <img
-                  src={selectedTreasure.imageSrc}
-                  alt={selectedTreasure.name}
-                  className="w-full rounded-t-card"
-                />
-              ) : (
-                <ImagePlaceholder
-                  width={16}
-                  height={9}
-                  imageId={selectedTreasure.imageId}
-                  alt={selectedTreasure.name}
-                  className="rounded-t-card"
-                />
-              )}
-            </div>
-
-            {/* Content */}
-            <div className="p-6 sm:p-8">
-              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-brand-gold mb-6">
-                {selectedTreasure.name}
-              </h2>
-              <p className="text-brand-text-muted text-base leading-relaxed">
-                {selectedTreasure.description}
-              </p>
-            </div>
-          </>
-        )}
-      </Modal>
     </>
   )
 }

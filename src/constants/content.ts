@@ -267,7 +267,7 @@ export const PEOPLE: Person[] = [
     bio: 'Lecturer, Faculty of Law.',
     role: 'Tutoring Group',
     imageId: 'person_Sam',
-    imageSrc: '/People/Sam_Liu.jpg',
+    imageSrc: '/People/Sam_Liu.jpeg',
   },
   {
     id: 'Resident-Tutor',
@@ -285,6 +285,7 @@ export const PEOPLE: Person[] = [
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
     role: 'Tutoring Group',
     imageId: 'person_fellow_2',
+    imageSrc: "/People/Raymond_Chan.jpeg",
     description: "As a Junior Tutor, I bring my passion for science education and commitment to fostering student growth in our hall community. Having served as Sports Captain during my university years, I experienced firsthand how hall life is a transformative space for developing leadership abilities and learning to be a contributive community member. These experiences proved invaluable to my teaching career, shaping my understanding of holistic student development. I believe residential halls offer unique opportunities for personal growth beyond academics. I look forward to supporting our residents in their academic journeys while encouraging them to embrace the full spectrum of learning experiences that hall life provides"
   },
   {
@@ -303,6 +304,7 @@ export const PEOPLE: Person[] = [
     bio: '',
     role: 'Hall Officer',
     imageId: 'person_admin',
+    imageSrc: "/People/Ivy_Chan.jpeg",
   },
   // Students' Association
   { id: 'sa-Chairman', name: 'Woo Chi To 胡智滔', title: 'Chairman — Students\' Association', bio: 'Section 2026-27', role: 'student-association' },
@@ -344,9 +346,9 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-1',
     quote:
-      'University Hall transformed my university experience. The intellectual community, mentorship from fellows, and lifelong friendships created here are invaluable.',
-    author: 'Sarah Wong',
-    role: 'Class of 2023',
+      'Waking up in these Gothic stone walls every morning is a small, daily reminder of how extraordinary a way of life we enjoy at Uhall.',
+    author: 'Chung Sun Yeung Dagan',
+    role: 'Castlers 25\'',
   },
   {
     id: 'testimonial-2',
@@ -394,7 +396,7 @@ export const NAV_LINKS = [
   { label: 'Events & Traditions', href: '/events' },
   { label: 'Life', href: '/life' },
   { label: 'People', href: '/people' },
-  { label: 'Mentorship', href: '/mentorship' },
+  { label: 'Alumni', href: '/alumni' },
   { label: 'Apply', href: '/apply' },
 ]
 
@@ -688,7 +690,6 @@ export const OFFICE_INFO = {
   phone: '+852 2595 0966',
   email: 'uhall@connect.hku.hk',
   hours: {
-    weekday: '9:00 AM - 5:00 PM',
-    weekend: '9:00 AM - 12:30 PM',
+    weekday: '9:00 AM - 5:00 PM'
   },
 }

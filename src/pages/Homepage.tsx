@@ -122,7 +122,7 @@ const Homepage: React.FC = () => {
                     }`}
                     style={
                       i % 2 === 1
-                        ? { WebkitTextStroke: '1.5px rgba(0,0,0,1)' }
+                        ? { WebkitTextStroke: '1.5px #C9A84C' }
                         : undefined
                     }
                   >

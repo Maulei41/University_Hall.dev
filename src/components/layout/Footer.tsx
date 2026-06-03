@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock, Globe, Camera, MessageCircle, Send, Play } from 'lucide-react'
 import { Container } from '@components/common/index'
+import { useFooterContrast } from '@hooks/index'
 import { NAV_LINKS, SOCIAL_LINKS, OFFICE_INFO } from '@constants/content'
 
 export const Footer: React.FC = () => {
+  const { ref, bgClass } = useFooterContrast()
   const iconMap: Record<string, React.FC<{size?: number; className?: string}>> = {
     linkedin: Globe,
     instagram: Camera,
@@ -15,7 +17,7 @@ export const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-brand-surface border-t border-brand-border mt-auto">
+    <footer ref={ref} className={`${bgClass} border-t border-brand-border mt-auto`}>
       <Container className="py-16">
         {/* Top Grid: Brand, Links, Contact */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">

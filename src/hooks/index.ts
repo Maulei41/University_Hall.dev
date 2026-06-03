@@ -44,6 +44,52 @@ export const useReducedMotion = () => {
   return prefersReducedMotion
 }
 
+/**
+ * Detects if the previous sibling element has `bg-brand-surface` in its className.
+ * Returns the appropriate bg class for the current section to create visual contrast.
+ *
+ * Usage:
+ *   const { ref, bgClass } = useSectionContrast()
+ *   <Section ref={ref} className={bgClass}>...</Section>
+ *
+ * The first section in a container defaults to 'bg-brand-surface'.
+ */
+export const useSectionContrast = () => {
+  const ref = useRef<HTMLElement>(null)
+  const [bgClass, setBgClass] = useState('bg-brand-surface')
+
+  useEffect(() => {
+    if (!ref.current) return
+    const prev = ref.current.previousElementSibling
+    if (prev && prev.classList.contains('bg-brand-surface')) {
+      setBgClass('')
+    }
+  }, [])
+
+  return { ref, bgClass }
+}
+
+/**
+ * For the Footer specifically — it's not a sibling of <Section> elements
+ * (Footer sits after <main>, not after individual sections).
+ * This queries the last <section> inside <main> to determine contrast.
+ */
+export const useFooterContrast = () => {
+  const ref = useRef<HTMLElement>(null)
+  const [bgClass, setBgClass] = useState('bg-brand-surface')
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    if (!main) return
+    const lastSection = main.querySelector('section:last-of-type')
+    if (lastSection?.classList.contains('bg-brand-surface')) {
+      setBgClass('')
+    }
+  }, [])
+
+  return { ref, bgClass }
+}
+
 export const useMobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
 

@@ -13,13 +13,15 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
   const [activeIndex, setActiveIndex] = useState(0)
   const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null)
   const [cardWidth, setCardWidth] = useState(380)
+  const [containerWidth, setContainerWidth] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Responsive card width
+  // Responsive card width + container width for centering
   useEffect(() => {
     const measure = () => {
       if (containerRef.current) {
         const cw = containerRef.current.clientWidth
+        setContainerWidth(cw)
         const w = cw < 640
           ? Math.floor(cw * 0.78)       // mobile: show ~78% so next card peeks
           : Math.min(380, cw * 0.32)     // desktop: ~380px or 32% of container
@@ -31,7 +33,13 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
     return () => window.removeEventListener('resize', measure)
   }, [])
 
-  const slideOffset = activeIndex * (cardWidth + CARD_GAP)
+  // Compute slide offset so the active card is centered in the viewport
+  // The track sits inside a wrapper with px-4 (16px) / sm:px-6 (24px) padding
+  const paddingLeft = containerWidth < 640 ? 16 : 24
+  const centeringOffset = containerWidth > 0
+    ? (containerWidth - cardWidth) / 2 - paddingLeft
+    : 0
+  const slideOffset = activeIndex * (cardWidth + CARD_GAP) - centeringOffset
   const progressPercent = events.length > 1
     ? (activeIndex / (events.length - 1)) * 100
     : 0

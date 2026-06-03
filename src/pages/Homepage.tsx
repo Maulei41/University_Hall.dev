@@ -25,7 +25,7 @@ const Homepage: React.FC = () => {
     target: textScrollRef,
     offset: ['start end', 'end start'],
   })
-  const rows = Array.from({ length: 8 }, (_, i) => {
+  const rows = Array.from({ length: 4 }, (_, i) => {
     const isReverse = i % 2 === 1
     return useTransform(scrollYProgress, [0, 1], isReverse ? ['-60%', '10%'] : ['10%', '-60%'])
   })

@@ -133,7 +133,7 @@ const TourHall: React.FC = () => {
       </Section>
 
       {/* Floor Plan */}
-      <Section className="bg-brand-surface">
+      <Section>
         <Container>
           <FadeInUp>
             <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold text-center mb-2">

@@ -58,46 +58,52 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
             className="absolute"
             style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
           >
-            {/* Pin button */}
-            <button
-              onClick={() => setSelectedPin(pin)}
-              onMouseEnter={() => setHoveredPin(pin.id)}
-              onMouseLeave={() => setHoveredPin(null)}
-              className="relative -translate-x-1/2 -translate-y-1/2 group"
-              aria-label={`View details for ${pin.name}`}
-            >
-              {/* Glow ring */}
-              <span className="absolute -inset-2 rounded-full animate-ping bg-brand-gold/40" />
+            {/* Centering wrapper: button determines the size, tooltip floats above via absolute */}
+            <div className="relative" style={{ transform: 'translate(-50%, -50%)' }}>
+              {/* Pin button — only in-flow child, so it solely determines wrapper size */}
+              <button
+                onClick={() => setSelectedPin(pin)}
+                onMouseEnter={() => setHoveredPin(pin.id)}
+                onMouseLeave={() => setHoveredPin(null)}
+                className="relative group p-0 border-0 bg-transparent cursor-pointer"
+                aria-label={`View details for ${pin.name}`}
+              >
+                {/* Glow ring */}
+                <span className="absolute -inset-2 rounded-full animate-ping bg-brand-gold/40" />
 
-              {/* Pin icon */}
-              <MapPin
-                size={36}
-                className="relative text-brand-gold drop-shadow-lg hover:text-brand-gold-light transition-colors cursor-pointer"
-                strokeWidth={2.5}
-              />
+                {/* Pin icon */}
+                <MapPin
+                  size={36}
+                  className="relative text-brand-gold drop-shadow-lg hover:text-brand-gold-light transition-colors"
+                  strokeWidth={2.5}
+                />
+              </button>
 
-              {/* Hover tooltip */}
-              <AnimatePresence>
-                {hoveredPin === pin.id && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6, scale: 0.92 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 6, scale: 0.92 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-card bg-brand-bg border border-brand-border shadow-xl whitespace-nowrap z-20 pointer-events-none"
-                  >
-                    <p className="text-xs font-display font-semibold text-brand-text-primary">
-                      {pin.name}
-                    </p>
-                    <p className="text-[10px] text-brand-gold font-mono mt-0.5">
-                      {pin.floor} Floor
-                    </p>
-                    {/* Arrow */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-brand-border" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
+              {/* Tooltip wrapper: handles horizontal centering via its own transform,
+                  separate from framer-motion's vertical animation to avoid transform conflicts */}
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 pointer-events-none">
+                <AnimatePresence>
+                  {hoveredPin === pin.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.92 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.92 }}
+                      transition={{ duration: 0.15 }}
+                      className="px-3 py-2 rounded-card bg-brand-bg border border-brand-border shadow-xl whitespace-nowrap"
+                    >
+                      <p className="text-xs font-display font-semibold text-brand-text-primary">
+                        {pin.name}
+                      </p>
+                      <p className="text-[10px] text-brand-gold font-mono mt-0.5">
+                        {pin.floor} Floor
+                      </p>
+                      {/* Arrow */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full border-4 border-transparent border-t-brand-border" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         ))}
       </div>

@@ -15,6 +15,7 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
   const [cardWidth, setCardWidth] = useState(380)
   const [containerWidth, setContainerWidth] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const wasDragged = useRef(false)
 
   // Responsive card width + container width for centering
   useEffect(() => {
@@ -70,6 +71,18 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
         <motion.div
           animate={{ x: -slideOffset }}
           transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+          drag="x"
+          dragElastic={0.2}
+          onDragStart={() => { wasDragged.current = true }}
+          onDragEnd={(_, info) => {
+            requestAnimationFrame(() => { wasDragged.current = false })
+            // Current track x = starting position + drag offset
+            const startX = -slideOffset
+            const currentX = startX + info.offset.x
+            // Snap to the card nearest the center
+            const nearest = Math.round((centeringOffset - currentX) / (cardWidth + CARD_GAP))
+            goTo(Math.max(0, Math.min(nearest, events.length - 1)))
+          }}
           className="flex"
           style={{ gap: `${CARD_GAP}px` }}
         >
@@ -83,7 +96,10 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
               transition={{ duration: 0.35 }}
               style={{ minWidth: cardWidth, maxWidth: cardWidth }}
               className="flex-shrink-0 cursor-pointer"
-              onClick={() => setSelectedEvent(event)}
+              onClick={() => {
+                if (wasDragged.current) return
+                setSelectedEvent(event)
+              }}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {

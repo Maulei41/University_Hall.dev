@@ -37,7 +37,7 @@ const About: React.FC = () => {
           <FadeInUp>
             <div className="text-center mb-16">
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Our Hall Values
+                Our Values
               </h2>
               <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
                 Grounded in timeless principles of Brotherhood, community, and character
@@ -84,22 +84,7 @@ const About: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Values Quote */}
-      <Section>
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto py-12"
-          >
-            <p className="text-3xl lg:text-4xl font-display font-semibold text-brand-gold italic mb-6">
-              "Welcome to University Hall! We are the smallest and most intimate halls at HKU, where you really can know everyone by name. We live in one of the oldest, coolest buildings in Hong Kong, and we eat meals together in a refurbished religious chapel. The jungle is at our back door (with wild boars and porcupines), for hiking and running. We are also committed to lead at HKU by giving equal opportunity for everyone - it doesn't matter if you are local or non-local. We are all brothers. Come join and become part of a long tradition of respected and prestigious Castlers!"
-            </p>
-            <p className="text-brand-text-muted">— Warden Message</p>
-          </motion.div>
-        </Container>
-      </Section>
+
 
       {/* Three Treasures of University Hall — Hall Team layout */}
       <Section className="bg-brand-surface">
@@ -209,7 +194,24 @@ const About: React.FC = () => {
           </>
         )}
       </Modal>
+      {/* Values Quote */}
+      <Section>
+        <Container>
+          <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-3xl mx-auto py-12"
+          >
+            <p className="text-3xl lg:text-4xl font-display font-semibold text-brand-gold italic mb-6">
+              "We go with Brothers!"
+            </p>
+            <p className="text-brand-text-muted">— University Hall</p>
+          </motion.div>
+        </Container>
+      </Section>
     </>
+
   )
 }
 

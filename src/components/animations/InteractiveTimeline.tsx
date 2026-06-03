@@ -188,7 +188,11 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
 
                 {/* Year label */}
                 <span
-                  className={`absolute top-6 sm:top-7 text-[11px] sm:text-xs font-mono whitespace-nowrap transition-colors ${
+                  className={`absolute text-[10px] sm:text-xs font-mono whitespace-nowrap transition-colors ${
+                    idx % 2 === 0
+                      ? 'top-7 sm:top-7'
+                      : 'top-[-20px] sm:top-[-22px]'
+                  } ${
                     isActive
                       ? 'text-brand-gold font-semibold'
                       : isPast

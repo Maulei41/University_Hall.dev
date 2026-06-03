@@ -517,7 +517,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.🥎',
     category: 'New Ball',
     imageId: 'Uhall_Softball',
-    images: ['/Life/Uhall_Softball_1.jpg', '/Life/Uhall_Softball_2.jpeg'],
+    images: ['/Life/Uhall_Softball_1.jpg','/Life/Uhall_Softball_2.jpg', '/Life/Uhall_Softball_3.jpg',  '/Life/Uhall_Softball_4.jpeg'],
   },
   // Old Ball
   {
@@ -702,34 +702,44 @@ export const PHILOSOPHY_PILLARS = [
 
 export const FAQ_ITEMS = [
   {
-    question: 'What is the application process for University Hall?',
+    question: 'How many people share a room? How big are the rooms at University Hall?',
     answer:
-      'Applications are accepted from current University of Hong Kong students. Preference is given to first-year undergraduates, though applications from all years are welcome. The process includes a written application, personal statement, and residential interview.',
+      'We have rooms for 2 to 4 people, and they\'re super spacious. Most freshman rooms are between 320–440 square feet—the largest on campus!',
   },
   {
-    question: 'What are the housing arrangements?',
+    question: 'Can senior-entry students apply for University Hall?',
     answer:
-      'University Hall provides a variety of accommodation options including single rooms and shared suites. All rooms feature modern amenities and are equipped with high-speed internet. Accommodation is arranged based on year of study and preference.',
+      'Definitely! Everyone is welcome to apply, and we actually have a lot of senior-entry students living in the Hall.',
   },
   {
-    question: 'How is daily life structured at University Hall?',
+    question: 'Is it hard to get in? Do people fight for a spot?',
     answer:
-      'Residents enjoy a balanced schedule combining academic pursuits with social and cultural programming. Common meals foster community, study sessions support academic excellence, and events throughout the year celebrate our collective identity.',
+        ' Yeah, spots are pretty limited, so if you\'re interested, don\'t wait—apply early and grab your chance!',
   },
   {
-    question: 'What dining options are available?',
+    question: 'Since it\'s a male-only hall, will I not be able to meet girls? Will it be boring?',
     answer:
-      'The college provides nutritious daily meals featuring diverse cuisines. Vegetarian, vegan, and other dietary requirements are accommodated. Formal dinners occur regularly, and residents have access to kitchen facilities for additional meal preparation.',
+      'Not at all. We have tons of activities—joint floors, Halloween parties, and even formal balls. Plus, our castle is one of the prettiest spots, so bringing friends (or your crush) to visit is a guaranteed win. Visitors are always welcome too!',
   },
   {
-    question: 'What support services are available to residents?',
+    question: 'Can I stay all four years?',
     answer:
-      'We provide comprehensive student support including academic mentoring from fellows, counseling services, health and wellness programs, and community building activities. Our staff is dedicated to supporting resident flourishing.',
+      'Yes! You can order delivery at all times. However, we do have a full catering service with breakfast, lunch, and dinner, served in our Dining Hall (which was literally a chapel before). Expect a rotating menu of HK classics and comfort food.',
   },
   {
-    question: 'How much does it cost to live at University Hall?',
+    question: 'Do I need to live far away to apply?',
     answer:
-      'Residential fees are competitive and typically include accommodation, meals, and college fees. Financial support and scholarships may be available. Contact the Admissions Office for current pricing and financial aid information.',
+      'Distance is a factor, but we care way more about who you are and how you show up in the interview. So even if you\'re nearby, you 100% can apply.',
+  },
+  {
+    question: 'How long does it take to get to Main Campus?',
+    answer:
+      'Super quick. Around 5 minutes by taxi or car, and about 10 minutes by bus.',
+  },
+  {
+    question: 'What\'s there to eat nearby?\n',
+    answer:
+        'We already have meals sorted, but if you want to head out, Chi Fu Plaza is nearby with a food court, restaurants, fast food, a supermarket, and more. And Pokfulam Village (our neighbour) has old-school local stores and tea shops if you want something more chill and nostalgic.',
   },
 ]
 
@@ -776,6 +786,7 @@ export const SOCIAL_LINKS = [
 export const OFFICE_INFO = {
   address: 'University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong',
   phone: '+852 2595 0966',
+  fax: '+852 2550 6341',
   email: 'uhall@connect.hku.hk',
   hours: {
     weekday: '9:00 AM - 5:00 PM'

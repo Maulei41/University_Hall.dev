@@ -1,47 +1,116 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { MapPin, Mail, Phone, ArrowRight } from 'lucide-react'
 import { Container, Section } from '@components/common/index'
-import { FadeInUp } from '@components/animations/index'
-import { OFFICE_INFO } from '@constants/content'
+import { FadeInUp, FloorPlanInteractive } from '@components/animations/index'
+import type { FloorPlanPin } from '../types/index'
 
-const HALL_HIGHLIGHTS = [
+const FLOOR_PLAN_PINS: FloorPlanPin[] = [
   {
-    title: 'Dining Hall (Chapel)',
+    id: 'main-entrance',
+    name: 'Main Entrance',
     description:
-      'The historic chapel-turned-dining hall features soaring ceilings, stained glass windows, and accommodates over 100 residents for daily meals and formal dinners.',
-    imageId: 'dining_hall',
+      '',
+    floor: 'B',
+    x: 57,
+    y: 62,
   },
   {
-    title: 'The Golden Spiral Staircase',
+    id: 'dining-hall',
+    name: 'Dining Hall (Chapel)',
     description:
-      'A beautiful cast iron spiral staircase connecting three floors, one of the most photographed features of University Hall.',
-    imageId: 'golden_staircase',
+      '',
+    floor: 'B',
+    x: 72,
+    y: 55,
   },
   {
-    title: 'Library & Study Areas',
+    id: 'common-room',
+    name: 'Common Room',
     description:
-      'A quiet reading room with heritage ambiance, perfect for focused study and research.',
-    imageId: 'library',
+      '',
+    floor: 'A',
+    x: 72,
+    y: 82.5,
   },
   {
-    title: 'Common Room',
+    id: 'Gym-room',
+    name: 'Gym Room',
     description:
-      'A welcoming space for residents to gather, relax, and build community outside of academic hours.',
-    imageId: 'common_rooms',
+        '',
+    floor: 'A',
+    x: 84,
+    y: 87.5,
   },
   {
-    title: 'David\'s Deers',
+    id: 'band-room',
+    name: 'Band Room',
     description:
-      'Positioned at the main entrance stairs, these sculptures are a beloved hall landmark with their own graduating tradition.',
-    imageId: 'davids_deers',
+        '',
+    floor: 'A',
+    x: 80,
+    y: 82.5,
   },
   {
-    title: 'Main Facade & Grounds',
+    id: 'hall-library',
+    name: 'Hall Library',
     description:
-      'The iconic castle-style facade set against the lush greenery of Pokfulam, a declared historical monument since 1995.',
-    imageId: 'main_facade',
+        '',
+    floor: 'C',
+    x: 68,
+    y: 30,
+  },
+  {
+    id: 'room-a3',
+    name: 'Room A3',
+    description:
+        '',
+    floor: 'A',
+    x: 43,
+    y: 88,
+  },
+  {
+    id: 'room-a9',
+    name: 'Room A9',
+    description:
+        '',
+    floor: 'A',
+    x: 34,
+    y: 85,
+  },
+  {
+    id: 'room-a13',
+    name: 'Room A13',
+    description:
+        '',
+    floor: 'A',
+    x: 25,
+    y: 81,
+  },
+  {
+    id: 'room-b3',
+    name: 'Room B3',
+    description:
+        '',
+    floor: 'B',
+    x: 43,
+    y: 60,
+  },
+  {
+    id: 'room-c3',
+    name: 'Room C3',
+    description:
+        '',
+    floor: 'C',
+    x: 43,
+    y: 35,
+  },
+  {
+    id: 'room-c12',
+    name: 'Room c12',
+    description:
+        '',
+    floor: 'C',
+    x: 34,
+    y: 26,
   },
 ]
 
@@ -63,88 +132,27 @@ const TourHall: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Highlights Grid */}
-      <Section>
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {HALL_HIGHLIGHTS.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="bg-brand-surface rounded-card border border-brand-border overflow-hidden group hover:border-brand-gold transition-colors"
-              >
-                <div
-                  className="aspect-[16/10] w-full bg-brand-bg flex items-center justify-center"
-                  role="img"
-                  aria-label={item.title}
-                >
-                  <span className="text-brand-text-muted text-sm font-mono">
-                    Image: {item.imageId}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-brand-text-muted text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Visit / Booking */}
+      {/* Floor Plan */}
       <Section className="bg-brand-surface">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeInUp>
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-6">
-                Plan Your Visit
-              </h2>
-              <p className="text-brand-text-muted mb-10 leading-relaxed">
-                University Hall welcomes prospective students, alumni, and visitors.
-                To arrange a guided tour, please contact our Hall Office.
-              </p>
+          <FadeInUp>
+            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold text-center mb-2">
+              Interactive Floor Plan
+            </h2>
+            <p className="text-brand-text-muted text-center mb-10 max-w-2xl mx-auto">
+              Explore the layout of University Hall — hover over pins to identify locations,
+              and click for detailed information about each space.
+            </p>
+          </FadeInUp>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-                <div className="bg-brand-bg rounded-card p-6 border border-brand-border">
-                  <MapPin className="w-6 h-6 text-brand-gold mb-3" />
-                  <h3 className="font-display font-semibold text-brand-text-primary mb-2">Address</h3>
-                  <p className="text-brand-text-muted text-sm">{OFFICE_INFO.address}</p>
-                </div>
-                <div className="bg-brand-bg rounded-card p-6 border border-brand-border">
-                  <Phone className="w-6 h-6 text-brand-gold mb-3" />
-                  <h3 className="font-display font-semibold text-brand-text-primary mb-2">Phone</h3>
-                  <p className="text-brand-text-muted text-sm">{OFFICE_INFO.phone}</p>
-                </div>
-                <div className="bg-brand-bg rounded-card p-6 border border-brand-border">
-                  <Mail className="w-6 h-6 text-brand-gold mb-3" />
-                  <h3 className="font-display font-semibold text-brand-text-primary mb-2">Email</h3>
-                  <p className="text-brand-text-muted text-sm">{OFFICE_INFO.email}</p>
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <p className="text-brand-text-muted text-sm mb-4">
-                  Office Hours: {OFFICE_INFO.hours.weekday} (Weekdays)
-                </p>
-                <Link
-                  to="/apply"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-brand-gold text-brand-bg font-serif font-semibold rounded-card hover:bg-brand-gold-light transition-colors shadow-lg text-lg"
-                >
-                  Apply to University Hall <ArrowRight size={18} />
-                </Link>
-              </div>
-            </FadeInUp>
-          </div>
+          <FloorPlanInteractive
+            pins={FLOOR_PLAN_PINS}
+            imageSrc="/TourHall/Uhall_FloorPlan.jpeg"
+            alt="University Hall Floor Plan"
+          />
         </Container>
       </Section>
+
     </>
   )
 }

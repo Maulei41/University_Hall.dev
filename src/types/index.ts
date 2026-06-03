@@ -108,3 +108,16 @@ export interface Association {
   contactEmail?: string
   website?: string
 }
+
+export interface FloorPlanPin {
+  id: string
+  name: string
+  description: string
+  floor: 'A' | 'B' | 'C'
+  /** Percentage-based X coordinate (0–100) from left edge of floor plan image */
+  x: number
+  /** Percentage-based Y coordinate (0–100) from top edge of floor plan image */
+  y: number
+  imageId?: string
+  imageSrc?: string
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, Globe, Camera, MessageCircle, Send, Play } from 'lucide-react'
+import { Mail, Phone, Printer, MapPin, Clock, Globe, Camera, MessageCircle, Send, Play } from 'lucide-react'
 import { Container } from '@components/common/index'
 import { useFooterContrast } from '@hooks/index'
 import { NAV_LINKS, SOCIAL_LINKS, OFFICE_INFO } from '@constants/content'
@@ -81,6 +81,12 @@ export const Footer: React.FC = () => {
                 >
                   {OFFICE_INFO.phone}
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Printer size={16} className="text-brand-gold flex-shrink-0" />
+                <span className="text-brand-text-muted">
+                  Hall Office Fax: {OFFICE_INFO.fax}
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-brand-gold flex-shrink-0" />

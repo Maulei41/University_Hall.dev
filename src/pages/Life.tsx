@@ -348,7 +348,7 @@ const QuoVadisSection: React.FC<{
   }
 
   return (
-    <Section className="bg-brand-surface" id="quo-vadis">
+    <Section className="" id="quo-vadis">
       <Container>
         <FadeInUp>
           <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">
@@ -472,12 +472,12 @@ const Life: React.FC = () => {
       </Section>
 
       {/* Team Sections */}
-      {CATEGORIES.map(({ key: category, label }) => {
+      {CATEGORIES.map(({ key: category, label }, idx) => {
         const teams = HALL_TEAMS.filter((t) => t.category === category)
         if (teams.length === 0) return null
 
         return (
-          <Section key={category}>
+          <Section key={category} className={idx % 2 === 1 ? 'bg-brand-surface' : ''}>
             <Container>
               <FadeInUp>
                 <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">

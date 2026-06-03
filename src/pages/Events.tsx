@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Clock, MapPin } from 'lucide-react'
 import { Container, Section, Badge, ImagePlaceholder } from '@components/common/index'
-import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import { FadeInUp, ScaleOnHover } from '@components/animations/index'
 import { EVENTS, TRADITIONS } from '@constants/content'
 
 const frequencyColors: Record<string, 'gold' | 'emerald' | 'muted'> = {
@@ -12,19 +12,8 @@ const frequencyColors: Record<string, 'gold' | 'emerald' | 'muted'> = {
 }
 
 const Events: React.FC = () => {
-  const [selectedEventCategory, setSelectedEventCategory] = useState<string | null>(null)
-  const [selectedTraditionCategory, setSelectedTraditionCategory] = useState<string | null>(null)
-
   const eventCategories = Array.from(new Set(EVENTS.map((e) => e.category)))
   const traditionCategories = Array.from(new Set(TRADITIONS.map((t) => t.category)))
-
-  const filteredEvents = selectedEventCategory
-    ? EVENTS.filter((e) => e.category === selectedEventCategory)
-    : EVENTS
-
-  const filteredTraditions = selectedTraditionCategory
-    ? TRADITIONS.filter((t) => t.category === selectedTraditionCategory)
-    : TRADITIONS
 
   return (
     <>
@@ -43,193 +32,128 @@ const Events: React.FC = () => {
         </Container>
       </Section>
 
-      {/* ===== EVENTS SECTION ===== */}
-      <Section id="events">
-        <Container>
-          <FadeInUp>
-            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-4">
-              Hall Events
-            </h2>
-            <p className="text-lg text-brand-text-muted max-w-2xl mb-12">
-              Here is some event
-            </p>
-          </FadeInUp>
+      {/* ===== EVENT CATEGORY SECTIONS ===== */}
+      {eventCategories.map((category, idx) => {
+        const items = EVENTS.filter((e) => e.category === category)
+        if (items.length === 0) return null
 
+        return (
+          <Section key={category} className={idx % 2 === 0 ? 'bg-brand-surface' : ''}>
+            <Container>
+              <FadeInUp>
+                <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">
+                  {category} Events
+                </h2>
+              </FadeInUp>
 
+              <div className="space-y-12">
+                {items.map((event, itemIdx) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.6, delay: itemIdx * 0.1 }}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  >
+                    <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
+                      <ImagePlaceholder
+                        width={500}
+                        height={400}
+                        imageId={event.imageId}
+                        alt={event.title}
+                        className="rounded-card"
+                      />
+                    </ScaleOnHover>
 
-          {/* Events Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start"
-          >
-            <button
-              onClick={() => setSelectedEventCategory(null)}
-              className={`px-6 py-3 rounded-card font-serif font-semibold transition-all ${
-                selectedEventCategory === null
-                  ? 'bg-brand-gold text-brand-bg shadow-lg'
-                  : 'bg-brand-bg border border-brand-border text-brand-text-primary hover:border-brand-gold'
-              }`}
-            >
-              All Events
-            </button>
-            {eventCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedEventCategory(category)}
-                className={`px-6 py-3 rounded-card font-serif font-semibold transition-all ${
-                  selectedEventCategory === category
-                    ? 'bg-brand-gold text-brand-bg shadow-lg'
-                    : 'bg-brand-bg border border-brand-border text-brand-text-primary hover:border-brand-gold'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
-
-          {/* Events Grid */}
-          {filteredEvents.length > 0 ? (
-            <StaggerContainer>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredEvents.map((event) => (
-                  <StaggerItem key={event.id}>
-                    <ScaleOnHover>
-                      <div className="card-base card-hover flex flex-col h-full">
-                        <ImagePlaceholder
-                          width={16}
-                          height={9}
-                          imageId={event.imageId}
-                          alt={event.title}
-                          className="rounded-card mb-4"
-                        />
-                        <div className="flex items-center gap-2 mb-3">
+                    <FadeInUp delay={0.2}>
+                      <div className={itemIdx % 2 === 1 ? 'lg:order-1' : ''}>
+                        <div className="flex items-center gap-2 mb-4">
                           <Badge variant="gold">{event.category}</Badge>
-                          {event.rsvpLink && (
-                            <Badge variant="emerald">RSVP</Badge>
-                          )}
+                          {event.rsvpLink && <Badge variant="emerald">RSVP</Badge>}
                         </div>
-                        <h4 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
+                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-3">
                           {event.title}
-                        </h4>
-                        <p className="text-brand-text-muted text-sm mb-3 flex items-center gap-1">
-                          <MapPin size={14} />
+                        </h3>
+                        <p className="text-brand-text-muted text-sm mb-4 flex items-center gap-1.5">
+                          <MapPin size={15} />
                           {event.location}
                         </p>
-                        <p className="text-brand-text-muted flex-1">{event.description}</p>
+                        <p className="text-brand-text-muted text-lg leading-relaxed">
+                          {event.description}
+                        </p>
                       </div>
-                    </ScaleOnHover>
-                  </StaggerItem>
+                    </FadeInUp>
+                  </motion.div>
                 ))}
               </div>
-            </StaggerContainer>
-          ) : (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center text-brand-text-muted py-12"
-            >
-              No upcoming events found in this category.
-            </motion.p>
-          )}
-        </Container>
-      </Section>
+            </Container>
+          </Section>
+        )
+      })}
 
-      {/* ===== TRADITIONS SECTION ===== */}
-      <Section className="bg-brand-surface" id="traditions">
-        <Container>
-          <FadeInUp>
-            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-4">
-              Hall Traditions
-            </h2>
-            <p className="text-lg text-brand-text-muted max-w-2xl mb-12">
-              Time-honoured traditions passed down through generations — the rituals and
-              celebrations that make University Hall a home.
-            </p>
-          </FadeInUp>
+      {/* ===== TRADITION CATEGORY SECTIONS ===== */}
+      {traditionCategories.map((category, idx) => {
+        const items = TRADITIONS.filter((t) => t.category === category)
+        if (items.length === 0) return null
 
-          {/* Traditions Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start"
-          >
-            <button
-              onClick={() => setSelectedTraditionCategory(null)}
-              className={`px-6 py-3 rounded-card font-serif font-semibold transition-all ${
-                selectedTraditionCategory === null
-                  ? 'bg-brand-gold text-brand-bg shadow-lg'
-                  : 'bg-brand-bg border border-brand-border text-brand-text-primary hover:border-brand-gold'
-              }`}
-            >
-              All Traditions
-            </button>
-            {traditionCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedTraditionCategory(category)}
-                className={`px-6 py-3 rounded-card font-serif font-semibold transition-all ${
-                  selectedTraditionCategory === category
-                    ? 'bg-brand-gold text-brand-bg shadow-lg'
-                    : 'bg-brand-bg border border-brand-border text-brand-text-primary hover:border-brand-gold'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
+        return (
+          <Section key={category} className={idx % 2 === 0 ? 'bg-brand-surface' : ''}>
+            <Container>
+              <FadeInUp>
+                <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">
+                  {category} Traditions
+                </h2>
+              </FadeInUp>
 
-          {/* Traditions Grid */}
-          {filteredTraditions.length > 0 ? (
-            <StaggerContainer>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredTraditions.map((tradition) => (
-                  <StaggerItem key={tradition.id}>
-                    <ScaleOnHover>
-                      <div className="card-base card-hover flex flex-col h-full">
-                        <ImagePlaceholder
-                          width={16}
-                          height={9}
-                          imageId={tradition.imageId}
-                          alt={tradition.title}
-                          className="rounded-card mb-4"
-                        />
-                        <div className="flex items-center justify-between mb-3">
+              <div className="space-y-12">
+                {items.map((tradition, itemIdx) => (
+                  <motion.div
+                    key={tradition.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.6, delay: itemIdx * 0.1 }}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  >
+                    <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
+                      <ImagePlaceholder
+                        width={500}
+                        height={400}
+                        imageId={tradition.imageId}
+                        alt={tradition.title}
+                        className="rounded-card"
+                      />
+                    </ScaleOnHover>
+
+                    <FadeInUp delay={0.2}>
+                      <div className={itemIdx % 2 === 1 ? 'lg:order-1' : ''}>
+                        <div className="flex items-center gap-3 mb-4 flex-wrap">
                           <Badge variant={frequencyColors[tradition.frequency] || 'gold'}>
                             <Clock size={14} className="inline mr-1" />
                             {tradition.frequency}
                           </Badge>
                           {tradition.established && (
-                            <span className="font-mono text-xs text-brand-text-muted">
+                            <span className="font-mono text-sm text-brand-text-muted">
                               Est. {tradition.established}
                             </span>
                           )}
                         </div>
-                        <h4 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
+                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-4">
                           {tradition.title}
-                        </h4>
-                        <p className="text-brand-text-muted flex-1">
+                        </h3>
+                        <p className="text-brand-text-muted text-lg leading-relaxed">
                           {tradition.description}
                         </p>
                       </div>
-                    </ScaleOnHover>
-                  </StaggerItem>
+                    </FadeInUp>
+                  </motion.div>
                 ))}
               </div>
-            </StaggerContainer>
-          ) : (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center text-brand-text-muted py-12"
-            >
-              No traditions found in this category.
-            </motion.p>
-          )}
-        </Container>
-      </Section>
+            </Container>
+          </Section>
+        )
+      })}
     </>
   )
 }

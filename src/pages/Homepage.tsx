@@ -191,13 +191,11 @@ const Homepage: React.FC = () => {
       {/*  </Container>*/}
       {/*</Section>*/}
 
-      {/* Timeline Section — Anne Frank House style */}
-      <Section className="bg-brand-surface">
-        <Container>
-          <FadeInUp>
-            <HorizontalTimeline events={TIMELINE_EVENTS} />
-          </FadeInUp>
-        </Container>
+      {/* Timeline Section — Anne Frank House style (full-bleed, no Container constraint) */}
+      <Section className="bg-brand-surface overflow-x-clip">
+        <FadeInUp>
+          <HorizontalTimeline events={TIMELINE_EVENTS} />
+        </FadeInUp>
       </Section>
 
       {/* Gallery Section */}

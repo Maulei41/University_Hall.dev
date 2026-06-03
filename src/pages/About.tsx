@@ -6,7 +6,7 @@ import {
   StaggerContainer,
   StaggerItem,
   ScaleOnHover,
-  TimelineNode,
+  InteractiveTimeline,
 } from '@components/animations/index'
 import { TIMELINE_EVENTS, PHILOSOPHY_PILLARS, HALL_TREASURES } from '@constants/content'
 import type { HallTreasure } from '@constants/content'
@@ -64,38 +64,23 @@ const About: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Timeline — vertical with continuous center line */}
-      <Section className="bg-brand-surface">
+      {/* Interactive Timeline — horizontal with year markers and growing progress */}
+      <Section className="bg-brand-surface overflow-x-clip">
         <Container>
           <FadeInUp>
-            <div className="text-center mb-16">
+            <div className="text-center mb-12 sm:mb-16">
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
                 Milestones in Our History
               </h2>
+              <p className="text-brand-text-muted text-lg max-w-xl mx-auto">
+                Click the year markers or use ← → arrow keys to explore our journey
+              </p>
             </div>
           </FadeInUp>
 
-          <>
-            {TIMELINE_EVENTS.map((event, idx) => (
-              <React.Fragment key={event.year}>
-                <TimelineNode
-                  year={event.year}
-                  title={event.title}
-                  description={event.description}
-                  imageId={event.imageId}
-                  imageSrc={event.imageSrc}
-                  isRight={idx % 2 === 1}
-                  isFirst={idx === 0}
-                  isLast={idx === TIMELINE_EVENTS.length - 1}
-                />
-                {idx < TIMELINE_EVENTS.length - 1 && (
-                  <div className="flex justify-center" aria-hidden="true">
-                    <div className="w-px h-12 bg-brand-gold/30" />
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </>
+          <FadeInUp>
+            <InteractiveTimeline events={TIMELINE_EVENTS} />
+          </FadeInUp>
         </Container>
       </Section>
 

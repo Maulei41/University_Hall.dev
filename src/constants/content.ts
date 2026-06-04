@@ -66,12 +66,7 @@ export const FACILITIES: Facility[] = [
       '',
     imageId: 'dining_hall',
     features: [
-      'Seating for 100+ residents',
-      'Historic architecture and heritage design',
-      'Daily breakfast, lunch, and dinner service',
-      'Formal dinner events and celebrations',
-      'Vegetarian and dietary accommodation',
-      'State-of-the-art kitchen facilities',
+      'PlaceHolder'
     ],
   },
   {
@@ -82,12 +77,7 @@ export const FACILITIES: Facility[] = [
       '',
     imageId: 'library',
     features: [
-      '15,000+ volumes collection',
-      'Silent and collaborative study zones',
-      'Digital resources and databases',
-      '24-hour study facilities',
-      'Research consultation services',
-      'Group study rooms',
+      'PlaceHolder'
     ],
   },
   {
@@ -98,7 +88,7 @@ export const FACILITIES: Facility[] = [
       '',
     imageId: 'recreation',
     features: [
-      'Multi-purpose Gym room',
+      'PlaceHolder',
     ],
   },
   {
@@ -109,7 +99,7 @@ export const FACILITIES: Facility[] = [
       '',
     imageId: 'accommodation',
     features: [
-
+      'PlaceHolder'
     ],
   },
   {
@@ -120,22 +110,18 @@ export const FACILITIES: Facility[] = [
       '',
     imageId: 'common_rooms',
     features: [
+      'PlaceHolder'
     ],
   },
   {
     id: 'vending-machine',
-    category: 'Community',
+    category: 'Dining',
     title: 'Vending Machines',
     description:
-      'Modern facility hosting student clubs, interest groups, and community events that enrich the residential experience and foster lifelong friendships.',
+      '',
     imageId: 'community_center',
     features: [
-      'Event space for 200+ guests',
-      'Meeting rooms for student organizations',
-      'Audio-visual equipment',
-      'Kitchen and catering facilities',
-      'Outdoor courtyard',
-      'Flexible furniture configuration',
+      'PlaceHolder',
     ],
   },
 ]

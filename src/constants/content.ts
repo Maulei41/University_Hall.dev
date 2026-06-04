@@ -327,7 +327,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. SIT Loi-keung, Ken',
     title: 'Chairman',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId:"aa-chair",
     imageSrc: "/People/Ken_Sit.jpg",
     description: "Ken SIT was a resident of University Hall from 1994 to 1997. He was the Honorary Secretary of University Hall Students Association in 1995-1996. He has joined University Hall Alumni Limited since 2018. He was the founder of Rich Beauty International Limited in 2006 and he was the President of Lions Club of Happy Valley 2023 to 2024. He is currently the President of Lions Clubs International Foundation (LCIF) and also the director of Lions Kidney Educational Centre and Research Foundation (LKEC)."
@@ -336,7 +336,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. SHEK Ming-san',
     title: 'Vice Chairman',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-vice-chair-1",
     imageSrc: "/People/Shek_Ming_San.jpg",
     description:"Samuel was a resident of University Hall from 2009 to 2012. He was the Internal Vice Chairman of University Hall Students Association in 2010-2011 and Chairman in 2011-2012. He graduated with a degree of Finance from The Faculty of Business and Economics of The University of Hong Kong in 2012. He also obtained a Law Degree from The University of London in 2015. • Samuel is a senior manager in a manufacturing company. He has joined the Board of Directors of University Hall Alumni Limited since 2016. Samuel is a CFA charterholder."
@@ -345,7 +345,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. CHEUNG Che-tsuen, Desmond',
     title: 'Vice Chairman',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-vice-chair-2",
     imageSrc: "/People/Desmond_Cheung.jpg",
     description:" Desmond is a regulatory lawyer at the Hong Kong Stock Exchange. Before that, he was a disputes/ regulatory lawyer at various international law firms, including DLA Piper Hong Kong. He used to be a dragon boat team captain for the Hong Kong Law Society. He is now a keen distance runner and football player."
@@ -354,7 +354,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. Ng Cheuk Sau Joseph',
     title: 'Honorary Secretary',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Secretary",
     imageSrc: "/People/Joseph_Ng.jpg",
     description:"Joseph read law and graduated in 2015. He completed the PCLL in 2016. He called the University Hall home for the 5 years in HKU. He was the Hockey Team Captain from 2012 to 2014. He also played alongside his brothers in various sports teams and cultural teams. We go with brothers, as they say."
@@ -363,7 +363,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. SHIH Chi-san, Michael',
     title: 'Honorary Treasurer',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Treasurer",
     imageSrc: "/People/Michael_Shih.jpg",
     description:"Michael had admitted as Fellow of Society of Actuaries in 2010, now working in Prudential as insurance consultant. He has joined the Board of Director of UHAL since 2016."
@@ -372,7 +372,7 @@ export const PEOPLE: Person[] = [
     name: 'Dr. CHENG Shing-kwong, Eric',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-1",
     imageSrc: "/People/Eric_Cheng.jpg",
     description:"Resided in UH 1975-1978, Eric is one of the first batch of HKU quantity surveyors. Qualified HKIS Surveyor since 1984. Helped build the HK Bank Headquarters Building at No. 1 QRC. Stayed in the academia for 37 years educating surveyors. Sidetracked to pest management including termite and bedbug research. Joined the plumbing and drainage industry and specialized in stainless steel pipe and construction contract administration. Currently a Pipe Company Director and a QS Manager in a plumbing contractor. Previously a Vice Chairman of the Hong Kong Institution of Plumbing and Drainage and a Senior Lecturer and assistant head with the City University of Hong Kong."
@@ -381,7 +381,7 @@ export const PEOPLE: Person[] = [
     name: 'Dr. Wai Heung-on, Jonathan',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-2",
     imageSrc: "/People/Jonathan_Wai.jpg",
     description:"Jonathan resided in University Hall from 1975 to 1979. \"Boot-boot\" was a sports enthusiast in representing UH and Faculty of Medicine. He is currently the Medical Superintendent of Precious Blood Hospital(Caritas); holding several professorships in teaching medical students in HKU and CUHK. He has engaged in various voluntary works and lately retired as Deputy Commissioner of the Auxiliary Medical Service of HKSAR in 2023."
@@ -390,7 +390,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. Danny Tsoi',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-3",
     imageSrc: "/People/Danny_Tsoi.jpg",
     description:"As a U hallite from 1978 to 1983, Danny was tennis and soccer team captain during his residency in U hall. He graduated with a MBBS degree in 1983 and became a specialist in Orthopaedics and Traumatology since 1993. Currently he is in private practice as Orthopaedic Surgeon. Throughout the past 40 years Danny was actively involved in many U hall alumni events especially in golf tournaments."
@@ -399,7 +399,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. Vincent Tang',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-4",
     imageSrc: "/People/Vincent_Tang.jpg",
     description:"Vincent was a resident of UHall in1981 to 1985 and he practised law after graduation. He is the founder and senier partner of Tang and Lee, Solicitors.Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90's and is excited to serve the brothers again."
@@ -408,7 +408,7 @@ export const PEOPLE: Person[] = [
     name: 'Dr. WONG Lap-ching',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-5",
     imageSrc: "/People/Wong_Lap_ching.jpg",
     description:"Dr. Wong is a specialist of Ear, Nose & Throat in private practice and a keen golfer."
@@ -417,7 +417,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. Tristan Lau',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-6",
     imageSrc: "/People/Tristan_Lau.jpg",
     description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn’s Cup in both 1996 and 1997.\n" +
@@ -428,7 +428,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. CHEN Songyong, Jack',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-7",
     imageSrc: "/People/Jack_Chen.jpg",
     description:"Now VP at a top tier investment bank as a tech lead. He is also a co-host of Codeaholics (the largest community of local software engineers) and a volunteer IT Manager at InspiringHK Sports Foundation"
@@ -437,7 +437,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. YUNG Albert',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-8",
     imageSrc: "/People/Albert_Yung.jpg",
     description:"Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA . He has been working in the banking indsutry. He has joined the Board of Directors of University Hall Alumni Limited since 2020."
@@ -446,7 +446,7 @@ export const PEOPLE: Person[] = [
     name: 'Mr. TSE Ho-yin, Alfred',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-9",
     imageSrc: "/People/Alfred_Tse.jpg",
     description:"Now working in The Hong Kong Jockey Club with a focus on strategic procurement."
@@ -455,7 +455,7 @@ export const PEOPLE: Person[] = [
     name: 'Dr. CHAN Nok-hang, Vincent',
     title: 'Director',
     bio: 'Section 2024-26',
-    role: 'alumni-association',
+    role: 'alumni-limited',
     imageId: "aa-Director-10",
     imageSrc: "/People/Vincent_Chan.jpg",
     description:"Vincent purused his bachelor and doctorate degrees while staying at Uhall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },

@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
             </h3>
             <p className="text-brand-text-muted text-sm leading-relaxed">
               Premier residential college fostering scholarly excellence, community, and character
-              development since 1912.
+              development since 1956.
             </p>
           </motion.div>
 
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                   href={`tel:${OFFICE_INFO.phone}`}
                   className="text-brand-text-muted hover:text-brand-gold transition-colors"
                 >
-                  {OFFICE_INFO.phone}
+                  Hall Office Phone: {OFFICE_INFO.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">

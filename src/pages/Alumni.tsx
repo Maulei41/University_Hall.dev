@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Globe, Check } from 'lucide-react'
+import { Mail, Globe, Check, Camera, Heart, Users } from 'lucide-react'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
-import { MENTORSHIP_PROGRAMS, PEOPLE, ASSOCIATIONS } from '@constants/content'
+import { MENTORSHIP_PROGRAMS, PEOPLE, ASSOCIATIONS, ALUMNI_VISITS } from '@constants/content'
+
+interface CarouselData {
+  images: string[]
+  currentIndex: number
+}
 
 const Alumni: React.FC = () => {
   const hkuProgram = MENTORSHIP_PROGRAMS.find((p) => p.id === 'hku-mentorship')!
   const [selectedPerson, setSelectedPerson] = useState<typeof PEOPLE[number] | null>(null)
+  const [modalCarousel, setModalCarousel] = useState<CarouselData | null>(null)
 
   return (
     <>
@@ -122,13 +128,13 @@ const Alumni: React.FC = () => {
                                   src={person.imageSrc}
                                   alt={person.name}
                                   className="w-full object-cover"
-                                  style={{ aspectRatio: '1 / 1' }}
+                                  style={{ aspectRatio: '3 / 4' }}
                                   loading="lazy"
                                 />
                               ) : person.imageId ? (
                                 <ImagePlaceholder
-                                  width={300}
-                                  height={300}
+                                  width={3}
+                                  height={4}
                                   imageId={person.imageId}
                                   alt={person.name}
                                 />
@@ -213,6 +219,117 @@ const Alumni: React.FC = () => {
         </Container>
       </Section>
 
+      {/* ===== RETURN TO THE HALL ===== */}
+      <Section className="bg-brand-surface">
+        <Container>
+          <FadeInUp>
+            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold text-center mb-4">
+              Return to the Hall
+            </h2>
+            <p className="text-brand-text-muted text-center max-w-2xl mx-auto mb-12">
+              Alumni are always welcome home. Whether you&apos;re celebrating a milestone or simply
+              revisiting cherished memories, University Hall opens its doors for you.
+            </p>
+          </FadeInUp>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+              {/* Wedding photo carousel — takes 3/5 of the row */}
+              <div className="lg:col-span-3">
+                {ALUMNI_VISITS.filter((v) => v.id === 'wedding-photo').map((visit) => (
+                  <motion.div
+                    key={visit.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-brand-bg rounded-card border border-brand-border overflow-hidden"
+                  >
+                    <div className="relative overflow-hidden" style={{ aspectRatio: '16 / 10' }}>
+                      {visit.images.length > 0 ? (
+                        <AlumniVisitCarousel images={visit.images} title={visit.title} onImageClick={setModalCarousel} />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-brand-surface">
+                          <Camera size={48} className="text-brand-gold/30" />
+                          <p className="text-brand-text-muted text-sm font-mono block w-full text-center absolute bottom-6">
+                            Photos coming soon
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-display text-xl font-semibold text-brand-text-primary">
+                        {visit.title}
+                      </h3>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Visit info — takes 2/5 of the row */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="lg:col-span-2 space-y-8"
+              >
+                {/* Wedding */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Heart size={18} className="text-brand-gold" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
+                      Wedding Photography
+                    </h4>
+                    <p className="text-brand-text-muted text-sm leading-relaxed">
+                      The historic castle facade and lush gardens offer a stunning backdrop for
+                      your wedding photos. Alumni couples are welcome to return and capture their
+                      special moments on hall grounds.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Family Visit */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Users size={18} className="text-brand-gold" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
+                      Family Visits
+                    </h4>
+                    <p className="text-brand-text-muted text-sm leading-relaxed">
+                      Bring your family to walk the corridors, visit the dining hall, and share
+                      the place you once called home. We welcome you and your loved ones to
+                      revisit the memories.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <p className="text-brand-text-muted text-sm max-w-xl mx-auto">
+              To arrange your visit, please contact the Hall Office at{' '}
+              <a href="mailto:uhall@connect.hku.hk" className="text-brand-gold hover:text-brand-gold-light transition-colors">
+                uhall@connect.hku.hk
+              </a>
+              .
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
       {/* Person Detail Modal */}
       <Modal
         isOpen={!!selectedPerson}
@@ -269,7 +386,251 @@ const Alumni: React.FC = () => {
           </>
         )}
       </Modal>
+      {/* Image Modal */}
+      <Modal isOpen={!!modalCarousel} onClose={() => setModalCarousel(null)} maxWidth="5xl">
+        {modalCarousel && <ModalCarousel data={modalCarousel} />}
+      </Modal>
     </>
+  )
+}
+
+/** Carousel inside the modal — draggable, with arrows and dots */
+const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
+  const [current, setCurrent] = useState(data.currentIndex)
+  const images = data.images
+  const totalSlides = images.length
+  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const goTo = (dir: number) => {
+    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  }
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
+    drag.startX = e.clientX
+    drag.offsetX = 0
+    drag.isDragging = true
+    if (trackRef.current) {
+      trackRef.current.setPointerCapture(e.pointerId)
+    }
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    const delta = e.clientX - drag.startX
+    drag.offsetX = delta
+    const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
+    if (el) {
+      const baseTx = -current * 100
+      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
+      el.style.transition = 'none'
+      el.style.transform = `translateX(${baseTx + fractional}%)`
+    }
+  }
+
+  const onPointerUp = () => {
+    if (!drag.isDragging) return
+    drag.isDragging = false
+    const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+    const threshold = 50
+    if (drag.offsetX < -threshold) goTo(1)
+    else if (drag.offsetX > threshold) goTo(-1)
+  }
+
+  const onPointerCancel = () => {
+    drag.isDragging = false
+  }
+
+  return (
+    <div
+      ref={trackRef}
+      className="relative select-none"
+      style={{ touchAction: 'pan-y' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+    >
+      <div className="overflow-hidden">
+        <div
+          className="modal-carousel-track flex transition-transform duration-300 ease-out"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {images.map((src, i) => (
+            <div
+              key={i}
+              className="w-full flex-shrink-0 flex items-center justify-center"
+            >
+              <img
+                src={src}
+                alt={`Photo ${i + 1}`}
+                className="max-h-[80vh] max-w-full object-contain pointer-events-none"
+                draggable={false}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <div className="flex justify-center gap-2 py-4">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === current ? 'bg-brand-gold w-5' : 'bg-white/40'
+                }`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+/** Carousel for alumni visit images — drag/swipe, arrows, and dots */
+const AlumniVisitCarousel: React.FC<{
+  images: string[]
+  title: string
+  onImageClick: (data: CarouselData) => void
+}> = ({ images, title, onImageClick }) => {
+  const [current, setCurrent] = useState(0)
+  const totalSlides = images.length
+  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const goTo = (dir: number) => {
+    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  }
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
+    drag.startX = e.clientX
+    drag.offsetX = 0
+    drag.isDragging = true
+    drag.wasDragged = false
+    if (trackRef.current) {
+      trackRef.current.setPointerCapture(e.pointerId)
+    }
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    const delta = e.clientX - drag.startX
+    drag.offsetX = delta
+    drag.wasDragged = Math.abs(delta) > 5
+    const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
+    if (el) {
+      const baseTx = -current * 100
+      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
+      el.style.transition = 'none'
+      el.style.transform = `translateX(${baseTx + fractional}%)`
+    }
+  }
+
+  const onPointerUp = (_e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    drag.isDragging = false
+    const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+    const threshold = 50
+    if (drag.offsetX < -threshold) goTo(1)
+    else if (drag.offsetX > threshold) goTo(-1)
+    else if (!drag.wasDragged) {
+      onImageClick({ images, currentIndex: current })
+    }
+  }
+
+  const onPointerCancel = () => {
+    drag.isDragging = false
+  }
+
+  return (
+    <div
+      ref={trackRef}
+      className="relative w-full h-full select-none"
+      style={{ touchAction: 'pan-y' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+    >
+      <div className="overflow-hidden w-full h-full">
+        <div
+          className="av-carousel-track flex transition-transform duration-300 ease-out h-full"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`${title} ${i + 1}`}
+              className="w-full h-full flex-shrink-0 object-cover pointer-events-none"
+              style={src.toLowerCase().includes('wedding_6') ? { objectPosition: 'bottom' } : undefined}
+              draggable={false}
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
+                  i === current ? 'bg-brand-gold w-6' : 'bg-white/50 hover:bg-white/80'
+                }`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   )
 }
 

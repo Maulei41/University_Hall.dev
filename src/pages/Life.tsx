@@ -41,6 +41,7 @@ const TeamImage: React.FC<{ team: HallTeam; onImageClick: (data: CarouselData) =
     }
 
     const onPointerDown = (e: React.PointerEvent) => {
+      if ((e.target as HTMLElement).closest('button')) return
       drag.startX = e.clientX
       drag.offsetX = 0
       drag.isDragging = true
@@ -189,6 +190,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
   }
 
   const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
     drag.startX = e.clientX
     drag.offsetX = 0
     drag.isDragging = true
@@ -307,6 +309,7 @@ const QuoVadisSection: React.FC<{
   }
 
   const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
     drag.startX = e.clientX
     drag.offsetX = 0
     drag.isDragging = true

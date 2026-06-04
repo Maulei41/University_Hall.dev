@@ -158,7 +158,7 @@ const Homepage: React.FC = () => {
       {/*          {*/}
       {/*            title: 'Academic Excellence',*/}
       {/*            description:*/}
-      {/*              'Mentorship from leading scholars, specialized seminars, and intellectual community supporting rigorous learning.',*/}
+      {/*              'Alumni from leading scholars, specialized seminars, and intellectual community supporting rigorous learning.',*/}
       {/*            icon: '📚',*/}
       {/*          },*/}
       {/*          {*/}

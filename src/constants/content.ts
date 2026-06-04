@@ -616,9 +616,9 @@ export const AFFILIATED_MEMBERSHIP = {
 export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
   {
     id: 'hku-mentorship',
-    title: 'HKU Mentorship Programme',
+    title: 'HKU Alumni Programme',
     description:
-      'Every hallmate living in University Hall may benefit from the HKU Mentorship Programme. Hallmates are grouped to pair with an alumni mentor based on their interests, career goals, and academic backgrounds, ensuring relevant guidance and support. Events and activities are organised to encourage networking among students, mentors, and alumni, expanding professional connections.',
+      'Every hallmate living in University Hall may benefit from the HKU Alumni Programme. Hallmates are grouped to pair with an alumni mentor based on their interests, career goals, and academic backgrounds, ensuring relevant guidance and support. Events and activities are organised to encourage networking among students, mentors, and alumni, expanding professional connections.',
     details: [
       'Open to all University Hall residents',
       'Group pairing with alumni mentors based on interests, career goals, and academic background',
@@ -629,10 +629,10 @@ export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
   },
   {
     id: 'quo-vadis',
-    title: 'Quo Vadis — Student Mentorship Project',
-    images: ['/Mentorship/Quo_Vadis_1.jpeg','/Mentorship/Quo_Vadis_2.jpg', "/Mentorship/Quo_Vadis_3.JPG"],
+    title: 'Quo Vadis — Student Alumni Project',
+    images: ['/Alumni/Quo_Vadis_1.jpeg','/Alumni/Quo_Vadis_2.jpg', "/Alumni/Quo_Vadis_3.JPG"],
     description:
-      'University Hall highly cherishes the value of university education for our deepened knowledge and broadened horizons. Therefore, in early 2024, a group of UHall-lites edified in hall education, joining forces with aspiring talents from school, prepared this student mentorship programme, \'Quo Vadis\', an HKU Student Mentorship Projects for Youths from Multi-ethnic Groups in the Pokfulam Community. It aims to establish connections between HKU and the Pokfulam Community. Our mentors run monthly workshops, forums and outings, such that participants can widen their outlook to co-curricular learning from multiple perspectives. Through heartfelt exchanges throughout the year, we also anticipate stronger ties between mentees and mentors who would stand by them as they progress. In 2025, the project extends into Yuen Long District, further benefiting more secondary students.',
+      'University Hall highly cherishes the value of university education for our deepened knowledge and broadened horizons. Therefore, in early 2024, a group of UHall-lites edified in hall education, joining forces with aspiring talents from school, prepared this student mentorship programme, \'Quo Vadis\', an HKU Student Alumni Projects for Youths from Multi-ethnic Groups in the Pokfulam Community. It aims to establish connections between HKU and the Pokfulam Community. Our mentors run monthly workshops, forums and outings, such that participants can widen their outlook to co-curricular learning from multiple perspectives. Through heartfelt exchanges throughout the year, we also anticipate stronger ties between mentees and mentors who would stand by them as they progress. In 2025, the project extends into Yuen Long District, further benefiting more secondary students.',
     details: [
       'Student-led mentorship project for youths from multi-ethnic groups',
       'Monthly workshops, forums, and outings for co-curricular learning',
@@ -777,6 +777,37 @@ export const HALL_TREASURES: HallTreasure[] = [
   },
 ]
 
+export interface AlumniVisit {
+  id: string
+  title: string
+  description: string
+  images: string[]
+}
+
+export const ALUMNI_VISITS: AlumniVisit[] = [
+  {
+    id: 'wedding-photo',
+    title: 'Wedding Photo Shooting',
+    description:
+      'University Hall\'s historic castle facade, Gothic architecture, and lush gardens provide a breathtaking backdrop for wedding photography. Alumni couples are welcome to return to the hall to capture their special moments amidst the heritage setting where their own stories began.',
+    images: [
+      '/Alumni/Uhall_Wedding_1.jpeg',
+      '/Alumni/Uhall_Wedding_2.jpeg',
+      '/Alumni/Uhall_Wedding_3.jpeg',
+      '/Alumni/Uhall_Wedding_4.jpeg',
+      '/Alumni/Uhall_wedding_5.jpeg',
+      '/Alumni/Uhall_wedding_6.jpeg',
+    ],
+  },
+  {
+    id: 'family-visit',
+    title: 'Family Visit',
+    description:
+      'Revisit the hall with your family and share the memories of your alma mater with your loved ones. Walk through the corridors, the dining hall, and the grounds — showing your family where you lived, studied, and built lifelong friendships.',
+    images: [],
+  },
+]
+
 export const SOCIAL_LINKS = [
   { platform: 'Instagram', url: 'https://www.instagram.com/universityhall_hku/', icon: 'instagram' },
   { platform: 'Facebook', url: 'https://www.facebook.com/uhall.hku/#', icon: 'facebook' },
@@ -784,7 +815,7 @@ export const SOCIAL_LINKS = [
 ]
 
 export const OFFICE_INFO = {
-  address: 'University Hall, The University of Hong Kong, 144 Pokfulam, Hong Kong',
+  address: '144 Pokfulam Road, Hong Kong',
   phone: '+852 2595 0966',
   fax: '+852 2550 6341',
   email: 'uhall@connect.hku.hk',

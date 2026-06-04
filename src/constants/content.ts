@@ -26,6 +26,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'By the early 1950s, the mission could no longer sustain its original purpose, and the property was eventually put up for sale. This opened the door to a new chapter in the life of the building.',
     imageId: 'library',
+    imageSrc: '/History/Uhall_WarTime.jpeg'
   },
   {
     year: '1954-1956',
@@ -43,6 +44,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'The Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
     imageId: 'library',
+    imageSrc: '/History/Uhall_Heritage_Recognition.jpg'
   },
   {
     year: "Today",
@@ -51,6 +53,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'From Douglas Castle to Nazareth House to University Hall, the building has changed names and functions, but its story has always been one of endurance. For those who call it home, University Hall remains a place where history is not only remembered, but carried forward.',
     imageId: 'common_rooms',
+    imageSrc: "/History/Uhall_Today.jpeg"
   },
 ]
 

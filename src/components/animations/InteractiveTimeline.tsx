@@ -115,12 +115,12 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
                 }`}
               >
                 {/* Image */}
-                <div className="w-full shrink-0" style={{ aspectRatio: '16 / 9' }}>
+                <div className="relative w-full shrink-0 overflow-hidden aspect-video">
                   {event.imageSrc ? (
                     <img
                       src={event.imageSrc}
                       alt={event.title}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
                     />
                   ) : (
@@ -243,13 +243,12 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
         {selectedEvent && (
           <div className="flex flex-col md:flex-row">
             {/* Image */}
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 min-h-64 flex items-center justify-center bg-black/5">
               {selectedEvent.imageSrc ? (
                 <img
                   src={selectedEvent.imageSrc}
                   alt={selectedEvent.title}
-                  className="w-full h-full object-cover rounded-t-card md:rounded-tr-none md:rounded-l-card"
-                  style={{ maxHeight: '50vh' }}
+                  className="w-full h-full object-contain rounded-t-card md:rounded-tr-none md:rounded-l-card"
                   loading="lazy"
                 />
               ) : (

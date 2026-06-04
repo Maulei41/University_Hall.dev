@@ -100,15 +100,15 @@ const Facilities: React.FC = () => {
                         <Badge variant="gold" className="mb-4">
                           {facility.category}
                         </Badge>
-                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-4">
+                        <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                           {facility.title}
                         </h3>
-                        <p className="text-brand-text-muted text-lg mb-6 leading-relaxed">
+                        <p className="text-brand-text-muted text-xl mb-6 leading-relaxed">
                           {facility.description}
                         </p>
                         {facility.features.length > 0 && (
                           <div>
-                            <h4 className="font-display font-semibold text-brand-gold mb-4">
+                            <h4 className="font-display font-semibold text-brand-gold-light text-2xl mb-4">
                               Key Features
                             </h4>
                             <ul className="space-y-2">
@@ -120,8 +120,8 @@ const Facilities: React.FC = () => {
                                   transition={{ delay: featureIdx * 0.1 }}
                                   className="flex items-start gap-3 text-brand-text-muted"
                                 >
-                                  <span className="text-brand-emerald font-bold mt-1">✓</span>
-                                  <span>{feature}</span>
+                                  <span className="text-brand-emerald text-xl font-bold mt-1">✓</span>
+                                  <span className="text-xl">{feature}</span>
                                 </motion.li>
                               ))}
                             </ul>

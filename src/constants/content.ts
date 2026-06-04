@@ -580,7 +580,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Dragon Boat',
     description:
       'Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!',
-    category: 'Seasonal Team',
+    category: 'Seasonal',
     imageId: 'library',
     imageSrc: '/Life/Uhall_DragonBoat.jpeg',
   },

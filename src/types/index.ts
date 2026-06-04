@@ -77,7 +77,7 @@ export interface HallTeam {
   id: string
   name: string
   description: string
-  category: 'Old Ball' | 'New Ball' | 'Culture' | "Seasonal Team"
+  category: 'Old Ball' | 'New Ball' | 'Culture' | "Seasonal"
   imageId: string
   imageSrc?: string
   /** Multiple images — renders an inline carousel instead of a single image */

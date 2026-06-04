@@ -39,7 +39,7 @@ const About: React.FC = () => {
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
                 Our Values
               </h2>
-              <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
+              <p className="text-xl text-brand-text-muted max-w-2xl mx-auto">
                 Grounded in timeless principles of Brotherhood, community, and character
               </p>
             </div>
@@ -54,7 +54,7 @@ const About: React.FC = () => {
                         <h3 className="font-display text-2xl font-semibold text-brand-gold mb-4">
                           {pillar.title}
                         </h3>
-                        <p className="text-brand-text-muted leading-relaxed">{pillar.description}</p>
+                        <p className="text-brand-text-muted text-xl  leading-relaxed">{pillar.description}</p>
                       </div>
                     </ScaleOnHover>
                   </StaggerItem>
@@ -72,7 +72,7 @@ const About: React.FC = () => {
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
                 Milestones in Our History
               </h2>
-              <p className="text-brand-text-muted text-lg max-w-xl mx-auto">
+              <p className="text-brand-text-muted text-xl max-w-xl mx-auto">
                 Click the year markers or use ← → arrow keys to explore our journey
               </p>
             </div>
@@ -94,7 +94,7 @@ const About: React.FC = () => {
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
                 Three Treasures of University Hall
               </h2>
-              <p className="text-lg text-brand-text-muted max-w-3xl mx-auto">
+              <p className="text-xl text-brand-text-muted max-w-3xl mx-auto">
                 Within the hallowed halls of University Hall lie three cherished treasures —
                 architectural marvels, whimsical traditions, and the enduring spirit of those
                 who shaped this community.
@@ -148,7 +148,7 @@ const About: React.FC = () => {
                     <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                       {treasure.name}
                     </h3>
-                    <p className="text-brand-text-muted text-lg leading-relaxed whitespace-pre-line">
+                    <p className="text-brand-text-muted text-xl leading-relaxed whitespace-pre-line">
                       {treasure.description}
                     </p>
                   </div>

@@ -72,14 +72,14 @@ const Events: React.FC = () => {
                           <Badge variant="gold">{event.category}</Badge>
                           {event.rsvpLink && <Badge variant="emerald">RSVP</Badge>}
                         </div>
-                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-3">
+                        <h3 className="font-display text-3xl font-semibold text-brand-gold mb-3">
                           {event.title}
                         </h3>
-                        <p className="text-brand-text-muted text-sm mb-4 flex items-center gap-1.5">
+                        <p className="text-brand-text-muted text-lg mb-4 flex items-center gap-1.5">
                           <MapPin size={15} />
                           {event.location}
                         </p>
-                        <p className="text-brand-text-muted text-lg leading-relaxed">
+                        <p className="text-brand-text-muted text-xl leading-relaxed">
                           {event.description}
                         </p>
                       </div>
@@ -139,10 +139,10 @@ const Events: React.FC = () => {
                             </span>
                           )}
                         </div>
-                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-4">
+                        <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                           {tradition.title}
                         </h3>
-                        <p className="text-brand-text-muted text-lg leading-relaxed">
+                        <p className="text-brand-text-muted text-xl leading-relaxed">
                           {tradition.description}
                         </p>
                       </div>

@@ -8,8 +8,8 @@ import type { HallTeam } from '../types/index'
 const CATEGORIES: { key: HallTeam['category']; label: string }[] = [
   { key: 'New Ball', label: 'New Ball' },
   { key: 'Old Ball', label: 'Old Ball' },
-  { key: 'Culture', label: 'Culture Team' },
-  { key: 'Seasonal Team', label: 'Seasonal Team' },
+  { key: 'Culture', label: 'Culture' },
+  { key: 'Seasonal', label: 'Seasonal' },
 ]
 
 const badgeVariant = (category: HallTeam['category']): 'gold' | 'emerald' | 'culture' | 'seasonal' => {
@@ -17,7 +17,7 @@ const badgeVariant = (category: HallTeam['category']): 'gold' | 'emerald' | 'cul
     case 'Old Ball': return 'gold'
     case 'New Ball': return 'emerald'
     case 'Culture': return 'culture'
-    case 'Seasonal Team': return 'seasonal'
+    case 'Seasonal': return 'seasonal'
   }
 }
 
@@ -510,11 +510,11 @@ const Life: React.FC = () => {
                           {team.category}
                         </Badge>
 
-                        <h3 className="font-display text-3xl font-semibold text-brand-text-primary mb-4">
+                        <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                           {team.name}
                         </h3>
 
-                        <p className="text-brand-text-muted text-lg leading-relaxed whitespace-pre-line">
+                        <p className="text-brand-text-muted text-xl leading-relaxed whitespace-pre-line">
                           {team.description}
                         </p>
                       </div>

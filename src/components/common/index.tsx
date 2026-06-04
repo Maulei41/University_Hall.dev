@@ -140,3 +140,4 @@ export const TextBlock: React.FC<TextBlockProps> = ({ level, children, className
 }
 
 export { Modal } from './Modal'
+export { default as TestimonialCarousel } from './TestimonialCarousel'

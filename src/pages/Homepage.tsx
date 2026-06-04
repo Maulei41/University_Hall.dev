@@ -19,6 +19,7 @@ import {
   GalleryGrid,
 } from '@components/animations/index'
 import { STATS, TIMELINE_EVENTS, TESTIMONIALS, TRADITIONS } from '@constants/content'
+import { TestimonialCarousel } from '@components/common/index'
 const Homepage: React.FC = () => {
   const textScrollRef = React.useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -58,13 +59,12 @@ const Homepage: React.FC = () => {
               className="h-1 bg-gradient-to-r from-brand-gold to-brand-emerald mb-8"
             />
 
-            <h1 className="text-5xl lg:text-7xl font-display font-bold text-brand-text-primary mb-6">
+            <h1 className="text-5xl lg:text-7xl font-display text-brand-gold font-bold  mb-6">
               University Hall
             </h1>
 
-            <p className="text-3xl lg:text-3xl text-brand-text-muted font-serif mb-8 leading-relaxed">
-              Premier residential college since 1912, fostering scholarly excellence, vibrant
-              community, and transformational character development.
+            <p className="text-3xl lg:text-3xl text-brand-gold-light font-semibold font-serif mb-8 leading-relaxed">
+              The University of Hong Kong
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -240,7 +240,7 @@ const Homepage: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section — Carousel */}
       <Section className="bg-brand-surface">
         <Container>
           <FadeInUp>
@@ -254,29 +254,9 @@ const Homepage: React.FC = () => {
             </div>
           </FadeInUp>
 
-          <StaggerContainer>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {TESTIMONIALS.map((testimonial) => (
-                <StaggerItem key={testimonial.id}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.3 }}
-                    className="card-base card-hover"
-                  >
-                    <p className="text-lg text-brand-text-muted mb-6 italic">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </p>
-                    <div className="border-t border-brand-border pt-4">
-                      <p className="font-display font-semibold text-brand-gold">
-                        {testimonial.author}
-                      </p>
-                      <p className="text-sm text-brand-text-muted">{testimonial.role}</p>
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
+          <FadeInUp delay={0.2}>
+            <TestimonialCarousel testimonials={TESTIMONIALS} />
+          </FadeInUp>
         </Container>
       </Section>
 

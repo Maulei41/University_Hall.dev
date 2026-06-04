@@ -472,16 +472,37 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-2',
     quote:
-      'Placeholder',
+      'University Hall shaped me in ways I never expected. The brotherhood, the traditions, and the late-night conversations in the common room — these are the moments that truly define the university experience.',
     author: 'Placeholder',
-    role: 'Castlers 25\'',
+    role: 'Castlers 24\'',
   },
   {
     id: 'testimonial-3',
     quote:
-      'Placeholder',
+      'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep — it is a home with a soul.',
     author: 'Placeholder',
     role: 'Castlers 25\'',
+  },
+  {
+    id: 'testimonial-4',
+    quote:
+      'The High Table Dinners, the football nights under the lights, the study sessions in the library — these are the things I will carry with me long after graduation. UHall gave me family away from home.',
+    author: 'Placeholder',
+    role: 'Castlers 23\'',
+  },
+  {
+    id: 'testimonial-5',
+    quote:
+      'What makes UHall special is the people. You show up as a stranger and leave as a brother. The mentorship from senior residents and fellows shaped my character more than any lecture ever did.',
+    author: 'Placeholder',
+    role: 'Castlers 26\'',
+  },
+  {
+    id: 'testimonial-6',
+    quote:
+      'From the Halloween haunted house to the Island Bike Ride, every event brings us closer. The spirit of "One Hall, One Family" is real here — it is not just a motto, it is how we live.',
+    author: 'Placeholder',
+    role: 'Castlers 24\'',
   },
 ]
 

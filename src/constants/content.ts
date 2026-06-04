@@ -268,7 +268,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Senior-Resident-Tutor ',
-    name: 'Mr. Sam Liu 劉山',
+    name: 'Mr. Sam Liu Shan 劉山',
     title: 'Senior Resident Tutor',
     bio: 'Lecturer, Faculty of Law.',
     role: 'Tutoring Group',
@@ -305,7 +305,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Hall-Executive',
-    name: 'Ms. (Ivy) Chan Sze Man 陳詩敏',
+    name: 'Ms. Ivy Chan Sze Man 陳詩敏',
     title: 'Hall Executive',
     bio: '',
     role: 'Hall Officer',
@@ -462,7 +462,7 @@ export const STATS: StatItem[] = [
   },
   {
     label: 'Residents',
-    value: '100+',
+    value: '108',
     description: 'Diverse community from multiple disciplines',
   },
   {
@@ -496,7 +496,7 @@ export const HALL_TEAMS: HallTeam[] = [
     id: 'new-ball-Hockey',
     name: 'Hockey Team',
     description:
-      ' Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
+      'Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball',
     imageId: 'recreation',
     images: ['/Life/Uhall_Hockey_1.jpeg', '/Life/Uhall_Hockey_2.jpeg'],
@@ -616,7 +616,7 @@ export const AFFILIATED_MEMBERSHIP = {
 export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
   {
     id: 'hku-mentorship',
-    title: 'HKU Alumni Programme',
+    title: 'HKU Mentorship Programme',
     description:
       'Every hallmate living in University Hall may benefit from the HKU Alumni Programme. Hallmates are grouped to pair with an alumni mentor based on their interests, career goals, and academic backgrounds, ensuring relevant guidance and support. Events and activities are organised to encourage networking among students, mentors, and alumni, expanding professional connections.',
     details: [

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Container, Section, ImagePlaceholder, Badge } from '@components/common/index'
+import { Container, Section, ImagePlaceholder } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
 import { FACILITIES } from '@constants/content'
 
@@ -97,9 +97,9 @@ const Facilities: React.FC = () => {
 
                     <FadeInUp delay={0.2}>
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <Badge variant="gold" className="mb-4">
-                          {facility.category}
-                        </Badge>
+                        {/*<Badge variant="gold" className="mb-4">*/}
+                        {/*  {facility.category}*/}
+                        {/*</Badge>*/}
                         <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                           {facility.title}
                         </h3>

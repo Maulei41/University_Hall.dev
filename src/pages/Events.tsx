@@ -69,7 +69,7 @@ const Events: React.FC = () => {
                     <FadeInUp delay={0.2}>
                       <div className={itemIdx % 2 === 1 ? 'lg:order-1' : ''}>
                         <div className="flex items-center gap-2 mb-4">
-                          <Badge variant="gold">{event.category}</Badge>
+                          {/*<Badge variant="gold">{event.category}</Badge>*/}
                           {event.rsvpLink && <Badge variant="emerald">RSVP</Badge>}
                         </div>
                         <h3 className="font-display text-3xl font-semibold text-brand-gold mb-3">

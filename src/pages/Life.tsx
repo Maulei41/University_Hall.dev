@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Container, Section, ImagePlaceholder, Badge, Modal } from '@components/common/index'
+import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
 import { HALL_TEAMS, MENTORSHIP_PROGRAMS } from '@constants/content'
 import type { HallTeam } from '../types/index'
@@ -12,14 +12,14 @@ const CATEGORIES: { key: HallTeam['category']; label: string }[] = [
   { key: 'Seasonal', label: 'Seasonal' },
 ]
 
-const badgeVariant = (category: HallTeam['category']): 'gold' | 'emerald' | 'culture' | 'seasonal' => {
-  switch (category) {
-    case 'Old Ball': return 'gold'
-    case 'New Ball': return 'emerald'
-    case 'Culture': return 'culture'
-    case 'Seasonal': return 'seasonal'
-  }
-}
+// const badgeVariant = (category: HallTeam['category']): 'gold' | 'emerald' | 'culture' | 'seasonal' => {
+//   switch (category) {
+//     case 'Old Ball': return 'gold'
+//     case 'New Ball': return 'emerald'
+//     case 'Culture': return 'culture'
+//     case 'Seasonal': return 'seasonal'
+//   }
+// }
 
 interface CarouselData {
   images: string[]
@@ -506,9 +506,9 @@ const Life: React.FC = () => {
                     {/* Content */}
                     <FadeInUp delay={0.2}>
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <Badge variant={badgeVariant(team.category)} className="mb-4">
-                          {team.category}
-                        </Badge>
+                        {/*<Badge variant={badgeVariant(team.category)} className="mb-4">*/}
+                        {/*  {team.category}*/}
+                        {/*</Badge>*/}
 
                         <h3 className="font-display text-3xl font-semibold text-brand-gold mb-4">
                           {team.name}

@@ -530,7 +530,7 @@ export const HALL_TEAMS: HallTeam[] = [
       'Join our hall; join our team. We will tell you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball',
     imageId: 'recreation',
-    images: ['/Life/Uhall_Hockey_1.jpeg', '/Life/Uhall_Hockey_2.jpeg'],
+    images: ['/Life/Uhall_Hockey_1.jpeg', '/Life/Uhall_Hockey_2.jpeg', '/Life/Uhall_Hockey_3.JPG', '/Life/Uhall_Hockey_4.JPG', '/Life/Uhall_Hockey_5.JPG'],
   },
   {
     id: 'new-ball-Lacrosse',

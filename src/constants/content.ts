@@ -8,6 +8,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'Completed around 1864, the house was designed to command sweeping views of the sea and surrounding landscape. Although Lapraik spent little time there before retiring to Britain, the castle became the foundation of what would later become University Hall.',
     imageId: 'dining_hall',
+    imageSrc: "/History/Uhall_Douglas_Castle.jpg"
   },
   {
     year: 1894,
@@ -16,6 +17,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages.',
     imageId: 'common_rooms',
+    imageSrc: '/History/Uhall_Nazarath_House.jpg'
   },
   {
     year: "early 1950s",
@@ -32,6 +34,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         '\n' +
         'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, the Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
     imageId: 'dining_hall',
+    imageSrc: '/History/Uhall_Birth.jpg'
   },
   {
     year: 1995,
@@ -421,13 +424,52 @@ export const PEOPLE: Person[] = [
     imageSrc: "/People/Wong_Lap_ching.jpg",
     description:"Dr. Wong is a specialist of Ear, Nose & Throat in private practice and a keen golfer."
   },
-  { id: 'aa-Director-6', name: 'Mr. Tristan Lau', title: 'Director — Alumni Association', bio: 'Section 2024-26', role: 'alumni-association', imageId: "aa-Director-6", imageSrc: "/People/Tristan_Lau.jpg", description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn’s Cup in both 1996 and 1997.\n" +
+  { id: 'aa-Director-6',
+    name: 'Mr. Tristan Lau',
+    title: 'Director — Alumni Association',
+    bio: 'Section 2024-26',
+    role: 'alumni-association',
+    imageId: "aa-Director-6",
+    imageSrc: "/People/Tristan_Lau.jpg",
+    description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn’s Cup in both 1996 and 1997.\n" +
         "\n" +
-        "Currently, Tristan is the Head of Electronic Trading Services for the APAC region at an investment bank. He is also involved in various voluntary activities and mentorship programs organized by HKU, JA HK and his organisation." },
-  { id: 'aa-Director-7', name: 'Mr. CHEN Songyong, Jack', title: 'Director — Alumni Association', bio: 'Section 2024-26', role: 'alumni-association', imageId: "aa-Director-7", imageSrc: "/People/Jack_Chen.jpg", description:"Now VP at a top tier investment bank as a tech lead. He is also a co-host of Codeaholics (the largest community of local software engineers) and a volunteer IT Manager at InspiringHK Sports Foundation" },
-  { id: 'aa-Director-8', name: 'Mr. YUNG Albert', title: 'Director — Alumni Association', bio: 'Section 2024-26', role: 'alumni-association', imageId: "aa-Director-8", imageSrc: "/People/Albert_Yung.jpg",description:"Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA . He has been working in the banking indsutry. He has joined the Board of Directors of University Hall Alumni Limited since 2020." },
-  { id: 'aa-Director-9', name: 'Mr. TSE Ho-yin, Alfred', title: 'Director — Alumni Association', bio: 'Section 2024-26', role: 'alumni-association', imageId: "aa-Director-9", imageSrc: "/People/Alfred_Tse.jpg", description:"Now working in The Hong Kong Jockey Club with a focus on strategic procurement." },
-  { id: 'aa-Director-10', name: 'Dr. CHAN Nok-hang, Vincent', title: 'Director — Alumni Association', bio: 'Section 2024-26', role: 'alumni-association', imageId: "aa-Director-10", imageSrc: "/People/Vincent_Chan.jpg", description:"Vincent purused his bachelor and doctorate degrees while staying at Uhall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
+        "Currently, Tristan is the Head of Electronic Trading Services for the APAC region at an investment bank. He is also involved in various voluntary activities and mentorship programs organized by HKU, JA HK and his organisation."
+  },
+  { id: 'aa-Director-7',
+    name: 'Mr. CHEN Songyong, Jack',
+    title: 'Director — Alumni Association',
+    bio: 'Section 2024-26',
+    role: 'alumni-association',
+    imageId: "aa-Director-7",
+    imageSrc: "/People/Jack_Chen.jpg",
+    description:"Now VP at a top tier investment bank as a tech lead. He is also a co-host of Codeaholics (the largest community of local software engineers) and a volunteer IT Manager at InspiringHK Sports Foundation"
+  },
+  { id: 'aa-Director-8',
+    name: 'Mr. YUNG Albert',
+    title: 'Director — Alumni Association',
+    bio: 'Section 2024-26',
+    role: 'alumni-association',
+    imageId: "aa-Director-8",
+    imageSrc: "/People/Albert_Yung.jpg",
+    description:"Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA . He has been working in the banking indsutry. He has joined the Board of Directors of University Hall Alumni Limited since 2020."
+  },
+  { id: 'aa-Director-9',
+    name: 'Mr. TSE Ho-yin, Alfred',
+    title: 'Director — Alumni Association',
+    bio: 'Section 2024-26',
+    role: 'alumni-association',
+    imageId: "aa-Director-9",
+    imageSrc: "/People/Alfred_Tse.jpg",
+    description:"Now working in The Hong Kong Jockey Club with a focus on strategic procurement."
+  },
+  { id: 'aa-Director-10',
+    name: 'Dr. CHAN Nok-hang, Vincent',
+    title: 'Director — Alumni Association',
+    bio: 'Section 2024-26',
+    role: 'alumni-association',
+    imageId: "aa-Director-10",
+    imageSrc: "/People/Vincent_Chan.jpg",
+    description:"Vincent purused his bachelor and doctorate degrees while staying at Uhall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
 ]
 
 export const TESTIMONIALS: Testimonial[] = [

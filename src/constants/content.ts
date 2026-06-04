@@ -472,16 +472,16 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-2',
     quote:
-      'What struck me most was the genuine sense of belonging. From formal dinners to late-night study sessions, every moment contributed to my growth.',
-    author: 'Adrian Lee',
-    role: 'Class of 2022',
+      'Placeholder',
+    author: 'Placeholder',
+    role: 'Castlers 25\'',
   },
   {
     id: 'testimonial-3',
     quote:
-      'The mentorship from academic fellows and the scholarly atmosphere at University Hall shaped my academic trajectory and professional aspirations.',
-    author: 'Dr. Natasha Ivanov',
-    role: 'Class of 2019, now Lecturer at HKU',
+      'Placeholder',
+    author: 'Placeholder',
+    role: 'Castlers 25\'',
   },
 ]
 
@@ -489,7 +489,7 @@ export const STATS: StatItem[] = [
   {
     label: 'Since',
     value: '1956',
-    description: 'Serving residential scholars for over a century',
+    description: 'Serving residential scholars for 70 Years',
   },
   {
     label: 'Residents',
@@ -807,6 +807,7 @@ export const HALL_TREASURES: HallTreasure[] = [
     description:
       'A cherished figure of University Hall, Ms Yuen So Moy ("Sam So") served as a cook and motherly presence for generations. Her symbolic "Hall Blood" ritual continues to bless Castlers through life\'s milestones.',
     imageId: 'sam_so',
+    imageSrc: '/Facilities/Sam_So.JPG',
   },
 ]
 

@@ -62,7 +62,7 @@ const Homepage: React.FC = () => {
               University Hall
             </h1>
 
-            <p className="text-xl lg:text-2xl text-brand-text-muted font-serif mb-8 leading-relaxed">
+            <p className="text-3xl lg:text-3xl text-brand-text-muted font-serif mb-8 leading-relaxed">
               Premier residential college since 1912, fostering scholarly excellence, vibrant
               community, and transformational character development.
             </p>
@@ -91,8 +91,8 @@ const Homepage: React.FC = () => {
                   <div className="text-4xl font-display font-bold text-brand-gold">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-brand-text-muted mt-1">{stat.label}</div>
-                  <div className="text-xs text-brand-text-muted mt-1">{stat.description}</div>
+                  <div className="text-2xl text-brand-text-muted mt-1">{stat.label}</div>
+                  <div className="text-xl text-brand-text-muted mt-1">{stat.description}</div>
                 </motion.div>
               ))}
             </div>

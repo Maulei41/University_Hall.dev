@@ -50,7 +50,7 @@ export const Header: React.FC = () => {
                   key={link.href}
                   to={link.href}
                   onClick={close}
-                  className={`px-4 py-2 rounded-card font-serif text-sm transition-colors ${
+                  className={`px-4 py-2 rounded-card font-serif text-lg transition-colors ${
                     isActive
                       ? 'text-brand-gold bg-brand-surface'
                       : 'text-brand-text-muted hover:text-brand-text-primary'

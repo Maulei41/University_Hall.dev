@@ -203,7 +203,7 @@ const About: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto py-12"
           >
-            <p className="text-3xl lg:text-4xl font-display font-semibold text-brand-gold italic mb-6">
+            <p className="text-3xl lg:text-6xl font-display font-semibold text-brand-gold italic mb-6">
               "We go with Brothers!"
             </p>
             <p className="text-brand-text-muted">— University Hall</p>

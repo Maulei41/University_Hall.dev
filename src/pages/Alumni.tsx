@@ -122,12 +122,12 @@ const Alumni: React.FC = () => {
                             onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPerson(person) }}
                             aria-label={`View details for ${person.name}`}
                           >
-                            <div className="relative overflow-hidden rounded-card mb-6" style={{ aspectRatio: '3 / 4' }}>
+                            <div className="overflow-hidden rounded-card mb-6 h-64 sm:h-72 md:h-80">
                               {person.imageSrc ? (
                                 <img
                                   src={person.imageSrc}
                                   alt={person.name}
-                                  className="absolute inset-0 w-full h-full object-cover"
+                                  className="w-full h-full object-cover"
                                   loading="lazy"
                                 />
                               ) : person.imageId ? (

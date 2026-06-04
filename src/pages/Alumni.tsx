@@ -35,8 +35,8 @@ const Alumni: React.FC = () => {
 
       {/* ===== ALUMNI ASSOCIATION ===== */}
       {(() => {
-        const aa = ASSOCIATIONS.find((a) => a.id === 'alumni-association')!
-        const alumniPeople = PEOPLE.filter((p) => p.role === 'alumni-association')
+        const aa = ASSOCIATIONS.find((a) => a.id === 'alumni-limited')!
+        const alumniPeople = PEOPLE.filter((p) => p.role === 'alumni-limited')
         return (
           <>
             {/* Info Section */}

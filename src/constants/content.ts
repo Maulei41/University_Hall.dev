@@ -691,18 +691,15 @@ export const ASSOCIATIONS: Association[] = [
     contactEmail: 'uhall@connect.hku.hk',
   },
   {
-    id: 'alumni-association',
-    name: 'University Hall Alumni Association',
+    id: 'alumni-limited',
+    name: 'University Hall Alumni Limited',
     description:
-      'The UHAA connects the global community of University Hall graduates, fostering lifelong bonds and supporting the hall\'s mission through mentorship, philanthropy, and alumni engagement programmes.',
+      'Placeholder for description',
     mission:
-      'To sustain and strengthen the lifelong connection between University Hall and its alumni, supporting the hall\'s legacy of excellence through active engagement, mentorship of current residents, and contributions to the hall\'s continued development.',
+      'Placeholder for mission',
     activities: [
-      'Organising alumni reunions, networking events, and homecoming celebrations',
-      'Providing career mentorship and internship opportunities for current residents',
-      'Supporting hall scholarships and development projects',
-      'Maintaining alumni directories and communications',
-      'Preserving and celebrating University Hall heritage and traditions',
+      'Placeholder for activities',
+
     ],
     website: 'https://www.uhall.com.hk/',
   },

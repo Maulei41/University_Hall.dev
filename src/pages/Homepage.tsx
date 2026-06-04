@@ -6,7 +6,6 @@ import {
   Container,
   Section,
   Button,
-  ImagePlaceholder,
   Badge,
 } from '@components/common/index'
 import {
@@ -16,7 +15,7 @@ import {
   ScaleOnHover,
   ParallexSection,
   HorizontalTimeline,
-  GalleryGrid,
+  SpacesGallery,
 } from '@components/animations/index'
 import { STATS, TIMELINE_EVENTS, TESTIMONIALS, TRADITIONS } from '@constants/content'
 import { TestimonialCarousel } from '@components/common/index'
@@ -198,47 +197,8 @@ const Homepage: React.FC = () => {
         </FadeInUp>
       </Section>
 
-      {/* Gallery Section */}
-      <Section>
-        <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Spaces of Excellence
-              </h2>
-              <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-                Heritage architecture meeting contemporary residential standards
-              </p>
-            </div>
-          </FadeInUp>
-
-          <GalleryGrid columns={3}>
-            {[
-              { id: 'dining_hall', title: 'Grand Dining Hall' },
-              { id: 'library', title: 'Academic Library' },
-              { id: 'recreation', title: 'Recreation Facilities' },
-              { id: 'accommodation', title: 'Residential Suites' },
-              { id: 'common_rooms', title: 'Common Spaces' },
-              { id: 'community_center', title: 'Community Center' },
-            ].map((item) => (
-              <ScaleOnHover key={item.id} className="overflow-hidden rounded-card">
-                <ImagePlaceholder
-                  width={400}
-                  height={300}
-                  imageId={item.id}
-                  alt={item.title}
-                  className="rounded-card"
-                />
-                <div className="mt-4">
-                  <h4 className="font-display text-lg font-semibold text-brand-text-primary">
-                    {item.title}
-                  </h4>
-                </div>
-              </ScaleOnHover>
-            ))}
-          </GalleryGrid>
-        </Container>
-      </Section>
+      {/* Gallery Section — Spaces of Excellence */}
+      <SpacesGallery />
 
       {/* Testimonials Section — Carousel */}
       <Section className="bg-brand-surface">

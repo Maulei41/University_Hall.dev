@@ -90,6 +90,8 @@ export const useFooterContrast = () => {
   return { ref, bgClass }
 }
 
+export { useMouseTilt } from './useMouseTilt'
+
 export const useMobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
 

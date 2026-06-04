@@ -296,6 +296,15 @@ export const PEOPLE: Person[] = [
     imageSrc: '/People/Jason_Wong.jpeg',
   },
   {
+    id: 'Tutor-3',
+    name: 'Mr. Tom Tam',
+    title: 'Non-residential fellow',
+    bio: '',
+    role: 'Tutoring Team',
+    imageId: 'person_counselor',
+    // imageSrc: '/People/Jason_Wong.jpeg',
+  },
+  {
     id: 'Hall-Executive',
     name: 'Ms. Ivy Chan Sze Man 陳詩敏',
     title: 'Hall Executive',

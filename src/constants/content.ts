@@ -836,9 +836,6 @@ export const ALUMNI_VISITS: AlumniVisit[] = [
     description:
       'University Hall\'s historic castle facade, Gothic architecture, and lush gardens provide a breathtaking backdrop for wedding photography. Alumni couples are welcome to return to the hall to capture their special moments amidst the heritage setting where their own stories began.',
     images: [
-      '/Alumni/Uhall_Wedding_1.jpeg',
-      '/Alumni/Uhall_Wedding_2.jpeg',
-      '/Alumni/Uhall_Wedding_3.jpeg',
       '/Alumni/Uhall_Wedding_4.jpeg',
       '/Alumni/Uhall_wedding_5.jpeg',
       '/Alumni/Uhall_wedding_6.jpeg',

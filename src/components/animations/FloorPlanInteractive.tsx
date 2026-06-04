@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import { Modal } from '@components/common/index'
@@ -128,20 +128,26 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
       >
         {selectedPin && (
           <>
-            {/* Image placeholder */}
-            <div className="w-full aspect-[16/10] bg-brand-bg flex items-center justify-center rounded-t-card overflow-hidden">
-              {selectedPin.imageSrc ? (
+            {/* Image / Carousel area */}
+            <div className="w-full bg-brand-bg rounded-t-card overflow-hidden">
+              {selectedPin.images && selectedPin.images.length > 1 ? (
+                <PinCarousel images={selectedPin.images} name={selectedPin.name} />
+              ) : selectedPin.imageSrc || (selectedPin.images && selectedPin.images.length === 1) ? (
                 <img
-                  src={selectedPin.imageSrc}
+                  src={selectedPin.imageSrc || selectedPin.images![0]}
                   alt={selectedPin.name}
-                  className="w-full h-full object-cover"
+                  className="w-full object-cover"
+                  style={{ aspectRatio: '16 / 10' }}
+                  loading="lazy"
                 />
               ) : (
-                <div className="text-center p-6">
-                  <MapPin size={40} className="text-brand-gold/40 mx-auto mb-2" />
-                  <p className="text-brand-text-muted text-sm font-mono">
-                    Photo: {selectedPin.name}
-                  </p>
+                <div className="w-full aspect-[16/10] flex items-center justify-center">
+                  <div className="text-center p-6">
+                    <MapPin size={40} className="text-brand-gold/40 mx-auto mb-2" />
+                    <p className="text-brand-text-muted text-sm font-mono">
+                      Photo: {selectedPin.name}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -162,6 +168,120 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
         )}
       </Modal>
     </>
+  )
+}
+
+/** Inline carousel for pins with multiple images — drag/swipe, arrows, and dots */
+const PinCarousel: React.FC<{ images: string[]; name: string }> = ({ images, name }) => {
+  const [current, setCurrent] = useState(0)
+  const totalSlides = images.length
+  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const goTo = (dir: number) => {
+    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  }
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    // Don't capture pointer when clicking navigation buttons — lets their onClick fire
+    if ((e.target as HTMLElement).closest('button')) return
+    drag.startX = e.clientX
+    drag.offsetX = 0
+    drag.isDragging = true
+    if (trackRef.current) {
+      trackRef.current.setPointerCapture(e.pointerId)
+    }
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    const delta = e.clientX - drag.startX
+    drag.offsetX = delta
+    const el = trackRef.current?.querySelector('.fp-carousel-track') as HTMLElement
+    if (el) {
+      const baseTx = -current * 100
+      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
+      el.style.transition = 'none'
+      el.style.transform = `translateX(${baseTx + fractional}%)`
+    }
+  }
+
+  const onPointerUp = () => {
+    if (!drag.isDragging) return
+    drag.isDragging = false
+    const el = trackRef.current?.querySelector('.fp-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+    const threshold = 50
+    if (drag.offsetX < -threshold) goTo(1)
+    else if (drag.offsetX > threshold) goTo(-1)
+  }
+
+  const onPointerCancel = () => {
+    drag.isDragging = false
+  }
+
+  return (
+    <div
+      ref={trackRef}
+      className="relative select-none"
+      style={{ touchAction: 'pan-y' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+    >
+      <div className="overflow-hidden" style={{ aspectRatio: '16 / 10' }}>
+        <div
+          className="fp-carousel-track flex transition-transform duration-300 ease-out"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`${name} ${i + 1}`}
+              className="w-full flex-shrink-0 object-cover pointer-events-none"
+              draggable={false}
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
+                  i === current ? 'bg-brand-gold w-6' : 'bg-white/50 hover:bg-white/80'
+                }`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   )
 }
 

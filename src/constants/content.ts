@@ -159,7 +159,7 @@ export const EVENTS: HallEvent[] = [
     id: 'BigRun',
     title: 'BigRun',
     description:
-      '',
+      'BigRun is held twice a month and brings Castlers together for a short run under the night sky. More than a regular workout, it is a shared experience that challenges endurance, clears the mind, and creates a strong sense of unity among hallmates. \n \n As students run side by side, BigRun becomes a space for encouragement, conversation, and camaraderie. Whether for fitness, friendship, or the simple joy of running together, BigRun is a tradition that continues to bring the Hall closer together.',
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'big_run',
@@ -187,7 +187,7 @@ export const EVENTS: HallEvent[] = [
     id: 'island-bike',
     title: 'Island Bike Ride',
     description:
-      '',
+      'Island Bike Ride is held on a late January night, where brothers come together for a memorable ride around Hong Kong Island. Along the way, they pass scenic landmarks such as Repulse Bay and Tai Tam Reservoir, and ride beside the historic tram tracks, making the journey as special as the destination. \n \n More than just a cycling event, Island Bike Ride is a night of shared adventure, endurance, and brotherhood. After hours on the road, the ride ends in Kennedy Town with a well-earned “jocha", yumcha in the morning , bringing the night to a perfect close with good food, laughter, and lasting memories.',
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'common_rooms',
@@ -286,8 +286,8 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Tutor-1',
-    name: 'Mr. Chan Sai Wai 陳世煒',
-    title: 'Residential fellow',
+    name: 'Mr. Raymond Chan Sai Wai 陳世煒',
+    title: 'Junior fellow',
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
     role: 'Tutoring Group',
     imageId: 'person_fellow_2',
@@ -296,8 +296,8 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Tutor-2',
-    name: 'Mr. Jason Wong 黃靖軒',
-    title: 'Residential fellow',
+    name: 'Mr. Jason Wong Ching Hin 黃靖軒',
+    title: 'Junior fellow',
     bio: 'BSc-HKU',
     role: 'Tutoring Group',
     imageId: 'person_counselor',

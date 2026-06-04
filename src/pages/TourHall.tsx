@@ -66,6 +66,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     floor: 'A',
     x: 43,
     y: 88,
+    images: ['/TourHall/Room_A3_1.jpeg', '/TourHall/Room_A3_2.jpeg'],
   },
   {
     id: 'room-a9',
@@ -75,6 +76,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     floor: 'A',
     x: 34,
     y: 85,
+    imageSrc: '/TourHall/Room_A9.jpeg',
   },
   {
     id: 'room-a13',
@@ -93,6 +95,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     floor: 'B',
     x: 43,
     y: 60,
+    imageSrc: '/TourHall/Room_B3.jpeg',
   },
   {
     id: 'room-c3',
@@ -105,7 +108,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
   },
   {
     id: 'room-c12',
-    name: 'Room c12',
+    name: 'Room C12',
     description:
         '',
     floor: 'C',

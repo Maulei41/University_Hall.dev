@@ -120,4 +120,6 @@ export interface FloorPlanPin {
   y: number
   imageId?: string
   imageSrc?: string
+  /** Multiple images — renders a carousel in the detail modal */
+  images?: string[]
 }

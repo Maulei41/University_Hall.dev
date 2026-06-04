@@ -12,7 +12,7 @@ const roleBadgeClass = (role: Person['role']): string => {
   switch (role) {
     case 'warden':
       return 'bg-brand-gold text-brand-bg'
-    case 'Tutoring Group':
+    case 'Tutoring Team':
       return 'bg-brand-emerald text-brand-bg'
     case 'Hall Officer':
       return 'bg-zinc-400 text-brand-bg'
@@ -98,20 +98,20 @@ const PeopleHorizontalTimeline: React.FC<PeopleHorizontalTimelineProps> = ({ peo
                   {/* Content */}
                   <div className="p-3 sm:p-4 flex flex-col flex-1">
                     <span className={`inline-block self-start px-2 py-0.5 rounded text-[10px] font-mono font-semibold mb-2 ${roleBadgeClass(person.role)}`}>
-                      {person.role === 'warden' ? 'Warden' : person.role === 'Tutoring Group' ? 'Tutoring Group' : 'Hall Officer'}
+                      {person.role === 'warden' ? 'Warden' : person.role === 'Tutoring Team' ? 'Tutoring Team' : 'Hall Officer'}
                     </span>
-                    <h3 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-0.5 leading-tight">
+                    <h3 className="font-display text-xl sm:text-lg font-semibold text-brand-text-primary mb-0.5 leading-tight">
                       {person.name}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-brand-gold font-semibold mb-2">
+                    <p className="text-xl sm:text-lg text-brand-gold font-semibold mb-2">
                       {person.title}
                     </p>
-                    {person.bio ? (
-                      <p className="text-[11px] sm:text-xs text-brand-text-muted leading-relaxed line-clamp-2 flex-1">
+                    {person.role !== 'Tutoring Team' && person.bio ? (
+                      <p className="text-xl sm:text-lg text-brand-text-muted leading-relaxed line-clamp-2 flex-1">
                         {person.bio}
                       </p>
-                    ) : person.description ? (
-                      <p className="text-[11px] sm:text-xs text-brand-text-muted leading-relaxed line-clamp-2 italic flex-1">
+                    ) : person.role !== 'Tutoring Team' && person.description ? (
+                      <p className="text-xl sm:text-lg text-brand-text-muted leading-relaxed line-clamp-2 italic flex-1">
                         &ldquo;{person.description}&rdquo;
                       </p>
                     ) : null}

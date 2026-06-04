@@ -8,14 +8,14 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
   switch (role) {
     case 'student-association':
       return { label: "Students' Association", className: 'bg-red-800 text-white' }
-    case 'alumni-association':
-      return { label: 'Alumni Association', className: 'bg-indigo-600 text-white' }
+    case 'alumni-limited':
+      return { label: 'Alumni Limited', className: 'bg-indigo-600 text-white' }
     case 'Hall Officer':
       return { label: 'Hall Officer', className: 'bg-zinc-400 text-brand-bg' }
     case 'warden':
       return { label: 'Warden', className: 'bg-brand-gold text-brand-bg' }
-    case 'Tutoring Group':
-      return { label: 'Tutoring Group', className: 'bg-brand-emerald text-brand-bg' }
+    case 'Tutoring Team':
+      return { label: 'Tutoring Team', className: 'bg-brand-emerald text-brand-bg' }
     default:
       return { label: role, className: 'bg-zinc-400 text-brand-bg' }
   }
@@ -25,7 +25,7 @@ const People: React.FC = () => {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null)
 
   const teamMembers = PEOPLE.filter(
-    (p) => p.role === 'warden' || p.role === 'Tutoring Group' || p.role === 'Hall Officer'
+    (p) => p.role === 'warden' || p.role === 'Tutoring Team' || p.role === 'Hall Officer'
   )
 
   return (

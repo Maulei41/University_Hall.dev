@@ -81,12 +81,12 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="max-w-3xl ml-8 sm:ml-8 lg:ml-0"
           >
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: '100%' }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-1 bg-gradient-to-r from-brand-gold to-brand-emerald mb-8"
-            />
+            {/*<motion.div*/}
+            {/*  initial={{ width: 0 }}*/}
+            {/*  animate={{ width: '100%' }}*/}
+            {/*  transition={{ duration: 0.8, delay: 0.2 }}*/}
+            {/*  className="h-1 bg-gradient-to-r from-brand-gold to-brand-emerald mb-8"*/}
+            {/*/>*/}
 
             <h1 className="text-5xl lg:text-7xl font-display text-brand-gold font-bold  mb-6">
               University Hall
@@ -98,13 +98,13 @@ const Homepage: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/apply">
-                <Button variant="primary" className="w-full sm:w-auto">
-                  Apply Now <ArrowRight size={18} className="ml-2 inline" />
+                <Button variant="secondary" className="w-full sm:w-auto text-xl">
+                  Apply Now <ArrowRight size={24} className="ml-2 inline" />
                 </Button>
               </Link>
               <Link to="/tour-the-hall">
-                <Button variant="secondary" className="w-full sm:w-auto">
-                  <Play size={18} className="mr-2 inline" /> Tour the Hall
+                <Button variant="secondary" className="w-full sm:w-auto text-xl">
+                  <Play size={24} className="mr-2 inline" /> Tour the Hall
                 </Button>
               </Link>
             </div>

@@ -74,8 +74,8 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         '',
     floor: 'A',
-    x: 34,
-    y: 85,
+    x: 31.5,
+    y: 83,
     imageSrc: '/TourHall/Room_A9.jpeg',
   },
   {
@@ -85,7 +85,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
         '',
     floor: 'A',
     x: 25,
-    y: 81,
+    y: 80.5,
   },
   {
     id: 'room-b3',

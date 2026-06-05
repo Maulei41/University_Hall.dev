@@ -21,17 +21,17 @@ interface SpaceCardData {
  */
 const SPACE_DESCRIPTIONS: Record<string, string> = {
   dining_hall:
-    'Placeholder',
+    '',
   library:
-    'Placeholder.',
+    '',
   recreation:
-    'placeholder',
+    '',
   accommodation:
-    'placeholder',
+    '',
   common_rooms:
-    'placeholder',
+    '',
   community_center:
-    'placeholder',
+    '',
 }
 
 /** Build card data from FACILITIES, keyed by imageId */
@@ -198,9 +198,9 @@ const SpacesGallery: React.FC = () => {
           <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
             Facilities
           </h2>
-          <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-            Heritage architecture meets contemporary residential standards
-          </p>
+          {/*<p className="text-xl text-brand-text-muted max-w-2xl mx-auto">*/}
+          {/*  Heritage architecture meets contemporary residential standards*/}
+          {/*</p>*/}
 
           {/* Decorative divider */}
           <motion.div

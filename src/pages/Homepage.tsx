@@ -46,7 +46,7 @@ const WardenGreeting: React.FC = () => {
 const WardenBody: React.FC = () => {
   const { body } = useWardenMessage()
   if (!body) return null
-  return <>{body}</>
+  return <span className="text-xl">{body}</span>
 }
 
 const Homepage: React.FC = () => {

@@ -255,8 +255,8 @@ export const PEOPLE: Person[] = [
     imageId: 'person_warden',
     imageSrc: '/People/Warden.jpeg',
     description:"Welcome to University Hall\n" +
-        "For over 70 years, University Hall has been a cornerstone of HKU, with a global network of thousands of accomplished alumni. We are a community that proudly honors traditional Hong Kong culture while leading the way in creating a modern, inclusive, and vibrant residential life.\n" +
-        "Our unique strength lies in our size. Because we are a close-knit community, you won't just be a face in the crowd; you will know everyone here by name. Yet, despite our small numbers, U-Hall consistently punches above its weight, excelling in university affairs, holding amazing events, and showing surprising ability in our cultural and sports teams.\n" +
+        "For over 70 years, University Hall has been a cornerstone of HKU, with a global network of thousands of accomplished alumni. We are a community that proudly honors traditional Hong Kong culture while leading the way in creating a modern, inclusive, and vibrant residential life.\n" + "\n" +
+        "Our unique strength lies in our size. Because we are a close-knit community, you won't just be a face in the crowd; you will know everyone here by name. Yet, despite our small numbers, U-Hall consistently punches above its weight, excelling in university affairs, holding amazing events, and showing surprising ability in our cultural and sports teams.\n" + "\n" +
         "Living here offers a truly once-in-a-lifetime experience: a historic castle surrounded by nature. But beyond the stunning architecture, U-Hall is a place for personal growth. This is where you will discover your capacity as a leader, push past your limits, and forge lifelong bonds of brotherhood."
   },
   {

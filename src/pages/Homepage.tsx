@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
@@ -6,19 +6,49 @@ import {
   Container,
   Section,
   Button,
-  Badge,
 } from '@components/common/index'
 import {
   FadeInUp,
-  StaggerContainer,
-  StaggerItem,
-  ScaleOnHover,
   ParallexSection,
   HorizontalTimeline,
   SpacesGallery,
+  HallTraditions,
 } from '@components/animations/index'
-import { STATS, TIMELINE_EVENTS, TESTIMONIALS, TRADITIONS } from '@constants/content'
+import { STATS, TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
 import { TestimonialCarousel } from '@components/common/index'
+
+/** Splits "Welcome to University Hall" from the rest of the warden's description. */
+const useWardenMessage = () => {
+  return useMemo(() => {
+    const desc = PEOPLE.find((p) => p.id === 'warden')?.description ?? ''
+    const phrase = 'Welcome to University Hall'
+    const idx = desc.indexOf(phrase)
+    if (idx === -1) return { greeting: '', body: desc }
+    const afterPhrase = desc.slice(idx + phrase.length)
+    const bodyStart = afterPhrase.search(/\S/)  // first non-whitespace char
+    return {
+      greeting: phrase,
+      body: bodyStart === -1 ? '' : afterPhrase.slice(bodyStart),
+    }
+  }, [])
+}
+
+const WardenGreeting: React.FC = () => {
+  const { greeting } = useWardenMessage()
+  if (!greeting) return null
+  return (
+    <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-gold text-center lg:text-left mb-6 leading-tight">
+      {greeting}
+    </h3>
+  )
+}
+
+const WardenBody: React.FC = () => {
+  const { body } = useWardenMessage()
+  if (!body) return null
+  return <>{body}</>
+}
+
 const Homepage: React.FC = () => {
   const textScrollRef = React.useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -220,55 +250,69 @@ const Homepage: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Traditions Preview */}
-      <Section>
+      {/* Warden's Welcome */}
+      <Section className="bg-brand-surface">
         <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Hall Traditions
-              </h2>
-              <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-                Time-honoured events and gatherings that define the University Hall experience
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              className="w-full lg:w-2/5"
+            >
+              <div className="relative">
+                <div className="absolute -inset-3 bg-brand-gold/10 rounded-card blur-2xl" />
+                <img
+                  src={PEOPLE.find((p) => p.id === 'warden')?.imageSrc ?? ''}
+                  alt={PEOPLE.find((p) => p.id === 'warden')?.name ?? 'Warden'}
+                  className="w-full object-cover rounded-card shadow-xl relative"
+                  style={{ aspectRatio: '4 / 5' }}
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* Message */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+              className="w-full lg:w-3/5"
+            >
+              <p className="text-sm font-mono text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
+                From the Warden
               </p>
-            </div>
-          </FadeInUp>
 
-          <StaggerContainer>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {TRADITIONS.filter((t) => t.featured).slice(0, 3).map((tradition) => (
-                <StaggerItem key={tradition.id}>
-                  <ScaleOnHover>
-                    <div className="card-base card-hover flex flex-col h-full">
-                      <Badge variant="gold" className="mb-4">
-                        {tradition.category}
-                      </Badge>
-                      <p className="text-sm text-brand-text-muted font-mono mb-2">
-                        {tradition.frequency}{tradition.established ? ` · Est. ${tradition.established}` : ''}
-                      </p>
-                      <h4 className="font-display text-xl font-semibold text-brand-text-primary mb-3">
-                        {tradition.title}
-                      </h4>
-                      <p className="text-brand-text-muted mb-4 flex-1">{tradition.description}</p>
-                      <Link to="/events" className="text-brand-gold hover:text-brand-gold-light transition-colors inline-flex items-center gap-2 mt-auto">
-                        Learn More <ArrowRight size={16} />
-                      </Link>
-                    </div>
-                  </ScaleOnHover>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
+              <WardenGreeting />
+              <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-base md:text-lg">
+                <WardenBody />
+              </div>
 
-          <div className="text-center mt-12">
-            <Link to="/events">
-              <Button variant="secondary">
-                View All Traditions <ArrowRight size={18} className="ml-2 inline" />
-              </Button>
-            </Link>
+              <div className="mt-6 pt-6 border-t border-brand-border/50">
+                <p className="font-display text-xl font-semibold text-brand-text-primary">
+                  {PEOPLE.find((p) => p.id === 'warden')?.name}
+                </p>
+                <p className="text-sm text-brand-text-muted font-mono mt-0.5">
+                  Warden, University Hall
+                </p>
+              </div>
+              <Link
+                to="/people"
+                className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-xs font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
+              >
+                <span>Meet Our Team</span>
+                <ArrowRight size={14} />
+              </Link>
+            </motion.div>
           </div>
         </Container>
       </Section>
+
+      {/* Traditions Preview — linked with EVENTS + TRADITIONS data */}
+      <HallTraditions />
 
       {/* CTA Section */}
       <Section className="bg-brand-surface">

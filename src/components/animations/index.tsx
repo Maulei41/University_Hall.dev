@@ -262,6 +262,7 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
 }
 
 export { default as SpacesGallery } from './SpacesGallery'
+export { default as HallTraditions } from './HallTraditions'
 export { default as FloorPlanInteractive } from './FloorPlanInteractive'
 export { default as HorizontalTimeline } from './HorizontalTimeline'
 export { default as InteractiveTimeline } from './InteractiveTimeline'

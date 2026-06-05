@@ -256,7 +256,10 @@ export const PEOPLE: Person[] = [
     role: 'warden',
     imageId: 'person_warden',
     imageSrc: '/People/Warden.jpeg',
-    description:"\"Welcome to University Hall! We are the smallest and most intimate halls at HKU, where you really can know everyone by name. We live in one of the oldest, coolest buildings in Hong Kong, and we eat meals together in a refurbished religious chapel. The jungle is at our back door (with wild boars and porcupines), for hiking and running. We are also committed to lead at HKU by giving equal opportunity for everyone - it doesn't matter if you are local or non-local. We are all brothers. Come join and become part of a long tradition of respected and prestigious Castlers!\""
+    description:"Welcome to University Hall\n" +
+        "For over 70 years, University Hall has been a cornerstone of HKU, with a global network of thousands of accomplished alumni. We are a community that proudly honors traditional Hong Kong culture while leading the way in creating a modern, inclusive, and vibrant residential life.\n" +
+        "Our unique strength lies in our size. Because we are a close-knit community, you won't just be a face in the crowd; you will know everyone here by name. Yet, despite our small numbers, U-Hall consistently punches above its weight, excelling in university affairs, holding amazing events, and showing surprising ability in our cultural and sports teams.\n" +
+        "Living here offers a truly once-in-a-lifetime experience: a historic castle surrounded by nature. But beyond the stunning architecture, U-Hall is a place for personal growth. This is where you will discover your capacity as a leader, push past your limits, and forge lifelong bonds of brotherhood."
   },
   {
     id: 'Senior-Resident-Tutor ',

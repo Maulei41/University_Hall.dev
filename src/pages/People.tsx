@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Container, Section, ImagePlaceholder, Badge, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover, PeopleHorizontalTimeline } from '@components/animations/index'
 import { PEOPLE, ASSOCIATIONS } from '@constants/content'
@@ -19,6 +19,29 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
     default:
       return { label: role, className: 'bg-zinc-400 text-brand-bg' }
   }
+}
+
+/** Renders text with "Welcome to University Hall" bolded. */
+const BoldWelcome: React.FC<{ text: string }> = ({ text }) => {
+  const parts = useMemo(() => {
+    const phrase = 'Welcome to University Hall'
+    const regex = new RegExp(`(${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i')
+    return text.split(regex)
+  }, [text])
+
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === 'welcome to university hall' ? (
+          <strong key={i} className="font-semibold text-brand-text-primary">
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  )
 }
 
 const People: React.FC = () => {
@@ -53,31 +76,34 @@ const People: React.FC = () => {
       <Modal
         isOpen={!!selectedPerson}
         onClose={() => setSelectedPerson(null)}
-        maxWidth="lg"
+        maxWidth="4xl"
       >
         {selectedPerson && (
-          <>
-            {/* Photo */}
-            <div className="w-full">
+          <div className="flex flex-col md:flex-row">
+            {/* Photo — left on desktop */}
+            <div className="md:w-1/2 md:shrink-0">
               {selectedPerson.imageSrc ? (
                 <img
                   src={selectedPerson.imageSrc}
                   alt={selectedPerson.name}
-                  className="w-full rounded-t-card"
+                  className="w-full h-full object-cover rounded-t-card md:rounded-tr-none md:rounded-l-card"
+                  style={{ maxHeight: '60vh' }}
                 />
               ) : selectedPerson.imageId ? (
-                <ImagePlaceholder
-                  width={300}
-                  height={300}
-                  imageId={selectedPerson.imageId}
-                  alt={selectedPerson.name}
-                  className="rounded-t-card"
-                />
+                <div className="h-full" style={{ maxHeight: '60vh' }}>
+                  <ImagePlaceholder
+                    width={300}
+                    height={300}
+                    imageId={selectedPerson.imageId}
+                    alt={selectedPerson.name}
+                    className="h-full rounded-t-card md:rounded-tr-none md:rounded-l-card"
+                  />
+                </div>
               ) : null}
             </div>
 
-            {/* Content */}
-            <div className="p-6 sm:p-8">
+            {/* Content — right on desktop */}
+            <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center">
               {selectedPerson.role === 'student-association' || selectedPerson.role === 'Hall Officer' ? (
                 <span className={`inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 ${roleLabel(selectedPerson.role).className}`}>
                   {roleLabel(selectedPerson.role).label}
@@ -100,8 +126,8 @@ const People: React.FC = () => {
               </p>
 
               {selectedPerson.description && (
-                <p className="text-brand-text-muted text-sm leading-relaxed mb-4 italic">
-                  {selectedPerson.description}
+                <p className="text-brand-text-muted text-sm leading-relaxed mb-4 italic whitespace-pre-line">
+                  <BoldWelcome text={selectedPerson.description} />
                 </p>
               )}
 
@@ -111,7 +137,7 @@ const People: React.FC = () => {
                 </p>
               )}
             </div>
-          </>
+          </div>
         )}
       </Modal>
 

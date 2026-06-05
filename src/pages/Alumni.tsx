@@ -191,7 +191,7 @@ const Alumni: React.FC = () => {
 
                       {/* Row 3+: Everyone else in grid */}
                       {alOthers.length > 0 && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                           {alOthers.map((person) => (
                             <ALCard key={person.id} person={person} />
                           ))}

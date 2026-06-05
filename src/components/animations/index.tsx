@@ -267,6 +267,7 @@ export { default as FloorPlanInteractive } from './FloorPlanInteractive'
 export { default as HorizontalTimeline } from './HorizontalTimeline'
 export { default as InteractiveTimeline } from './InteractiveTimeline'
 export { default as PeopleHorizontalTimeline } from './PeopleHorizontalTimeline'
+export { default as PathDrawing } from './PathDrawing'
 
 interface GalleryGridProps {
   children: React.ReactNode

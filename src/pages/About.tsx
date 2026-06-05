@@ -7,6 +7,7 @@ import {
   StaggerItem,
   ScaleOnHover,
   InteractiveTimeline,
+  PathDrawing,
 } from '@components/animations/index'
 import { TIMELINE_EVENTS, PHILOSOPHY_PILLARS, HALL_TREASURES } from '@constants/content'
 import type { HallTreasure } from '@constants/content'
@@ -194,20 +195,10 @@ const About: React.FC = () => {
           </>
         )}
       </Modal>
-      {/* Values Quote */}
+      {/* Path Drawing */}
       <Section>
         <Container>
-          <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto py-12"
-          >
-            <p className="text-3xl lg:text-6xl font-display font-semibold text-brand-gold italic mb-6">
-              "We go with Brothers!"
-            </p>
-            <p className="text-brand-text-muted">— University Hall</p>
-          </motion.div>
+          <PathDrawing />
         </Container>
       </Section>
     </>

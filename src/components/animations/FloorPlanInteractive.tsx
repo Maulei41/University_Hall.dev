@@ -69,7 +69,7 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
                 aria-label={`View details for ${pin.name}`}
               >
                 {/* Glow ring */}
-                <span className="absolute -inset-2 rounded-full animate-ping bg-brand-gold/40" />
+                <span className="absolute -inset-2 rounded-full bg-brand-gold/30" />
 
                 {/* Pin icon */}
                 <MapPin
@@ -136,8 +136,8 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
                 <img
                   src={selectedPin.imageSrc || selectedPin.images![0]}
                   alt={selectedPin.name}
-                  className="w-full object-cover"
-                  style={{ aspectRatio: '16 / 10' }}
+                  className="w-full object-contain bg-brand-bg"
+                  style={{ maxHeight: '65vh' }}
                   loading="lazy"
                 />
               ) : (
@@ -232,9 +232,9 @@ const PinCarousel: React.FC<{ images: string[]; name: string }> = ({ images, nam
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}
     >
-      <div className="overflow-hidden" style={{ aspectRatio: '16 / 10' }}>
+      <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
         <div
-          className="fp-carousel-track flex transition-transform duration-300 ease-out"
+          className="fp-carousel-track flex transition-transform duration-300 ease-out w-full"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {images.map((src, i) => (
@@ -242,7 +242,7 @@ const PinCarousel: React.FC<{ images: string[]; name: string }> = ({ images, nam
               key={i}
               src={src}
               alt={`${name} ${i + 1}`}
-              className="w-full flex-shrink-0 object-cover pointer-events-none"
+              className="w-full flex-shrink-0 object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
             />

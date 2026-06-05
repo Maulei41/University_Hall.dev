@@ -108,7 +108,7 @@ const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({ events }) => 
               aria-label={`View details for ${event.title}`}
             >
               <div
-                className={`card-base overflow-hidden transition-shadow duration-300 h-full flex flex-col ${
+                className={`card-base overflow-hidden transition-shadow duration-300 h-full flex flex-col max-h-[460px] ${
                   idx === activeIndex
                     ? 'shadow-card-hover ring-1 ring-brand-gold/40'
                     : 'shadow-card'

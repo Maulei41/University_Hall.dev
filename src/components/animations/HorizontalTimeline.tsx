@@ -44,9 +44,9 @@ const HorizontalTimeline: React.FC<HorizontalTimelineProps> = ({ events }) => {
                 <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-4">
                   Our History
                 </h2>
-                <p className="text-3xl text-brand-text-muted">
-                  placeholder
-                </p>
+                {/*<p className="text-3xl text-brand-text-muted">*/}
+                {/*  placeholder*/}
+                {/*</p>*/}
               </div>
             </div>
 

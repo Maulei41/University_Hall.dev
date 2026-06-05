@@ -30,10 +30,29 @@ export const Footer: React.FC = () => {
             <h3 className="font-display text-2xl font-bold text-brand-gold mb-4">
               University Hall
             </h3>
-            <p className="text-brand-text-muted text-sm leading-relaxed">
-              Premier residential college fostering scholarly excellence, community, and character
-              development since 1956.
+            <p className="text-brand-text-muted text-sm leading-relaxed mb-2.5">
+              Since 1956 - Residential Hall fostering scholarly excellence, community, and character
+              development.
             </p>
+            <div className="flex gap-4 ">
+              {SOCIAL_LINKS.map((link) => {
+                const Icon = iconMap[link.icon as keyof typeof iconMap]
+                if (!Icon) return null
+                return (
+                    <a
+                        key={link.platform}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.platform}
+                        className="flex items-center gap-2 px-4 py-2 bg-brand-bg rounded-card text-brand-text-muted hover:text-brand-gold hover:bg-brand-surface transition-all text-sm"
+                    >
+                      <Icon size={16} />
+                      <span className="hidden sm:inline">{link.platform}</span>
+                    </a>
+                )
+              })}
+            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -66,7 +85,7 @@ export const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-4">
-              Contact
+              Contact Us
             </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
@@ -99,9 +118,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={16} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <div className="text-brand-text-muted">
-                  <p><strong className="text-brand-text-primary">Weekdays:</strong> {OFFICE_INFO.hours.weekday}</p>
-                </div>
+                  <span><strong className="text-brand-text-primary">Weekdays:</strong> {OFFICE_INFO.hours.weekday}</span>
               </li>
             </ul>
           </motion.div>
@@ -114,27 +131,9 @@ export const Footer: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8 border-t border-brand-border"
         >
-          <div className="flex gap-4">
-            {SOCIAL_LINKS.map((link) => {
-              const Icon = iconMap[link.icon as keyof typeof iconMap]
-              if (!Icon) return null
-              return (
-                <a
-                  key={link.platform}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.platform}
-                  className="flex items-center gap-2 px-4 py-2 bg-brand-bg rounded-card text-brand-text-muted hover:text-brand-gold hover:bg-brand-surface transition-all text-sm"
-                >
-                  <Icon size={16} />
-                  <span className="hidden sm:inline">{link.platform}</span>
-                </a>
-              )
-            })}
-          </div>
+
           <p className="text-xs text-brand-text-muted">
-            &copy; {new Date().getFullYear()} University Hall, The University of Hong Kong. All
+            &copy; 1956 - {new Date().getFullYear()} University Hall, The University of Hong Kong. All
             rights reserved.
           </p>
         </motion.div>

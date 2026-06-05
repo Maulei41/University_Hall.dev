@@ -21,17 +21,17 @@ interface TraditionItem {
 
 const FALLBACK_DESCRIPTIONS: Record<string, string> = {
   'high-table-dinner':
-    'A formal gathering where residents dine beneath the Gothic arches of the chapel-turned-dining-hall, continuing a tradition of collegiality and refined discourse.',
+    'placeholder',
   'founders-nite':
-    'An annual celebration honouring the founders and heritage of University Hall, bringing together past and present Castlers in fellowship.',
+    'placeholder',
   'castlers-nite':
-    'The signature annual event where the Hall community gathers to celebrate the Castler spirit through performances, awards, and shared memories.',
+    'placeholder',
   'nazarene-nite':
-    'A commemorative evening reflecting on the Hall\'s history as Nazareth House, blending heritage appreciation with community celebration.',
-  baisun:
-    'A traditional ceremony that marks important milestones in the Hall calendar, rooted in Chinese cultural practices of respect and renewal.',
+    'placeholder',
+  'baisun':
+    'placeholder',
   'reunion-dinner':
-    'An annual gathering that reunites alumni and current residents, strengthening the bonds that make University Hall a lifelong community.',
+    'placeholder',
 }
 
 /* ── Build items from EVENTS + TRADITIONS ──────────────────── */
@@ -41,6 +41,7 @@ const buildItems = (): TraditionItem[] => {
 
   for (const event of EVENTS) {
     if (!event.featured) continue
+    if (event.id === 'BigRun') continue
     items.push({
       key: `event-${event.id}`,
       imageId: event.imageId,
@@ -55,9 +56,29 @@ const buildItems = (): TraditionItem[] => {
     })
   }
 
+  const baisun = TRADITIONS.find((t) => t.id === 'baisun')
+  if (baisun) {
+    items.push({
+      key: `tradition-${baisun.id}`,
+      imageId: baisun.imageId,
+      title: baisun.title,
+      description:
+        baisun.description ||
+        FALLBACK_DESCRIPTIONS[baisun.id] ||
+        `A time-honoured ${baisun.category.toLowerCase()} tradition at University Hall, held ${baisun.frequency.toLowerCase()}.`,
+      badgeLabel: baisun.frequency,
+      metaIcon: <Clock size={13} />,
+      metaText: baisun.established
+        ? `${baisun.frequency} · Est. ${baisun.established}`
+        : baisun.frequency,
+      category: baisun.category,
+    })
+  }
+
   let count = 0
   for (const tradition of TRADITIONS) {
     if (!tradition.featured || count >= 3) continue
+    if (tradition.id === 'baisun') continue
     count++
     items.push({
       key: `tradition-${tradition.id}`,
@@ -249,7 +270,7 @@ const HallTraditions: React.FC = () => {
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-3">
-            Event & Traditions
+            Events & Traditions
           </h2>
           <p className="text-sm md:text-base text-brand-text-muted max-w-xl mx-auto">
             Time-honoured events and gatherings that define the University Hall experience

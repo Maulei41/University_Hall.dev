@@ -327,8 +327,8 @@ const Homepage: React.FC = () => {
               Ready to Join Our Community?
             </h2>
             <p className="text-lg text-brand-text-muted max-w-2xl mx-auto mb-8">
-              University Hall seeks scholars and leaders committed to excellence, community, and
-              character. Begin your journey with us.
+              University Hall welcomes student leaders committed to academic excellence, community engagement, and
+              character development. Begin your journey with us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/apply">

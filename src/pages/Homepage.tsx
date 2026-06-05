@@ -14,7 +14,7 @@ import {
   SpacesGallery,
   HallTraditions,
 } from '@components/animations/index'
-import { STATS, TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
+import {  TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
 import { TestimonialCarousel } from '@components/common/index'
 
 /** Splits "Welcome to University Hall" from the rest of the warden's description. */
@@ -66,7 +66,7 @@ const Homepage: React.FC = () => {
       <ParallexSection offset={40} className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/HomePage/University-Hall-1.png"
+            src="/HomePage/University-Hall-1.jpeg"
             alt="University Hall heritage building"
             className="w-full h-full object-cover"
             loading="eager"
@@ -74,12 +74,12 @@ const Homepage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-bg/30 via-brand-bg/70 to-brand-surface" />
         </div>
 
-        <Container className="relative z-10">
+        <Container className="relative z-10 pt-48 sm:pt-64">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-            className="max-w-3xl"
+            className="max-w-3xl ml-8 sm:ml-8 lg:ml-0"
           >
             <motion.div
               initial={{ width: 0 }}
@@ -109,22 +109,22 @@ const Homepage: React.FC = () => {
               </Link>
             </div>
 
-            <div className="mt-16 flex flex-col sm:flex-row gap-8">
-              {STATS.map((stat, idx) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + idx * 0.1 }}
-                >
-                  <div className="text-4xl font-display font-bold text-brand-gold">
-                    {stat.value}
-                  </div>
-                  <div className="text-2xl text-brand-text-muted mt-1">{stat.label}</div>
-                  <div className="text-xl text-brand-text-muted mt-1">{stat.description}</div>
-                </motion.div>
-              ))}
-            </div>
+            {/*<div className="mt-16 flex flex-col sm:flex-row gap-8">*/}
+            {/*  {STATS.map((stat, idx) => (*/}
+            {/*    <motion.div*/}
+            {/*      key={stat.label}*/}
+            {/*      initial={{ opacity: 0, y: 20 }}*/}
+            {/*      animate={{ opacity: 1, y: 0 }}*/}
+            {/*      transition={{ delay: 0.4 + idx * 0.1 }}*/}
+            {/*    >*/}
+            {/*      <div className="text-4xl font-display font-bold text-brand-gold">*/}
+            {/*        {stat.value}*/}
+            {/*      </div>*/}
+            {/*      <div className="text-2xl text-brand-text-muted mt-1">{stat.label}</div>*/}
+            {/*      <div className="text-xl text-brand-text-muted mt-1">{stat.description}</div>*/}
+            {/*    </motion.div>*/}
+            {/*  ))}*/}
+            {/*</div>*/}
           </motion.div>
         </Container>
       </ParallexSection>

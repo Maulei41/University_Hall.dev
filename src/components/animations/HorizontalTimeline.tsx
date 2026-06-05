@@ -42,10 +42,10 @@ const HorizontalTimeline: React.FC<HorizontalTimelineProps> = ({ events }) => {
             <div className="flex-shrink-0 w-screen h-full flex items-center justify-center bg-brand-bg">
               <div className="text-center max-w-xl px-8">
                 <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-4">
-                  Our Heritage
+                  Our History
                 </h2>
-                <p className="text-lg text-brand-text-muted">
-                  Over a century of scholarly tradition and residential excellence
+                <p className="text-3xl text-brand-text-muted">
+                  placeholder
                 </p>
               </div>
             </div>

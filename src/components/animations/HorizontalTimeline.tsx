@@ -80,7 +80,7 @@ const HorizontalTimeline: React.FC<HorizontalTimelineProps> = ({ events }) => {
 
                 {/* Content at bottom-left */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 lg:p-16 max-w-2xl">
-                  <span className="inline-block bg-brand-gold/20 backdrop-blur-sm text-brand-gold px-3 py-1 rounded-full text-xs font-mono font-semibold mb-3 tracking-wide">
+                  <span className="inline-block bg-brand-gold/20 backdrop-blur-sm text-brand-gold px-3 py-1 rounded-full text-xl font-mono font-semibold mb-3 tracking-wide">
                     {event.year}
                   </span>
                   <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight">

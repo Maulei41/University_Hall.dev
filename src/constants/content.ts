@@ -2,7 +2,7 @@ import { TimelineEvent, Facility, HallTradition, HallEvent, HallTeam, Person, Te
 
 export const TIMELINE_EVENTS: TimelineEvent[] = [
   {
-    year: '1861–1867',
+    year: '1860s',
     title: 'The Beginning of Douglas Castle',
     description: 'The story of UHall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city\'s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence.\n' +
         '\n' +
@@ -61,7 +61,7 @@ export const FACILITIES: Facility[] = [
   {
     id: 'dining-hall',
     category: 'Dining',
-    title: 'Dining Hall (Chapel)',
+    title: 'Dining Hall',
     description:
       '',
     imageId: 'dining_hall',

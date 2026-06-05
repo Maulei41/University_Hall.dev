@@ -223,7 +223,7 @@ const Homepage: React.FC = () => {
       {/* Timeline Section — Anne Frank House style (full-bleed, no Container constraint) */}
       <Section className="bg-brand-surface overflow-x-clip">
         <FadeInUp>
-          <HorizontalTimeline events={TIMELINE_EVENTS} />
+          <HorizontalTimeline events={TIMELINE_EVENTS.filter((e) => e.title !== 'Wartime Disruption and Change')} />
         </FadeInUp>
       </Section>
 

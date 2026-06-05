@@ -196,10 +196,10 @@ const SpacesGallery: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-            Spaces of Excellence
+            Facilities
           </h2>
           <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
-            Heritage architecture meeting contemporary residential standards
+            Heritage architecture meets contemporary residential standards
           </p>
 
           {/* Decorative divider */}

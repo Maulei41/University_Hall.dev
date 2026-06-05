@@ -147,7 +147,7 @@ const People: React.FC = () => {
           <FadeInUp>
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-4">
-                Students' Association — Section 2026-27
+                Students' Association
               </h2>
               <p className="text-brand-text-muted text-sm sm:text-base max-w-xl mx-auto">
                 {ASSOCIATIONS.find((a) => a.id === 'student-association')?.description}

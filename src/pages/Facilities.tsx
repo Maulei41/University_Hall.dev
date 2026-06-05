@@ -24,42 +24,42 @@ const Facilities: React.FC = () => {
       </Section>
 
       {/* ===== MAIN FAÇADE ===== */}
-      <Section>
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-brand-gold/10 rounded-card blur-2xl" />
-              <img
-                src="/Facilities/Main_Façade.jpg"
-                alt="Main Façade of University Hall — Tudor and Neo-Gothic architecture"
-                className="w-full object-cover rounded-card shadow-xl relative"
-                style={{ aspectRatio: '16 / 10' }}
-                loading="lazy"
-              />
-            </motion.div>
+      {/*<Section>*/}
+      {/*  <Container>*/}
+      {/*    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">*/}
+      {/*      <motion.div*/}
+      {/*        initial={{ opacity: 0, x: -30 }}*/}
+      {/*        whileInView={{ opacity: 1, x: 0 }}*/}
+      {/*        viewport={{ once: true, margin: '-80px' }}*/}
+      {/*        transition={{ duration: 0.6 }}*/}
+      {/*        className="relative"*/}
+      {/*      >*/}
+      {/*        <div className="absolute -inset-4 bg-brand-gold/10 rounded-card blur-2xl" />*/}
+      {/*        <img*/}
+      {/*          src="/Facilities/Main_Façade.jpg"*/}
+      {/*          alt="Main Façade of University Hall — Tudor and Neo-Gothic architecture"*/}
+      {/*          className="w-full object-cover rounded-card shadow-xl relative"*/}
+      {/*          style={{ aspectRatio: '16 / 10' }}*/}
+      {/*          loading="lazy"*/}
+      {/*        />*/}
+      {/*      </motion.div>*/}
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-6">
-                Main Façade
-              </h2>
-              <p className="text-brand-text-muted text-lg leading-relaxed">
-                University Hall, as a declared monument, is one of the few castles in Hong Kong. The hall features a splendid architectural style that combines Tudor and Neo-Gothic elements.
-              </p>
-            </motion.div>
-          </div>
-        </Container>
-      </Section>
+      {/*      <motion.div*/}
+      {/*        initial={{ opacity: 0, x: 30 }}*/}
+      {/*        whileInView={{ opacity: 1, x: 0 }}*/}
+      {/*        viewport={{ once: true, margin: '-80px' }}*/}
+      {/*        transition={{ duration: 0.6, delay: 0.15 }}*/}
+      {/*      >*/}
+      {/*        <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-6">*/}
+      {/*          Main Façade*/}
+      {/*        </h2>*/}
+      {/*        <p className="text-brand-text-muted text-lg leading-relaxed">*/}
+      {/*          University Hall, as a declared monument, is one of the few castles in Hong Kong. The hall features a splendid architectural style that combines Tudor and Neo-Gothic elements.*/}
+      {/*        </p>*/}
+      {/*      </motion.div>*/}
+      {/*    </div>*/}
+      {/*  </Container>*/}
+      {/*</Section>*/}
 
       {/* ===== Per-Category Sections ===== */}
       {categories.map((category, idx) => {
@@ -67,7 +67,7 @@ const Facilities: React.FC = () => {
         if (facilities.length === 0) return null
 
         return (
-          <Section key={category} className={idx % 2 === 0 ? 'bg-brand-surface' : ''}>
+          <Section key={category} className={idx % 2 === 1 ? 'bg-brand-surface' : ''}>
             <Container>
               <FadeInUp>
                 <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">

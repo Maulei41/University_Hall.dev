@@ -74,7 +74,7 @@ const About: React.FC = () => {
                 Milestones in Our History
               </h2>
               <p className="text-brand-text-muted text-xl max-w-xl mx-auto">
-                Click the year markers or use ← → arrow keys to explore our journey
+                Charting the defining moments, rich tradition s, and historic achievements that shaped the UHall legacy
               </p>
             </div>
           </FadeInUp>

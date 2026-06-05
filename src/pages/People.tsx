@@ -160,38 +160,79 @@ const People: React.FC = () => {
             </div>
           </FadeInUp>
 
-          <StaggerContainer>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
-              {PEOPLE.filter((p) => p.role === 'student-association').map((person) => {
-                return (
-                  <StaggerItem key={person.id}>
-                    <ScaleOnHover>
-                      <div className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
-                        {/* Name */}
-                        <h4 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-1 leading-tight">
-                          {person.name}
-                        </h4>
-
-                        {/* Full title */}
-                        <p className="text-[11px] text-brand-gold/80 font-semibold mb-2 leading-tight">
-                          {person.title}
-                        </p>
-
-                        {/* Bio */}
-                        <p className="text-xs text-brand-text-muted mt-auto">
-                          {person.bio}
-                        </p>
-                      </div>
-                    </ScaleOnHover>
-                  </StaggerItem>
-                )
-              })}
-            </div>
-          </StaggerContainer>
+          <StudentAssociationCards />
         </Container>
       </Section>
+
     </>
   )
 }
+
+/* ── Student Association Cards ───────────────────────────── */
+
+const saChairman = PEOPLE.find((p) => p.role === 'student-association' && p.title === 'Chairman')
+const saViceChairmen = PEOPLE.filter(
+  (p) => p.role === 'student-association' && (p.title === 'Internal Vice-Chairman' || p.title === 'External Vice-Chairman'),
+)
+const saOthers = PEOPLE.filter(
+  (p) =>
+    p.role === 'student-association' &&
+    p.title !== 'Chairman' &&
+    p.title !== 'Internal Vice-Chairman' &&
+    p.title !== 'External Vice-Chairman',
+)
+
+const SACard: React.FC<{ person: Person }> = ({ person }) => (
+  <StaggerItem key={person.id}>
+    <ScaleOnHover>
+      <div className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
+        <h4 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-1 leading-tight">
+          {person.name}
+        </h4>
+        <p className="text-[11px] text-brand-gold/80 font-semibold mb-2 leading-tight">
+          {person.title}
+        </p>
+        <p className="text-xs text-brand-text-muted mt-auto">{person.bio}</p>
+      </div>
+    </ScaleOnHover>
+  </StaggerItem>
+)
+
+const StudentAssociationCards: React.FC = () => {
+  return (
+    <StaggerContainer>
+      {/* Row 1: Chairman (centered) */}
+      {saChairman && (
+        <div className="flex justify-center mb-6">
+          <div className="w-full max-w-[220px]">
+            <SACard person={saChairman} />
+          </div>
+        </div>
+      )}
+
+      {/* Row 2: Vice-Chairmen (2 centered) */}
+      {saViceChairmen.length > 0 && (
+        <div className="flex justify-center gap-4 sm:gap-6 mb-6">
+          {saViceChairmen.map((person) => (
+            <div key={person.id} className="w-full max-w-[220px]">
+              <SACard person={person} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Row 3+: Everyone else in grid */}
+      {saOthers.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+          {saOthers.map((person) => (
+            <SACard key={person.id} person={person} />
+          ))}
+        </div>
+      )}
+    </StaggerContainer>
+  )
+}
+
+
 
 export default People

@@ -106,57 +106,100 @@ const Alumni: React.FC = () => {
               </Container>
             </Section>
 
-            {/* People Grid */}
+            {/* People Grid — row-based: Chairman, Vice-Chairmen, then Directors */}
             <Section className="bg-brand-surface">
               <Container>
-                <StaggerContainer>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {alumniPeople.map((person) => (
-                      <StaggerItem key={person.id}>
-                        <ScaleOnHover>
-                          <motion.div
-                            className="card-base card-hover cursor-pointer h-full"
-                            onClick={() => setSelectedPerson(person)}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPerson(person) }}
-                            aria-label={`View details for ${person.name}`}
-                          >
-                            <div className="overflow-hidden rounded-card mb-6 h-64 sm:h-72 md:h-80">
-                              {person.imageSrc ? (
-                                <img
-                                  src={person.imageSrc}
-                                  alt={person.name}
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                />
-                              ) : person.imageId ? (
-                                <ImagePlaceholder
-                                  width={3}
-                                  height={4}
-                                  imageId={person.imageId}
-                                  alt={person.name}
-                                />
-                              ) : null}
+                {(() => {
+                  const alChairman = alumniPeople.find((p) => p.title === 'Chairman')
+                  const alViceChairmen = alumniPeople.filter((p) => p.title === 'Vice Chairman')
+                  const alOthers = alumniPeople.filter(
+                    (p) => p.title !== 'Chairman' && p.title !== 'Vice Chairman',
+                  )
+
+                  const ALCard: React.FC<{ person: typeof PEOPLE[number] }> = ({ person }) => (
+                    <StaggerItem key={person.id}>
+                      <ScaleOnHover>
+                        <motion.div
+                          className="card-base card-hover cursor-pointer h-full"
+                          onClick={() => setSelectedPerson(person)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') setSelectedPerson(person)
+                          }}
+                          aria-label={`View details for ${person.name}`}
+                        >
+                          <div className="overflow-hidden rounded-card mb-4 h-48 sm:h-56">
+                            {person.imageSrc ? (
+                              <img
+                                src={person.imageSrc}
+                                alt={person.name}
+                                className="w-full h-full object-cover object-top"
+                                loading="lazy"
+                              />
+                            ) : person.imageId ? (
+                              <ImagePlaceholder
+                                width={3}
+                                height={4}
+                                imageId={person.imageId}
+                                alt={person.name}
+                              />
+                            ) : null}
+                          </div>
+
+                          <span className="inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-3 bg-indigo-600 text-white">
+                            Alumni Association
+                          </span>
+
+                          <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
+                            {person.name}
+                          </h4>
+
+                          <p className="font-serif text-brand-gold font-semibold mb-2 text-sm">
+                            {person.title}
+                          </p>
+
+                          <p className="text-brand-text-muted text-xs leading-relaxed">
+                            {person.bio}
+                          </p>
+                        </motion.div>
+                      </ScaleOnHover>
+                    </StaggerItem>
+                  )
+
+                  return (
+                    <StaggerContainer>
+                      {/* Row 1: Chairman (centered) */}
+                      {alChairman && (
+                        <div className="flex justify-center mb-8">
+                          <div className="w-full max-w-[260px]">
+                            <ALCard person={alChairman} />
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Row 2: Vice-Chairmen (centered) */}
+                      {alViceChairmen.length > 0 && (
+                        <div className="flex justify-center gap-4 sm:gap-6 mb-8">
+                          {alViceChairmen.map((person) => (
+                            <div key={person.id} className="w-full max-w-[260px]">
+                              <ALCard person={person} />
                             </div>
+                          ))}
+                        </div>
+                      )}
 
-                            <span className="inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 bg-indigo-600 text-white">
-                              Alumni Association
-                            </span>
-
-                            <h4 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
-                              {person.name}
-                            </h4>
-
-                            <p className="font-serif text-brand-gold font-semibold mb-3">{person.title}</p>
-
-                            <p className="text-brand-text-muted text-sm leading-relaxed">{person.bio}</p>
-                          </motion.div>
-                        </ScaleOnHover>
-                      </StaggerItem>
-                    ))}
-                  </div>
-                </StaggerContainer>
+                      {/* Row 3+: Everyone else in grid */}
+                      {alOthers.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                          {alOthers.map((person) => (
+                            <ALCard key={person.id} person={person} />
+                          ))}
+                        </div>
+                      )}
+                    </StaggerContainer>
+                  )
+                })()}
               </Container>
             </Section>
           </>

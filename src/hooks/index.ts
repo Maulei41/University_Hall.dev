@@ -91,6 +91,9 @@ export const useFooterContrast = () => {
 }
 
 export { useMouseTilt } from './useMouseTilt'
+export { useScrollReveal } from './useScrollReveal'
+export { useLenis } from './useSmoothScroll'
+export { SmoothScrollProvider } from './SmoothScrollProvider'
 
 export const useMobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false)

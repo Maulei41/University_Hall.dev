@@ -8,7 +8,11 @@ import {
   slideUpVariants,
   scaleInVariants,
   cardHoverVariants,
+  springGentle,
+  springSnap,
 } from '@utils/animations'
+
+// ── FadeInUp (spring) ───────────────────────────────────────────
 
 interface FadeInUpProps {
   children: React.ReactNode
@@ -25,12 +29,14 @@ export const FadeInUp: React.FC<FadeInUpProps> = ({ children, delay = 0 }) => {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={slideUpVariants}
-      transition={{ delay: prefersReducedMotion ? 0 : delay }}
+      transition={prefersReducedMotion ? { duration: 0 } : { ...springGentle, delay }}
     >
       {children}
     </motion.div>
   )
 }
+
+// ── Stagger container / item (spring) ───────────────────────────
 
 interface StaggerContainerProps {
   children: React.ReactNode
@@ -53,6 +59,7 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({ children, de
           transition: {
             ...(containerVariants.visible as any).transition,
             delayChildren: prefersReducedMotion ? 0 : delay,
+            ...springGentle,
           },
         },
       }}
@@ -71,6 +78,8 @@ export const StaggerItem: React.FC<StaggerItemProps> = ({ children, className })
   <motion.div variants={itemVariants} className={className}>{children}</motion.div>
 )
 
+// ── Scale on hover (spring) ─────────────────────────────────────
+
 interface ScaleOnHoverProps {
   children: React.ReactNode
   className?: string
@@ -86,6 +95,8 @@ export const ScaleOnHover: React.FC<ScaleOnHoverProps> = ({ children, className 
     {children}
   </motion.div>
 )
+
+// ── Parallax section (spring) ───────────────────────────────────
 
 interface ParallexSectionProps {
   children: React.ReactNode
@@ -114,13 +125,15 @@ export const ParallexSection: React.FC<ParallexSectionProps> = ({
       ref={ref}
       initial={{ y: offset }}
       animate={isInView ? { y: offset * 0.5 } : { y: offset }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={springGentle}
       className={className}
     >
       {children}
     </motion.div>
   )
 }
+
+// ── Timeline node ───────────────────────────────────────────────
 
 interface TimelineNodeProps {
   year: number | string
@@ -153,6 +166,7 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
         variants={slideUpVariants}
+        transition={springGentle}
         className={`relative flex gap-8 ${isRight ? 'flex-row-reverse' : ''}`}
       >
         <div className="flex-1">
@@ -165,7 +179,6 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
             onKeyDown={(e) => { if (e.key === 'Enter') setIsModalOpen(true) }}
             aria-label={`View details for ${title}`}
           >
-            {/* Image at top of card */}
             {imageSrc ? (
               <img
                 src={imageSrc}
@@ -194,22 +207,17 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
 
         {/* Center column: connector line + dot + connector line */}
         <div className="flex flex-col items-center shrink-0 self-stretch">
-          {/* Upward connector (hidden for first node) */}
           <div className={`w-px flex-1 min-h-[1.5rem] ${isFirst ? 'opacity-0' : 'bg-brand-gold/30'}`} />
-
-          {/* Dot */}
           <motion.div
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : { scale: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ ...springSnap, delay: 0.3 }}
             className={`rounded-full border-brand-bg z-10 shrink-0 ${
               isLast
                 ? 'w-5 h-5 border-[3px] bg-transparent border-brand-gold'
                 : 'w-5 h-5 bg-brand-gold border-[3px]'
             }`}
           />
-
-          {/* Downward connector (hidden for last node) */}
           <div className={`w-px flex-1 min-h-[1.5rem] ${isLast ? 'opacity-0' : 'bg-brand-gold/30'}`} />
         </div>
 
@@ -223,7 +231,6 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
         maxWidth="4xl"
       >
         <div className="flex flex-col md:flex-row">
-          {/* Image — left side on desktop */}
           <div className="md:w-1/2">
             {imageSrc ? (
               <img
@@ -243,8 +250,6 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
               />
             ) : null}
           </div>
-
-          {/* Text — right side on desktop */}
           <div className="md:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
             <span className="inline-block bg-brand-gold text-brand-bg px-4 py-2 rounded-card text-sm font-mono font-semibold mb-4 w-fit">
               {year}
@@ -262,13 +267,7 @@ export const TimelineNode: React.FC<TimelineNodeProps> = ({
   )
 }
 
-export { default as SpacesGallery } from './SpacesGallery'
-export { default as HallTraditions } from './HallTraditions'
-export { default as FloorPlanInteractive } from './FloorPlanInteractive'
-export { default as HorizontalTimeline } from './HorizontalTimeline'
-export { default as InteractiveTimeline } from './InteractiveTimeline'
-export { default as PeopleHorizontalTimeline } from './PeopleHorizontalTimeline'
-export { default as PathDrawing } from './PathDrawing'
+// ── Gallery grid (spring stagger) ───────────────────────────────
 
 interface GalleryGridProps {
   children: React.ReactNode
@@ -296,7 +295,8 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ children, columns = 3 
           ...(containerVariants.visible as any),
           transition: {
             ...(containerVariants.visible as any).transition,
-            staggerChildren: prefersReducedMotion ? 0 : 0.1,
+            staggerChildren: prefersReducedMotion ? 0 : 0.08,
+            ...springGentle,
           },
         },
       }}
@@ -308,3 +308,19 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ children, columns = 3 
     </motion.div>
   )
 }
+
+// ── Re-exports ──────────────────────────────────────────────────
+
+export { default as SpacesGallery } from './SpacesGallery'
+export { default as HallTraditions } from './HallTraditions'
+export { default as FloorPlanInteractive } from './FloorPlanInteractive'
+export { default as HorizontalTimeline } from './HorizontalTimeline'
+export { default as InteractiveTimeline } from './InteractiveTimeline'
+export { default as PeopleHorizontalTimeline } from './PeopleHorizontalTimeline'
+export { default as PathDrawing } from './PathDrawing'
+export {
+  ScrollMaskReveal,
+  ScrollWipeReveal,
+  ScrollDrawSVG,
+  ProgressiveReveal,
+} from './ScrollReveal'

@@ -1,6 +1,6 @@
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
 
@@ -51,7 +51,7 @@ const LoadingSpinner = () => (
           strokeLinejoin="round"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 1, ease: 'easeInOut' }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         />
       </motion.svg>
     </div>
@@ -60,7 +60,7 @@ const LoadingSpinner = () => (
       className="text-brand-text-muted text-sm font-mono tracking-widest"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.6, duration: 0.4 }}
+      transition={{ delay: 0.3, duration: 0.25 }}
     >
       LOADING
     </motion.p>
@@ -68,30 +68,50 @@ const LoadingSpinner = () => (
 )
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true)
+
+  useEffect(() => {
+    // Let the crest animation play fully before revealing the page
+    const timer = setTimeout(() => setShowSplash(false), 900)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (showSplash) {
+    return <LoadingSpinner />
+  }
+
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-brand-bg">
-        <Header />
-        <main className="flex-1">
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/facilities" element={<Facilities />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/life" element={<Life />} />
-              <Route path="/people" element={<People />} />
-              <Route path="/alumni" element={<Alumni />} />
-              <Route path="/apply" element={<Apply />} />
-              <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
-              <Route path="/tour-the-hall" element={<TourHall />} />
-              <Route path="/faq" element={<FAQ />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="app"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex flex-col min-h-screen bg-brand-bg"
+        >
+          <Header />
+          <main className="flex-1">
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/facilities" element={<Facilities />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/life" element={<Life />} />
+                <Route path="/people" element={<People />} />
+                <Route path="/alumni" element={<Alumni />} />
+                <Route path="/apply" element={<Apply />} />
+                <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
+                <Route path="/tour-the-hall" element={<TourHall />} />
+                <Route path="/faq" element={<FAQ />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+        </motion.div>
+      </AnimatePresence>
     </Router>
   )
 }

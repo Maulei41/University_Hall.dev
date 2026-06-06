@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, Printer, MapPin, Clock, Globe, Camera, MessageCircle, Send, Play } from 'lucide-react'
+import { Mail, Phone, Printer, MapPin, Clock } from 'lucide-react'
+import { Globe, InstagramLogo, ThreadsLogo, YoutubeLogo } from '@phosphor-icons/react'
 import { Container } from '@components/common/index'
 import { useFooterContrast } from '@hooks/index'
 import { NAV_LINKS, SOCIAL_LINKS, OFFICE_INFO } from '@constants/content'
@@ -10,10 +11,9 @@ export const Footer: React.FC = () => {
   const { ref, bgClass } = useFooterContrast()
   const iconMap: Record<string, React.FC<{size?: number; className?: string}>> = {
     linkedin: Globe,
-    instagram: Camera,
-    facebook: MessageCircle,
-    twitter: Send,
-    youtube: Play,
+    instagram: InstagramLogo,
+    threads: ThreadsLogo,
+    youtube: YoutubeLogo,
   }
 
   return (

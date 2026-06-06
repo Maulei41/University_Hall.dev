@@ -923,7 +923,7 @@ export const ALUMNI_VISITS: AlumniVisit[] = [
 
 export const SOCIAL_LINKS = [
   { platform: 'Instagram', url: 'https://www.instagram.com/universityhall_hku/', icon: 'instagram' },
-  { platform: 'Facebook', url: 'https://www.facebook.com/uhall.hku/#', icon: 'facebook' },
+  { platform: 'Threads', url: 'https://www.threads.com/@universityhall_hku', icon: 'threads' },
   { platform: "Youtube", url: 'https://www.youtube.com/@universityhallhku2902/videos', icon: 'youtube' },
 ]
 

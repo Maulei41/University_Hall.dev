@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
 import { LOGO_PATHS, LOGO_VIEWBOX } from '@constants/logoPaths'
+import {PathDrawing} from "@components/animations";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -31,14 +32,14 @@ const LoadingSpinner = () => (
       {/* Each path draws in sequence with staggered start */}
       <motion.svg
         viewBox={LOGO_VIEWBOX}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full text-brand-gold"
       >
         {LOGO_PATHS.map((d, i) => (
           <motion.path
             key={i}
             d={d}
             fill="none"
-            stroke="#C9A84C"
+            stroke="currentColor"
             strokeWidth={1.2}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -53,15 +54,34 @@ const LoadingSpinner = () => (
         ))}
       </motion.svg>
     </div>
+    <PathDrawing />
 
-    <motion.p
-      className="text-brand-text-muted text-sm font-mono tracking-widest"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.4, duration: 0.25 }}
-    >
-      UNIVERSITY HALL
-    </motion.p>
+    {/* "UNIVERSITY HALL" drawn like PathDrawing on About page */}
+    {/*<svg*/}
+    {/*  viewBox="0 0 300 60"*/}
+    {/*  className="w-48 sm:w-56 text-brand-gold"*/}
+    {/*  xmlns="http://www.w3.org/2000/svg"*/}
+    {/*>*/}
+    {/*  <motion.text*/}
+    {/*    x="150"*/}
+    {/*    y="44"*/}
+    {/*    textAnchor="middle"*/}
+    {/*    fontSize="36"*/}
+    {/*    fontFamily="'JetBrains Mono', monospace"*/}
+    {/*    fontWeight="500"*/}
+    {/*    fill="none"*/}
+    {/*    stroke="currentColor"*/}
+    {/*    strokeWidth="2"*/}
+    {/*    strokeLinecap="round"*/}
+    {/*    strokeLinejoin="round"*/}
+    {/*    strokeDasharray={1200}*/}
+    {/*    initial={{ strokeDashoffset: 1200 }}*/}
+    {/*    animate={{ strokeDashoffset: 0 }}*/}
+    {/*    transition={{ delay: 1.4, duration: 0.8, ease: 'easeInOut' }}*/}
+    {/*  >*/}
+    {/*    UNIVERSITY HALL*/}
+    {/*  </motion.text>*/}
+    {/*</svg>*/}
   </div>
 )
 

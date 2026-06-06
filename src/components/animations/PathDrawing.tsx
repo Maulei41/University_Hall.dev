@@ -20,7 +20,7 @@ export default function PathDrawing({ title = "University Hall" }: PathDrawingPr
         animate={{
           opacity: isInView ? 1 : 0.3,
         }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <motion.text
           x="400"
@@ -37,7 +37,7 @@ export default function PathDrawing({ title = "University Hall" }: PathDrawingPr
           animate={{
             strokeDashoffset: isInView ? 0 : TEXT_LENGTH,
           }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 3.5, ease: "easeInOut" }}
           strokeDasharray={TEXT_LENGTH}
         >
           {title}

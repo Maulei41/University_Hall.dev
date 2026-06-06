@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
             <img
               src="/University_Hall_Logo.svg"
               alt="University Hall"
-              className="h-8 sm:h-10 lg:h-16 w-auto"
+              className="h-12 sm:h-12 lg:h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
             <span className="inline ">University Hall</span>

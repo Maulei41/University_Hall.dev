@@ -36,15 +36,15 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 font-display text-3xl font-bold text-brand-gold hover:text-brand-gold-light transition-colors"
+            className="flex items-center gap-3 font-display text-4xl font-bold text-brand-gold hover:text-brand-gold-light transition-colors"
           >
             <img
               src="/University_Hall_Logo.svg"
               alt="University Hall"
-              className="h-8 sm:h-10 lg:h-14 w-auto"
+              className="h-8 sm:h-10 lg:h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <span className="hidden sm:inline">University Hall</span>
+            <span className="">University Hall</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -11,6 +11,7 @@ import { EVENTS, TRADITIONS } from '@constants/content'
 interface TraditionItem {
   key: string
   imageId: string
+  imageSrc: string
   title: string
   description: string
   badgeLabel: string
@@ -45,6 +46,7 @@ const buildItems = (): TraditionItem[] => {
     items.push({
       key: `event-${event.id}`,
       imageId: event.imageId,
+      imageSrc: event.imageSrc || '',
       title: event.title,
       description:
         event.description ||
@@ -61,6 +63,7 @@ const buildItems = (): TraditionItem[] => {
     items.push({
       key: `tradition-${baisun.id}`,
       imageId: baisun.imageId,
+      imageSrc: baisun.imageSrc || '',
       title: baisun.title,
       description:
         baisun.description ||
@@ -79,10 +82,12 @@ const buildItems = (): TraditionItem[] => {
   for (const tradition of TRADITIONS) {
     if (!tradition.featured || count >= 3) continue
     if (tradition.id === 'baisun') continue
+    if (tradition.id === 'castlers-nite') continue
     count++
     items.push({
       key: `tradition-${tradition.id}`,
       imageId: tradition.imageId,
+      imageSrc: tradition.imageSrc || '',
       title: tradition.title,
       description:
         tradition.description ||
@@ -204,13 +209,22 @@ const RevealPanel: React.FC<PanelProps> = ({ item }) => (
         animate={{ scale: 1 }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       >
-        <ImagePlaceholder
-          width={500}
-          height={312}
-          imageId={item.imageId}
-          alt={item.title}
-          className="w-full h-full rounded-card"
-        />
+        {item.imageSrc ? (
+          <img
+            src={item.imageSrc}
+            alt={item.title}
+            className="w-full h-full object-cover rounded-card"
+            loading="lazy"
+          />
+        ) : (
+          <ImagePlaceholder
+            width={500}
+            height={312}
+            imageId={item.imageId}
+            alt={item.title}
+            className="w-full h-full rounded-card"
+          />
+        )}
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/40 to-transparent pointer-events-none" />
     </div>

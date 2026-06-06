@@ -182,9 +182,9 @@ export const EVENTS: HallEvent[] = [
   },
   {
     id: 'BigRun',
-    title: 'BigRun',
+    title: 'Big Run',
     description:
-      'BigRun is held twice a month and brings Castlers together for a short run under the night sky. More than a regular workout, it is a shared experience that challenges endurance, clears the mind, and creates a strong sense of unity among hallmates. \n \n As students run side by side, BigRun becomes a space for encouragement, conversation, and camaraderie. Whether for fitness, friendship, or the simple joy of running together, BigRun is a tradition that continues to bring the Hall closer together.',
+      'Big Run is held twice a month and brings Castlers together for a short run under the night sky. More than a regular workout, it is a shared experience that challenges endurance, clears the mind, and creates a strong sense of unity among hallmates. \n \n As students run side by side, BigRun becomes a space for encouragement, conversation, and camaraderie. Whether for fitness, friendship, or the simple joy of running together, BigRun is a tradition that continues to bring the Hall closer together.',
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'big_run',
@@ -197,6 +197,7 @@ export const EVENTS: HallEvent[] = [
       '',
     category: 'Social',
     location: 'University Hall',
+    imageSrc: '/Event_Tradition/SuperPass.jpeg',
     imageId: 'dining_hall',
   },
   {
@@ -227,7 +228,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       '',
     category: 'Social',
-    frequency: 'Monthly',
+    frequency: 'monthly',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/High_Table_1.jpeg',
     images: ['/Event_Tradition/High_Table_1.jpeg', '/Event_Tradition/High_Table_2.jpeg', '/Event_Tradition/High_Table_3.jpeg', '/Event_Tradition/High_Table_4.jpeg', '/Event_Tradition/High_Table_5.jpeg'],
@@ -239,7 +240,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       '',
     category: 'Social',
-    frequency: 'Annual',
+    frequency: 'annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Founders_Nite.jpeg',
     featured: true,
@@ -250,7 +251,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       '',
     category: 'Social',
-    frequency: 'Annual',
+    frequency: 'annual',
     imageId: 'dining_hall',
     // imageSrc: '/Event_Tradition/Castlers_Nite.jpeg',
     featured: true,
@@ -261,7 +262,7 @@ export const TRADITIONS: HallTradition[] = [
     category: 'Social',
     description:
       '',
-    frequency: 'Annual',
+    frequency: 'annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Nazarene_Nite.jpeg',
     featured: true,
@@ -272,7 +273,8 @@ export const TRADITIONS: HallTradition[] = [
     description:
       '',
     category: 'Community',
-    frequency: 'Annual',
+    imageSrc: '/Event_Tradition/BaiSun.jpg',
+    frequency: 'annual',
     imageId: 'dining_hall',
   },
   {
@@ -281,7 +283,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       '',
     category: 'Community',
-    frequency: 'Annual',
+    frequency: 'annual',
     imageId: 'dining_hall',
   }
 ]

@@ -23,7 +23,7 @@ export interface HallTradition {
   title: string
   description: string
   category: string
-  frequency: 'Annual' | 'Bi-Annual' | 'Monthly' | 'One-Time'
+  frequency: 'annual' | 'Bi-Annual' | 'monthly' | 'One-Time'
   established?: string
   imageId: string
   imageSrc?: string

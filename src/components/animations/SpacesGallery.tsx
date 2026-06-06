@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '@hooks/index'
 import { useMouseTilt } from '@hooks/index'
@@ -10,6 +11,8 @@ import { FACILITIES } from '@constants/content'
 interface SpaceCardData {
   /** imageId used for ImagePlaceholder */
   imageId: string
+  /** imageSrc for actual facility image */
+  imageSrc: string
   title: string
   description: string
   tag: string
@@ -44,6 +47,7 @@ const buildSpaceCards = (): SpaceCardData[] => {
     seen.add(facility.imageId)
     cards.push({
       imageId: facility.imageId,
+      imageSrc: facility.imageSrc || '',
       title: facility.title,
       description:
         facility.description || SPACE_DESCRIPTIONS[facility.imageId] || '',
@@ -96,13 +100,22 @@ const SpaceCard: React.FC<SpaceCardProps> = ({ space, index, prefersReducedMotio
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="w-full h-full"
         >
-          <ImagePlaceholder
-            width={400}
-            height={300}
-            imageId={space.imageId}
-            alt={space.title}
-            className="w-full h-full rounded-card"
-          />
+          {space.imageSrc ? (
+            <img
+              src={space.imageSrc}
+              alt={space.title}
+              className="w-full h-full object-cover rounded-card"
+              loading="lazy"
+            />
+          ) : (
+            <ImagePlaceholder
+              width={400}
+              height={300}
+              imageId={space.imageId}
+              alt={space.title}
+              className="w-full h-full rounded-card"
+            />
+          )}
         </motion.div>
 
         {/* Gradient overlay — darkens bottom for title legibility */}
@@ -157,19 +170,28 @@ const SpaceCard: React.FC<SpaceCardProps> = ({ space, index, prefersReducedMotio
           {space.description}
         </motion.p>
 
-        {/* Hover CTA */}
-        <motion.div
-          initial={{ opacity: 0, x: -8 }}
-          animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="mt-3 flex items-center gap-1.5 text-brand-gold text-xs font-mono font-semibold uppercase tracking-wider"
+        {/* Hover CTA — navigates to Facilities page */}
+        <Link
+          to="/facilities"
+          className="mt-3 flex items-center gap-1.5 text-brand-gold text-xs font-mono font-semibold uppercase tracking-wider group/link"
         >
-          <span>Explore</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <motion.span
+            initial={{ opacity: 0, x: -8 }}
+            animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
+            Explore
+          </motion.span>
+          <motion.svg
+            width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            initial={{ opacity: 0, x: -8 }}
+            animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
             <path d="M5 12h14" />
             <path d="m12 5 7 7-7 7" />
-          </svg>
-        </motion.div>
+          </motion.svg>
+        </Link>
       </div>
     </motion.div>
   )

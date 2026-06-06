@@ -43,7 +43,7 @@ const LoadingSpinner = () => (
             d={d}
             fill="none"
             stroke="#C9A84C"
-            strokeWidth={2}
+            strokeWidth={3}
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ pathLength: 0 }}

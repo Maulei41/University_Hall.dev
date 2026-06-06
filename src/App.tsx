@@ -45,7 +45,7 @@ const LoadingSpinner = () => (
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{
-              duration: 0.3,
+              duration: 0.5,
               ease: 'easeInOut',
               delay: i * 0.028,
             }}
@@ -91,7 +91,8 @@ export default function App() {
         >
           <Header />
           <main className="flex-1">
-            <Suspense fallback={<LoadingSpinner />}>
+            {/*<Suspense fallback={<LoadingSpinner />}>*/}
+            <Suspense>
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/about" element={<About />} />

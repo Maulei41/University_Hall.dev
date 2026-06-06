@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { lazyWithDelay } from '@utils/lazyWithDelay'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -15,18 +15,18 @@ const ScrollToTop = () => {
 
 const MIN_LOADING_MS = 3500
 
-// Lazy load pages with a minimum delay so the LoadingSpinner animation plays fully
+// Only Homepage keeps the forced delay so the loading animation plays on first visit
 const Homepage = lazyWithDelay(() => import('@pages/Homepage'), MIN_LOADING_MS)
-const About = lazyWithDelay(() => import('@pages/About'), MIN_LOADING_MS)
-const Facilities = lazyWithDelay(() => import('@pages/Facilities'), MIN_LOADING_MS)
-const Events = lazyWithDelay(() => import('@pages/Events'), MIN_LOADING_MS)
-const Life = lazyWithDelay(() => import('@pages/Life'), MIN_LOADING_MS)
-const People = lazyWithDelay(() => import('@pages/People'), MIN_LOADING_MS)
-const Alumni = lazyWithDelay(() => import('@pages/Alumni'), MIN_LOADING_MS)
-const Apply = lazyWithDelay(() => import('@pages/Apply'), MIN_LOADING_MS)
-const AffiliatedMembership = lazyWithDelay(() => import('@pages/AffiliatedMembership'), MIN_LOADING_MS)
-const TourHall = lazyWithDelay(() => import('@pages/TourHall'), MIN_LOADING_MS)
-const FAQ = lazyWithDelay(() => import('@pages/FAQ'), MIN_LOADING_MS)
+const About = lazy(() => import('@pages/About'))
+const Facilities = lazy(() => import('@pages/Facilities'))
+const Events = lazy(() => import('@pages/Events'))
+const Life = lazy(() => import('@pages/Life'))
+const People = lazy(() => import('@pages/People'))
+const Alumni = lazy(() => import('@pages/Alumni'))
+const Apply = lazy(() => import('@pages/Apply'))
+const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
+const TourHall = lazy(() => import('@pages/TourHall'))
+const FAQ = lazy(() => import('@pages/FAQ'))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center gap-6">
@@ -42,14 +42,14 @@ const LoadingSpinner = () => (
             key={i}
             d={d}
             fill="none"
-            stroke="currentColor"
-            strokeWidth={1.2}
+            stroke="#C9A84C"
+            strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{
-              duration: 0.5,
+              duration: 3,
               ease: 'easeInOut',
               delay: i * 0.028,
             }}
@@ -58,33 +58,6 @@ const LoadingSpinner = () => (
       </motion.svg>
     </div>
     <PathDrawing />
-
-    {/* "UNIVERSITY HALL" drawn like PathDrawing on About page */}
-    {/*<svg*/}
-    {/*  viewBox="0 0 300 60"*/}
-    {/*  className="w-48 sm:w-56 text-brand-gold"*/}
-    {/*  xmlns="http://www.w3.org/2000/svg"*/}
-    {/*>*/}
-    {/*  <motion.text*/}
-    {/*    x="150"*/}
-    {/*    y="44"*/}
-    {/*    textAnchor="middle"*/}
-    {/*    fontSize="36"*/}
-    {/*    fontFamily="'JetBrains Mono', monospace"*/}
-    {/*    fontWeight="500"*/}
-    {/*    fill="none"*/}
-    {/*    stroke="currentColor"*/}
-    {/*    strokeWidth="2"*/}
-    {/*    strokeLinecap="round"*/}
-    {/*    strokeLinejoin="round"*/}
-    {/*    strokeDasharray={1200}*/}
-    {/*    initial={{ strokeDashoffset: 1200 }}*/}
-    {/*    animate={{ strokeDashoffset: 0 }}*/}
-    {/*    transition={{ delay: 1.4, duration: 0.8, ease: 'easeInOut' }}*/}
-    {/*  >*/}
-    {/*    UNIVERSITY HALL*/}
-    {/*  </motion.text>*/}
-    {/*</svg>*/}
   </div>
 )
 

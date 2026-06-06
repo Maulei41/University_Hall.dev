@@ -37,7 +37,7 @@ export default function PathDrawing({ title = "University Hall" }: PathDrawingPr
           animate={{
             strokeDashoffset: isInView ? 0 : TEXT_LENGTH,
           }}
-          transition={{ duration: 3.5, ease: "easeInOut" }}
+          transition={{ duration: 3, ease: "easeInOut" }}
           strokeDasharray={TEXT_LENGTH}
         >
           {title}

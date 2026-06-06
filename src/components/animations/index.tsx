@@ -64,10 +64,11 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({ children, de
 
 interface StaggerItemProps {
   children: React.ReactNode
+  className?: string
 }
 
-export const StaggerItem: React.FC<StaggerItemProps> = ({ children }) => (
-  <motion.div variants={itemVariants}>{children}</motion.div>
+export const StaggerItem: React.FC<StaggerItemProps> = ({ children, className }) => (
+  <motion.div variants={itemVariants} className={className}>{children}</motion.div>
 )
 
 interface ScaleOnHoverProps {

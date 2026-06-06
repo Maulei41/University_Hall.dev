@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import React from 'react'
+import { motion } from 'framer-motion'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
 import MapSection from '@components/common/MapSection'
-import { FAQ_ITEMS, OFFICE_INFO } from '@constants/content'
+import { OFFICE_INFO } from '@constants/content'
 
 const Apply: React.FC = () => {
-  const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null)
-
-
   return (
     <>
       {/* Hero */}
@@ -38,62 +34,6 @@ const Apply: React.FC = () => {
               Affiliated Membership →
             </a>
           </FadeInUp>
-        </Container>
-      </Section>
-
-      {/* FAQ Section */}
-      <Section >
-        <Container>
-          <FadeInUp>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Frequently Asked Questions
-              </h2>
-            </div>
-          </FadeInUp>
-
-          <div className="max-w-2xl mx-auto space-y-4">
-            {FAQ_ITEMS.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="card-base border border-brand-border hover:border-brand-gold transition-colors"
-              >
-                <button
-                  onClick={() =>
-                    setExpandedFAQ(expandedFAQ === item.question ? null : item.question)
-                  }
-                  className="w-full text-left flex items-center justify-between py-2"
-                >
-                  <h4 className="font-serif font-semibold text-brand-text-primary">
-                    {item.question}
-                  </h4>
-                  <motion.div
-                    animate={{ rotate: expandedFAQ === item.question ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="text-brand-gold" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence>
-                  {expandedFAQ === item.question && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4 pt-4 border-t border-brand-border"
-                    >
-                      <p className="text-brand-text-muted">{item.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
         </Container>
       </Section>
 

@@ -12,6 +12,9 @@ export interface Facility {
   title: string
   description: string
   imageId: string
+  imageSrc?: string
+  /** Multiple images — renders an inline carousel instead of a single image */
+  images?: string[]
   features: string[]
 }
 
@@ -23,6 +26,9 @@ export interface HallTradition {
   frequency: 'Annual' | 'Bi-Annual' | 'Monthly' | 'One-Time'
   established?: string
   imageId: string
+  imageSrc?: string
+  /** Multiple images — renders an inline carousel instead of a single image */
+  images?: string[]
   featured?: boolean
 }
 
@@ -33,6 +39,9 @@ export interface HallEvent {
   category: string
   location: string
   imageId: string
+  imageSrc?: string
+  /** Multiple images — renders an inline carousel instead of a single image */
+  images?: string[]
   rsvpLink?: string
   featured?: boolean
 }
@@ -40,6 +49,7 @@ export interface HallEvent {
 export interface Person {
   id: string
   name: string
+  chineseName?: string
   title: string
   bio: string
   role: 'warden' | 'Tutoring Team' | 'Hall Officer' | 'student-association' | 'alumni-limited'

@@ -4,21 +4,22 @@ import { FadeInUp, FloorPlanInteractive } from '@components/animations/index'
 import type { FloorPlanPin } from '../types/index'
 
 const FLOOR_PLAN_PINS: FloorPlanPin[] = [
-  {
-    id: 'main-entrance',
-    name: 'Main Entrance',
-    description:
-      '',
-    floor: 'B',
-    x: 57,
-    y: 62,
-  },
+  // {
+  //   id: 'main-entrance',
+  //   name: 'Main Entrance',
+  //   description:
+  //     '',
+  //   floor: 'B',
+  //   x: 57,
+  //   y: 62,
+  // },
   {
     id: 'dining-hall',
-    name: 'Dining Hall (Chapel)',
+    name: 'Dining Hall',
     description:
       '',
     floor: 'B',
+    images: ['/Facilities/Dining_Hall_1.jpeg', '/Facilities/Dining_Hall_2.jpg'],
     x: 72,
     y: 55,
   },
@@ -28,6 +29,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
       '',
     floor: 'A',
+    images: ['/Facilities/Common_Room_1.jpeg', '/Facilities/Common_Room_2.jpg'],
     x: 72,
     y: 82.5,
   },
@@ -37,6 +39,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         '',
     floor: 'A',
+    images: ['/Facilities/Gym_1.jpeg', '/Facilities/Gym_2.jpeg', '/Facilities/Gym_3.jpeg', '/Facilities/Gym_4.jpeg', '/Facilities/Gym_5.jpeg', '/Facilities/Gym_6.jpeg', '/Facilities/Gym_7.jpeg'],
     x: 84,
     y: 87.5,
   },
@@ -55,8 +58,9 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         '',
     floor: 'C',
-    x: 68,
-    y: 30,
+    imageSrc: '/Facilities/Hall_Library_1.jpeg',
+    x: 72.5,
+    y: 31.5,
   },
   {
     id: 'room-a3',
@@ -112,6 +116,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         '',
     floor: 'C',
+    imageSrc: '/TourHall/Room_C12_1.jpeg',
     x: 34,
     y: 26,
   },

@@ -10,38 +10,16 @@ interface FloorPlanInteractiveProps {
   alt?: string
 }
 
-const FLOOR_OPTIONS = ['All', 'A', 'B', 'C'] as const
-
 const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
   pins,
   imageSrc,
   alt = 'University Hall Floor Plan',
 }) => {
-  const [activeFloor, setActiveFloor] = useState<'All' | 'A' | 'B' | 'C'>('All')
   const [hoveredPin, setHoveredPin] = useState<string | null>(null)
   const [selectedPin, setSelectedPin] = useState<FloorPlanPin | null>(null)
 
-  const filteredPins = activeFloor === 'All' ? pins : pins.filter((p) => p.floor === activeFloor)
-
   return (
     <>
-      {/* Floor filter tabs */}
-      <div className="flex justify-center gap-2 mb-6">
-        {FLOOR_OPTIONS.map((floor) => (
-          <button
-            key={floor}
-            onClick={() => setActiveFloor(floor)}
-            className={`px-4 py-2 rounded-card text-sm font-mono font-semibold transition-colors ${
-              activeFloor === floor
-                ? 'bg-brand-gold text-brand-bg'
-                : 'bg-brand-surface text-brand-text-muted hover:text-brand-text-primary border border-brand-border'
-            }`}
-          >
-            {floor === 'All' ? 'All Floors' : `${floor} Floor`}
-          </button>
-        ))}
-      </div>
-
       {/* Floor plan image with pin overlays */}
       <div className="relative w-full select-none">
         <img
@@ -52,7 +30,7 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
         />
 
         {/* Pins */}
-        {filteredPins.map((pin) => (
+        {pins.map((pin) => (
           <div
             key={pin.id}
             className="absolute"

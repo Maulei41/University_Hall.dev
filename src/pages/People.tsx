@@ -117,9 +117,15 @@ const People: React.FC = () => {
                 </Badge>
               )}
 
-              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-brand-text-primary mb-2">
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-brand-text-primary mb-0.5">
                 {selectedPerson.name}
               </h2>
+
+              {selectedPerson.chineseName && (
+                <p className="font-serif text-xl text-brand-text-muted/70 mb-2">
+                  {selectedPerson.chineseName}
+                </p>
+              )}
 
               <p className="font-serif text-brand-gold font-semibold text-lg mb-6">
                 {selectedPerson.title}
@@ -183,12 +189,17 @@ const saOthers = PEOPLE.filter(
 )
 
 const SACard: React.FC<{ person: Person }> = ({ person }) => (
-  <StaggerItem key={person.id}>
-    <ScaleOnHover>
+  <StaggerItem className="h-full">
+    <ScaleOnHover className="h-full">
       <div className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
-        <h4 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-1 leading-tight">
+        <h4 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-0.5 leading-tight">
           {person.name}
         </h4>
+        {person.chineseName && (
+          <p className="text-sm text-brand-text-muted/70 mb-1 leading-tight">
+            {person.chineseName}
+          </p>
+        )}
         <p className="text-[11px] text-brand-gold/80 font-semibold mb-2 leading-tight">
           {person.title}
         </p>
@@ -203,20 +214,18 @@ const StudentAssociationCards: React.FC = () => {
     <StaggerContainer>
       {/* Row 1: Chairman (centered) */}
       {saChairman && (
-        <div className="flex justify-center mb-6">
-          <div className="w-full max-w-[220px]">
+        <div className="flex justify-center mb-6 items-stretch">
+          <div className="w-full max-w-[220px] h-full">
             <SACard person={saChairman} />
           </div>
         </div>
       )}
 
-      {/* Row 2: Vice-Chairmen (2 centered) */}
+      {/* Row 2: Vice-Chairmen (2 centered, grid ensures equal height) */}
       {saViceChairmen.length > 0 && (
-        <div className="flex justify-center gap-4 sm:gap-6 mb-6">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 max-w-[460px] mx-auto">
           {saViceChairmen.map((person) => (
-            <div key={person.id} className="w-full max-w-[220px]">
-              <SACard person={person} />
-            </div>
+            <SACard key={person.id} person={person} />
           ))}
         </div>
       )}

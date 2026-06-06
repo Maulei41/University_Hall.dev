@@ -63,6 +63,8 @@ export const FACILITIES: Facility[] = [
     description:
       '',
     imageId: 'dining_hall',
+    imageSrc: '/Facilities/Dining_Hall_1.jpeg',
+    images: ['/Facilities/Dining_Hall_1.jpeg', '/Facilities/Dining_Hall_2.jpg'],
     features: [
       'PlaceHolder'
     ],
@@ -74,6 +76,7 @@ export const FACILITIES: Facility[] = [
     description:
       '',
     imageId: 'library',
+    imageSrc: '/Facilities/Hall_Library_1.jpeg',
     features: [
       'PlaceHolder'
     ],
@@ -85,6 +88,8 @@ export const FACILITIES: Facility[] = [
     description:
       '',
     imageId: 'recreation',
+    imageSrc: '/Facilities/Gym_1.jpeg',
+    images: ['/Facilities/Gym_1.jpeg', '/Facilities/Gym_2.jpeg', '/Facilities/Gym_3.jpeg', '/Facilities/Gym_4.jpeg', '/Facilities/Gym_5.jpeg', '/Facilities/Gym_6.jpeg', '/Facilities/Gym_7.jpeg'],
     features: [
       'PlaceHolder',
     ],
@@ -96,6 +101,8 @@ export const FACILITIES: Facility[] = [
     description:
       '',
     imageId: 'accommodation',
+    imageSrc: '/Facilities/Common_Room_1.jpeg',
+    images: ['/Facilities/Common_Room_1.jpeg', '/Facilities/Common_Room_2.jpg'],
     features: [
       'PlaceHolder'
     ],
@@ -107,21 +114,22 @@ export const FACILITIES: Facility[] = [
     description:
       '',
     imageId: 'common_rooms',
+    imageSrc: '/Facilities/Nawspaper_Room.jpeg',
     features: [
       'PlaceHolder'
     ],
   },
-  {
-    id: 'vending-machine',
-    category: 'Amenities',
-    title: 'Vending Machines',
-    description:
-      '',
-    imageId: 'community_center',
-    features: [
-      'PlaceHolder',
-    ],
-  },
+  // {
+  //   id: 'vending-machine',
+  //   category: 'Amenities',
+  //   title: 'Vending Machines',
+  //   description:
+  //     '',
+  //   imageId: 'community_center',
+  //   features: [
+  //     'PlaceHolder',
+  //   ],
+  // },
   {
     id: 'laundry_room',
     category: 'Amenities',
@@ -129,6 +137,7 @@ export const FACILITIES: Facility[] = [
     description:
         '',
     imageId: 'community_center',
+    imageSrc: '/Facilities/laundry_room.jpg',
     features: [
       'PlaceHolder',
     ],
@@ -140,6 +149,7 @@ export const FACILITIES: Facility[] = [
     description:
         '',
     imageId: 'community_center',
+    imageSrc: '/Facilities/pantry.jpg',
     features: [
       'PlaceHolder',
     ],
@@ -155,6 +165,7 @@ export const EVENTS: HallEvent[] = [
     category: 'Cultural',
     location: 'University Hall',
     imageId: 'dining_hall',
+    imageSrc: '/Event_Tradition/Halloween.jpeg',
     featured: true,
   },
   {
@@ -165,6 +176,8 @@ export const EVENTS: HallEvent[] = [
     category: 'Cultural',
     location: 'Pok Fu Lam Village',
     imageId: 'fire_dragon',
+    imageSrc: '/Event_Tradition/Fire_Dragon_1.jpeg',
+    images: ['/Event_Tradition/Fire_Dragon_1.jpeg', '/Event_Tradition/Fire_Dragon_2.jpeg'],
     featured: true,
   },
   {
@@ -194,12 +207,13 @@ export const EVENTS: HallEvent[] = [
     category: 'Recreation',
     location: 'HKU Campus',
     imageId: 'recreation',
+    images: ['/Life/Uhall_Softball_1.jpg', '/Life/Uhall_Hockey_1.jpeg', "/Life/Uhall_Dance_2.jpeg"]
   },
   {
     id: 'island-bike',
     title: 'Island Bike Ride',
     description:
-      'Island Bike Ride is held on a late January night, where brothers come together for a memorable ride around Hong Kong Island. Along the way, they pass scenic landmarks such as Repulse Bay and Tai Tam Reservoir, and ride beside the historic tram tracks, making the journey as special as the destination. \n \n More than just a cycling event, Island Bike Ride is a night of shared adventure, endurance, and brotherhood. After hours on the road, the ride ends in Kennedy Town with a well-earned “jocha", yumcha in the morning , bringing the night to a perfect close with good food, laughter, and lasting memories.',
+      'Island Bike Ride is held on a late January night, where brothers come together for a memorable ride around Hong Kong Island. Along the way, they pass scenic landmarks such as Repulse Bay and Tai Tam Reservoir, and ride beside the historic tram tracks, making the journey as special as the destination. \n \n More than just a cycling event, Island Bike Ride is a night of shared adventure, endurance, and brotherhood. After hours on the road, the ride ends in Kennedy Town with a well-earned "jocha", yumcha in the morning , bringing the night to a perfect close with good food, laughter, and lasting memories.',
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'common_rooms',
@@ -215,6 +229,8 @@ export const TRADITIONS: HallTradition[] = [
     category: 'Social',
     frequency: 'Monthly',
     imageId: 'dining_hall',
+    imageSrc: '/Event_Tradition/High_Table_1.jpeg',
+    images: ['/Event_Tradition/High_Table_1.jpeg', '/Event_Tradition/High_Table_2.jpeg', '/Event_Tradition/High_Table_3.jpeg', '/Event_Tradition/High_Table_4.jpeg', '/Event_Tradition/High_Table_5.jpeg'],
     featured: true,
   },
   {
@@ -225,6 +241,7 @@ export const TRADITIONS: HallTradition[] = [
     category: 'Social',
     frequency: 'Annual',
     imageId: 'dining_hall',
+    imageSrc: '/Event_Tradition/Founders_Nite.jpeg',
     featured: true,
   },
   {
@@ -235,6 +252,7 @@ export const TRADITIONS: HallTradition[] = [
     category: 'Social',
     frequency: 'Annual',
     imageId: 'dining_hall',
+    // imageSrc: '/Event_Tradition/Castlers_Nite.jpeg',
     featured: true,
   },
   {
@@ -245,6 +263,7 @@ export const TRADITIONS: HallTradition[] = [
       '',
     frequency: 'Annual',
     imageId: 'dining_hall',
+    imageSrc: '/Event_Tradition/Nazarene_Nite.jpeg',
     featured: true,
   },
   {
@@ -270,7 +289,7 @@ export const TRADITIONS: HallTradition[] = [
 export const PEOPLE: Person[] = [
   {
     id: 'warden',
-    name: 'Mr. Beau Linton Lefler',
+    name: 'Mr. Beau Linton LEFLER',
     title: 'Warden',
     bio: 'Principal Lecturer, HKU Business School',
     role: 'warden',
@@ -283,7 +302,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Senior-Resident-Tutor ',
-    name: 'Mr. Sam Liu Shan 劉山',
+    name: 'Mr. Sam LIU Shan 劉山',
     title: 'Senior Resident Tutor',
     bio: 'Lecturer, Faculty of Law.',
     role: 'Tutoring Team',
@@ -292,7 +311,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Resident-Tutor',
-    name: 'Dr. Vincent Chan Nok Hang 陳諾衡',
+    name: 'Dr. Vincent CHAN Nok Hang 陳諾衡',
     title: 'Resident Team',
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
     role: 'Tutoring Team',
@@ -301,7 +320,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Tutor-1',
-    name: 'Mr. Raymond Chan Sai Wai 陳世煒',
+    name: 'Mr. Raymond CHAN Sai Wai 陳世煒',
     title: 'Junior fellow',
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
     role: 'Tutoring Team',
@@ -311,7 +330,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Tutor-2',
-    name: 'Mr. Jason Wong Ching Hin 黃靖軒',
+    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
     title: 'Junior fellow',
     bio: 'BSc-HKU',
     role: 'Tutoring Team',
@@ -320,7 +339,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Tutor-3',
-    name: 'Mr. Tom Tam Yan Chi',
+    name: 'Mr. Tom TAM Yan Chi',
     title: 'Non-residential fellow',
     bio: '',
     role: 'Tutoring Team',
@@ -337,22 +356,22 @@ export const PEOPLE: Person[] = [
     imageSrc: "/People/Ivy_Chan.jpeg",
   },
   // Students' Association
-  { id: 'sa-Chairman', name: 'Woo Chi To 胡智滔', title: 'Chairman', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-IV', name: 'Chang Crispo Shun Man 鄭舜文', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-EV', name: 'Tam Tsz Ho 譚子皓', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-secretary', name: 'Pathak Atharv', title: 'Honorary Secretary', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-treasurer', name: 'Fu Chit Wa 符哲華', title: 'Honorary Treasurer', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Financial', name: 'Ho Ka Kit', title: 'Financial Secretary', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Welfare', name: 'Lam Max Yee Hong 林以康', title: 'Welfare Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Sports-Secretary', name: 'Kerem Bilgin', title: 'Sports Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Sports-Captain', name: 'Aktan Rakhat', title: 'Sports Captain ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Cultural', name: 'Zou Jiachen 邹佳辰', title: 'Cultural Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Social', name: 'Kemausuor Winambe Tetteh-Kumah', title: 'Social Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Publication', name: 'Chau Cheuk Hei 周倬希', title: 'Publication Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Publicity', name: 'Devanshu Gupta', title: 'Publicity Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-AA', name: 'Huynh Duy Khoa', title: 'Alumni and Non-resident Affairs Secretary  ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-CA', name: 'Karimli Yusuf', title: 'Current Affairs Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Past-Committee-Representative', name: 'Yu Pak Hin', title: 'Past Committee Representative ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Chairman', name: 'Mr. WOO Chi To', chineseName: '胡智滔', title: 'Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-IV', name: 'Mr. CHANG Crispo Shun Man', chineseName: '鄭舜文', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-EV', name: 'Mr. TAM Tsz Ho', chineseName: '譚子皓', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-secretary', name: 'Mr. PATHAK Atharv', title: 'Honorary Secretary', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-treasurer', name: 'Mr. FU Chit Wa', chineseName: '符哲華', title: 'Honorary Treasurer', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Financial', name: 'Mr. HO Ka Kit', chineseName:"何家傑", title: 'Financial Secretary', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Welfare', name: 'Mr. LAM Max Yee Hong', chineseName: '林以康', title: 'Welfare Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Sports-Secretary', name: 'Mr. Kerem BILGIN', title: 'Sports Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Sports-Captain', name: 'Mr. Aktan RAKHAT', title: 'Sports Captain ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Cultural', name: 'Mr. ZOU Jiachen', chineseName: '邹佳辰', title: 'Cultural Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Social', name: 'Mr. Kemausuor Winambe TETTEH-KUMAH', title: 'Social Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Publication', name: 'Mr. CHAU Cheuk Hei', chineseName: '周倬希', title: 'Publication Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Publicity', name: 'Mr. Devanshu GUPTA', title: 'Publicity Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-AA', name: 'Mr. HUYNH Duy Khoa', title: 'Alumni and Non-resident Affairs Secretary  ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-CA', name: 'Mr. Yusuf KARIMLI', title: 'Current Affairs Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Past-Committee-Representative', name: 'Mr. YU Pak Hin', chineseName:"俞柏軒", title: 'Past Committee Representative ', bio: 'Session 2026-27', role: 'student-association' },
 
   // Alumni Association
   { id: 'aa-chair',
@@ -419,7 +438,7 @@ export const PEOPLE: Person[] = [
     description:"Jonathan resided in University Hall from 1975 to 1979. \"Boot-boot\" was a sports enthusiast in representing UH and Faculty of Medicine. He is currently the Medical Superintendent of Precious Blood Hospital(Caritas); holding several professorships in teaching medical students in HKU and CUHK. He has engaged in various voluntary works and lately retired as Deputy Commissioner of the Auxiliary Medical Service of HKSAR in 2023."
   },
   { id: 'aa-Director-3',
-    name: 'Mr. Danny Tsoi',
+    name: 'Dr. Danny Tsoi',
     title: 'Director',
     bio: 'Session 2024-26',
     role: 'alumni-limited',
@@ -568,6 +587,7 @@ export const NAV_LINKS = [
   { label: 'Events & Traditions', href: '/events' },
   { label: 'Life', href: '/life' },
   { label: 'People', href: '/people' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Alumni', href: '/alumni' },
   { label: 'Apply', href: '/apply' },
 ]
@@ -657,7 +677,8 @@ export const HALL_TEAMS: HallTeam[] = [
       'Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!✨',
     category: 'Culture',
     imageId: 'common_rooms',
-    imageSrc: '/Life/Uhall_Dance.jpeg',
+    imageSrc: '/Life/Uhall_Dance_1.jpeg',
+    images:['/Life/Uhall_Dance_2.jpeg', '/Life/Uhall_Dance_1.jpeg']
   },
   {
     id: 'seasonal-dragon-boat',
@@ -835,6 +856,8 @@ export interface HallTreasure {
   description: string
   imageId: string
   imageSrc?: string
+  /** Multiple images — renders an inline carousel instead of a single image */
+  images?: string[]
 }
 
 export const HALL_TREASURES: HallTreasure[] = [
@@ -844,7 +867,8 @@ export const HALL_TREASURES: HallTreasure[] = [
     description:
       'The beautiful and decorative cast iron spiral staircase at the corner of the chapel connects the three floors and facilitates speedy commute.',
     imageId: 'golden_staircase',
-    imageSrc: '/Facilities/Golden_Spiral_Staircase.jpg',
+    imageSrc: '/Facilities/Golden_Spiral_Staircase_1.jpeg',
+    images: ['/Facilities/Golden_Spiral_Staircase_1.jpeg', '/Facilities/Golden_Spiral_Staircase_2.jpeg', '/Facilities/Golden_Spiral_Staircase_3.jpg'],
   },
   {
     id: 'davids-deers',

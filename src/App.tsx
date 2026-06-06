@@ -21,6 +21,7 @@ const Alumni = lazy(() => import('@pages/Alumni'))
 const Apply = lazy(() => import('@pages/Apply'))
 const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
 const TourHall = lazy(() => import('@pages/TourHall'))
+const FAQ = lazy(() => import('@pages/FAQ'))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-brand-bg flex items-center justify-center">
@@ -51,6 +52,7 @@ export default function App() {
               <Route path="/apply" element={<Apply />} />
               <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
               <Route path="/tour-the-hall" element={<TourHall />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </Suspense>
         </main>

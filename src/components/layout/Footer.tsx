@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
               Since 1956 - Residential Hall fostering scholarly excellence, community, and character
               development.
             </p>
-            <div className="flex gap-4 ">
+            <div className="flex flex-col gap-2">
               {SOCIAL_LINKS.map((link) => {
                 const Icon = iconMap[link.icon as keyof typeof iconMap]
                 if (!Icon) return null
@@ -45,10 +45,10 @@ export const Footer: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={link.platform}
-                        className="flex items-center gap-2 px-4 py-2 bg-brand-bg rounded-card text-brand-text-muted hover:text-brand-gold hover:bg-brand-surface transition-all text-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-brand-bg rounded-card text-brand-text-muted hover:text-brand-gold hover:bg-brand-surface transition-all text-sm w-fit"
                     >
                       <Icon size={16} />
-                      <span className="hidden sm:inline">{link.platform}</span>
+                      <span>{link.platform}</span>
                     </a>
                 )
               })}

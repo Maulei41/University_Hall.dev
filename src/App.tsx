@@ -1,4 +1,5 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { Suspense, useEffect } from 'react'
+import { lazyWithDelay } from '@utils/lazyWithDelay'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
@@ -12,18 +13,20 @@ const ScrollToTop = () => {
   return null
 }
 
-// Lazy load pages for code splitting
-const Homepage = lazy(() => import('@pages/Homepage'))
-const About = lazy(() => import('@pages/About'))
-const Facilities = lazy(() => import('@pages/Facilities'))
-const Events = lazy(() => import('@pages/Events'))
-const Life = lazy(() => import('@pages/Life'))
-const People = lazy(() => import('@pages/People'))
-const Alumni = lazy(() => import('@pages/Alumni'))
-const Apply = lazy(() => import('@pages/Apply'))
-const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
-const TourHall = lazy(() => import('@pages/TourHall'))
-const FAQ = lazy(() => import('@pages/FAQ'))
+const MIN_LOADING_MS = 3500
+
+// Lazy load pages with a minimum delay so the LoadingSpinner animation plays fully
+const Homepage = lazyWithDelay(() => import('@pages/Homepage'), MIN_LOADING_MS)
+const About = lazyWithDelay(() => import('@pages/About'), MIN_LOADING_MS)
+const Facilities = lazyWithDelay(() => import('@pages/Facilities'), MIN_LOADING_MS)
+const Events = lazyWithDelay(() => import('@pages/Events'), MIN_LOADING_MS)
+const Life = lazyWithDelay(() => import('@pages/Life'), MIN_LOADING_MS)
+const People = lazyWithDelay(() => import('@pages/People'), MIN_LOADING_MS)
+const Alumni = lazyWithDelay(() => import('@pages/Alumni'), MIN_LOADING_MS)
+const Apply = lazyWithDelay(() => import('@pages/Apply'), MIN_LOADING_MS)
+const AffiliatedMembership = lazyWithDelay(() => import('@pages/AffiliatedMembership'), MIN_LOADING_MS)
+const TourHall = lazyWithDelay(() => import('@pages/TourHall'), MIN_LOADING_MS)
+const FAQ = lazyWithDelay(() => import('@pages/FAQ'), MIN_LOADING_MS)
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center gap-6">
@@ -86,18 +89,6 @@ const LoadingSpinner = () => (
 )
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true)
-
-  useEffect(() => {
-    // Wait for all paths to finish drawing before revealing the page
-    const timer = setTimeout(() => setShowSplash(false), 1800)
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (showSplash) {
-    return <LoadingSpinner />
-  }
-
   return (
     <Router>
       <ScrollToTop />
@@ -111,8 +102,7 @@ export default function App() {
         >
           <Header />
           <main className="flex-1">
-            {/*<Suspense fallback={<LoadingSpinner />}>*/}
-            <Suspense>
+            <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/about" element={<About />} />

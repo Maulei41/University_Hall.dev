@@ -161,11 +161,12 @@ export const EVENTS: HallEvent[] = [
     id: 'Halloween',
     title: 'Halloween Haunted House',
     description:
-      '',
+      'Halloween Party The Castle of University Hall gives people a chilly and spooky feeling, especially late in the middle of the night. It is thus a perfect place to hold the Halloween Party.',
     category: 'Cultural',
     location: 'University Hall',
     imageId: 'dining_hall',
-    imageSrc: '/Event_Tradition/Halloween.jpeg',
+    imageSrc: '/Event_Tradition/Halloween_1.jpeg',
+    images: ['/Event_Tradition/Halloween_1.jpeg', '/Event_Tradition/Halloween_2.jpeg'],
     featured: true,
   },
   {
@@ -180,24 +181,24 @@ export const EVENTS: HallEvent[] = [
     images: ['/Event_Tradition/Fire_Dragon_1.jpeg', '/Event_Tradition/Fire_Dragon_2.jpeg'],
     featured: true,
   },
-  {
-    id: 'BigRun',
-    title: 'Big Run',
-    description:
-      'Big Run is held twice a month and brings Castlers together for a short run under the night sky. More than a regular workout, it is a shared experience that challenges endurance, clears the mind, and creates a strong sense of unity among hallmates. \n \n As students run side by side, BigRun becomes a space for encouragement, conversation, and camaraderie. Whether for fitness, friendship, or the simple joy of running together, BigRun is a tradition that continues to bring the Hall closer together.',
-    category: 'Recreation',
-    location: 'Hong Kong Island',
-    imageId: 'big_run',
-    featured: true,
-  },
+  // {
+  //   id: 'BigRun',
+  //   title: 'Big Run',
+  //   description:
+  //     'Big Run is held twice a month and brings Castlers together for a short run under the night sky. More than a regular workout, it is a shared experience that challenges endurance, clears the mind, and creates a strong sense of unity among hallmates. \n \n As students run side by side, BigRun becomes a space for encouragement, conversation, and camaraderie. Whether for fitness, friendship, or the simple joy of running together, BigRun is a tradition that continues to bring the Hall closer together.',
+  //   category: 'Recreation',
+  //   location: 'Hong Kong Island',
+  //   imageId: 'big_run',
+  //   featured: true,
+  // },
   {
     id: 'superpass',
     title: 'Superpass party',
     description:
-      '',
+      'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives Hall mates Superpass ‘lai sees’ (red packets, the lucky money). Castlers write Superpass ‘fai chuns’ (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
     category: 'Social',
     location: 'University Hall',
-    imageSrc: '/Event_Tradition/SuperPass.jpeg',
+    imageSrc: '/Event_Tradition/SuperPass.jpg',
     imageId: 'dining_hall',
   },
   {
@@ -218,6 +219,7 @@ export const EVENTS: HallEvent[] = [
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'common_rooms',
+    imageSrc:"Event_Tradition/Island_Bike_Ride.jpeg"
   }
 ]
 
@@ -226,7 +228,7 @@ export const TRADITIONS: HallTradition[] = [
     id: 'high-table-dinner',
     title: 'High Table Dinner',
     description:
-      '',
+      'It is a longstanding tradition of residential Halls of the University of Hong Kong to have High Table Dinner. It is a time to learn; students can broaden their horizons through the talk delivered by our Guest of Honour after the dinner, and is therefore one of the most important events in University Hall for the enrichment of hall education.',
     category: 'Social',
     frequency: 'monthly',
     imageId: 'dining_hall',
@@ -238,30 +240,30 @@ export const TRADITIONS: HallTradition[] = [
     id: 'founders-nite',
     title: 'Founders\' Nite',
     description:
-      '',
+      'In this event, greenhorns drink their first cup of hall blood, whereafter they officially become Castlers. Also, before they take the hall blood, they have to set an aim for themselves, which they will pursue throughout their university life.',
     category: 'Social',
     frequency: 'annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Founders_Nite.jpeg',
     featured: true,
   },
-  {
-    id: 'castlers-nite',
-    title: 'Castlers\' Nite',
-    description:
-      '',
-    category: 'Social',
-    frequency: 'annual',
-    imageId: 'dining_hall',
-    // imageSrc: '/Event_Tradition/Castlers_Nite.jpeg',
-    featured: true,
-  },
+  // {
+  //   id: 'castlers-nite',
+  //   title: 'Castlers\' Nite',
+  //   description:
+  //     '',
+  //   category: 'Social',
+  //   frequency: 'annual',
+  //   imageId: 'dining_hall',
+  //   // imageSrc: '/Event_Tradition/Castlers_Nite.jpeg',
+  //   featured: true,
+  // },
   {
     id: 'nazarene-nite',
     title: 'Nazarene Nite',
     category: 'Social',
     description:
-      '',
+      'The Nazarene\'s Night is a moment of celebration and memories. Fresh graduates will come back to the Castle to take their second cup of Hall blood, and they will share with the current Castlers their memories in University Hall. In addition, awards would be presented to acknowledge the achievements of outstanding Castlers in the past year.',
     frequency: 'annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Nazarene_Nite.jpeg',
@@ -271,7 +273,7 @@ export const TRADITIONS: HallTradition[] = [
     id: 'baisun',
     title: 'Bai Sun',
     description:
-      '',
+      'Bai Sun (also worshipping) is an annual ritual of University Hall and it follows the Chinese tradition. We share some roasted suckling pig from the ceremony and hope for good fortune, health and peace for the coming year.',
     category: 'Community',
     imageSrc: '/Event_Tradition/BaiSun.jpg',
     frequency: 'annual',
@@ -279,11 +281,12 @@ export const TRADITIONS: HallTradition[] = [
   },
   {
     id: 'reunion-dinner',
-    title: 'Reunion Dinner',
+    title: 'ReUnion Dinner',
     description:
-      '',
+      'Every year on this night, graduated Hall mates, old or new, come back and have a dinner with the current Hall mates. Meanwhile, members of the proposed cabinet of University Hall Students\' Association introduce themselves as well.',
     category: 'Community',
     frequency: 'annual',
+    imageSrc:"/Event_Tradition/ReUnion_Dinner.jpg",
     imageId: 'dining_hall',
   }
 ]

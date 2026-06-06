@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
               className="h-8 sm:h-10 lg:h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <span className="sm:text-xl">University Hall</span>
+            <span className="inline sm:text-2xl">University Hall</span>
           </Link>
 
           {/* Desktop Navigation */}

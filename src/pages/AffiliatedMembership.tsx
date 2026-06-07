@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Download } from 'lucide-react'
 import { Container, Section, ImagePlaceholder } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
 import { AFFILIATED_MEMBERSHIP } from '@constants/content'
@@ -81,21 +80,46 @@ const AffiliatedMembership: React.FC = () => {
                 How to Apply
               </h2>
 
-              {/* Download Form */}
+              {/* Get the Form from HKU ASE */}
               <div className="bg-brand-bg rounded-card p-8 border border-brand-border mb-8">
                 <h3 className="font-display text-2xl font-semibold text-brand-text-primary mb-4">
-                  Step 1: Download the Application Form
+                  Step 1: Get the Application Form
                 </h3>
-                <p className="text-brand-text-muted mb-6">
-                  {AFFILIATED_MEMBERSHIP.howToApply.download.description}
+                <p className="text-brand-text-muted mb-4">
+                  Download the Affiliated Membership application form from the{' '}
+                  <strong className="text-brand-text-primary">HKU Administrative Service E-Portal (ASE)</strong>.
                 </p>
+
                 <a
-                  href={AFFILIATED_MEMBERSHIP.howToApply.download.href}
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-brand-gold text-brand-bg font-serif font-semibold rounded-card hover:bg-brand-gold-light transition-colors shadow-lg text-lg"
+                  href="https://ase.hku.hk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-brand-gold text-brand-bg font-serif font-semibold rounded-card hover:bg-brand-gold-light transition-colors shadow-lg text-lg mb-6"
                 >
-                  <Download className="w-5 h-5" />
-                  {AFFILIATED_MEMBERSHIP.howToApply.download.label}
+                  Go to ASE Portal
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </a>
+
+                <div className="bg-brand-surface border border-brand-border rounded-card p-5">
+                  <h4 className="font-serif font-semibold text-brand-text-primary mb-2 text-sm">
+                    Navigate to find the form:
+                  </h4>
+                  <div className="flex items-center gap-2 text-sm text-brand-text-muted flex-wrap">
+                    <span className="px-2 py-1 bg-brand-bg border border-brand-border rounded text-xs font-mono">
+                      Residential Halls / Residential Colleges / Non-Residential Halls
+                    </span>
+                    <span className="text-brand-gold">→</span>
+                    <span className="px-2 py-1 bg-brand-bg border border-brand-border rounded text-xs font-mono">
+                      Membership
+                    </span>
+                    <span className="text-brand-gold">→</span>
+                    <span className="px-2 py-1 bg-brand-gold/10 border border-brand-gold/30 rounded text-xs font-mono text-brand-gold font-semibold">
+                      Affiliated Membership Form
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Submit Method */}

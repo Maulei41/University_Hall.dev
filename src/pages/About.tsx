@@ -309,7 +309,7 @@ const About: React.FC = () => {
                 Our Values
               </h2>
               <p className="text-xl text-brand-text-muted max-w-2xl mx-auto">
-                Grounded in timeless principles of Brotherhood, community, and character
+                Grounded in timeless principles of brotherhood, community, and character
               </p>
             </div>
           </FadeInUp>
@@ -342,7 +342,7 @@ const About: React.FC = () => {
                 Milestones in Our History
               </h2>
               <p className="text-brand-text-muted text-xl max-w-xl mx-auto">
-                Charting the defining moments, rich tradition s, and historic achievements that shaped the UHall legacy
+                Charting the defining moments, rich traditions, and historic achievements that shaped the UHall legacy
               </p>
             </div>
           </FadeInUp>

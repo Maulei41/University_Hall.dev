@@ -23,12 +23,14 @@ export interface HallTradition {
   title: string
   description: string
   category: string
-  frequency: 'annual' | 'Bi-Annual' | 'monthly' | 'One-Time'
+  frequency: 'Annual' | 'Bi-Annual' | 'Monthly' | 'One-Time'
   established?: string
   imageId: string
   imageSrc?: string
   /** Multiple images — renders an inline carousel instead of a single image */
   images?: string[]
+  /** Video source — renders a video player */
+  videoSrc?: string
   featured?: boolean
 }
 
@@ -42,6 +44,8 @@ export interface HallEvent {
   imageSrc?: string
   /** Multiple images — renders an inline carousel instead of a single image */
   images?: string[]
+  /** Video source — renders a video player */
+  videoSrc?: string
   rsvpLink?: string
   featured?: boolean
 }

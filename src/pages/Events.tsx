@@ -16,156 +16,163 @@ const frequencyColors: Record<string, 'gold' | 'emerald' | 'muted'> = {
   Monthly: 'emerald',
 }
 
+interface Slide { type: 'image' | 'video'; src: string }
+
 /** EventTraditional image — clickable to open full-size in a modal, draggable to swipe */
-const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; imageId: string; title: string; onImageClick: (data: CarouselData) => void }> = ({ images, imageSrc, imageId, title, onImageClick }) => {
+const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; imageId: string; title: string; onImageClick: (data: CarouselData) => void; videoSrc?: string }> = ({ images, imageSrc, imageId, title, onImageClick, videoSrc }) => {
   const [current, setCurrent] = useState(0)
   const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
   const containerRef = useRef<HTMLDivElement>(null)
 
-  if (images && images.length > 0) {
-    const totalSlides = images.length
-
-    const goTo = (dir: number) => {
-      setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  const slides: Slide[] = React.useMemo(() => {
+    const result: Slide[] = []
+    if (videoSrc) result.push({ type: 'video', src: videoSrc })
+    if (images && images.length > 0) {
+      images.forEach((src) => result.push({ type: 'image', src }))
+    } else if (imageSrc) {
+      result.push({ type: 'image', src: imageSrc })
     }
+    return result
+  }, [videoSrc, images, imageSrc])
 
-    const onPointerDown = (e: React.PointerEvent) => {
-      if ((e.target as HTMLElement).closest('button')) return
-      drag.startX = e.clientX
-      drag.offsetX = 0
-      drag.isDragging = true
-      drag.wasDragged = false
-      if (containerRef.current) {
-        containerRef.current.setPointerCapture(e.pointerId)
-      }
-    }
-
-    const onPointerMove = (e: React.PointerEvent) => {
-      if (!drag.isDragging) return
-      const delta = e.clientX - drag.startX
-      drag.offsetX = delta
-      drag.wasDragged = Math.abs(delta) > 5
-      const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-      if (el) {
-        const baseTx = -current * 100
-        const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-        el.style.transition = 'none'
-        el.style.transform = `translateX(${baseTx + fractional}%)`
-      }
-    }
-
-    const onPointerUp = (e: React.PointerEvent) => {
-      if (!drag.isDragging) return
-      drag.isDragging = false
-      containerRef.current?.releasePointerCapture(e.pointerId)
-      const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-      if (el) {
-        el.style.transition = ''
-      }
-      const threshold = 50
-      if (drag.offsetX < -threshold) {
-        goTo(1)
-      } else if (drag.offsetX > threshold) {
-        goTo(-1)
-      } else if (!drag.wasDragged) {
-        onImageClick({ images, currentIndex: current })
-      }
-    }
-
-    const onPointerCancel = (e: React.PointerEvent) => {
-      drag.isDragging = false
-      containerRef.current?.releasePointerCapture(e.pointerId)
-      const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-      if (el) {
-        el.style.transition = ''
-      }
-    }
-
+  if (slides.length === 0) {
     return (
+      <ImagePlaceholder width={500} height={400} imageId={imageId} alt={title} className="rounded-card" />
+    )
+  }
+
+  const totalSlides = slides.length
+  const imageSlides = slides.filter((s) => s.type === 'image').map((s) => s.src)
+
+  const goTo = (dir: number) => {
+    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  }
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
+    if ((e.target as HTMLElement).closest('video')) return
+    drag.startX = e.clientX
+    drag.offsetX = 0
+    drag.isDragging = true
+    drag.wasDragged = false
+    if (containerRef.current) {
+      containerRef.current.setPointerCapture(e.pointerId)
+    }
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    const delta = e.clientX - drag.startX
+    drag.offsetX = delta
+    drag.wasDragged = Math.abs(delta) > 5
+    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
+    if (el) {
+      const baseTx = -current * 100
+      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
+      el.style.transition = 'none'
+      el.style.transform = `translateX(${baseTx + fractional}%)`
+    }
+  }
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    drag.isDragging = false
+    containerRef.current?.releasePointerCapture(e.pointerId)
+    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+    const threshold = 50
+    if (drag.offsetX < -threshold) {
+      goTo(1)
+    } else if (drag.offsetX > threshold) {
+      goTo(-1)
+    } else if (!drag.wasDragged && slides[current].type === 'image' && imageSlides.length > 0) {
+      onImageClick({ images: imageSlides, currentIndex: imageSlides.indexOf(slides[current].src) })
+    }
+  }
+
+  const onPointerCancel = (e: React.PointerEvent) => {
+    drag.isDragging = false
+    containerRef.current?.releasePointerCapture(e.pointerId)
+    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden group rounded-card select-none"
+      style={{ aspectRatio: '500 / 400', touchAction: 'pan-y' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+    >
       <div
-        ref={containerRef}
-        className="relative w-full overflow-hidden group rounded-card cursor-pointer select-none"
-        style={{ aspectRatio: '500 / 400', touchAction: 'pan-y' }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}
+        className="et-carousel-track flex transition-transform duration-300 ease-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
       >
-        <div
-          className="et-carousel-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
-        >
-          {images.map((src, i) => (
+        {slides.map((slide, i) =>
+          slide.type === 'video' ? (
+            <video
+              key={`v-${i}`}
+              src={slide.src}
+              poster={images?.[0] || imageSrc}
+              controls
+              className="w-full flex-shrink-0 object-cover pointer-events-auto"
+              style={{ aspectRatio: '500 / 400' }}
+              playsInline
+              preload="metadata"
+            />
+          ) : (
             <img
-              key={i}
-              src={src}
+              key={`i-${i}`}
+              src={slide.src}
               alt={`${title} ${i + 1}`}
               className="w-full flex-shrink-0 object-cover pointer-events-none"
               style={{ aspectRatio: '500 / 400' }}
               loading="lazy"
               draggable={false}
             />
-          ))}
-        </div>
+          )
+        )}
+      </div>
 
-        <button
-          onClick={(e) => { e.stopPropagation(); goTo(-1) }}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
-          aria-label="Previous image"
-        >
-          ‹
-        </button>
-        <button
-          onClick={(e) => { e.stopPropagation(); goTo(1) }}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
-          aria-label="Next image"
-        >
-          ›
-        </button>
+      {totalSlides > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
+            aria-label="Next slide"
+          >
+            ›
+          </button>
 
-        {images.length > 1 && (
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {images.map((_, i) => (
+            {slides.map((slide, i) => (
               <button
                 key={i}
                 onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   i === current ? 'bg-white w-3' : 'bg-white/50'
-                }`}
-                aria-label={`Go to image ${i + 1}`}
+                } ${slide.type === 'video' ? 'ring-1 ring-white/30' : ''}`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
-        )}
-      </div>
-    )
-  }
-
-  if (imageSrc) {
-    return (
-      <div
-        className="rounded-card overflow-hidden cursor-pointer"
-        onClick={() => onImageClick({ images: [imageSrc], currentIndex: 0 })}
-      >
-        <img
-          src={imageSrc}
-          alt={title}
-          className="w-full object-cover"
-          style={{ aspectRatio: '500 / 400' }}
-          loading="lazy"
-        />
-      </div>
-    )
-  }
-
-  return (
-    <ImagePlaceholder
-      width={500}
-      height={400}
-      imageId={imageId}
-      alt={title}
-      className="rounded-card"
-    />
+        </>
+      )}
+    </div>
   )
 }
 
@@ -330,7 +337,7 @@ const Events: React.FC = () => {
                     className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                   >
                     <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
-                      <EventTraditionalImage images={event.images} imageSrc={event.imageSrc} imageId={event.imageId} title={event.title} onImageClick={setModalCarousel} />
+                      <EventTraditionalImage images={event.images} imageSrc={event.imageSrc} imageId={event.imageId} title={event.title} onImageClick={setModalCarousel} videoSrc={event.videoSrc} />
                     </ScaleOnHover>
 
                     <FadeInUp delay={0.2}>
@@ -384,7 +391,7 @@ const Events: React.FC = () => {
                     className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                   >
                     <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
-                      <EventTraditionalImage images={tradition.images} imageSrc={tradition.imageSrc} imageId={tradition.imageId} title={tradition.title} onImageClick={setModalCarousel} />
+                      <EventTraditionalImage images={tradition.images} imageSrc={tradition.imageSrc} imageId={tradition.imageId} title={tradition.title} onImageClick={setModalCarousel} videoSrc={tradition.videoSrc} />
                     </ScaleOnHover>
 
                     <FadeInUp delay={0.2}>

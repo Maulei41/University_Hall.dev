@@ -173,12 +173,18 @@ export const EVENTS: HallEvent[] = [
     id: 'mid-autumn-festival',
     title: 'Pok Fu Lam Village Fire Dragon Dance',
     description:
-      '',
+      'The Pok Fu Lam Village Fire Dragon Dance is a cherished Mid-Autumn Festival tradition, where a fiery dragon weaves through the streets to bring good luck and ward off evil spirits. Castlers join the local community in this vibrant celebration, carrying the dragon through the village under a sky lit by lanterns and moonlight.',
     category: 'Cultural',
     location: 'Pok Fu Lam Village',
     imageId: 'fire_dragon',
-    imageSrc: '/Event_Tradition/Fire_Dragon_1.jpeg',
-    images: ['/Event_Tradition/Fire_Dragon_1.jpeg', '/Event_Tradition/Fire_Dragon_2.jpeg'],
+    imageSrc: '/Event_Tradition/Fire_Dragon_4.jpeg',
+    images: [
+      '/Event_Tradition/Fire_Dragon_4.jpeg',
+      '/Event_Tradition/Fire_Dragon_2.jpeg',
+      '/Event_Tradition/Fire_Dragon_3.jpeg',
+      '/Event_Tradition/Fire_Dragon_1.jpeg',
+    ],
+    videoSrc: '/Event_Tradition/Fire_Dragon_1.mp4',
     featured: true,
   },
   // {
@@ -230,7 +236,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       'It is a longstanding tradition of residential Halls of the University of Hong Kong to have High Table Dinner. It is a time to learn; students can broaden their horizons through the talk delivered by our Guest of Honour after the dinner, and is therefore one of the most important events in University Hall for the enrichment of hall education.',
     category: 'Social',
-    frequency: 'monthly',
+    frequency: 'Monthly',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/High_Table_1.jpeg',
     images: ['/Event_Tradition/High_Table_1.jpeg', '/Event_Tradition/High_Table_2.jpeg', '/Event_Tradition/High_Table_3.jpeg', '/Event_Tradition/High_Table_4.jpeg', '/Event_Tradition/High_Table_5.jpeg'],
@@ -242,7 +248,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       'In this event, greenhorns drink their first cup of hall blood, whereafter they officially become Castlers. Also, before they take the hall blood, they have to set an aim for themselves, which they will pursue throughout their university life.',
     category: 'Social',
-    frequency: 'annual',
+    frequency: 'Annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Founders_Nite.jpeg',
     featured: true,
@@ -264,7 +270,7 @@ export const TRADITIONS: HallTradition[] = [
     category: 'Social',
     description:
       'The Nazarene\'s Night is a moment of celebration and memories. Fresh graduates will come back to the Castle to take their second cup of Hall blood, and they will share with the current Castlers their memories in University Hall. In addition, awards would be presented to acknowledge the achievements of outstanding Castlers in the past year.',
-    frequency: 'annual',
+    frequency: 'Annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Nazarene_Nite.jpeg',
     featured: true,
@@ -276,7 +282,7 @@ export const TRADITIONS: HallTradition[] = [
       'Bai Sun (also worshipping) is an annual ritual of University Hall and it follows the Chinese tradition. We share some roasted suckling pig from the ceremony and hope for good fortune, health and peace for the coming year.',
     category: 'Community',
     imageSrc: '/Event_Tradition/BaiSun.jpg',
-    frequency: 'annual',
+    frequency: 'Annual',
     imageId: 'dining_hall',
   },
   {
@@ -285,7 +291,7 @@ export const TRADITIONS: HallTradition[] = [
     description:
       'Every year on this night, graduated Hall mates, old or new, come back and have a dinner with the current Hall mates. Meanwhile, members of the proposed cabinet of University Hall Students\' Association introduce themselves as well.',
     category: 'Community',
-    frequency: 'annual',
+    frequency: 'Annual',
     imageSrc:"/Event_Tradition/ReUnion_Dinner.jpg",
     imageId: 'dining_hall',
   }
@@ -528,9 +534,9 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-2',
     quote:
-      'University Hall shaped me in ways I never expected. The brotherhood, the traditions, and the late-night conversations in the common room — these are the moments that truly define the university experience.',
-    author: 'Placeholder',
-    role: 'Castlers 24\'',
+      'As an international student from Azerbaijan, University Hall has helped me build true bonds with both local and non-local students, creating a unique community where Cantonese and international cultures come together naturally.',
+    author: 'Yusuf Karimli',
+    role: 'Castlers 25\'',
   },
   {
     id: 'testimonial-3',
@@ -786,9 +792,9 @@ export const ASSOCIATIONS: Association[] = [
 
 export const PHILOSOPHY_PILLARS = [
   {
-    title: 'Brotherhood',
+    title: 'Step up; Give back',
     description:
-      '',
+        '',
   },
   {
     title: 'Unity',
@@ -801,9 +807,9 @@ export const PHILOSOPHY_PILLARS = [
       '',
   },
   {
-    title: 'Step up; Give back',
+    title: 'Brotherhood',
     description:
-      '',
+        '',
   },
 ]
 

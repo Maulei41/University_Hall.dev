@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useMemo, useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Clock, MapPin } from 'lucide-react'
@@ -157,22 +157,11 @@ const ListRow: React.FC<RowProps> = ({ item, isActive, onHover, index, prefersRe
           >
             {item.title}
           </span>
-          <span
-            className={`hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider rounded transition-colors duration-300 ${
-              isActive
-                ? 'bg-brand-gold/20 text-brand-gold'
-                : 'bg-brand-surface text-brand-text-muted'
-            }`}
-          >
-            {item.badgeLabel}
-          </span>
+
         </div>
         <p className="text-xs md:text-sm text-brand-text-muted/70 font-mono flex items-center gap-1">
           {item.metaIcon}
           {item.metaText}
-          <span className="sm:hidden ml-1.5 text-[10px] px-1.5 py-0.5 bg-brand-surface rounded">
-            {item.badgeLabel}
-          </span>
         </p>
       </div>
 
@@ -267,9 +256,13 @@ const HallTraditions: React.FC = () => {
   const items = useMemo(() => buildItems(), [])
   const [activeKey, setActiveKey] = useState(items[0]?.key ?? '')
   const activeItem = items.find((i) => i.key === activeKey) ?? items[0]
+  const panelRef = useRef<HTMLDivElement>(null)
 
   const handleHover = useCallback((key: string) => {
     setActiveKey(key)
+    if (panelRef.current && window.innerWidth < 1024) {
+      panelRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
   }, [])
 
   return (
@@ -317,7 +310,7 @@ const HallTraditions: React.FC = () => {
           </div>
 
           {/* ── Reveal Panel ── */}
-          <div className="w-full lg:w-3/5 lg:sticky lg:top-24 lg:self-start">
+          <div ref={panelRef} className="w-full lg:w-3/5 lg:sticky lg:top-24 lg:self-start">
             <AnimatePresence mode="wait">
               <RevealPanel key={activeItem.key} item={activeItem} />
             </AnimatePresence>

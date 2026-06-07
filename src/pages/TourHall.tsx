@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Section } from '@components/common/index'
-import { FadeInUp, FloorPlanInteractive } from '@components/animations/index'
+import { FadeInUp } from '@components/animations/index'
+import FloorPlanInteractive from '@components/animations/FloorPlanInteractive'
 import type { FloorPlanPin } from '../types/index'
 
 const FLOOR_PLAN_PINS: FloorPlanPin[] = [

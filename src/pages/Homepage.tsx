@@ -7,13 +7,10 @@ import {
   Section,
   Button,
 } from '@components/common/index'
-import {
-  FadeInUp,
-  ParallexSection,
-  HorizontalTimeline,
-  SpacesGallery,
-  HallTraditions,
-} from '@components/animations/index'
+import { FadeInUp, ParallexSection } from '@components/animations/index'
+import HorizontalTimeline from '@components/animations/HorizontalTimeline'
+import SpacesGallery from '@components/animations/SpacesGallery'
+import HallTraditions from '@components/animations/HallTraditions'
 import {  TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
 import { TestimonialCarousel } from '@components/common/index'
 
@@ -55,10 +52,12 @@ const Homepage: React.FC = () => {
     target: textScrollRef,
     offset: ['start end', 'end start'],
   })
-  const rows = Array.from({ length: 4 }, (_, i) => {
-    const isReverse = i % 2 === 1
-    return useTransform(scrollYProgress, [0, 1], isReverse ? ['-60%', '10%'] : ['10%', '-60%'])
-  })
+  const rows = [
+    useTransform(scrollYProgress, [0, 1], ['10%', '-60%']),
+    useTransform(scrollYProgress, [0, 1], ['-60%', '10%']),
+    useTransform(scrollYProgress, [0, 1], ['10%', '-60%']),
+    useTransform(scrollYProgress, [0, 1], ['-60%', '10%']),
+  ]
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useReducedMotion, useScrollTrigger } from '@hooks/index'
 import { ImagePlaceholder, Modal } from '@components/common/index'
@@ -74,9 +74,9 @@ interface StaggerItemProps {
   className?: string
 }
 
-export const StaggerItem: React.FC<StaggerItemProps> = ({ children, className }) => (
+export const StaggerItem: React.FC<StaggerItemProps> = memo(({ children, className }) => (
   <motion.div variants={itemVariants} className={className}>{children}</motion.div>
-)
+))
 
 // ── Scale on hover (spring) ─────────────────────────────────────
 
@@ -85,7 +85,7 @@ interface ScaleOnHoverProps {
   className?: string
 }
 
-export const ScaleOnHover: React.FC<ScaleOnHoverProps> = ({ children, className = '' }) => (
+export const ScaleOnHover: React.FC<ScaleOnHoverProps> = memo(({ children, className = '' }) => (
   <motion.div
     initial="rest"
     whileHover="hover"
@@ -94,7 +94,7 @@ export const ScaleOnHover: React.FC<ScaleOnHoverProps> = ({ children, className 
   >
     {children}
   </motion.div>
-)
+))
 
 // ── Parallax section (spring) ───────────────────────────────────
 
@@ -309,18 +309,3 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ children, columns = 3 
   )
 }
 
-// ── Re-exports ──────────────────────────────────────────────────
-
-export { default as SpacesGallery } from './SpacesGallery'
-export { default as HallTraditions } from './HallTraditions'
-export { default as FloorPlanInteractive } from './FloorPlanInteractive'
-export { default as HorizontalTimeline } from './HorizontalTimeline'
-export { default as InteractiveTimeline } from './InteractiveTimeline'
-export { default as PeopleHorizontalTimeline } from './PeopleHorizontalTimeline'
-export { default as PathDrawing } from './PathDrawing'
-export {
-  ScrollMaskReveal,
-  ScrollWipeReveal,
-  ScrollDrawSVG,
-  ProgressiveReveal,
-} from './ScrollReveal'

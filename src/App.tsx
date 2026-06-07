@@ -3,9 +3,10 @@ import { lazyWithDelay } from '@utils/lazyWithDelay'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
+import { I18nProvider } from '@/i18n'
 import { Footer } from '@components/layout/Footer'
 import { LOGO_PATHS, LOGO_VIEWBOX } from '@constants/logoPaths'
-import {PathDrawing} from "@components/animations";
+import PathDrawing from '@components/animations/PathDrawing'
 import { SmoothScrollProvider } from '@hooks/SmoothScrollProvider'
 import { useLenis } from '@hooks/useSmoothScroll'
 
@@ -75,6 +76,7 @@ export default function App() {
     <SmoothScrollProvider>
       <Router>
         <ScrollToTop />
+        <I18nProvider>
         <AnimatePresence mode="wait">
           <motion.div
             key="app"
@@ -85,25 +87,24 @@ export default function App() {
           >
             <Header />
             <main className="flex-1">
-              <Suspense fallback={<LoadingSpinner />}>
-                <Routes>
-                  <Route path="/" element={<Homepage />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/facilities" element={<Facilities />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/life" element={<Life />} />
-                  <Route path="/people" element={<People />} />
-                  <Route path="/alumni" element={<Alumni />} />
-                  <Route path="/apply" element={<Apply />} />
-                  <Route path="/affiliated-membership" element={<AffiliatedMembership />} />
-                  <Route path="/tour-the-hall" element={<TourHall />} />
-                  <Route path="/faq" element={<FAQ />} />
-                </Routes>
-              </Suspense>
+              <Routes>
+                <Route path="/" element={<Suspense fallback={<LoadingSpinner />}><Homepage /></Suspense>} />
+                <Route path="/about" element={<Suspense fallback={<LoadingSpinner />}><About /></Suspense>} />
+                <Route path="/facilities" element={<Suspense fallback={<LoadingSpinner />}><Facilities /></Suspense>} />
+                <Route path="/events" element={<Suspense fallback={<LoadingSpinner />}><Events /></Suspense>} />
+                <Route path="/life" element={<Suspense fallback={<LoadingSpinner />}><Life /></Suspense>} />
+                <Route path="/people" element={<Suspense fallback={<LoadingSpinner />}><People /></Suspense>} />
+                <Route path="/alumni" element={<Suspense fallback={<LoadingSpinner />}><Alumni /></Suspense>} />
+                <Route path="/apply" element={<Suspense fallback={<LoadingSpinner />}><Apply /></Suspense>} />
+                <Route path="/affiliated-membership" element={<Suspense fallback={<LoadingSpinner />}><AffiliatedMembership /></Suspense>} />
+                <Route path="/tour-the-hall" element={<Suspense fallback={<LoadingSpinner />}><TourHall /></Suspense>} />
+                <Route path="/faq" element={<Suspense fallback={<LoadingSpinner />}><FAQ /></Suspense>} />
+              </Routes>
             </main>
             <Footer />
           </motion.div>
         </AnimatePresence>
+        </I18nProvider>
       </Router>
     </SmoothScrollProvider>
   )

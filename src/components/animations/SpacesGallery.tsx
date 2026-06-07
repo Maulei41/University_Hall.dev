@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '@hooks/index'
-import { useMouseTilt } from '@hooks/index'
+import { useMouseTilt } from '@hooks/useMouseTilt'
 import { ImagePlaceholder, Container, Section } from '@components/common/index'
 import { FACILITIES } from '@constants/content'
 

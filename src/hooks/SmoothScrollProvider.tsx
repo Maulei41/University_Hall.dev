@@ -33,8 +33,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
       instance.destroy()
       lenisRef.current = null
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prefersReducedMotion])
+  }, [prefersReducedMotion, setLenis])
 
   return (
     <SmoothScrollContext.Provider value={{ lenis }}>

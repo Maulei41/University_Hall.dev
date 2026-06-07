@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import { Container, Section, ImagePlaceholder, Badge, Modal } from '@components/common/index'
-import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover, PeopleHorizontalTimeline } from '@components/animations/index'
+import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import PeopleHorizontalTimeline from '@components/animations/PeopleHorizontalTimeline'
 import { PEOPLE, ASSOCIATIONS } from '@constants/content'
 import type { Person } from '../types/index'
 

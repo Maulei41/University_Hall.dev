@@ -1,14 +1,9 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
-import {
-  FadeInUp,
-  StaggerContainer,
-  StaggerItem,
-  ScaleOnHover,
-  InteractiveTimeline,
-  PathDrawing,
-} from '@components/animations/index'
+import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import InteractiveTimeline from '@components/animations/InteractiveTimeline'
+import PathDrawing from '@components/animations/PathDrawing'
 import { TIMELINE_EVENTS, PHILOSOPHY_PILLARS, HALL_TREASURES } from '@constants/content'
 import type { HallTreasure } from '@constants/content'
 

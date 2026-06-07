@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 interface ContainerProps {
   children: React.ReactNode
   className?: string
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, className = '' }) => (
+export const Container: React.FC<ContainerProps> = memo(({ children, className = '' }) => (
   <div className={`container-wide ${className}`}>
     {children}
   </div>
-)
+))
 
 interface SectionProps {
   children: React.ReactNode
@@ -17,11 +17,11 @@ interface SectionProps {
   id?: string
 }
 
-export const Section: React.FC<SectionProps> = ({ children, className = '', id }) => (
+export const Section: React.FC<SectionProps> = memo(({ children, className = '', id }) => (
   <section id={id} className={`section-padding ${className}`}>
     {children}
   </section>
-)
+))
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -29,7 +29,7 @@ interface ButtonProps
   children: React.ReactNode
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = memo(({
   variant = 'primary',
   children,
   className = '',
@@ -46,7 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   )
-}
+})
 
 interface BadgeProps {
   children: React.ReactNode
@@ -54,7 +54,7 @@ interface BadgeProps {
   className?: string
 }
 
-export const Badge: React.FC<BadgeProps> = ({ children, variant = 'gold', className = '' }) => {
+export const Badge: React.FC<BadgeProps> = memo(({ children, variant = 'gold', className = '' }) => {
   const variantClass = {
     gold: 'bg-brand-gold text-brand-bg',
     emerald: 'bg-brand-emerald text-brand-bg',
@@ -68,7 +68,7 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant = 'gold', classN
       {children}
     </span>
   )
-}
+})
 
 interface ImagePlaceholderProps {
   width: number
@@ -78,7 +78,7 @@ interface ImagePlaceholderProps {
   className?: string
 }
 
-export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
+export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = memo(({
   width,
   height,
   imageId,
@@ -126,7 +126,7 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
       </div>
     </div>
   )
-}
+})
 
 interface TextBlockProps {
   level: 'h1' | 'h2' | 'h3' | 'h4' | 'p'
@@ -134,10 +134,10 @@ interface TextBlockProps {
   className?: string
 }
 
-export const TextBlock: React.FC<TextBlockProps> = ({ level, children, className = '' }) => {
+export const TextBlock: React.FC<TextBlockProps> = memo(({ level, children, className = '' }) => {
   const Tag = level
   return <Tag className={className}>{children}</Tag>
-}
+})
 
 export { Modal } from './Modal'
 export { default as TestimonialCarousel } from './TestimonialCarousel'

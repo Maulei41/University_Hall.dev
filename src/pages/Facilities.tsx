@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
@@ -15,68 +15,113 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
   const [current, setCurrent] = useState(0)
   const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
   const containerRef = useRef<HTMLDivElement>(null)
+  const currentRef = useRef(current)
+  currentRef.current = current
 
-  if (facility.images && facility.images.length > 0) {
-    const images = facility.images
-    const totalSlides = images.length
-
-    const goTo = (dir: number) => {
-      setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  // Single image or placeholder: no carousel needed
+  if (!facility.images || facility.images.length === 0) {
+    if (facility.imageSrc) {
+      return (
+        <div
+          className="rounded-card overflow-hidden cursor-pointer"
+          onClick={() => onImageClick({ images: [facility.imageSrc!], currentIndex: 0 })}
+        >
+          <img
+            src={facility.imageSrc}
+            alt={facility.title}
+            className="w-full object-cover"
+            style={{ aspectRatio: '500 / 400' }}
+            loading="lazy"
+          />
+        </div>
+      )
     }
-
-    const onPointerDown = (e: React.PointerEvent) => {
-      if ((e.target as HTMLElement).closest('button')) return
-      drag.startX = e.clientX
-      drag.offsetX = 0
-      drag.isDragging = true
-      drag.wasDragged = false
-      if (containerRef.current) {
-        containerRef.current.setPointerCapture(e.pointerId)
-      }
-    }
-
-    const onPointerMove = (e: React.PointerEvent) => {
-      if (!drag.isDragging) return
-      const delta = e.clientX - drag.startX
-      drag.offsetX = delta
-      drag.wasDragged = Math.abs(delta) > 5
-      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-      if (el) {
-        const baseTx = -current * 100
-        const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-        el.style.transition = 'none'
-        el.style.transform = `translateX(${baseTx + fractional}%)`
-      }
-    }
-
-    const onPointerUp = (e: React.PointerEvent) => {
-      if (!drag.isDragging) return
-      drag.isDragging = false
-      containerRef.current?.releasePointerCapture(e.pointerId)
-      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-      if (el) {
-        el.style.transition = ''
-      }
-      const threshold = 50
-      if (drag.offsetX < -threshold) {
-        goTo(1)
-      } else if (drag.offsetX > threshold) {
-        goTo(-1)
-      } else if (!drag.wasDragged) {
-        onImageClick({ images, currentIndex: current })
-      }
-    }
-
-    const onPointerCancel = (e: React.PointerEvent) => {
-      drag.isDragging = false
-      containerRef.current?.releasePointerCapture(e.pointerId)
-      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-      if (el) {
-        el.style.transition = ''
-      }
-    }
-
     return (
+      <ImagePlaceholder
+        width={500}
+        height={400}
+        imageId={facility.imageId}
+        alt={facility.title}
+        className="rounded-card"
+      />
+    )
+  }
+
+  const images = facility.images
+  const totalSlides = images.length
+
+  const goTo = useCallback((dir: number) => {
+    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  }, [totalSlides])
+
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
+    drag.startX = e.clientX
+    drag.offsetX = 0
+    drag.isDragging = true
+    drag.wasDragged = false
+    if (containerRef.current) {
+      containerRef.current.setPointerCapture(e.pointerId)
+    }
+  }, [drag])
+
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    const delta = e.clientX - drag.startX
+    drag.offsetX = delta
+    drag.wasDragged = Math.abs(delta) > 5
+    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+    if (el) {
+      const baseTx = -currentRef.current * 100
+      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
+      el.style.transition = 'none'
+      el.style.transform = `translateX(${baseTx + fractional}%)`
+    }
+  }, [drag])
+
+  const onPointerUp = useCallback((e: React.PointerEvent) => {
+    if (!drag.isDragging) return
+    drag.isDragging = false
+    containerRef.current?.releasePointerCapture(e.pointerId)
+    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+    const threshold = 50
+    if (drag.offsetX < -threshold) {
+      goTo(1)
+    } else if (drag.offsetX > threshold) {
+      goTo(-1)
+    } else if (!drag.wasDragged) {
+      onImageClick({ images, currentIndex: currentRef.current })
+    }
+  }, [drag, goTo, onImageClick, images])
+
+  const onPointerCancel = useCallback((e: React.PointerEvent) => {
+    drag.isDragging = false
+    containerRef.current?.releasePointerCapture(e.pointerId)
+    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+    if (el) {
+      el.style.transition = ''
+    }
+  }, [drag])
+
+  const handlePrev = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    goTo(-1)
+  }, [goTo])
+
+  const handleNext = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    goTo(1)
+  }, [goTo])
+
+  const handleDotClick = useCallback((i: number) => (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent(i)
+  }, [])
+
+  return (
       <div
         ref={containerRef}
         className="relative w-full overflow-hidden group rounded-card cursor-pointer select-none"
@@ -104,14 +149,14 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
         </div>
 
         <button
-          onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+          onClick={handlePrev}
           className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
           aria-label="Previous image"
         >
           ‹
         </button>
         <button
-          onClick={(e) => { e.stopPropagation(); goTo(1) }}
+          onClick={handleNext}
           className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
           aria-label="Next image"
         >
@@ -123,7 +168,7 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                onClick={handleDotClick(i)}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   i === current ? 'bg-white w-3' : 'bg-white/50'
                 }`}
@@ -136,34 +181,6 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
     )
   }
 
-  if (facility.imageSrc) {
-    return (
-      <div
-        className="rounded-card overflow-hidden cursor-pointer"
-        onClick={() => onImageClick({ images: [facility.imageSrc!], currentIndex: 0 })}
-      >
-        <img
-          src={facility.imageSrc}
-          alt={facility.title}
-          className="w-full object-cover"
-          style={{ aspectRatio: '500 / 400' }}
-          loading="lazy"
-        />
-      </div>
-    )
-  }
-
-  return (
-    <ImagePlaceholder
-      width={500}
-      height={400}
-      imageId={facility.imageId}
-      alt={facility.title}
-      className="rounded-card"
-    />
-  )
-}
-
 /** Modal carousel for full-size viewing */
 const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
   const [current, setCurrent] = useState(data.currentIndex)
@@ -171,12 +188,14 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
   const totalSlides = images.length
   const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
+  const currentRef = useRef(current)
+  currentRef.current = current
 
-  const goTo = (dir: number) => {
+  const goTo = useCallback((dir: number) => {
     setCurrent((c) => (c + dir + totalSlides) % totalSlides)
-  }
+  }, [totalSlides])
 
-  const onPointerDown = (e: React.PointerEvent) => {
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
     drag.startX = e.clientX
     drag.offsetX = 0
@@ -184,22 +203,22 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     if (trackRef.current) {
       trackRef.current.setPointerCapture(e.pointerId)
     }
-  }
+  }, [drag])
 
-  const onPointerMove = (e: React.PointerEvent) => {
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
     if (!drag.isDragging) return
     const delta = e.clientX - drag.startX
     drag.offsetX = delta
     const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
     if (el) {
-      const baseTx = -current * 100
+      const baseTx = -currentRef.current * 100
       const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
       el.style.transition = 'none'
       el.style.transform = `translateX(${baseTx + fractional}%)`
     }
-  }
+  }, [drag])
 
-  const onPointerUp = () => {
+  const onPointerUp = useCallback(() => {
     if (!drag.isDragging) return
     drag.isDragging = false
     const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
@@ -209,11 +228,26 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     const threshold = 50
     if (drag.offsetX < -threshold) goTo(1)
     else if (drag.offsetX > threshold) goTo(-1)
-  }
+  }, [drag, goTo])
 
-  const onPointerCancel = () => {
+  const onPointerCancel = useCallback(() => {
     drag.isDragging = false
-  }
+  }, [drag])
+
+  const handleModalPrev = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    goTo(-1)
+  }, [goTo])
+
+  const handleModalNext = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    goTo(1)
+  }, [goTo])
+
+  const handleModalDotClick = useCallback((i: number) => (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent(i)
+  }, [])
 
   return (
     <div
@@ -246,14 +280,14 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
       {totalSlides > 1 && (
         <>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            onClick={handleModalPrev}
             className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Previous image"
           >
             ‹
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            onClick={handleModalNext}
             className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Next image"
           >
@@ -264,7 +298,7 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                onClick={handleModalDotClick(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   i === current ? 'bg-brand-gold w-5' : 'bg-white/40'
                 }`}

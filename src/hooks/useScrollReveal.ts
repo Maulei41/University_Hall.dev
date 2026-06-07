@@ -74,8 +74,7 @@ export const useScrollReveal = ({
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [setProgress])
 
   const eased = easeOutCubic(progress)
 

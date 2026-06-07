@@ -198,7 +198,7 @@ export const EVENTS: HallEvent[] = [
       'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives Hall mates Superpass ‘lai sees’ (red packets, the lucky money). Castlers write Superpass ‘fai chuns’ (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
     category: 'Social',
     location: 'University Hall',
-    imageSrc: '/Event_Tradition/SuperPass.jpg',
+    images: ['/Event_Tradition/SuperPass_1.jpg', '/Event_Tradition/SuperPass_2.jpg', '/Event_Tradition/SuperPass_3.jpg'],
     imageId: 'dining_hall',
   },
   {

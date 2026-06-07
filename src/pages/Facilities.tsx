@@ -409,27 +409,6 @@ const Facilities: React.FC = () => {
                         <p className="text-brand-text-muted text-xl mb-6 leading-relaxed">
                           {facility.description}
                         </p>
-                        {facility.features.length > 0 && (
-                          <div>
-                            <h4 className="font-display font-semibold text-brand-gold-light text-2xl mb-4">
-                              Key Features
-                            </h4>
-                            <ul className="space-y-2">
-                              {facility.features.map((feature, featureIdx) => (
-                                <motion.li
-                                  key={featureIdx}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  whileInView={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: featureIdx * 0.1 }}
-                                  className="flex items-start gap-3 text-brand-text-muted"
-                                >
-                                  <span className="text-brand-emerald text-xl font-bold mt-1">✓</span>
-                                  <span className="text-xl">{feature}</span>
-                                </motion.li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
                       </div>
                     </FadeInUp>
                   </motion.div>

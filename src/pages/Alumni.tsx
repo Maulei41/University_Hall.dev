@@ -438,7 +438,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
   const [current, setCurrent] = useState(data.currentIndex)
   const images = data.images
   const totalSlides = images.length
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
+  const drag = useRef({ startX: 0, startY: 0, offsetX: 0, isDragging: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
 
   const goTo = (dir: number) => {
@@ -448,6 +448,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
     drag.startX = e.clientX
+    drag.startY = e.clientY
     drag.offsetX = 0
     drag.isDragging = true
     if (trackRef.current) {
@@ -457,6 +458,12 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!drag.isDragging) return
+    const dy = Math.abs(e.clientY - drag.startY)
+    if (dy > 10) {
+      drag.isDragging = false
+      trackRef.current?.releasePointerCapture(e.pointerId)
+      return
+    }
     const delta = e.clientX - drag.startX
     drag.offsetX = delta
     const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
@@ -468,9 +475,10 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     }
   }
 
-  const onPointerUp = () => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (!drag.isDragging) return
     drag.isDragging = false
+    trackRef.current?.releasePointerCapture(e.pointerId)
     const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
     if (el) {
       el.style.transition = ''
@@ -480,8 +488,9 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     else if (drag.offsetX > threshold) goTo(-1)
   }
 
-  const onPointerCancel = () => {
+  const onPointerCancel = (e: React.PointerEvent) => {
     drag.isDragging = false
+    trackRef.current?.releasePointerCapture(e.pointerId)
   }
 
   return (
@@ -558,7 +567,7 @@ const AlumniVisitCarousel: React.FC<{
 }> = ({ images, title, onImageClick }) => {
   const [current, setCurrent] = useState(0)
   const totalSlides = images.length
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
+  const drag = useRef({ startX: 0, startY: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
 
   const goTo = (dir: number) => {
@@ -568,6 +577,7 @@ const AlumniVisitCarousel: React.FC<{
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
     drag.startX = e.clientX
+    drag.startY = e.clientY
     drag.offsetX = 0
     drag.isDragging = true
     drag.wasDragged = false
@@ -578,6 +588,12 @@ const AlumniVisitCarousel: React.FC<{
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!drag.isDragging) return
+    const dy = Math.abs(e.clientY - drag.startY)
+    if (dy > 10) {
+      drag.isDragging = false
+      trackRef.current?.releasePointerCapture(e.pointerId)
+      return
+    }
     const delta = e.clientX - drag.startX
     drag.offsetX = delta
     drag.wasDragged = Math.abs(delta) > 5
@@ -590,9 +606,10 @@ const AlumniVisitCarousel: React.FC<{
     }
   }
 
-  const onPointerUp = (_e: React.PointerEvent) => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (!drag.isDragging) return
     drag.isDragging = false
+    trackRef.current?.releasePointerCapture(e.pointerId)
     const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
     if (el) {
       el.style.transition = ''
@@ -605,8 +622,9 @@ const AlumniVisitCarousel: React.FC<{
     }
   }
 
-  const onPointerCancel = () => {
+  const onPointerCancel = (e: React.PointerEvent) => {
     drag.isDragging = false
+    trackRef.current?.releasePointerCapture(e.pointerId)
   }
 
   return (

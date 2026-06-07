@@ -61,63 +61,53 @@ export const FACILITIES: Facility[] = [
     category: 'Dining',
     title: 'Dining Hall',
     description:
-      '',
+      'Originally a chapel, our Dining Hall is where hallmates gather for daily meals, high table dinners, and major hall occasions, bringing people together in a space rich with history.',
     imageId: 'dining_hall',
     imageSrc: '/Facilities/Dining_Hall_1.jpeg',
     images: ['/Facilities/Dining_Hall_1.jpeg', '/Facilities/Dining_Hall_2.jpg'],
-    features: [
-      'PlaceHolder'
-    ],
+    features: '',
   },
   {
     id: 'library',
     category: 'Common Area',
     title: 'Hall Library',
     description:
-      '',
+      'A quiet haven for bookworms and late-night readers, the Hall Library offers a comfortable place to study, focus, and enjoy the rare bonus of free air conditioning.',
     imageId: 'library',
     imageSrc: '/Facilities/Hall_Library_1.jpeg',
-    features: [
-      'PlaceHolder'
-    ],
+    features: 'PlaceHolder',
   },
   {
     id: 'gym-room',
     category: 'Common Area',
     title: 'Gym Room',
     description:
-      '',
+      'The Gym Room is where hallmates come to train, sweat, and quietly work toward their own transformation, whether for fitness, sports, or a “secret evolution.”',
     imageId: 'recreation',
     imageSrc: '/Facilities/Gym_1.jpeg',
     images: ['/Facilities/Gym_1.jpeg', '/Facilities/Gym_2.jpeg', '/Facilities/Gym_3.jpeg', '/Facilities/Gym_4.jpeg', '/Facilities/Gym_5.jpeg', '/Facilities/Gym_6.jpeg', '/Facilities/Gym_7.jpeg'],
-    features: [
-      'PlaceHolder',
-    ],
+    features: 'PlaceHolder',
   },
   {
     id: 'common-room',
     category: 'Common Area',
     title: 'Common Room',
     description:
-      '',
+      'Equipped with gaming consoles and an electronic mahjong table, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other’s company.',
     imageId: 'accommodation',
     imageSrc: '/Facilities/Common_Room_1.jpeg',
     images: ['/Facilities/Common_Room_1.jpeg', '/Facilities/Common_Room_2.jpg'],
-    features: [
-      'PlaceHolder'
-    ],
+    features: 'PlaceHolder',
   },
   {
     id: 'newspaper-rooms',
     category: 'Common Area',
     title: 'Newspaper Room',
     description:
-      '',
+      'With a piano and vending machines, the Newspaper Room is a cosy corner for casual relaxation, though it also has a reputation as a place where mosquitoes love to gather.',
     imageId: 'common_rooms',
     imageSrc: '/Facilities/Nawspaper_Room.jpeg',
-    features: [
-      'PlaceHolder'
-    ],
+    features: 'PlaceHolder',
   },
   // {
   //   id: 'vending-machine',
@@ -135,25 +125,41 @@ export const FACILITIES: Facility[] = [
     category: 'Amenities',
     title: 'Laundry Room',
     description:
-        '',
+        'The Laundry Room gives hallmates a convenient place to wash, dry, and care for their clothes amid their busy schedules. Make sure to take out the clothes from the machine on time, or else it will be taken by other furious individuals.',
     imageId: 'community_center',
     imageSrc: '/Facilities/laundry_room.jpg',
-    features: [
-      'PlaceHolder',
-    ],
+    features: 'PlaceHolder',
   },
   {
     id: 'Pantry',
     category: 'Amenities',
     title: 'Pantry',
     description:
-        '',
+        'The Pantry provides a shared space for hallmates to cook their meals, making it a practical and familiar stop for late-night refuels and everyday use. Please clean it after use!!!',
     imageId: 'community_center',
     imageSrc: '/Facilities/pantry.jpg',
-    features: [
-      'PlaceHolder',
-    ],
+    features: 'PlaceHolder',
   },
+  {
+    id: 'Music_room',
+    category: 'Common Area',
+    title: 'Music Room',
+    description:
+        'Designed for creativity and sound, the Music Room is where the band team practices and hallmates bring music to life through rehearsal, rhythm, and collaboration.',
+    imageId: 'community_center',
+    imageSrc: '/Facilities/Band_Room.jpeg',
+    features: 'PlaceHolder',
+  },
+  // {
+  //   id: 'Farmhouse',
+  //   category: 'Outdoor Area',
+  //   title: 'Farmhouse',
+  //   description:
+  //       'The Farmhouse is our very own  basketball court and a favourite spot for training and casual play, giving hallmates space to stay active and sharpen their game.',
+  //   imageId: 'community_center',
+  //   // imageSrc: '/Facilities/pantry.jpg',
+  //   features: 'PlaceHolder',
+  // },
 ]
 
 export const EVENTS: HallEvent[] = [
@@ -211,9 +217,9 @@ export const EVENTS: HallEvent[] = [
     id: 'inter-hall',
     title: 'Inter-Hall Competition / Performance',
     description:
-      '',
+      'Interhall competitions and performances are where University Hall showcases its brotherhood, talent, and spirit, standing proud in front of other halls through teamwork and dedication.',
     category: 'Inter-Hall',
-    location: 'HKU Campus',
+    location: 'Stanley Ho Sport Centre / Ho Tim Hall / Sun Yat-Sen Place',
     imageId: 'recreation',
     images: ['/Life/Uhall_Softball_1.jpg', '/Life/Uhall_Hockey_1.jpeg', "/Life/Uhall_Dance_2.jpeg"]
   },
@@ -742,6 +748,7 @@ export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
       'Networking events connecting students, mentors, and alumni',
       'Expand professional connections and career prospects',
     ],
+    imageSrc:"/Alumni/HKU_Mentorship.jpeg"
   },
   {
     id: 'quo-vadis',

@@ -15,7 +15,7 @@ export interface Facility {
   imageSrc?: string
   /** Multiple images — renders an inline carousel instead of a single image */
   images?: string[]
-  features: string[]
+  features: string
 }
 
 export interface HallTradition {

@@ -83,15 +83,15 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     y: 83,
     imageSrc: '/TourHall/Room_A9.jpeg',
   },
-  {
-    id: 'room-a13',
-    name: 'Room A13',
-    description:
-        '',
-    floor: 'A',
-    x: 25,
-    y: 80.5,
-  },
+  // {
+  //   id: 'room-a13',
+  //   name: 'Room A13',
+  //   description:
+  //       '',
+  //   floor: 'A',
+  //   x: 25,
+  //   y: 80.5,
+  // },
   {
     id: 'room-b3',
     name: 'Room B3',
@@ -115,7 +115,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     id: 'room-c12',
     name: 'Room C12',
     description:
-        '',
+        'Twin Room (loft bed)~14.0m²190cm (L) x 84cm(W) x 7.6cm (H)142cm(L) x 80cm(W) x 74cm (H)',
     floor: 'C',
     imageSrc: '/TourHall/Room_C12_1.jpeg',
     x: 34,

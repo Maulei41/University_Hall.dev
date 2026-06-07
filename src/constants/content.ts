@@ -585,22 +585,16 @@ export const STATS: StatItem[] = [
   },
 ]
 
-export interface NavLink {
-  label: string
-  tKey: string
-  href: string
-}
-
-export const NAV_LINKS: NavLink[] = [
-  { label: 'Home', tKey: 'nav.home', href: '/' },
-  { label: 'About', tKey: 'nav.about', href: '/about' },
-  { label: 'Facilities', tKey: 'nav.facilities', href: '/facilities' },
-  { label: 'Events & Traditions', tKey: 'nav.events', href: '/events' },
-  { label: 'Life', tKey: 'nav.life', href: '/life' },
-  { label: 'People', tKey: 'nav.people', href: '/people' },
-  { label: 'FAQ', tKey: 'nav.faq', href: '/faq' },
-  { label: 'Alumni', tKey: 'nav.alumni', href: '/alumni' },
-  { label: 'Apply', tKey: 'nav.apply', href: '/apply' },
+export const NAV_LINKS = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Facilities', href: '/facilities' },
+  { label: 'Events & Traditions', href: '/events' },
+  { label: 'Life', href: '/life' },
+  { label: 'People', href: '/people' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Alumni', href: '/alumni' },
+  { label: 'Apply', href: '/apply' },
 ]
 
 export const HALL_TEAMS: HallTeam[] = [

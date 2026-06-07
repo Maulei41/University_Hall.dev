@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useMobileMenu } from '@hooks/index'
 import { NAV_LINKS } from '@constants/content'
-import { useI18n } from '@/i18n'
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const { isOpen, toggle, close } = useMobileMenu()
   const location = useLocation()
-  const { t, lang, toggleLang } = useI18n()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +22,10 @@ export const Header: React.FC = () => {
   return (
     <>
       {/* Main Header */}
-      <header
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
             ? 'bg-brand-bg border-b border-brand-border shadow-lg'
@@ -61,19 +62,10 @@ export const Header: React.FC = () => {
                       : 'text-brand-text-muted hover:text-brand-text-primary'
                   }`}
                 >
-                  {t(link.tKey)}
+                  {link.label}
                 </Link>
               )
             })}
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLang}
-              aria-label={t('nav.language_label')}
-              className="ml-2 px-3 py-2 rounded-card font-mono text-sm text-brand-text-muted hover:text-brand-gold transition-colors flex items-center gap-1.5"
-            >
-              <Globe size={14} />
-              <span>{lang === 'en' ? 'EN' : '中文'}</span>
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,7 +78,7 @@ export const Header: React.FC = () => {
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
-      </header>
+      </motion.header>
 
       {/* Mobile Navigation */}
       <motion.div
@@ -110,17 +102,10 @@ export const Header: React.FC = () => {
                     : 'text-brand-text-muted hover:text-brand-text-primary'
                 }`}
               >
-                {t(link.tKey)}
+                {link.label}
               </Link>
             )
           })}
-            {/* Mobile Language Toggle */}
-            <button
-              onClick={toggleLang}
-              className="block w-full text-left px-4 py-3 rounded-card font-mono text-sm text-brand-text-muted hover:text-brand-gold transition-colors mt-2 border-t border-brand-border pt-4"
-            >
-              {lang === 'en' ? 'EN | 中文' : '中文 | EN'}
-            </button>
         </nav>
       </motion.div>
     </>

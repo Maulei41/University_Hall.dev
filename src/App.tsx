@@ -3,7 +3,6 @@ import { lazyWithDelay } from '@utils/lazyWithDelay'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
-import { I18nProvider } from '@/i18n'
 import { Footer } from '@components/layout/Footer'
 import { LOGO_PATHS, LOGO_VIEWBOX } from '@constants/logoPaths'
 import PathDrawing from '@components/animations/PathDrawing'
@@ -76,7 +75,6 @@ export default function App() {
     <SmoothScrollProvider>
       <Router>
         <ScrollToTop />
-        <I18nProvider>
         <AnimatePresence mode="wait">
           <motion.div
             key="app"
@@ -104,7 +102,6 @@ export default function App() {
             <Footer />
           </motion.div>
         </AnimatePresence>
-        </I18nProvider>
       </Router>
     </SmoothScrollProvider>
   )

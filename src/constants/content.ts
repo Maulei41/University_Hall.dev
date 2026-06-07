@@ -885,7 +885,7 @@ export const HALL_TREASURES: HallTreasure[] = [
     id: 'davids-deers',
     name: "David's Deers",
     description:
-      'Positioned at the main entrance stairs, two adults, and one child. Students touching the deers before their graduation risk being cursed to never graduate.',
+      'Positioned at the main entrance stairs, two adults, and one child. Students touching the deers risk being cursed to never graduate.',
     imageId: 'davids_deers',
     imageSrc: '/Facilities/Davids_Deer.jpeg',
   },

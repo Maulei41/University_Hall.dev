@@ -91,7 +91,7 @@ export interface HallTeam {
   id: string
   name: string
   description: string
-  category: 'Old Ball' | 'New Ball' | 'Culture' | "Seasonal"
+  category: 'Old Ball Team' | 'New Ball Team' | 'Culture Team' | "Seasonal Team"
   imageId: string
   imageSrc?: string
   /** Multiple images — renders an inline carousel instead of a single image */
@@ -101,8 +101,8 @@ export interface HallTeam {
 export interface MentorshipProgram {
   id: string
   title: string
-  description: string
-  details: string[]
+  description?: string
+  details?: string[]
   imageId?: string
   imageSrc?: string
   images?: string[]

@@ -44,9 +44,9 @@ const Alumni: React.FC = () => {
               <Container>
                 <FadeInUp>
                   <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-3 text-center">
-                    Alumni Association
+                    University Hall Alumni Limited
                   </h2>
-                  <p className="text-brand-text-muted text-center max-w-xl mx-auto mb-12">
+                  <p className="text-brand-text-muted text-center text-xl max-w-xl mx-auto mb-12">
                     {aa.description}
                   </p>
                 </FadeInUp>
@@ -60,7 +60,7 @@ const Alumni: React.FC = () => {
                 >
                   {/* Mission */}
                   <div className="bg-brand-surface rounded-card p-6 mb-8 border border-brand-border/50">
-                    <p className="text-brand-text-muted italic leading-relaxed text-center">
+                    <p className="text-brand-text-muted italic leading-relaxed text-center text-xl">
                       &ldquo;{aa.mission}&rdquo;
                     </p>
                   </div>
@@ -74,7 +74,7 @@ const Alumni: React.FC = () => {
                       {aa.activities.map((activity, i) => (
                         <div key={i} className="flex items-start gap-3">
                           <Check size={16} className="text-brand-emerald flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-brand-text-muted">{activity}</span>
+                          <span className="text-xl text-brand-text-muted">{activity}</span>
                         </div>
                       ))}
                     </div>
@@ -147,9 +147,6 @@ const Alumni: React.FC = () => {
                             ) : null}
                           </div>
 
-                          <span className="inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-3 bg-indigo-600 text-white">
-                            Alumni Association
-                          </span>
 
                           <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
                             {person.name}
@@ -224,7 +221,7 @@ const Alumni: React.FC = () => {
                 {hkuProgram.description}
               </p>
               <ul className="space-y-4">
-                {hkuProgram.details.map((detail, idx) => (
+                {hkuProgram.details?.map((detail, idx) => (
                   <motion.li
                     key={idx}
                     initial={{ opacity: 0, y: 10 }}
@@ -402,7 +399,7 @@ const Alumni: React.FC = () => {
             {/* Content */}
             <div className="p-6 sm:p-8">
               <span className="inline-block px-3 py-1 rounded text-xs font-mono font-semibold mb-4 bg-indigo-600 text-white">
-                Alumni Association
+                University Hall Alumni Limited
               </span>
 
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-brand-text-primary mb-2">

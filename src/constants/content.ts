@@ -598,8 +598,8 @@ export const NAV_LINKS = [
   { label: 'Events & Traditions', href: '/events' },
   { label: 'Life', href: '/life' },
   { label: 'People', href: '/people' },
-  { label: 'FAQ', href: '/faq' },
   { label: 'Alumni', href: '/alumni' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Apply', href: '/apply' },
 ]
 
@@ -612,7 +612,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Hockey Team',
     description:
       'Join our hall; join our team. We will show you how brotherhood can be shaped by (hockey) sticks.',
-    category: 'New Ball',
+    category: 'New Ball Team',
     imageId: 'recreation',
     images: ['/Life/Uhall_Hockey_1.jpeg', '/Life/Uhall_Hockey_2.jpeg', '/Life/Uhall_Hockey_3.JPG', '/Life/Uhall_Hockey_4.JPG', '/Life/Uhall_Hockey_5.JPG'],
   },
@@ -621,7 +621,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Lacrosse Team',
     description:
       'Lacrosse Grind Begins Today! Lacrosse team is where boys become men and brotherhood is built. Join us to experience the thrill of this prestigious sport!',
-    category: 'New Ball',
+    category: 'New Ball Team',
     imageId: 'Uhall_Lacrosse',
     imageSrc: '/Life/Uhall_Lacrosse.jpeg',
   },
@@ -630,7 +630,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Softball Team',
     description:
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.🥎',
-    category: 'New Ball',
+    category: 'New Ball Team',
     imageId: 'Uhall_Softball',
     images: ['/Life/Uhall_Softball_1.jpg','/Life/Uhall_Softball_2.jpg', '/Life/Uhall_Softball_3.jpg',  '/Life/Uhall_Softball_4.jpeg'],
   },
@@ -640,7 +640,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Basketball Team ',
     description:
         'We\'re a serious squad — high standards, real competition — led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. 🏀',
-    category: 'Old Ball',
+    category: 'Old Ball Team',
     imageId: 'recreation',
     imageSrc: '/Life/Uhall_Basketball.jpeg',
   },
@@ -649,7 +649,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Football Team',
     description:
         'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
-    category: 'Old Ball',
+    category: 'Old Ball Team',
     imageId: 'recreation',
     imageSrc: '/Life/Uhall_Football.jpeg',
   },
@@ -668,7 +668,7 @@ export const HALL_TEAMS: HallTeam[] = [
         'where sharp minds collaborate.\n' +
         '\n' +
         'Bring your curiosity, sharpen your skills, and be part of our team that turns every contract into a successful bid!',
-    category: 'Culture',
+    category: 'Culture Team',
     imageId: 'common_rooms',
     imageSrc: '/Life/Uhall_Bridge.jpeg',
   },
@@ -677,7 +677,7 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Band Team',
     description:
       'Bringing together music lovers with passion, energy, and Hall spirit, UHall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!',
-    category: 'Culture',
+    category: 'Culture Team',
     imageId: 'dining_hall',
     imageSrc: '/Life/Uhall_Band.jpeg',
   },
@@ -686,17 +686,17 @@ export const HALL_TEAMS: HallTeam[] = [
     name: 'Dance Team',
     description:
       'Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!✨',
-    category: 'Culture',
+    category: 'Culture Team',
     imageId: 'common_rooms',
     imageSrc: '/Life/Uhall_Dance_1.jpeg',
     images:['/Life/Uhall_Dance_2.jpeg', '/Life/Uhall_Dance_1.jpeg']
   },
   {
     id: 'seasonal-dragon-boat',
-    name: 'Dragon Boat',
+    name: 'Dragon Boat Team',
     description:
       'Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!',
-    category: 'Seasonal',
+    category: 'Seasonal Team',
     imageId: 'library',
     imageSrc: '/Life/Uhall_DragonBoat.jpeg',
   },
@@ -748,14 +748,7 @@ export const MENTORSHIP_PROGRAMS: MentorshipProgram[] = [
     title: 'Quo Vadis — Student Mentorship Project',
     images: ['/Alumni/Quo_Vadis_1.jpeg','/Alumni/Quo_Vadis_2.jpg', "/Alumni/Quo_Vadis_3.JPG"],
     description:
-      'University Hall highly cherishes the value of university education for our deepened knowledge and broadened horizons. Therefore, in early 2024, a group of UHall-lites edified in hall education, joining forces with aspiring talents from school, prepared this student mentorship programme, \'Quo Vadis\', an HKU Student Alumni Projects for Youths from Multi-ethnic Groups in the Pokfulam Community. It aims to establish connections between HKU and the Pokfulam Community. Our mentors run monthly workshops, forums and outings, such that participants can widen their outlook to co-curricular learning from multiple perspectives. Through heartfelt exchanges throughout the year, we also anticipate stronger ties between mentees and mentors who would stand by them as they progress. In 2025, the project extends into Yuen Long District, further benefiting more secondary students.',
-    details: [
-      'Student-led mentorship project for youths from multi-ethnic groups',
-      'Monthly workshops, forums, and outings for co-curricular learning',
-      'Establishes connections between HKU and the Pokfulam Community',
-      'Heartfelt exchanges fostering strong mentor-mentee bonds',
-      'Expanded to Yuen Long District in 2025 to benefit more secondary students',
-    ],
+      'Founded by UHall-lites in 2024, ‘Quo Vadis’ is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
   },
 ]
 

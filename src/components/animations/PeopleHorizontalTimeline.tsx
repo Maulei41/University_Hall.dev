@@ -55,11 +55,8 @@ const PeopleHorizontalTimeline: React.FC<PeopleHorizontalTimelineProps> = ({ peo
             <div className="flex-shrink-0 w-screen h-full flex items-center justify-center bg-brand-bg">
               <div className="text-center max-w-xl px-8">
                 <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-4">
-                  Our Team
+                  Tutorial & Management Team
                 </h2>
-                <p className="text-lg text-brand-text-muted">
-                  Dedicated scholars, mentors, and professionals committed to residential excellence.
-                </p>
               </div>
             </div>
 

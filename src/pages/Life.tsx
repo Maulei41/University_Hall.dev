@@ -6,10 +6,10 @@ import { HALL_TEAMS, MENTORSHIP_PROGRAMS } from '@constants/content'
 import type { HallTeam } from '../types/index'
 
 const CATEGORIES: { key: HallTeam['category']; label: string }[] = [
-  { key: 'New Ball', label: 'New Ball' },
-  { key: 'Old Ball', label: 'Old Ball' },
-  { key: 'Culture', label: 'Culture' },
-  { key: 'Seasonal', label: 'Seasonal' },
+  { key: 'New Ball Team', label: 'New Ball' },
+  { key: 'Old Ball Team', label: 'Old Ball' },
+  { key: 'Culture Team', label: 'Culture' },
+  { key: 'Seasonal Team', label: 'Seasonal' },
 ]
 
 // const badgeVariant = (category: HallTeam['category']): 'gold' | 'emerald' | 'culture' | 'seasonal' => {
@@ -355,7 +355,9 @@ const QuoVadisSection: React.FC<{
       <Container>
         <FadeInUp>
           <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-12">
-            {title}
+            {title.split(' — ').map((part, i) =>
+              i === 0 ? <span key={i} className="italic">{part}</span> : <span key={i}> — {part}</span>
+            )}
           </h2>
         </FadeInUp>
 
@@ -427,8 +429,10 @@ const QuoVadisSection: React.FC<{
           {/* Content side */}
           <FadeInUp delay={0.2}>
             <div>
-              <p className="text-brand-text-muted text-lg leading-relaxed mb-8">
-                {description}
+              <p className="text-brand-text-muted text-xl leading-relaxed mb-8">
+                {description.split(/(Quo Vadis)/).map((part, i) =>
+                  part === 'Quo Vadis' ? <span key={i} className="italic">{part}</span> : part
+                )}
               </p>
               <ul className="space-y-4">
                 {details.map((detail, i) => (
@@ -531,8 +535,8 @@ const Life: React.FC = () => {
       {quoVadis.images && quoVadis.images.length > 0 && (
         <QuoVadisSection
           title={quoVadis.title}
-          description={quoVadis.description}
-          details={quoVadis.details}
+          description={quoVadis.description ?? ''}
+          details={quoVadis.details ?? []}
           images={quoVadis.images}
           onImageClick={setModalCarousel}
         />

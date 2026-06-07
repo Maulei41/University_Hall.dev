@@ -59,10 +59,10 @@ const People: React.FC = () => {
         <Container>
           <FadeInUp>
             <h1 className="font-display text-5xl lg:text-6xl font-bold text-brand-text-primary mb-6">
-              Our Team
+              Hall Management
             </h1>
             <p className="text-xl text-brand-text-muted max-w-2xl">
-              Dedicated scholars, mentors, and professionals committed to residential excellence.
+              Dedicated members committed to residential excellence.
             </p>
           </FadeInUp>
         </Container>
@@ -154,13 +154,13 @@ const People: React.FC = () => {
           <FadeInUp>
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-4">
-                Students' Association
+                University Hall Students' Association
               </h2>
-              <p className="text-brand-text-muted text-sm sm:text-base max-w-xl mx-auto">
+              <p className="text-brand-text-muted text-xl sm:text-base max-w-xl mx-auto">
                 {ASSOCIATIONS.find((a) => a.id === 'student-association')?.description}
               </p>
               <div className="bg-brand-surface rounded-card p-4 sm:p-5 mt-6 border border-brand-border/50 max-w-xl mx-auto">
-                <p className="text-sm text-brand-text-primary italic leading-relaxed">
+                <p className="text-xl text-brand-text-primary italic leading-relaxed">
                   &ldquo;{ASSOCIATIONS.find((a) => a.id === 'student-association')?.mission}&rdquo;
                 </p>
               </div>
@@ -193,18 +193,18 @@ const SACard: React.FC<{ person: Person }> = ({ person }) => (
   <StaggerItem className="h-full">
     <ScaleOnHover className="h-full">
       <div className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
-        <h4 className="font-display text-sm sm:text-base font-semibold text-brand-text-primary mb-0.5 leading-tight">
+        <h4 className="font-display text-xl sm:text-base font-semibold text-brand-text-primary mb-0.5 leading-tight">
           {person.name}
         </h4>
         {person.chineseName && (
-          <p className="text-sm text-brand-text-muted/70 mb-1 leading-tight">
+          <p className="text-xl text-brand-text-muted/70 mb-1 leading-tight">
             {person.chineseName}
           </p>
         )}
-        <p className="text-[11px] text-brand-gold/80 font-semibold mb-2 leading-tight">
+        <p className="text-xl text-brand-gold/80 font-semibold mb-2 leading-tight">
           {person.title}
         </p>
-        <p className="text-xs text-brand-text-muted mt-auto">{person.bio}</p>
+        <p className="text-xl text-brand-text-muted mt-auto">{person.bio}</p>
       </div>
     </ScaleOnHover>
   </StaggerItem>

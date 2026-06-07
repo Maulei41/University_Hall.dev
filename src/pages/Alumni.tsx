@@ -266,7 +266,7 @@ const Alumni: React.FC = () => {
         <Container>
           <FadeInUp>
             <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold text-center mb-4">
-              Return to the Hall
+              ... and the same old family
             </h2>
             <p className="text-brand-text-muted text-center max-w-2xl mx-auto mb-12">
               Alumni are always welcome home. Whether you&apos;re celebrating a milestone or simply

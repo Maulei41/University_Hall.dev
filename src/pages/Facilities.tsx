@@ -392,7 +392,7 @@ const Facilities: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border border-brand-border rounded-card p-4 lg:border-0 lg:p-0"
                   >
                     <ScaleOnHover className={idx % 2 === 1 ? 'lg:order-2' : ''}>
                       <FacilityImage facility={facility} onImageClick={setModalCarousel} />

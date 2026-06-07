@@ -334,7 +334,7 @@ const Events: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.6, delay: itemIdx * 0.1 }}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border border-brand-border rounded-card p-4 lg:border-0 lg:p-0"
                   >
                     <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
                       <EventTraditionalImage images={event.images} imageSrc={event.imageSrc} imageId={event.imageId} title={event.title} onImageClick={setModalCarousel} videoSrc={event.videoSrc} />
@@ -388,7 +388,7 @@ const Events: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.6, delay: itemIdx * 0.1 }}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border border-brand-border rounded-card p-4 lg:border-0 lg:p-0"
                   >
                     <ScaleOnHover className={itemIdx % 2 === 1 ? 'lg:order-2' : ''}>
                       <EventTraditionalImage images={tradition.images} imageSrc={tradition.imageSrc} imageId={tradition.imageId} title={tradition.title} onImageClick={setModalCarousel} videoSrc={tradition.videoSrc} />

@@ -201,7 +201,7 @@ export const EVENTS: HallEvent[] = [
     id: 'superpass',
     title: 'Superpass party',
     description:
-      'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives Hall mates Superpass ‘lai sees’ (red packets, the lucky money). Castlers write Superpass ‘fai chuns’ (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
+      'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives hallmates Superpass ‘lai sees’ (red packets, the lucky money). Castlers write Superpass ‘fai chuns’ (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
     category: 'Social',
     location: 'University Hall',
     images: ['/Event_Tradition/SuperPass_1.jpg', '/Event_Tradition/SuperPass_2.jpg', '/Event_Tradition/SuperPass_3.jpg'],
@@ -212,7 +212,7 @@ export const EVENTS: HallEvent[] = [
     title: 'Inter-Hall Competition / Performance',
     description:
       '',
-    category: 'Recreation',
+    category: 'Inter-Hall',
     location: 'HKU Campus',
     imageId: 'recreation',
     images: ['/Life/Uhall_Softball_1.jpg', '/Life/Uhall_Hockey_1.jpeg', "/Life/Uhall_Dance_2.jpeg"]
@@ -239,7 +239,7 @@ export const TRADITIONS: HallTradition[] = [
     frequency: 'Monthly',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/High_Table_1.jpeg',
-    images: ['/Event_Tradition/High_Table_1.jpeg', '/Event_Tradition/High_Table_2.jpeg', '/Event_Tradition/High_Table_3.jpeg', '/Event_Tradition/High_Table_4.jpeg', '/Event_Tradition/High_Table_5.jpeg'],
+    images: ['/Event_Tradition/High_Table_1.jpeg', '/Event_Tradition/High_Table_2.jpeg', '/Event_Tradition/High_Table_3.jpeg'],
     featured: true,
   },
   {
@@ -269,7 +269,7 @@ export const TRADITIONS: HallTradition[] = [
     title: 'Nazarene Nite',
     category: 'Social',
     description:
-      'The Nazarene\'s Night is a moment of celebration and memories. Fresh graduates will come back to the Castle to take their second cup of Hall blood, and they will share with the current Castlers their memories in University Hall. In addition, awards would be presented to acknowledge the achievements of outstanding Castlers in the past year.',
+      'The Nazarene Night is a moment of celebration and memories. Fresh graduates will come back to the Castle to take their second cup of Hall blood, and they will share with the current Castlers their memories in University Hall. In addition, awards would be presented to acknowledge the achievements of outstanding Castlers in the past year.',
     frequency: 'Annual',
     imageId: 'dining_hall',
     imageSrc: '/Event_Tradition/Nazarene_Nite.jpeg',
@@ -287,9 +287,9 @@ export const TRADITIONS: HallTradition[] = [
   },
   {
     id: 'reunion-dinner',
-    title: 'ReUnion Dinner',
+    title: 'Reunion Dinner',
     description:
-      'Every year on this night, graduated Hall mates, old or new, come back and have a dinner with the current Hall mates. Meanwhile, members of the proposed cabinet of University Hall Students\' Association introduce themselves as well.',
+      'Every year on this night, graduated hallmates, old or young, come back and have a dinner with current hallmates.',
     category: 'Community',
     frequency: 'Annual',
     imageSrc:"/Event_Tradition/ReUnion_Dinner.jpg",

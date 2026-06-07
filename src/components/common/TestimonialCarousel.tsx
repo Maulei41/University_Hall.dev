@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Testimonial } from '../../types/index'
@@ -30,6 +30,8 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 }) => {
   const [[currentIndex, direction], setPage] = useState([0, 0])
   const [isPaused, setIsPaused] = useState(false)
+  const [cardHeight, setCardHeight] = useState<number | null>(null)
+  const measureRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
 
   const paginate = useCallback(
@@ -46,6 +48,17 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   const goTo = useCallback((index: number) => {
     setPage(([prev]) => [index, index > prev ? 1 : -1])
   }, [])
+
+  // Measure tallest card height
+  useEffect(() => {
+    if (!measureRef.current) return
+    const cards = measureRef.current.children
+    let max = 0
+    for (const card of cards) {
+      max = Math.max(max, card.scrollHeight)
+    }
+    if (max > 0) setCardHeight(max)
+  }, [testimonials])
 
   // Auto-play
   useEffect(() => {
@@ -77,6 +90,23 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       aria-label="Resident testimonials carousel"
       aria-roledescription="carousel"
     >
+      {/* Hidden measurement container */}
+      <div ref={measureRef} className="invisible absolute pointer-events-none" style={{ width: '100%' }}>
+        {testimonials.map((t, i) => (
+          <div key={i} className="card-base p-8 md:p-12 text-center">
+            <blockquote className="text-xl md:text-2xl text-brand-text-muted mb-8 italic leading-relaxed font-serif">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <div className="border-t border-brand-border pt-6">
+              <p className="font-display text-xl font-semibold text-brand-gold">
+                {t.author}
+              </p>
+              <p className="text-sm text-brand-text-muted mt-1">{t.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Large decorative opening quote */}
       <svg
         className="mx-auto mb-8 text-brand-gold/20"
@@ -101,6 +131,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             exit="exit"
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             className="card-base p-8 md:p-12 text-center"
+            style={cardHeight ? { minHeight: cardHeight } : undefined}
             role="group"
             aria-roledescription="slide"
             aria-label={`Testimonial ${currentIndex + 1} of ${testimonials.length}`}

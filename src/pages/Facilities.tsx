@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
 import { FACILITIES } from '@constants/content'
@@ -12,13 +12,6 @@ interface CarouselData {
 
 /** Facility image — clickable to open full-size in a modal, draggable to swipe */
 const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: CarouselData) => void }> = ({ facility, onImageClick }) => {
-  const [displayIndex, setDisplayIndex] = useState(1)
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
-  const containerRef = useRef<HTMLDivElement>(null)
-  const transitioning = useRef(false)
-  const displayIndexRef = useRef(displayIndex)
-  displayIndexRef.current = displayIndex
-
   // Single image or placeholder: no carousel needed
   if (!facility.images || facility.images.length === 0) {
     if (facility.imageSrc) {
@@ -49,328 +42,265 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
   }
 
   const images = facility.images
-  const totalSlides = images.length
+  const total = images.length
 
-  const displayImages: string[] = React.useMemo(() => {
-    if (totalSlides <= 1) return images
-    return [images[totalSlides - 1], ...images, images[0]]
-  }, [images, totalSlides])
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointerId = useRef(-1)
+  const dragDelta = useRef(0)
+  const [[current, direction], setPage] = useState<[number, number]>([0, 0])
+  const curRef = useRef(current)
+  curRef.current = current
+  const realIndex = ((current % total) + total) % total
 
-  const jumpTo = useCallback((index: number) => {
-    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-    if (el) el.style.transition = 'none'
-    setDisplayIndex(index)
-    if (el) {
-      el.style.transition = ''
-      el.style.transform = `translateX(-${index * 100}%)`
-    }
-  }, [])
+  const paginate = useCallback(
+    (dir: number) => setPage(([c]) => [c + dir, dir]),
+    [],
+  )
 
-  const goTo = useCallback((dir: number) => {
-    if (transitioning.current) return
-    setDisplayIndex((c) => c + dir)
-  }, [])
+  const goToSlide = useCallback(
+    (idx: number) => {
+      const c = curRef.current
+      const curReal = ((c % total) + total) % total
+      if (idx === curReal) return
+      const diff = ((idx - curReal) % total + total) % total
+      const dir = diff <= total / 2 ? 1 : -1
+      const target = diff <= total / 2 ? c + diff : c - (total - diff)
+      setPage([target, dir])
+    },
+    [total],
+  )
 
-  const handleTransitionEnd = useCallback(() => {
-    if (displayIndex === 0) {
-      transitioning.current = true
-      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(totalSlides)
-      if (el) {
-        el.style.transform = `translateX(-${totalSlides * 100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    } else if (displayIndex === totalSlides + 1) {
-      transitioning.current = true
-      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(1)
-      if (el) {
-        el.style.transform = `translateX(-${100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    }
-  }, [displayIndex, totalSlides])
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
+  }
 
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
+  const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 1 }
+
+  const dragStartX = useRef(0)
+
+  const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
-    drag.startX = e.clientX
-    drag.offsetX = 0
-    drag.isDragging = true
-    drag.wasDragged = false
-    if (containerRef.current) {
-      containerRef.current.setPointerCapture(e.pointerId)
+    pointerId.current = e.pointerId
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    containerRef.current?.setPointerCapture(e.pointerId)
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (e.pointerId !== pointerId.current) return
+    dragDelta.current = e.clientX - dragStartX.current
+  }
+
+  const onPointerUp = () => {
+    if (pointerId.current === -1) return
+    containerRef.current?.releasePointerCapture(pointerId.current)
+    pointerId.current = -1
+    const threshold = 60
+    if (dragDelta.current < -threshold) paginate(1)
+    else if (dragDelta.current > threshold) paginate(-1)
+    else if (Math.abs(dragDelta.current) < 8) {
+      onImageClick({ images, currentIndex: realIndex })
     }
-  }, [drag])
-
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    const delta = e.clientX - drag.startX
-    drag.offsetX = delta
-    drag.wasDragged = Math.abs(delta) > 5
-    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-    if (el) {
-      const baseTx = -displayIndexRef.current * 100
-      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-      el.style.transition = 'none'
-      el.style.transform = `translateX(${baseTx + fractional}%)`
-    }
-  }, [drag])
-
-  const onPointerUp = useCallback((e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    drag.isDragging = false
-    containerRef.current?.releasePointerCapture(e.pointerId)
-    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-    const threshold = 50
-    const realIdx = ((displayIndexRef.current - 1) % totalSlides + totalSlides) % totalSlides
-    if (drag.offsetX < -threshold) {
-      goTo(1)
-    } else if (drag.offsetX > threshold) {
-      goTo(-1)
-    } else if (!drag.wasDragged) {
-      onImageClick({ images, currentIndex: realIdx })
-    }
-  }, [drag, goTo, onImageClick, images, totalSlides])
-
-  const onPointerCancel = useCallback((e: React.PointerEvent) => {
-    drag.isDragging = false
-    containerRef.current?.releasePointerCapture(e.pointerId)
-    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-  }, [drag])
-
-  const handlePrev = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    goTo(-1)
-  }, [goTo])
-
-  const handleNext = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    goTo(1)
-  }, [goTo])
-
-  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
+    dragDelta.current = 0
+  }
 
   return (
-      <div
-        ref={containerRef}
-        className="relative w-full overflow-hidden group rounded-card cursor-pointer select-none"
-        style={{ aspectRatio: '500 / 400', touchAction: 'pan-y' }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}
-      >
-        <div
-          className="facility-carousel-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
-          onTransitionEnd={handleTransitionEnd}
-        >
-          {displayImages.map((src, i) => (
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden group rounded-card select-none"
+      style={{ aspectRatio: '500 / 400', touchAction: 'pan-y' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+    >
+      <div className="absolute inset-0">
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={realIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={spring}
+            className="absolute inset-0"
+          >
             <img
-              key={i}
-              src={src}
-              alt={`${facility.title} ${i + 1}`}
-              className="w-full flex-shrink-0 object-cover pointer-events-none"
-              style={{ aspectRatio: '500 / 400' }}
+              src={images[realIndex]}
+              alt={`${facility.title} ${realIndex + 1}`}
+              className="w-full h-full object-cover pointer-events-none"
               loading="lazy"
               draggable={false}
             />
-          ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-        <button
-          onClick={handlePrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
-          aria-label="Previous image"
-        >
-          ‹
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
-          aria-label="Next image"
-        >
-          ›
-        </button>
+      {total > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); paginate(-1) }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); paginate(1) }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
+            aria-label="Next image"
+          >
+            ›
+          </button>
 
-        {images.length > 1 && (
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
+                onClick={(e) => { e.stopPropagation(); goToSlide(i) }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  i === realCurrent ? 'bg-white w-3' : 'bg-white/50'
+                  i === realIndex ? 'bg-white w-3' : 'bg-white/50'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />
             ))}
           </div>
-        )}
+        </>
+      )}
+    </div>
+  )
+}
+
+/** Modal carousel for full-size viewing */
+const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
+  const images = data.images
+  const total = images.length
+
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointerId = useRef(-1)
+  const dragDelta = useRef(0)
+  const [[current, direction], setPage] = useState<[number, number]>([data.currentIndex, 0])
+  const curRef = useRef(current)
+  curRef.current = current
+  const realIndex = ((current % total) + total) % total
+
+  const paginate = useCallback(
+    (dir: number) => setPage(([c]) => [c + dir, dir]),
+    [],
+  )
+
+  const goToSlide = useCallback(
+    (idx: number) => {
+      const c = curRef.current
+      const curReal = ((c % total) + total) % total
+      if (idx === curReal) return
+      const diff = ((idx - curReal) % total + total) % total
+      const dir = diff <= total / 2 ? 1 : -1
+      const target = diff <= total / 2 ? c + diff : c - (total - diff)
+      setPage([target, dir])
+    },
+    [total],
+  )
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
+  }
+
+  const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 1 }
+
+  const dragStartX = useRef(0)
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return
+    pointerId.current = e.pointerId
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    containerRef.current?.setPointerCapture(e.pointerId)
+  }
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (e.pointerId !== pointerId.current) return
+    dragDelta.current = e.clientX - dragStartX.current
+  }
+
+  const onPointerUp = () => {
+    if (pointerId.current === -1) return
+    containerRef.current?.releasePointerCapture(pointerId.current)
+    pointerId.current = -1
+    const threshold = 60
+    if (dragDelta.current < -threshold) paginate(1)
+    else if (dragDelta.current > threshold) paginate(-1)
+    dragDelta.current = 0
+  }
+
+  // ── Single-image case ──
+  if (total <= 1) {
+    return (
+      <div className="relative select-none">
+        <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
+          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+        </div>
       </div>
     )
   }
 
-/** Modal carousel for full-size viewing */
-const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
-  const [displayIndex, setDisplayIndex] = useState(data.currentIndex + 1)
-  const images = data.images
-  const totalSlides = images.length
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
-  const trackRef = useRef<HTMLDivElement>(null)
-  const transitioning = useRef(false)
-  const displayIndexRef = useRef(displayIndex)
-  displayIndexRef.current = displayIndex
-
-  const displayImages: string[] = React.useMemo(() => {
-    if (totalSlides <= 1) return images
-    return [images[totalSlides - 1], ...images, images[0]]
-  }, [images, totalSlides])
-
-  const jumpTo = useCallback((index: number) => {
-    const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
-    if (el) el.style.transition = 'none'
-    setDisplayIndex(index)
-    if (el) {
-      el.style.transition = ''
-      el.style.transform = `translateX(-${index * 100}%)`
-    }
-  }, [])
-
-  const goTo = useCallback((dir: number) => {
-    if (transitioning.current) return
-    setDisplayIndex((c) => c + dir)
-  }, [])
-
-  const handleTransitionEnd = useCallback(() => {
-    if (displayIndex === 0) {
-      transitioning.current = true
-      const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(totalSlides)
-      if (el) {
-        el.style.transform = `translateX(-${totalSlides * 100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    } else if (displayIndex === totalSlides + 1) {
-      transitioning.current = true
-      const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(1)
-      if (el) {
-        el.style.transform = `translateX(-${100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    }
-  }, [displayIndex, totalSlides])
-
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    if ((e.target as HTMLElement).closest('button')) return
-    drag.startX = e.clientX
-    drag.offsetX = 0
-    drag.isDragging = true
-    if (trackRef.current) {
-      trackRef.current.setPointerCapture(e.pointerId)
-    }
-  }, [drag])
-
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    const delta = e.clientX - drag.startX
-    drag.offsetX = delta
-    const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
-    if (el) {
-      const baseTx = -displayIndexRef.current * 100
-      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-      el.style.transition = 'none'
-      el.style.transform = `translateX(${baseTx + fractional}%)`
-    }
-  }, [drag])
-
-  const onPointerUp = useCallback(() => {
-    if (!drag.isDragging) return
-    drag.isDragging = false
-    const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-    const threshold = 50
-    if (drag.offsetX < -threshold) goTo(1)
-    else if (drag.offsetX > threshold) goTo(-1)
-  }, [drag, goTo])
-
-  const onPointerCancel = useCallback(() => {
-    drag.isDragging = false
-  }, [drag])
-
-  const handleModalPrev = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    goTo(-1)
-  }, [goTo])
-
-  const handleModalNext = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    goTo(1)
-  }, [goTo])
-
-  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
-
   return (
     <div
-      ref={trackRef}
-      className="relative select-none"
-      style={{ touchAction: 'pan-y' }}
+      ref={containerRef}
+      className="relative select-none overflow-hidden bg-brand-bg"
+      style={{ touchAction: 'pan-y', maxHeight: '80vh' }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
     >
-      <div className="overflow-hidden">
-        <div
-          className="modal-facility-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
-          onTransitionEnd={handleTransitionEnd}
-        >
-          {displayImages.map((src, i) => (
+      {/* Spacer to define container height from current image's aspect ratio */}
+      <img
+        src={images[realIndex]}
+        alt=""
+        className="w-full opacity-0 pointer-events-none"
+        draggable={false}
+        aria-hidden="true"
+      />
+
+      {/* Animated slides — absolutely positioned */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={realIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={spring}
+            className="absolute inset-0 flex items-center justify-center"
+          >
             <img
-              key={i}
-              src={src}
-              alt={`Photo ${i + 1}`}
-              className="w-full flex-shrink-0 object-contain pointer-events-none"
-              style={{ maxHeight: '80vh' }}
+              src={images[realIndex]}
+              alt={`Photo ${realIndex + 1}`}
+              className="w-full h-full object-contain pointer-events-none"
               draggable={false}
+              loading="lazy"
             />
-          ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {totalSlides > 1 && (
+      {total > 1 && (
         <>
           <button
-            onClick={handleModalPrev}
+            onClick={(e) => { e.stopPropagation(); paginate(-1) }}
             className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Previous image"
           >
             ‹
           </button>
           <button
-            onClick={handleModalNext}
+            onClick={(e) => { e.stopPropagation(); paginate(1) }}
             className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Next image"
           >
@@ -381,9 +311,9 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
+                onClick={(e) => { e.stopPropagation(); goToSlide(i) }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === realCurrent ? 'bg-brand-gold w-5' : 'bg-white/40'
+                  i === realIndex ? 'bg-brand-gold w-5' : 'bg-white/40'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />

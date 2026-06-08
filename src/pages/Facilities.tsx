@@ -12,11 +12,12 @@ interface CarouselData {
 
 /** Facility image — clickable to open full-size in a modal, draggable to swipe */
 const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: CarouselData) => void }> = ({ facility, onImageClick }) => {
-  const [current, setCurrent] = useState(0)
+  const [displayIndex, setDisplayIndex] = useState(1)
   const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
   const containerRef = useRef<HTMLDivElement>(null)
-  const currentRef = useRef(current)
-  currentRef.current = current
+  const transitioning = useRef(false)
+  const displayIndexRef = useRef(displayIndex)
+  displayIndexRef.current = displayIndex
 
   // Single image or placeholder: no carousel needed
   if (!facility.images || facility.images.length === 0) {
@@ -50,9 +51,51 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
   const images = facility.images
   const totalSlides = images.length
 
+  const displayImages: string[] = React.useMemo(() => {
+    if (totalSlides <= 1) return images
+    return [images[totalSlides - 1], ...images, images[0]]
+  }, [images, totalSlides])
+
+  const jumpTo = useCallback((index: number) => {
+    const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+    if (el) el.style.transition = 'none'
+    setDisplayIndex(index)
+    if (el) {
+      el.style.transition = ''
+      el.style.transform = `translateX(-${index * 100}%)`
+    }
+  }, [])
+
   const goTo = useCallback((dir: number) => {
-    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
-  }, [totalSlides])
+    if (transitioning.current) return
+    setDisplayIndex((c) => c + dir)
+  }, [])
+
+  const handleTransitionEnd = useCallback(() => {
+    if (displayIndex === 0) {
+      transitioning.current = true
+      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(totalSlides)
+      if (el) {
+        el.style.transform = `translateX(-${totalSlides * 100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    } else if (displayIndex === totalSlides + 1) {
+      transitioning.current = true
+      const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(1)
+      if (el) {
+        el.style.transform = `translateX(-${100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    }
+  }, [displayIndex, totalSlides])
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
@@ -72,7 +115,7 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
     drag.wasDragged = Math.abs(delta) > 5
     const el = containerRef.current?.querySelector('.facility-carousel-track') as HTMLElement
     if (el) {
-      const baseTx = -currentRef.current * 100
+      const baseTx = -displayIndexRef.current * 100
       const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
       el.style.transition = 'none'
       el.style.transform = `translateX(${baseTx + fractional}%)`
@@ -88,14 +131,15 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
       el.style.transition = ''
     }
     const threshold = 50
+    const realIdx = ((displayIndexRef.current - 1) % totalSlides + totalSlides) % totalSlides
     if (drag.offsetX < -threshold) {
       goTo(1)
     } else if (drag.offsetX > threshold) {
       goTo(-1)
     } else if (!drag.wasDragged) {
-      onImageClick({ images, currentIndex: currentRef.current })
+      onImageClick({ images, currentIndex: realIdx })
     }
-  }, [drag, goTo, onImageClick, images])
+  }, [drag, goTo, onImageClick, images, totalSlides])
 
   const onPointerCancel = useCallback((e: React.PointerEvent) => {
     drag.isDragging = false
@@ -116,10 +160,7 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
     goTo(1)
   }, [goTo])
 
-  const handleDotClick = useCallback((i: number) => (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setCurrent(i)
-  }, [])
+  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
 
   return (
       <div
@@ -133,9 +174,10 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
       >
         <div
           className="facility-carousel-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {images.map((src, i) => (
+          {displayImages.map((src, i) => (
             <img
               key={i}
               src={src}
@@ -168,9 +210,9 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={handleDotClick(i)}
+                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  i === current ? 'bg-white w-3' : 'bg-white/50'
+                  i === realCurrent ? 'bg-white w-3' : 'bg-white/50'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />
@@ -183,17 +225,60 @@ const FacilityImage: React.FC<{ facility: Facility; onImageClick: (data: Carouse
 
 /** Modal carousel for full-size viewing */
 const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
-  const [current, setCurrent] = useState(data.currentIndex)
+  const [displayIndex, setDisplayIndex] = useState(data.currentIndex + 1)
   const images = data.images
   const totalSlides = images.length
   const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
-  const currentRef = useRef(current)
-  currentRef.current = current
+  const transitioning = useRef(false)
+  const displayIndexRef = useRef(displayIndex)
+  displayIndexRef.current = displayIndex
+
+  const displayImages: string[] = React.useMemo(() => {
+    if (totalSlides <= 1) return images
+    return [images[totalSlides - 1], ...images, images[0]]
+  }, [images, totalSlides])
+
+  const jumpTo = useCallback((index: number) => {
+    const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
+    if (el) el.style.transition = 'none'
+    setDisplayIndex(index)
+    if (el) {
+      el.style.transition = ''
+      el.style.transform = `translateX(-${index * 100}%)`
+    }
+  }, [])
 
   const goTo = useCallback((dir: number) => {
-    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
-  }, [totalSlides])
+    if (transitioning.current) return
+    setDisplayIndex((c) => c + dir)
+  }, [])
+
+  const handleTransitionEnd = useCallback(() => {
+    if (displayIndex === 0) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(totalSlides)
+      if (el) {
+        el.style.transform = `translateX(-${totalSlides * 100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    } else if (displayIndex === totalSlides + 1) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(1)
+      if (el) {
+        el.style.transform = `translateX(-${100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    }
+  }, [displayIndex, totalSlides])
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
@@ -211,7 +296,7 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     drag.offsetX = delta
     const el = trackRef.current?.querySelector('.modal-facility-track') as HTMLElement
     if (el) {
-      const baseTx = -currentRef.current * 100
+      const baseTx = -displayIndexRef.current * 100
       const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
       el.style.transition = 'none'
       el.style.transform = `translateX(${baseTx + fractional}%)`
@@ -244,10 +329,7 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     goTo(1)
   }, [goTo])
 
-  const handleModalDotClick = useCallback((i: number) => (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setCurrent(i)
-  }, [])
+  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
 
   return (
     <div
@@ -262,9 +344,10 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
       <div className="overflow-hidden">
         <div
           className="modal-facility-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {images.map((src, i) => (
+          {displayImages.map((src, i) => (
             <img
               key={i}
               src={src}
@@ -298,9 +381,9 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={handleModalDotClick(i)}
+                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? 'bg-brand-gold w-5' : 'bg-white/40'
+                  i === realCurrent ? 'bg-brand-gold w-5' : 'bg-white/40'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />

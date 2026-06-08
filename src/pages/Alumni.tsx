@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Globe, Check, Camera, Heart, Users } from 'lucide-react'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
@@ -435,15 +435,58 @@ const Alumni: React.FC = () => {
 
 /** Carousel inside the modal — draggable, with arrows and dots */
 const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
-  const [current, setCurrent] = useState(data.currentIndex)
+  const [displayIndex, setDisplayIndex] = useState(data.currentIndex + 1)
   const images = data.images
   const totalSlides = images.length
   const drag = useRef({ startX: 0, startY: 0, offsetX: 0, isDragging: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
+  const transitioning = useRef(false)
 
-  const goTo = (dir: number) => {
-    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
-  }
+  const displayImages: string[] = React.useMemo(() => {
+    if (totalSlides <= 1) return images
+    return [images[totalSlides - 1], ...images, images[0]]
+  }, [images, totalSlides])
+
+  const jumpTo = useCallback((index: number) => {
+    const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
+    if (el) el.style.transition = 'none'
+    setDisplayIndex(index)
+    if (el) {
+      el.style.transition = ''
+      el.style.transform = `translateX(-${index * 100}%)`
+    }
+  }, [])
+
+  const goTo = useCallback((dir: number) => {
+    if (transitioning.current) return
+    setDisplayIndex((c) => c + dir)
+  }, [])
+
+  const handleTransitionEnd = useCallback(() => {
+    if (displayIndex === 0) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(totalSlides)
+      if (el) {
+        el.style.transform = `translateX(-${totalSlides * 100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    } else if (displayIndex === totalSlides + 1) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(1)
+      if (el) {
+        el.style.transform = `translateX(-${100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    }
+  }, [displayIndex, totalSlides])
 
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
@@ -468,7 +511,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     drag.offsetX = delta
     const el = trackRef.current?.querySelector('.modal-carousel-track') as HTMLElement
     if (el) {
-      const baseTx = -current * 100
+      const baseTx = -displayIndex * 100
       const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
       el.style.transition = 'none'
       el.style.transform = `translateX(${baseTx + fractional}%)`
@@ -493,6 +536,8 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     trackRef.current?.releasePointerCapture(e.pointerId)
   }
 
+  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
+
   return (
     <div
       ref={trackRef}
@@ -506,9 +551,10 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
       <div className="overflow-hidden">
         <div
           className="modal-carousel-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {images.map((src, i) => (
+          {displayImages.map((src, i) => (
             <div
               key={i}
               className="w-full flex-shrink-0 flex items-center justify-center"
@@ -545,9 +591,9 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? 'bg-brand-gold w-5' : 'bg-white/40'
+                  i === realCurrent ? 'bg-brand-gold w-5' : 'bg-white/40'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />
@@ -565,14 +611,59 @@ const AlumniVisitCarousel: React.FC<{
   title: string
   onImageClick: (data: CarouselData) => void
 }> = ({ images, title, onImageClick }) => {
-  const [current, setCurrent] = useState(0)
+  const [displayIndex, setDisplayIndex] = useState(1)
   const totalSlides = images.length
   const drag = useRef({ startX: 0, startY: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
   const trackRef = useRef<HTMLDivElement>(null)
+  const transitioning = useRef(false)
+  const displayIndexRef = useRef(displayIndex)
+  displayIndexRef.current = displayIndex
 
-  const goTo = (dir: number) => {
-    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
-  }
+  const displayImages: string[] = React.useMemo(() => {
+    if (totalSlides <= 1) return images
+    return [images[totalSlides - 1], ...images, images[0]]
+  }, [images, totalSlides])
+
+  const jumpTo = useCallback((index: number) => {
+    const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
+    if (el) el.style.transition = 'none'
+    setDisplayIndex(index)
+    if (el) {
+      el.style.transition = ''
+      el.style.transform = `translateX(-${index * 100}%)`
+    }
+  }, [])
+
+  const goTo = useCallback((dir: number) => {
+    if (transitioning.current) return
+    setDisplayIndex((c) => c + dir)
+  }, [])
+
+  const handleTransitionEnd = useCallback(() => {
+    if (displayIndex === 0) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(totalSlides)
+      if (el) {
+        el.style.transform = `translateX(-${totalSlides * 100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    } else if (displayIndex === totalSlides + 1) {
+      transitioning.current = true
+      const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
+      if (el) el.style.transition = 'none'
+      setDisplayIndex(1)
+      if (el) {
+        el.style.transform = `translateX(-${100}%)`
+        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
+      } else {
+        transitioning.current = false
+      }
+    }
+  }, [displayIndex, totalSlides])
 
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
@@ -599,7 +690,7 @@ const AlumniVisitCarousel: React.FC<{
     drag.wasDragged = Math.abs(delta) > 5
     const el = trackRef.current?.querySelector('.av-carousel-track') as HTMLElement
     if (el) {
-      const baseTx = -current * 100
+      const baseTx = -displayIndexRef.current * 100
       const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
       el.style.transition = 'none'
       el.style.transform = `translateX(${baseTx + fractional}%)`
@@ -615,10 +706,11 @@ const AlumniVisitCarousel: React.FC<{
       el.style.transition = ''
     }
     const threshold = 50
+    const realIdx = ((displayIndexRef.current - 1) % totalSlides + totalSlides) % totalSlides
     if (drag.offsetX < -threshold) goTo(1)
     else if (drag.offsetX > threshold) goTo(-1)
     else if (!drag.wasDragged) {
-      onImageClick({ images, currentIndex: current })
+      onImageClick({ images, currentIndex: realIdx })
     }
   }
 
@@ -626,6 +718,8 @@ const AlumniVisitCarousel: React.FC<{
     drag.isDragging = false
     trackRef.current?.releasePointerCapture(e.pointerId)
   }
+
+  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
 
   return (
     <div
@@ -640,9 +734,10 @@ const AlumniVisitCarousel: React.FC<{
       <div className="overflow-hidden w-full h-full">
         <div
           className="av-carousel-track flex transition-transform duration-300 ease-out h-full"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {images.map((src, i) => (
+          {displayImages.map((src, i) => (
             <img
               key={i}
               src={src}
@@ -677,9 +772,9 @@ const AlumniVisitCarousel: React.FC<{
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
                 className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
-                  i === current ? 'bg-brand-gold w-6' : 'bg-white/50 hover:bg-white/80'
+                  i === realCurrent ? 'bg-brand-gold w-6' : 'bg-white/50 hover:bg-white/80'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />

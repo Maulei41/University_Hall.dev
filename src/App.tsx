@@ -1,11 +1,9 @@
-import { lazy, Suspense, useEffect } from 'react'
-import { lazyWithDelay } from '@utils/lazyWithDelay'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
-import { LOGO_PATHS, LOGO_VIEWBOX } from '@constants/logoPaths'
-import PathDrawing from '@components/animations/PathDrawing'
+import LoadingSpinner from '@components/animations/LoadingSpinner'
 import { SmoothScrollProvider } from '@hooks/SmoothScrollProvider'
 import { useLenis } from '@hooks/useSmoothScroll'
 
@@ -22,10 +20,7 @@ const ScrollToTop = () => {
   return null
 }
 
-const MIN_LOADING_MS = 3500
-
-// Only Homepage keeps the forced delay so the loading animation plays on first visit
-const Homepage = lazyWithDelay(() => import('@pages/Homepage'), MIN_LOADING_MS)
+const Homepage = lazy(() => import('@pages/Homepage'))
 const About = lazy(() => import('@pages/About'))
 const Facilities = lazy(() => import('@pages/Facilities'))
 const Events = lazy(() => import('@pages/Events'))
@@ -37,42 +32,19 @@ const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
 const TourHall = lazy(() => import('@pages/TourHall'))
 const FAQ = lazy(() => import('@pages/FAQ'))
 
-const LoadingSpinner = () => (
-  <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center gap-6">
-    {/* Crest with all paths drawn sequentially */}
-    <div className="relative w-28 h-36 sm:w-32 sm:h-40">
-      {/* Each path draws in sequence with staggered start */}
-      <motion.svg
-        viewBox={LOGO_VIEWBOX}
-        className="absolute inset-0 w-full h-full text-brand-gold"
-      >
-        {LOGO_PATHS.map((d, i) => (
-          <motion.path
-            key={i}
-            d={d}
-            fill="none"
-            stroke="#C9A84C"
-            strokeWidth={3}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: 3,
-              ease: 'easeInOut',
-              delay: i * 0.028,
-            }}
-          />
-        ))}
-      </motion.svg>
-    </div>
-    <PathDrawing />
-  </div>
-)
-
 export default function App() {
+  const [initialLoading, setInitialLoading] = useState(true)
+
+  useEffect(() => {
+    // Show LoadingSpinner on initial load/reload during first route load
+    // Give enough time for the crest animation (~3.5s) + buffer
+    const timer = setTimeout(() => setInitialLoading(false), 4500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <SmoothScrollProvider>
+      {initialLoading && <LoadingSpinner />}
       <Router>
         <ScrollToTop />
         <AnimatePresence mode="wait">
@@ -86,17 +58,17 @@ export default function App() {
             <Header />
             <main className="flex-1">
               <Routes>
-                <Route path="/" element={<Suspense fallback={<LoadingSpinner />}><Homepage /></Suspense>} />
-                <Route path="/about" element={<Suspense fallback={<LoadingSpinner />}><About /></Suspense>} />
-                <Route path="/facilities" element={<Suspense fallback={<LoadingSpinner />}><Facilities /></Suspense>} />
-                <Route path="/events" element={<Suspense fallback={<LoadingSpinner />}><Events /></Suspense>} />
-                <Route path="/life" element={<Suspense fallback={<LoadingSpinner />}><Life /></Suspense>} />
-                <Route path="/people" element={<Suspense fallback={<LoadingSpinner />}><People /></Suspense>} />
-                <Route path="/alumni" element={<Suspense fallback={<LoadingSpinner />}><Alumni /></Suspense>} />
-                <Route path="/apply" element={<Suspense fallback={<LoadingSpinner />}><Apply /></Suspense>} />
-                <Route path="/affiliated-membership" element={<Suspense fallback={<LoadingSpinner />}><AffiliatedMembership /></Suspense>} />
-                <Route path="/tour-the-hall" element={<Suspense fallback={<LoadingSpinner />}><TourHall /></Suspense>} />
-                <Route path="/faq" element={<Suspense fallback={<LoadingSpinner />}><FAQ /></Suspense>} />
+                <Route path="/" element={<Suspense fallback={null}><Homepage /></Suspense>} />
+                <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
+                <Route path="/facilities" element={<Suspense fallback={null}><Facilities /></Suspense>} />
+                <Route path="/events" element={<Suspense fallback={null}><Events /></Suspense>} />
+                <Route path="/life" element={<Suspense fallback={null}><Life /></Suspense>} />
+                <Route path="/people" element={<Suspense fallback={null}><People /></Suspense>} />
+                <Route path="/alumni" element={<Suspense fallback={null}><Alumni /></Suspense>} />
+                <Route path="/apply" element={<Suspense fallback={null}><Apply /></Suspense>} />
+                <Route path="/affiliated-membership" element={<Suspense fallback={null}><AffiliatedMembership /></Suspense>} />
+                <Route path="/tour-the-hall" element={<Suspense fallback={null}><TourHall /></Suspense>} />
+                <Route path="/faq" element={<Suspense fallback={null}><FAQ /></Suspense>} />
               </Routes>
             </main>
             <Footer />

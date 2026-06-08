@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, DoorOpen, Move, Bed, Monitor } from 'lucide-react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
+import { MapPin, DoorOpen, Move, Bed, Monitor, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Modal } from '@components/common/index'
 import type { FloorPlanPin } from '../../types/index'
 
@@ -198,116 +198,178 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
   )
 }
 
-/** Inline carousel for pins with multiple images — drag/swipe, arrows, and dots */
+/** Infinite carousel via AnimatePresence + modular index — no track, no snap */
 const PinCarousel: React.FC<{ images: string[]; name: string }> = ({ images, name }) => {
-  const [current, setCurrent] = useState(0)
-  const totalSlides = images.length
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
-  const trackRef = useRef<HTMLDivElement>(null)
+  const total = images.length
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointerId = useRef(-1)
+  const dragDelta = useRef(0)
 
-  const goTo = (dir: number) => {
-    setCurrent((c) => (c + dir + totalSlides) % totalSlides)
+  // current is unbounded; realIndex wraps with modulo for infinite feel
+  const [[current, direction], setPage] = useState<[number, number]>([0, 0])
+  const curRef = useRef(current)
+  curRef.current = current
+  const realIndex = ((current % total) + total) % total
+
+  const paginate = useCallback(
+    (dir: number) => setPage(([c]) => [c + dir, dir]),
+    [],
+  )
+
+  const goToSlide = useCallback(
+    (idx: number) => {
+      const c = curRef.current
+      const curReal = ((c % total) + total) % total
+      if (idx === curReal) return
+      // Compute the shortest path
+      const diff = ((idx - curReal) % total + total) % total
+      const dir = diff <= total / 2 ? 1 : -1
+      // Jump to the target using the difference
+      const target = diff <= total / 2 ? c + diff : c - (total - diff)
+      setPage([target, dir])
+    },
+    [total],
+  )
+
+  // Directional slide variants
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
   }
 
+  const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 1 }
+
+  // ── Swipe via pointer events (not framer-motion drag to avoid AnimatePresence conflicts) ──
+  const dragStartX = useRef(0)
+
   const onPointerDown = (e: React.PointerEvent) => {
-    // Don't capture pointer when clicking navigation buttons — lets their onClick fire
     if ((e.target as HTMLElement).closest('button')) return
-    drag.startX = e.clientX
-    drag.offsetX = 0
-    drag.isDragging = true
-    if (trackRef.current) {
-      trackRef.current.setPointerCapture(e.pointerId)
-    }
+    pointerId.current = e.pointerId
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    containerRef.current?.setPointerCapture(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    const delta = e.clientX - drag.startX
-    drag.offsetX = delta
-    const el = trackRef.current?.querySelector('.fp-carousel-track') as HTMLElement
-    if (el) {
-      const baseTx = -current * 100
-      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-      el.style.transition = 'none'
-      el.style.transform = `translateX(${baseTx + fractional}%)`
-    }
+    if (e.pointerId !== pointerId.current) return
+    dragDelta.current = e.clientX - dragStartX.current
   }
 
   const onPointerUp = () => {
-    if (!drag.isDragging) return
-    drag.isDragging = false
-    const el = trackRef.current?.querySelector('.fp-carousel-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-    const threshold = 50
-    if (drag.offsetX < -threshold) goTo(1)
-    else if (drag.offsetX > threshold) goTo(-1)
+    if (pointerId.current === -1) return
+    containerRef.current?.releasePointerCapture(pointerId.current)
+    pointerId.current = -1
+    const threshold = 60
+    if (dragDelta.current < -threshold) paginate(1)
+    else if (dragDelta.current > threshold) paginate(-1)
+    dragDelta.current = 0
   }
 
-  const onPointerCancel = () => {
-    drag.isDragging = false
+  // ── Keyboard navigation ──
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') paginate(-1)
+      else if (e.key === 'ArrowRight') paginate(1)
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [paginate])
+
+  // ── Single-slide case ──
+  if (total <= 1) {
+    return (
+      <div className="relative select-none">
+        <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
+          <img src={images[0]} alt={name} className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+        </div>
+      </div>
+    )
   }
 
   return (
     <div
-      ref={trackRef}
-      className="relative select-none"
-      style={{ touchAction: 'pan-y' }}
+      ref={containerRef}
+      className="relative select-none overflow-hidden bg-brand-bg"
+      style={{ touchAction: 'pan-y', maxHeight: '65vh' }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
     >
-      <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-        <div
-          className="fp-carousel-track flex transition-transform duration-300 ease-out w-full"
-          style={{ transform: `translateX(-${current * 100}%)` }}
-        >
-          {images.map((src, i) => (
+      {/* Spacer to define container height from first image's aspect ratio */}
+      <img
+        src={images[realIndex]}
+        alt=""
+        className="w-full opacity-0 pointer-events-none"
+        draggable={false}
+        aria-hidden="true"
+      />
+
+      {/* Animated slides — absolutely positioned to avoid layout shift */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={realIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={spring}
+            className="absolute inset-0 flex items-center justify-center"
+          >
             <img
-              key={i}
-              src={src}
-              alt={`${name} ${i + 1}`}
-              className="w-full flex-shrink-0 object-contain pointer-events-none"
+              src={images[realIndex]}
+              alt={`${name} ${realIndex + 1}`}
+              className="w-full h-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
             />
-          ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {totalSlides > 1 && (
-        <>
-          <button
-            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
-            aria-label="Previous image"
-          >
-            ‹
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); goTo(1) }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-2xl z-20 cursor-pointer"
-            aria-label="Next image"
-          >
-            ›
-          </button>
+      {/* Prev button — glass style */}
+      <button
+        onClick={(e) => { e.stopPropagation(); paginate(-1) }}
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full backdrop-blur-md bg-black/30 border border-white/10 text-white flex items-center justify-center hover:bg-brand-gold/20 hover:border-brand-gold/40 active:scale-95 transition-all duration-200 z-20 cursor-pointer"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={22} />
+      </button>
 
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
-                className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
-                  i === current ? 'bg-brand-gold w-6' : 'bg-white/50 hover:bg-white/80'
-                }`}
-                aria-label={`Go to image ${i + 1}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      {/* Next button — glass style */}
+      <button
+        onClick={(e) => { e.stopPropagation(); paginate(1) }}
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full backdrop-blur-md bg-black/30 border border-white/10 text-white flex items-center justify-center hover:bg-brand-gold/20 hover:border-brand-gold/40 active:scale-95 transition-all duration-200 z-20 cursor-pointer"
+        aria-label="Next image"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      {/* Dots with animated active indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        <LayoutGroup>
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); goToSlide(i) }}
+              className="relative w-4 h-4 flex items-center justify-center cursor-pointer"
+              aria-label={`Go to image ${i + 1}`}
+            >
+              {i === realIndex ? (
+                <motion.span
+                  layoutId="activeDot"
+                  className="block w-2.5 h-2.5 rounded-full bg-brand-gold"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              ) : (
+                <span className="block w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-colors" />
+              )}
+            </button>
+          ))}
+        </LayoutGroup>
+      </div>
     </div>
   )
 }

@@ -46,9 +46,9 @@ const Alumni: React.FC = () => {
                   <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-text-primary mb-3 text-center">
                     University Hall Alumni Limited
                   </h2>
-                  <p className="text-brand-text-muted text-center text-xl max-w-xl mx-auto mb-12">
-                    {aa.description}
-                  </p>
+                  {/*<p className="text-brand-text-muted text-center text-xl max-w-xl mx-auto mb-12">*/}
+                  {/*  {aa.description}*/}
+                  {/*</p>*/}
                 </FadeInUp>
 
                 <motion.div
@@ -59,26 +59,26 @@ const Alumni: React.FC = () => {
                   className="max-w-3xl mx-auto"
                 >
                   {/* Mission */}
-                  <div className="bg-brand-surface rounded-card p-6 mb-8 border border-brand-border/50">
-                    <p className="text-brand-text-muted italic leading-relaxed text-center text-xl">
-                      &ldquo;{aa.mission}&rdquo;
-                    </p>
-                  </div>
+                  {/*<div className="bg-brand-surface rounded-card p-6 mb-8 border border-brand-border/50">*/}
+                  {/*  <p className="text-brand-text-muted italic leading-relaxed text-center text-xl">*/}
+                  {/*    &ldquo;{aa.mission}&rdquo;*/}
+                  {/*  </p>*/}
+                  {/*</div>*/}
 
                   {/* Activities */}
-                  <div className="mb-8">
-                    <h3 className="font-display text-2xl font-semibold text-brand-text-primary mb-6 text-center">
-                      Key Activities
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {aa.activities.map((activity, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <Check size={16} className="text-brand-emerald flex-shrink-0 mt-0.5" />
-                          <span className="text-xl text-brand-text-muted">{activity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  {/*<div className="mb-8">*/}
+                  {/*  <h3 className="font-display text-2xl font-semibold text-brand-text-primary mb-6 text-center">*/}
+                  {/*    Key Activities*/}
+                  {/*  </h3>*/}
+                  {/*  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">*/}
+                  {/*    {aa.activities.map((activity, i) => (*/}
+                  {/*      <div key={i} className="flex items-start gap-3">*/}
+                  {/*        <Check size={16} className="text-brand-emerald flex-shrink-0 mt-0.5" />*/}
+                  {/*        <span className="text-xl text-brand-text-muted">{activity}</span>*/}
+                  {/*      </div>*/}
+                  {/*    ))}*/}
+                  {/*  </div>*/}
+                  {/*</div>*/}
 
                   {/* Contact */}
                   <div className="text-center">
@@ -107,7 +107,7 @@ const Alumni: React.FC = () => {
             </Section>
 
             {/* People Grid — row-based: Chairman, Vice-Chairmen, then Directors */}
-            <Section className="bg-brand-surface">
+            <Section className="">
               <Container>
                 {(() => {
                   const alChairman = alumniPeople.find((p) => p.title === 'Chairman')
@@ -204,7 +204,7 @@ const Alumni: React.FC = () => {
       })()}
 
       {/* ===== HKU MENTORSHIP PROGRAMME ===== */}
-      <Section id="hku-mentorship">
+      <Section className="bg-brand-surface" id="hku-mentorship">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Content */}
@@ -246,12 +246,11 @@ const Alumni: React.FC = () => {
               className="relative"
             >
               <div className="absolute -inset-4 bg-brand-gold/10 rounded-card blur-2xl" />
-              <ImagePlaceholder
-                width={16}
-                height={10}
-                imageId="library"
+              <img
+                src={hkuProgram.imageSrc}
                 alt="HKU Mentorship Programme — alumni mentors guiding hall residents"
-                className="rounded-card shadow-xl relative"
+                className="w-full rounded-card shadow-xl relative"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -259,7 +258,7 @@ const Alumni: React.FC = () => {
       </Section>
 
       {/* ===== RETURN TO THE HALL ===== */}
-      <Section className="bg-brand-surface">
+      <Section className="">
         <Container>
           <FadeInUp>
             <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold text-center mb-4">

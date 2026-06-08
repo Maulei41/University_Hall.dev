@@ -159,11 +159,11 @@ const People: React.FC = () => {
               <p className="text-brand-text-muted text-xl sm:text-base max-w-xl mx-auto">
                 {ASSOCIATIONS.find((a) => a.id === 'student-association')?.description}
               </p>
-              <div className="bg-brand-surface rounded-card p-4 sm:p-5 mt-6 border border-brand-border/50 max-w-xl mx-auto">
-                <p className="text-xl text-brand-text-primary italic leading-relaxed">
-                  &ldquo;{ASSOCIATIONS.find((a) => a.id === 'student-association')?.mission}&rdquo;
-                </p>
-              </div>
+              {/*<div className="bg-brand-surface rounded-card p-4 sm:p-5 mt-6 border border-brand-border/50 max-w-xl mx-auto">*/}
+              {/*  <p className="text-xl text-brand-text-primary italic leading-relaxed">*/}
+              {/*    &ldquo;{ASSOCIATIONS.find((a) => a.id === 'student-association')?.mission}&rdquo;*/}
+              {/*  </p>*/}
+              {/*</div>*/}
             </div>
           </FadeInUp>
 

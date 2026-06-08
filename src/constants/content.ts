@@ -361,7 +361,7 @@ export const PEOPLE: Person[] = [
     bio: '',
     role: 'Tutoring Team',
     imageId: 'person_counselor',
-    // imageSrc: '/People/Jason_Wong.jpeg',
+    imageSrc: '/People/Tom_Tam.jpeg',
   },
   {
     id: 'Tutor-4',
@@ -370,7 +370,7 @@ export const PEOPLE: Person[] = [
     bio: '',
     role: 'Tutoring Team',
     imageId: 'person_counselor',
-    // imageSrc: '/People/Jason_Wong.jpeg',
+    imageSrc: '/People/Bowie_Tang.jpeg',
   },
   {
     id: 'Tutor-5',
@@ -379,7 +379,7 @@ export const PEOPLE: Person[] = [
     bio: '',
     role: 'Tutoring Team',
     imageId: 'person_counselor',
-    // imageSrc: '/People/Jason_Wong.jpeg',
+    imageSrc: '/People/Alex_Chan.jpeg',
   },
   {
     id: 'Hall-Executive',
@@ -782,7 +782,7 @@ export const ASSOCIATIONS: Association[] = [
     id: 'student-association',
     name: "University Hall Students' Association",
     description:
-      'The UHSA is the representative body for all residents of University Hall, dedicated to enhancing residential life through social, cultural, and recreational activities. It serves as the primary channel for student voices and fosters a vibrant, inclusive community.',
+      'The UHSA is the representative body for all students of University Hall, dedicated to enhancing residential life through social, cultural, and recreational activities. It serves as the primary channel for student voices and fosters a vibrant, inclusive community.',
     mission:
       'To enrich the residential experience of every University Hall resident by organising events, representing student interests, and building a cohesive community grounded in the hall\'s traditions of excellence and mutual respect.',
     activities: [

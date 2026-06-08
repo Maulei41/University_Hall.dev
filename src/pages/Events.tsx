@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, MapPin } from 'lucide-react'
 import { Container, Section, Badge, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
@@ -20,11 +20,6 @@ interface Slide { type: 'image' | 'video'; src: string }
 
 /** EventTraditional image — clickable to open full-size in a modal, draggable to swipe */
 const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; imageId: string; title: string; onImageClick: (data: CarouselData) => void; videoSrc?: string }> = ({ images, imageSrc, imageId, title, onImageClick, videoSrc }) => {
-  const [displayIndex, setDisplayIndex] = useState(1)
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false, wasDragged: false }).current
-  const containerRef = useRef<HTMLDivElement>(null)
-  const transitioning = useRef(false)
-
   const slides: Slide[] = React.useMemo(() => {
     const result: Slide[] = []
     if (videoSrc) result.push({ type: 'video', src: videoSrc })
@@ -36,116 +31,82 @@ const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; im
     return result
   }, [videoSrc, images, imageSrc])
 
-  const displaySlides: Slide[] = React.useMemo(() => {
-    if (slides.length <= 1) return slides
-    return [slides[slides.length - 1], ...slides, slides[0]]
-  }, [slides])
-
   if (slides.length === 0) {
     return (
       <ImagePlaceholder width={500} height={400} imageId={imageId} alt={title} className="rounded-card" />
     )
   }
 
-  const totalSlides = slides.length
+  const total = slides.length
   const imageSlides = slides.filter((s) => s.type === 'image').map((s) => s.src)
 
-  const jumpTo = useCallback((index: number) => {
-    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-    if (el) el.style.transition = 'none'
-    setDisplayIndex(index)
-    if (el) {
-      el.style.transition = ''
-      el.style.transform = `translateX(-${index * 100}%)`
-    }
-  }, [])
+  // Unbounded index with modulo for infinite feel — no track, no snap, no DOM queries
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointerId = useRef(-1)
+  const dragDelta = useRef(0)
+  const [[current, direction], setPage] = useState<[number, number]>([0, 0])
+  const curRef = useRef(current)
+  curRef.current = current
+  const realIndex = ((current % total) + total) % total
 
-  const goTo = useCallback((dir: number) => {
-    if (transitioning.current) return
-    setDisplayIndex((c) => c + dir)
-  }, [])
+  const paginate = useCallback(
+    (dir: number) => setPage(([c]) => [c + dir, dir]),
+    [],
+  )
 
-  const handleTransitionEnd = useCallback(() => {
-    if (displayIndex === 0) {
-      transitioning.current = true
-      const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(totalSlides)
-      if (el) {
-        el.style.transform = `translateX(-${totalSlides * 100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    } else if (displayIndex === totalSlides + 1) {
-      transitioning.current = true
-      const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(1)
-      if (el) {
-        el.style.transform = `translateX(-${100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    }
-  }, [displayIndex, totalSlides])
+  const goToSlide = useCallback(
+    (idx: number) => {
+      const c = curRef.current
+      const curReal = ((c % total) + total) % total
+      if (idx === curReal) return
+      const diff = ((idx - curReal) % total + total) % total
+      const dir = diff <= total / 2 ? 1 : -1
+      const target = diff <= total / 2 ? c + diff : c - (total - diff)
+      setPage([target, dir])
+    },
+    [total],
+  )
+
+  // Directional slide variants
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
+  }
+
+  const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 1 }
+
+  // ── Swipe via pointer events (not framer-motion drag to avoid AnimatePresence conflicts) ──
+  const dragStartX = useRef(0)
 
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
     if ((e.target as HTMLElement).closest('video')) return
-    drag.startX = e.clientX
-    drag.offsetX = 0
-    drag.isDragging = true
-    drag.wasDragged = false
-    if (containerRef.current) {
-      containerRef.current.setPointerCapture(e.pointerId)
-    }
+    pointerId.current = e.pointerId
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    containerRef.current?.setPointerCapture(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    const delta = e.clientX - drag.startX
-    drag.offsetX = delta
-    drag.wasDragged = Math.abs(delta) > 5
-    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-    if (el) {
-      const baseTx = -displayIndex * 100
-      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-      el.style.transition = 'none'
-      el.style.transform = `translateX(${baseTx + fractional}%)`
-    }
+    if (e.pointerId !== pointerId.current) return
+    dragDelta.current = e.clientX - dragStartX.current
   }
 
-  const onPointerUp = (e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    drag.isDragging = false
-    containerRef.current?.releasePointerCapture(e.pointerId)
-    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
+  const onPointerUp = () => {
+    if (pointerId.current === -1) return
+    containerRef.current?.releasePointerCapture(pointerId.current)
+    pointerId.current = -1
+    const threshold = 60
+    if (dragDelta.current < -threshold) paginate(1)
+    else if (dragDelta.current > threshold) paginate(-1)
+    // Click on image slide (no drag) → open modal
+    else if (Math.abs(dragDelta.current) < 8 && slides[realIndex].type === 'image' && imageSlides.length > 0) {
+      const imgIdx = imageSlides.indexOf(slides[realIndex].src)
+      onImageClick({ images: imageSlides, currentIndex: imgIdx })
     }
-    const threshold = 50
-    if (drag.offsetX < -threshold) {
-      goTo(1)
-    } else if (drag.offsetX > threshold) {
-      goTo(-1)
-    } else if (!drag.wasDragged && slides[((displayIndex - 1) % totalSlides + totalSlides) % totalSlides].type === 'image' && imageSlides.length > 0) {
-      const realIdx = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
-      onImageClick({ images: imageSlides, currentIndex: realIdx })
-    }
+    dragDelta.current = 0
   }
-
-  const onPointerCancel = (e: React.PointerEvent) => {
-    drag.isDragging = false
-    containerRef.current?.releasePointerCapture(e.pointerId)
-    const el = containerRef.current?.querySelector('.et-carousel-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-  }
-
-  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
 
   return (
     <div
@@ -155,50 +116,53 @@ const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; im
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
     >
-      <div
-        className="et-carousel-track flex transition-transform duration-300 ease-out"
-        style={{ transform: `translateX(-${displayIndex * 100}%)` }}
-        onTransitionEnd={handleTransitionEnd}
-      >
-        {displaySlides.map((slide, i) =>
-          slide.type === 'video' ? (
-            <video
-              key={`v-${i}`}
-              src={slide.src}
-              poster={images?.[0] || imageSrc}
-              controls
-              className="w-full flex-shrink-0 object-cover pointer-events-auto"
-              style={{ aspectRatio: '500 / 400' }}
-              playsInline
-              preload="metadata"
-            />
-          ) : (
-            <img
-              key={`i-${i}`}
-              src={slide.src}
-              alt={`${title} ${i + 1}`}
-              className="w-full flex-shrink-0 object-cover pointer-events-none"
-              style={{ aspectRatio: '500 / 400' }}
-              loading="lazy"
-              draggable={false}
-            />
-          )
-        )}
+      {/* Animated slides — absolutely positioned, no track translateX */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={realIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={spring}
+            className="absolute inset-0"
+          >
+            {slides[realIndex].type === 'video' ? (
+              <video
+                src={slides[realIndex].src}
+                poster={images?.[0] || imageSrc}
+                controls
+                className="w-full h-full object-cover pointer-events-auto"
+                playsInline
+                preload="metadata"
+              />
+            ) : (
+              <img
+                src={slides[realIndex].src}
+                alt={`${title} ${realIndex + 1}`}
+                className="w-full h-full object-cover pointer-events-none"
+                loading="lazy"
+                draggable={false}
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {totalSlides > 1 && (
+      {total > 1 && (
         <>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            onClick={(e) => { e.stopPropagation(); paginate(-1) }}
             className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
             aria-label="Previous slide"
           >
             ‹
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            onClick={(e) => { e.stopPropagation(); paginate(1) }}
             className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 text-sm z-10"
             aria-label="Next slide"
           >
@@ -209,9 +173,9 @@ const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; im
             {slides.map((slide, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
+                onClick={(e) => { e.stopPropagation(); goToSlide(i) }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  i === realCurrent ? 'bg-white w-3' : 'bg-white/50'
+                  i === realIndex ? 'bg-white w-3' : 'bg-white/50'
                 } ${slide.type === 'video' ? 'ring-1 ring-white/30' : ''}`}
                 aria-label={`Go to slide ${i + 1}`}
               />
@@ -225,140 +189,135 @@ const EventTraditionalImage: React.FC<{ images?: string[]; imageSrc?: string; im
 
 /** Modal carousel for full-size viewing */
 const EventTraditionalModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
-  const [displayIndex, setDisplayIndex] = useState(data.currentIndex + 1)
   const images = data.images
-  const totalSlides = images.length
-  const drag = useRef({ startX: 0, offsetX: 0, isDragging: false }).current
-  const trackRef = useRef<HTMLDivElement>(null)
-  const transitioning = useRef(false)
+  const total = images.length
 
-  const displayImages: string[] = React.useMemo(() => {
-    if (totalSlides <= 1) return images
-    return [images[totalSlides - 1], ...images, images[0]]
-  }, [images, totalSlides])
+  // Unbounded index with modulo for infinite feel — no track, no snap, no DOM queries
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointerId = useRef(-1)
+  const dragDelta = useRef(0)
+  const [[current, direction], setPage] = useState<[number, number]>([data.currentIndex, 0])
+  const curRef = useRef(current)
+  curRef.current = current
+  const realIndex = ((current % total) + total) % total
 
-  const jumpTo = useCallback((index: number) => {
-    const el = trackRef.current?.querySelector('.modal-et-track') as HTMLElement
-    if (el) el.style.transition = 'none'
-    setDisplayIndex(index)
-    if (el) {
-      el.style.transition = ''
-      el.style.transform = `translateX(-${index * 100}%)`
-    }
-  }, [])
+  const paginate = useCallback(
+    (dir: number) => setPage(([c]) => [c + dir, dir]),
+    [],
+  )
 
-  const goTo = useCallback((dir: number) => {
-    if (transitioning.current) return
-    setDisplayIndex((c) => c + dir)
-  }, [])
+  const goToSlide = useCallback(
+    (idx: number) => {
+      const c = curRef.current
+      const curReal = ((c % total) + total) % total
+      if (idx === curReal) return
+      const diff = ((idx - curReal) % total + total) % total
+      const dir = diff <= total / 2 ? 1 : -1
+      const target = diff <= total / 2 ? c + diff : c - (total - diff)
+      setPage([target, dir])
+    },
+    [total],
+  )
 
-  const handleTransitionEnd = useCallback(() => {
-    if (displayIndex === 0) {
-      transitioning.current = true
-      const el = trackRef.current?.querySelector('.modal-et-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(totalSlides)
-      if (el) {
-        el.style.transform = `translateX(-${totalSlides * 100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    } else if (displayIndex === totalSlides + 1) {
-      transitioning.current = true
-      const el = trackRef.current?.querySelector('.modal-et-track') as HTMLElement
-      if (el) el.style.transition = 'none'
-      setDisplayIndex(1)
-      if (el) {
-        el.style.transform = `translateX(-${100}%)`
-        requestAnimationFrame(() => { el.style.transition = ''; transitioning.current = false })
-      } else {
-        transitioning.current = false
-      }
-    }
-  }, [displayIndex, totalSlides])
+  // Directional slide variants
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
+  }
+
+  const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 1 }
+
+  // ── Swipe via pointer events ──
+  const dragStartX = useRef(0)
 
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('button')) return
-    drag.startX = e.clientX
-    drag.offsetX = 0
-    drag.isDragging = true
-    if (trackRef.current) {
-      trackRef.current.setPointerCapture(e.pointerId)
-    }
+    pointerId.current = e.pointerId
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    containerRef.current?.setPointerCapture(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
-    if (!drag.isDragging) return
-    const delta = e.clientX - drag.startX
-    drag.offsetX = delta
-    const el = trackRef.current?.querySelector('.modal-et-track') as HTMLElement
-    if (el) {
-      const baseTx = -displayIndex * 100
-      const fractional = (delta / (el.parentElement?.clientWidth || 1)) * 100
-      el.style.transition = 'none'
-      el.style.transform = `translateX(${baseTx + fractional}%)`
-    }
+    if (e.pointerId !== pointerId.current) return
+    dragDelta.current = e.clientX - dragStartX.current
   }
 
   const onPointerUp = () => {
-    if (!drag.isDragging) return
-    drag.isDragging = false
-    const el = trackRef.current?.querySelector('.modal-et-track') as HTMLElement
-    if (el) {
-      el.style.transition = ''
-    }
-    const threshold = 50
-    if (drag.offsetX < -threshold) goTo(1)
-    else if (drag.offsetX > threshold) goTo(-1)
+    if (pointerId.current === -1) return
+    containerRef.current?.releasePointerCapture(pointerId.current)
+    pointerId.current = -1
+    const threshold = 60
+    if (dragDelta.current < -threshold) paginate(1)
+    else if (dragDelta.current > threshold) paginate(-1)
+    dragDelta.current = 0
   }
 
-  const onPointerCancel = () => {
-    drag.isDragging = false
+  // ── Single-image case ──
+  if (total <= 1) {
+    return (
+      <div className="relative select-none">
+        <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
+          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+        </div>
+      </div>
+    )
   }
-
-  const realCurrent = ((displayIndex - 1) % totalSlides + totalSlides) % totalSlides
 
   return (
     <div
-      ref={trackRef}
-      className="relative select-none"
-      style={{ touchAction: 'pan-y' }}
+      ref={containerRef}
+      className="relative select-none overflow-hidden bg-brand-bg"
+      style={{ touchAction: 'pan-y', maxHeight: '65vh' }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
     >
-      <div className="overflow-hidden">
-        <div
-          className="modal-et-track flex transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${displayIndex * 100}%)` }}
-          onTransitionEnd={handleTransitionEnd}
-        >
-          {displayImages.map((src, i) => (
+      {/* Spacer to define container height from current image's aspect ratio */}
+      <img
+        src={images[realIndex]}
+        alt=""
+        className="w-full opacity-0 pointer-events-none"
+        draggable={false}
+        aria-hidden="true"
+      />
+
+      {/* Animated slides — absolutely positioned */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={realIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={spring}
+            className="absolute inset-0 flex items-center justify-center"
+          >
             <img
-              key={i}
-              src={src}
-              alt={`Photo ${i + 1}`}
-              className="w-full flex-shrink-0 object-contain pointer-events-none"
-              style={{ maxHeight: '80vh' }}
+              src={images[realIndex]}
+              alt={`Photo ${realIndex + 1}`}
+              className="w-full h-full object-contain pointer-events-none"
               draggable={false}
+              loading="lazy"
             />
-          ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {totalSlides > 1 && (
+      {total > 1 && (
         <>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(-1) }}
+            onClick={(e) => { e.stopPropagation(); paginate(-1) }}
             className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Previous image"
           >
             ‹
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); goTo(1) }}
+            onClick={(e) => { e.stopPropagation(); paginate(1) }}
             className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors text-lg z-10"
             aria-label="Next image"
           >
@@ -369,9 +328,9 @@ const EventTraditionalModalCarousel: React.FC<{ data: CarouselData }> = ({ data 
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={(e) => { e.stopPropagation(); jumpTo(i + 1) }}
+                onClick={(e) => { e.stopPropagation(); goToSlide(i) }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === realCurrent ? 'bg-brand-gold w-5' : 'bg-white/40'
+                  i === realIndex ? 'bg-brand-gold w-5' : 'bg-white/40'
                 }`}
                 aria-label={`Go to image ${i + 1}`}
               />

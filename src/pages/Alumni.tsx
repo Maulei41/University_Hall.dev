@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Globe, Check, Camera, Heart, Users } from 'lucide-react'
+import { Mail, Globe, Camera, Heart, Users } from 'lucide-react'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
 import { MENTORSHIP_PROGRAMS, PEOPLE, ASSOCIATIONS, ALUMNI_VISITS } from '@constants/content'
@@ -9,6 +9,54 @@ interface CarouselData {
   images: string[]
   currentIndex: number
 }
+
+/** Alumni leader card — extracted to module level to avoid rerender-no-inline-components */
+const ALCard: React.FC<{ person: typeof PEOPLE[number]; onSelect: (p: typeof PEOPLE[number]) => void }> = ({ person, onSelect }) => (
+  <StaggerItem key={person.id}>
+    <ScaleOnHover>
+      <motion.div
+        className="card-base card-hover cursor-pointer h-full"
+        onClick={() => onSelect(person)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') onSelect(person)
+        }}
+        aria-label={`View details for ${person.name}`}
+      >
+        <div className="overflow-hidden rounded-card mb-4 h-48 sm:h-56">
+          {person.imageSrc ? (
+            <img
+              src={person.imageSrc}
+              alt={person.name}
+              className="w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+          ) : person.imageId ? (
+            <ImagePlaceholder
+              width={3}
+              height={4}
+              imageId={person.imageId}
+              alt={person.name}
+            />
+          ) : null}
+        </div>
+
+        <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
+          {person.name}
+        </h4>
+
+        <p className="font-serif text-brand-gold font-semibold mb-2 text-sm">
+          {person.title}
+        </p>
+
+        <p className="text-brand-text-muted text-xs leading-relaxed">
+          {person.bio}
+        </p>
+      </motion.div>
+    </ScaleOnHover>
+  </StaggerItem>
+)
 
 const Alumni: React.FC = () => {
   const hkuProgram = MENTORSHIP_PROGRAMS.find((p) => p.id === 'hku-mentorship')!
@@ -116,61 +164,13 @@ const Alumni: React.FC = () => {
                     (p) => p.title !== 'Chairman' && p.title !== 'Vice Chairman',
                   )
 
-                  const ALCard: React.FC<{ person: typeof PEOPLE[number] }> = ({ person }) => (
-                    <StaggerItem key={person.id}>
-                      <ScaleOnHover>
-                        <motion.div
-                          className="card-base card-hover cursor-pointer h-full"
-                          onClick={() => setSelectedPerson(person)}
-                          role="button"
-                          tabIndex={0}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') setSelectedPerson(person)
-                          }}
-                          aria-label={`View details for ${person.name}`}
-                        >
-                          <div className="overflow-hidden rounded-card mb-4 h-48 sm:h-56">
-                            {person.imageSrc ? (
-                              <img
-                                src={person.imageSrc}
-                                alt={person.name}
-                                className="w-full h-full object-cover object-top"
-                                loading="lazy"
-                              />
-                            ) : person.imageId ? (
-                              <ImagePlaceholder
-                                width={3}
-                                height={4}
-                                imageId={person.imageId}
-                                alt={person.name}
-                              />
-                            ) : null}
-                          </div>
-
-
-                          <h4 className="font-display text-lg font-semibold text-brand-text-primary mb-1">
-                            {person.name}
-                          </h4>
-
-                          <p className="font-serif text-brand-gold font-semibold mb-2 text-sm">
-                            {person.title}
-                          </p>
-
-                          <p className="text-brand-text-muted text-xs leading-relaxed">
-                            {person.bio}
-                          </p>
-                        </motion.div>
-                      </ScaleOnHover>
-                    </StaggerItem>
-                  )
-
                   return (
                     <StaggerContainer>
                       {/* Row 1: Chairman (centered) */}
                       {alChairman && (
                         <div className="flex justify-center mb-8">
                           <div className="w-full max-w-[260px]">
-                            <ALCard person={alChairman} />
+                            <ALCard person={alChairman} onSelect={setSelectedPerson} />
                           </div>
                         </div>
                       )}
@@ -180,7 +180,7 @@ const Alumni: React.FC = () => {
                         <div className="flex justify-center gap-4 sm:gap-6 mb-8">
                           {alViceChairmen.map((person) => (
                             <div key={person.id} className="w-full max-w-[260px]">
-                              <ALCard person={person} />
+                              <ALCard person={person} onSelect={setSelectedPerson} />
                             </div>
                           ))}
                         </div>
@@ -190,7 +190,7 @@ const Alumni: React.FC = () => {
                       {alOthers.length > 0 && (
                         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                           {alOthers.map((person) => (
-                            <ALCard key={person.id} person={person} />
+                            <ALCard key={person.id} person={person} onSelect={setSelectedPerson} />
                           ))}
                         </div>
                       )}

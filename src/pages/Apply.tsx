@@ -19,6 +19,7 @@ import {
   User,
   BookOpen,
   MessageSquare,
+  FileText,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -34,20 +35,6 @@ interface NonLocalFormData {
   motivation: string
   hearAbout: string
   comments: string
-}
-
-interface LocalRound2FormData {
-  fullName: string
-  hkuId: string
-  email: string
-  phone: string
-  faculty: string
-  program: string
-  yearOfStudy: string
-  address: string
-  motivation: string
-  activities: string
-  additionalInfo: string
 }
 
 type FormStatus = 'idle' | 'success'
@@ -194,13 +181,19 @@ const GUIDE_STEPS: Record<GuideTab, GuideStep[]> = {
       icon: <ClipboardList size={24} />,
       title: 'Check Your Eligibility',
       description:
-        'University Hall welcomes full-time non-local HKU undergraduate students. Non-local applicants must hold a valid conditional offer and meet HKU\'s admission requirements for hall residence.',
+        'University Hall welcomes full-time non-local HKU undergraduate students. Non-local applicants must hold a valid offer (including conditional) from HKU.',
     },
     {
       icon: <Send size={24} />,
       title: 'Submit Your Application',
       description:
-        'Applications are submitted through the HKU Portal at the designated application period. Select University Hall as your preferred hall and complete all required fields. Late or incomplete applications will not be considered.',
+        'After accepting your HKU offer, applications are submitted through the HKU Portal at the designated application period. Select University Hall as your preferred hall and complete all required fields. Late or incomplete applications will not be considered.',
+    },
+    {
+      icon: <FileText size={24} />,
+      title: 'Fill the Form Below for Interview',
+      description:
+        'After you submit your application via the HKU Portal, you are recommended to fill the form below to notify us that you have selected University Hall as your preferred hall. Once you have filled the form, the Hall Management Team will label you as a shortlisted applicant.',
     },
     {
       icon: <MessageSquare size={24} />,
@@ -232,7 +225,7 @@ const GUIDE_STEPS: Record<GuideTab, GuideStep[]> = {
       icon: <MessageSquare size={24} />,
       title: 'Attend an Interview',
       description:
-        'Shortlisted applicants will be invited for an interview with the Hall Management Committee. Use the Interview Information Collection form below to submit your details and help us arrange your interview session.',
+        'Shortlisted applicants will be invited for an interview with the Hall Management Committee. The university will share your information with us so we can contact you directly to arrange your interview session.',
     },
     {
       icon: <CheckCircle size={24} />,
@@ -252,13 +245,13 @@ const GUIDE_STEPS: Record<GuideTab, GuideStep[]> = {
       icon: <Send size={24} />,
       title: 'Submit Readmission Application',
       description:
-        'Submit your application through the HKU Hall Application System during the designated Round 1 period (typically April–May). Confirm your intent to return or transfer and provide any required supporting information.',
+        'Submit your application through the HKU Hall Application System during the designated Round 1 period (typically mid-April). Confirm your intent to return or transfer and provide any required supporting information.',
     },
     {
       icon: <MessageSquare size={24} />,
       title: 'Review & Decision',
       description:
-        'The Hall Management Committee reviews all readmission applications. Priority is given to residents who have actively contributed to hall life. Results are typically announced in late May to early June.',
+        'The Hall Management Committee reviews all readmission applications. Priority is given to residents who have actively contributed to hall life. Results are typically announced in mid to late May.',
     },
     {
       icon: <CheckCircle size={24} />,
@@ -566,263 +559,11 @@ const NonLocalForm: React.FC = () => {
   )
 }
 
-// ── Local Student Round 2 Form ──────────────────────────────────────
 
-const LOCAL_YEARS = [
-  { value: 'year-1', label: 'Year 1' },
-  { value: 'year-2', label: 'Year 2' },
-  { value: 'year-3', label: 'Year 3' },
-  { value: 'year-4', label: 'Year 4' },
-  { value: 'year-5', label: 'Year 5+' },
-  { value: 'postgrad', label: 'Postgraduate' },
-]
-
-const LOCAL_FACULTIES = [
-  { value: 'arts', label: 'Faculty of Arts' },
-  { value: 'business-econ', label: 'Faculty of Business and Economics' },
-  { value: 'dentistry', label: 'Faculty of Dentistry' },
-  { value: 'education', label: 'Faculty of Education' },
-  { value: 'engineering', label: 'Faculty of Engineering' },
-  { value: 'law', label: 'Faculty of Law' },
-  { value: 'medicine', label: 'Li Ka Shing Faculty of Medicine' },
-  { value: 'science', label: 'Faculty of Science' },
-  { value: 'social-sciences', label: 'Faculty of Social Sciences' },
-  { value: 'architecture', label: 'Faculty of Architecture' },
-  { value: 'other', label: 'Other / Non-HKU' },
-]
-
-const initialLocalRound2Form: LocalRound2FormData = {
-  fullName: '',
-  hkuId: '',
-  email: '',
-  phone: '',
-  faculty: '',
-  program: '',
-  yearOfStudy: '',
-  address: '',
-  motivation: '',
-  activities: '',
-  additionalInfo: '',
-}
-
-const LocalRound2Form: React.FC = () => {
-  const [form, setForm] = useState<LocalRound2FormData>(initialLocalRound2Form)
-  const [status, setStatus] = useState<FormStatus>('idle')
-  const [errors, setErrors] = useState<Partial<Record<keyof LocalRound2FormData, string>>>({})
-
-  const update = <K extends keyof LocalRound2FormData>(field: K, value: LocalRound2FormData[K]) => {
-    setForm((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }))
-  }
-
-  const validate = (): boolean => {
-    const errs: Partial<Record<keyof LocalRound2FormData, string>> = {}
-    if (!form.fullName.trim()) errs.fullName = 'Full name is required'
-    if (!form.hkuId.trim()) errs.hkuId = 'HKU ID is required'
-    if (!form.email.trim()) errs.email = 'Email is required'
-    else if (!validateEmail(form.email)) errs.email = 'Please enter a valid email'
-    if (!form.faculty) errs.faculty = 'Please select your faculty'
-    if (!form.program.trim()) errs.program = 'Program of study is required'
-    if (!form.yearOfStudy) errs.yearOfStudy = 'Please select your year of study'
-    if (!form.motivation.trim()) errs.motivation = 'Please tell us why you want to join'
-    if (!form.activities.trim()) errs.activities = 'Please share your extracurricular involvement'
-    setErrors(errs)
-    return Object.keys(errs).length === 0
-  }
-
-  const yearLabel = LOCAL_YEARS.find((o) => o.value === form.yearOfStudy)?.label || form.yearOfStudy
-  const facultyLabel = LOCAL_FACULTIES.find((o) => o.value === form.faculty)?.label || form.faculty
-
-  const buildMailTo = () => {
-    const subject = encodeURIComponent(
-      'Local Student - Round 2 Interview Info - University Hall Application'
-    )
-    const body = encodeURIComponent(
-      `Local Student Round 2 Interview Information\n\n` +
-      `Full Name: ${form.fullName}\n` +
-      `HKU ID: ${form.hkuId}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
-      `Faculty: ${facultyLabel}\n` +
-      `Program of Study: ${form.program}\n` +
-      `Year of Study: ${yearLabel}\n` +
-      `Residential Address: ${form.address}\n` +
-      `Why University Hall: ${form.motivation}\n` +
-      `Extracurricular Activities: ${form.activities}\n` +
-      `Additional Information: ${form.additionalInfo}\n`
-    )
-    return `mailto:uhall@connect.hku.hk?subject=${subject}&body=${body}`
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!validate()) return
-    const a = document.createElement('a')
-    a.href = buildMailTo()
-    a.click()
-    setStatus('success')
-  }
-
-  if (status === 'success') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="bg-brand-surface border border-brand-border rounded-card p-8 lg:p-10 text-center"
-      >
-        <div className="w-16 h-16 rounded-full bg-brand-emerald/10 flex items-center justify-center mx-auto mb-6">
-          <CheckCircle size={32} className="text-brand-emerald" />
-        </div>
-        <h3 className="font-display text-2xl font-semibold text-brand-text-primary mb-3">
-          Information Received
-        </h3>
-        <p className="text-brand-text-muted max-w-md mx-auto mb-6">
-          Thank you! We have received your information. The Hall Management Committee will review
-          your submission and contact you at{' '}
-          <strong className="text-brand-text-primary">{form.email}</strong> regarding interview
-          arrangements. Don&apos;t forget to also submit your official application through the{' '}
-          <a
-            href="https://sweb.hku.hk/hallapp/servlet/hall_app/menu"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-gold hover:text-brand-gold-light underline"
-          >
-            HKU Hall Application System
-          </a>.
-        </p>
-        <button
-          onClick={() => { setForm(initialLocalRound2Form); setStatus('idle') }}
-          className="btn-primary"
-        >
-          Submit Another
-        </button>
-      </motion.div>
-    )
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <FormField label="Full Name" required error={errors.fullName}>
-          <TextInput
-            value={form.fullName}
-            onChange={(v) => update('fullName', v)}
-            placeholder="e.g. CHAN Tai Man"
-            icon={<User size={16} />}
-          />
-        </FormField>
-
-        <FormField label="HKU ID" required error={errors.hkuId}>
-          <TextInput
-            value={form.hkuId}
-            onChange={(v) => update('hkuId', v)}
-            placeholder="e.g. 3036123456"
-          />
-        </FormField>
-
-        <FormField label="Email" required error={errors.email}>
-          <TextInput
-            type="email"
-            value={form.email}
-            onChange={(v) => update('email', v)}
-            placeholder="e.g. tai-man.chan@connect.hku.hk"
-            icon={<Mail size={16} />}
-          />
-        </FormField>
-
-        <FormField label="Phone">
-          <TextInput
-            type="tel"
-            value={form.phone}
-            onChange={(v) => update('phone', v)}
-            placeholder="e.g. +852 1234 5678"
-            icon={<Phone size={16} />}
-          />
-        </FormField>
-
-        <FormField label="Faculty" required error={errors.faculty}>
-          <SelectInput
-            value={form.faculty}
-            onChange={(v) => update('faculty', v)}
-            options={LOCAL_FACULTIES}
-            placeholder="Select your faculty"
-          />
-        </FormField>
-
-        <FormField label="Program of Study" required error={errors.program}>
-          <TextInput
-            value={form.program}
-            onChange={(v) => update('program', v)}
-            placeholder="e.g. BBA in Finance"
-            icon={<BookOpen size={16} />}
-          />
-        </FormField>
-
-        <FormField label="Year of Study" required error={errors.yearOfStudy}>
-          <SelectInput
-            value={form.yearOfStudy}
-            onChange={(v) => update('yearOfStudy', v)}
-            options={LOCAL_YEARS}
-            placeholder="Select your year"
-          />
-        </FormField>
-
-        <FormField label="Residential Address">
-          <TextInput
-            value={form.address}
-            onChange={(v) => update('address', v)}
-            placeholder="e.g. District / estate"
-            icon={<MapPin size={16} />}
-          />
-        </FormField>
-      </div>
-
-      <FormField label="Why do you want to join University Hall?" required error={errors.motivation}>
-        <TextArea
-          value={form.motivation}
-          onChange={(v) => update('motivation', v)}
-          placeholder="Tell us about yourself — your character, interests, and what you hope to gain from and contribute to the Hall community..."
-          rows={5}
-        />
-      </FormField>
-
-      <FormField label="Extracurricular Activities & Achievements" required error={errors.activities}>
-        <TextArea
-          value={form.activities}
-          onChange={(v) => update('activities', v)}
-          placeholder="Share your involvement in sports, cultural activities, student societies, volunteer work, or any leadership roles..."
-          rows={4}
-        />
-      </FormField>
-
-      <FormField label="Additional Information">
-        <TextArea
-          value={form.additionalInfo}
-          onChange={(v) => update('additionalInfo', v)}
-          placeholder="Any other information you would like the Hall Management Committee to consider..."
-          rows={3}
-        />
-      </FormField>
-
-      <div className="flex items-center justify-between pt-2">
-        <p className="text-xs text-brand-text-muted">
-          By submitting this form, you agree to the collection and processing of your personal
-          information for the purpose of hall admission.
-        </p>
-        <button
-          type="submit"
-          className="btn-primary flex items-center gap-2"
-        >
-          Submit <Send size={16} />
-        </button>
-      </div>
-    </form>
-  )
-}
 
 // ── Applicant Type Tabs ─────────────────────────────────────────────
 
-type ApplicantTab = 'readmission' | 'non-local' | 'local-round2'
+type ApplicantTab = 'readmission' | 'non-local'
 
 const TAB_CONFIG: { key: ApplicantTab; label: string; description: string }[] = [
   {
@@ -834,11 +575,6 @@ const TAB_CONFIG: { key: ApplicantTab; label: string; description: string }[] = 
     key: 'non-local',
     label: 'Non-local Student',
     description: 'Interview info for non-local applicants',
-  },
-  {
-    key: 'local-round2',
-    label: 'Local Student — Round 2',
-    description: 'Interview info for Round 2 applicants',
   },
 ]
 
@@ -1102,7 +838,6 @@ const Apply: React.FC = () => {
               >
                 {activeTab === 'readmission' && <RoundOneReadmission />}
                 {activeTab === 'non-local' && <NonLocalForm />}
-                {activeTab === 'local-round2' && <LocalRound2Form />}
               </motion.div>
             </AnimatePresence>
           </div>

@@ -383,7 +383,7 @@ export const PEOPLE: Person[] = [
   },
   {
     id: 'Hall-Executive',
-    name: 'Ms. Ivy Chan Sze Man 陳學霖',
+    name: 'Ms. Ivy Chan Sze Man 陳詩敏',
     title: 'Hall Executive',
     bio: '',
     role: 'Hall Officer',

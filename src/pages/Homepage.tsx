@@ -281,7 +281,7 @@ const Homepage: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
               className="w-full lg:w-3/5"
             >
-              <p className="text-sm font-mono text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
+              <p className="text-lxl font-mono font-display text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
                 From the Warden
               </p>
 
@@ -294,15 +294,15 @@ const Homepage: React.FC = () => {
                 <p className="font-display text-xl font-semibold text-brand-text-primary">
                   {PEOPLE.find((p) => p.id === 'warden')?.name}
                 </p>
-                <p className="text-sm text-brand-text-muted font-mono mt-0.5">
+                <p className="text-lg text-brand-text-muted font-mono mt-0.5">
                   Warden, University Hall
                 </p>
               </div>
               <Link
                 to="/people"
-                className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-xs font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
+                className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-sm font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
               >
-                <span>Meet Our Team</span>
+                <span className="text-lg font-display">Meet Our Team</span>
                 <ArrowRight size={14} />
               </Link>
             </motion.div>

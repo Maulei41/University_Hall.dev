@@ -373,7 +373,7 @@ const Alumni: React.FC = () => {
       <Modal
         isOpen={!!selectedPerson}
         onClose={() => setSelectedPerson(null)}
-        maxWidth="lg"
+        maxWidth="2xl"
       >
         {selectedPerson && (
           <>

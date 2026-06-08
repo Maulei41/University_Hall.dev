@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin } from 'lucide-react'
+import { MapPin, DoorOpen, Move, Bed, Monitor } from 'lucide-react'
 import { Modal } from '@components/common/index'
 import type { FloorPlanPin } from '../../types/index'
 
@@ -138,9 +138,58 @@ const FloorPlanInteractive: React.FC<FloorPlanInteractiveProps> = ({
               <h2 className="font-display text-2xl sm:text-3xl font-semibold text-brand-text-primary mb-3">
                 {selectedPin.name}
               </h2>
-              <p className="text-brand-text-muted text-sm leading-relaxed">
-                {selectedPin.description}
-              </p>
+
+              {/* Room details spec sheet */}
+              {selectedPin.roomType && (
+                <div className="grid grid-cols-2 gap-x-6 gap-y-4 mb-4">
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-brand-text-muted/60 flex items-center gap-1">
+                      <DoorOpen size={14} className="text-brand-gold/70" />
+                      Room Type
+                    </span>
+                    <p className="text-xl font-serif text-brand-text-primary mt-1">
+                      {selectedPin.roomType}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-brand-text-muted/60 flex items-center gap-1">
+                      <Move size={14} className="text-brand-gold/70" />
+                      Room Size
+                    </span>
+                    <p className="text-xl font-serif text-brand-text-primary mt-1">
+                      {selectedPin.roomSize}
+                    </p>
+                  </div>
+                  {selectedPin.bedSize && (
+                    <div>
+                      <span className="text-xs font-mono uppercase tracking-wider text-brand-text-muted/60 flex items-center gap-1">
+                        <Bed size={14} className="text-brand-gold/70" />
+                        Bed Size
+                      </span>
+                      <p className="text-xl font-serif text-brand-text-primary mt-1">
+                        {selectedPin.bedSize}
+                      </p>
+                    </div>
+                  )}
+                  {selectedPin.deskSize && (
+                    <div>
+                      <span className="text-xs font-mono uppercase tracking-wider text-brand-text-muted/60 flex items-center gap-1">
+                        <Monitor size={14} className="text-brand-gold/70" />
+                        Desk Size
+                      </span>
+                      <p className="text-xl font-serif text-brand-text-primary mt-1">
+                        {selectedPin.deskSize}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {selectedPin.description && (
+                <p className="text-brand-text-muted text-sm leading-relaxed">
+                  {selectedPin.description}
+                </p>
+              )}
             </div>
           </>
         )}

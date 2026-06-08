@@ -156,32 +156,118 @@ const SelectInput: React.FC<SelectInputProps> = ({ value, onChange, options, pla
 
 // ── Guide Steps Data ────────────────────────────────────────────────
 
-const GUIDE_STEPS = [
+type GuideTab = 'non-local-guide' | 'local-guide' | 'readmission-guide'
+
+interface GuideStep {
+  icon: React.ReactNode
+  title: string
+  description: string
+}
+
+const APPLICANT_CARDS: { key: GuideTab; icon: React.ReactNode; title: string; description: string; features: string[] }[] = [
   {
-    icon: <ClipboardList size={24} />,
-    title: 'Check Your Eligibility',
-    description:
-      'University Hall welcomes full-time HKU undergraduate students. Both local and non-local students are eligible to apply. ',
+    key: 'non-local-guide',
+    icon: <Globe size={28} />,
+    title: 'Non-local Student',
+    description: 'I am from outside Hong Kong and need a hall place.',
+    features: ['Valid student visa required', 'Full-time HKU undergraduate', 'Interview in person or Zoom'],
   },
   {
-    icon: <Send size={24} />,
-    title: 'Submit Your Application',
-    description:
-      'Applications are submitted through the HKU Portal at the designated application period. Select University Hall as your preferred hall and complete all required fields. Late or incomplete applications will not be considered.',
+    key: 'local-guide',
+    icon: <MapPin size={28} />,
+    title: 'Local Student',
+    description: 'I am a Hong Kong resident applying for Round 2.',
+    features: ['Missed Round 1 Readmission', 'First-time hall applicant', 'Local HKU undergraduate'],
   },
   {
-    icon: <MessageSquare size={24} />,
-    title: 'Attend an Interview',
-    description:
-      'Shortlisted applicants will be invited for an interview with the Hall Management Committee. Interviews are conducted in person at University Hall or Zoom interview. This is your opportunity to tell us your story and demonstrate your enthusiasm for joining our community.',
-  },
-  {
-    icon: <CheckCircle size={24} />,
-    title: 'Receive Your Offer',
-    description:
-      'Successful applicants will receive an offer via email and the HKU Hall Application System. Accept your offer within the stipulated deadline and complete the hall admission fee payment to secure your place.',
+    key: 'readmission-guide',
+    icon: <Home size={28} />,
+    title: 'Current Resident',
+    description: 'I already live in an HKU hall and want to continue / transfer.',
+    features: ['Current HKU Hall resident', 'Round 1 Readmission period', 'Priority for active contributors'],
   },
 ]
+
+const GUIDE_STEPS: Record<GuideTab, GuideStep[]> = {
+  'non-local-guide': [
+    {
+      icon: <ClipboardList size={24} />,
+      title: 'Check Your Eligibility',
+      description:
+        'University Hall welcomes full-time non-local HKU undergraduate students. Non-local applicants must hold a valid student visa and meet HKU\'s admission requirements for hall residence.',
+    },
+    {
+      icon: <Send size={24} />,
+      title: 'Submit Your Application',
+      description:
+        'Applications are submitted through the HKU Portal at the designated application period. Select University Hall as your preferred hall and complete all required fields. Late or incomplete applications will not be considered.',
+    },
+    {
+      icon: <MessageSquare size={24} />,
+      title: 'Attend an Interview',
+      description:
+        'Shortlisted applicants will be invited for an interview with the Hall Management Committee. Interviews are conducted in person at University Hall or via Zoom. Fill in the Interview Information Collection form below to help us arrange your interview.',
+    },
+    {
+      icon: <CheckCircle size={24} />,
+      title: 'Receive Your Offer',
+      description:
+        'Successful applicants will receive an offer via email and the HKU Hall Application System. Accept your offer within the stipulated deadline and complete the hall admission fee payment to secure your place.',
+    },
+  ],
+  'local-guide': [
+    {
+      icon: <ClipboardList size={24} />,
+      title: 'Check Your Eligibility',
+      description:
+        'University Hall welcomes full-time local HKU undergraduate students. Local students who missed Round 1 Readmission or are applying for the first time may apply through Round 2.',
+    },
+    {
+      icon: <Send size={24} />,
+      title: 'Submit Your Application',
+      description:
+        'Applications are submitted through the HKU Hall Application System during the Round 2 application period. Select University Hall and complete all required fields. Late or incomplete applications will not be considered.',
+    },
+    {
+      icon: <MessageSquare size={24} />,
+      title: 'Attend an Interview',
+      description:
+        'Shortlisted applicants will be invited for an interview with the Hall Management Committee. Use the Interview Information Collection form below to submit your details and help us arrange your interview session.',
+    },
+    {
+      icon: <CheckCircle size={24} />,
+      title: 'Receive Your Offer',
+      description:
+        'Successful applicants will receive an offer via email and the HKU Hall Application System. Accept your offer within the stipulated deadline and pay the hall admission fee to secure your place.',
+    },
+  ],
+  'readmission-guide': [
+    {
+      icon: <ClipboardList size={24} />,
+      title: 'Check Your Eligibility',
+      description:
+        'Round 1 Readmission is open exclusively to current HKU Hall residents who wish to continue their residency or transfer to University Hall for the upcoming academic year.',
+    },
+    {
+      icon: <Send size={24} />,
+      title: 'Submit Readmission Application',
+      description:
+        'Submit your application through the HKU Hall Application System during the designated Round 1 period (typically April–May). Confirm your intent to return or transfer and provide any required supporting information.',
+    },
+    {
+      icon: <MessageSquare size={24} />,
+      title: 'Review & Decision',
+      description:
+        'The Hall Management Committee reviews all readmission applications. Priority is given to residents who have actively contributed to hall life. Results are typically announced in late May to early June.',
+    },
+    {
+      icon: <CheckCircle size={24} />,
+      title: 'Receive Your Result',
+      description:
+        'Successful applicants will receive an offer via email and the HKU Hall Application System. Accept your offer within the stipulated deadline and complete the hall admission fee payment to secure your place for the coming year.',
+    },
+  ],
+}
 
 // ── Form Validation Helpers ─────────────────────────────────────────
 
@@ -760,6 +846,7 @@ const TAB_CONFIG: { key: ApplicantTab; label: string; description: string }[] = 
 
 const Apply: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ApplicantTab>('non-local')
+  const [guideTab, setGuideTab] = useState<GuideTab | null>(null)
 
   return (
     <>
@@ -796,68 +883,148 @@ const Apply: React.FC = () => {
       <Section id="how-to-apply">
         <Container>
           <FadeInUp>
-            <div className="text-center mb-16">
+            <div className="text-center mb-14">
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
                 How to Apply
               </h2>
               <p className="text-xl text-brand-text-muted max-w-2xl mx-auto">
-                Your step-by-step guide to joining the University Hall community
+                Everyone&apos;s path is different. Tell us who you are and we&apos;ll show you
+                the right steps.
               </p>
             </div>
           </FadeInUp>
 
-          <div className="relative">
-            {/* Vertical connector line */}
-            <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-brand-gold/20 -translate-x-1/2 hidden lg:block" />
-
-            <StaggerContainer>
-              <div className="space-y-8 lg:space-y-12">
-                {GUIDE_STEPS.map((step, idx) => (
-                  <StaggerItem key={idx}>
+          {/* Selection cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+            {APPLICANT_CARDS.map((card) => {
+              const isSelected = guideTab === card.key
+              return (
+                <motion.button
+                  key={card.key}
+                  onClick={() => setGuideTab(card.key)}
+                  className={`relative w-full text-left rounded-card p-6 transition-all duration-base border ${
+                    isSelected
+                      ? 'bg-brand-surface border-brand-gold shadow-lg shadow-brand-gold/5'
+                      : 'bg-brand-bg border-brand-border hover:border-brand-gold/40 hover:bg-brand-surface/50'
+                  }`}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Selected indicator */}
+                  {isSelected && (
                     <motion.div
-                      className={`flex flex-col lg:flex-row items-start gap-6 ${
-                        idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                      }`}
-                    >
-                      {/* Content card */}
-                      <div className="flex-1">
-                        <div className="card-base border border-brand-border hover:border-brand-gold/40 transition-colors">
-                          <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center shrink-0">
-                              <div className="text-brand-gold">{step.icon}</div>
-                            </div>
-                            <div>
-                              <div className="flex items-center gap-3 mb-1">
-                                <span className="font-mono text-xs text-brand-gold font-semibold">
-                                  Step {idx + 1}
-                                </span>
-                              </div>
-                              <h3 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
-                                {step.title}
-                              </h3>
-                              <p className="text-brand-text-muted leading-relaxed">
-                                {step.description}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      layoutId="guide-indicator"
+                      className="absolute -inset-px rounded-card border-2 border-brand-gold pointer-events-none"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
 
-                      {/* Step number on connector */}
-                      <div className="hidden lg:flex items-center justify-center w-12 shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-brand-gold text-brand-bg font-display font-bold text-sm flex items-center justify-center shadow-lg">
-                          {idx + 1}
-                        </div>
-                      </div>
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
+                    isSelected ? 'bg-brand-gold text-brand-bg' : 'bg-brand-gold/10 text-brand-gold'
+                  }`}>
+                    {card.icon}
+                  </div>
 
-                      {/* Empty space for alternating layout */}
-                      <div className="flex-1 hidden lg:block" />
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </div>
-            </StaggerContainer>
+                  <h3 className={`font-display text-xl font-semibold mb-1.5 ${
+                    isSelected ? 'text-brand-gold' : 'text-brand-text-primary'
+                  }`}>
+                    {card.title}
+                  </h3>
+
+                  <p className="text-sm text-brand-text-muted mb-4 leading-relaxed">
+                    {card.description}
+                  </p>
+
+                  <ul className="space-y-1.5">
+                    {card.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs text-brand-text-muted/70">
+                        <Check size={12} className="text-brand-emerald mt-0.5 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.button>
+              )
+            })}
           </div>
+
+          {/* Guide steps — revealed after selection */}
+          <AnimatePresence mode="wait">
+            {guideTab && (
+              <motion.div
+                key={guideTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="relative">
+                  {/* Vertical connector line */}
+                  <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-brand-gold/20 -translate-x-1/2 hidden lg:block" />
+
+                  <StaggerContainer>
+                    <div className="space-y-8 lg:space-y-12">
+                      {GUIDE_STEPS[guideTab].map((step, idx) => (
+                        <StaggerItem key={idx}>
+                          <motion.div
+                            className={`flex flex-col lg:flex-row items-start gap-6 ${
+                              idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                            }`}
+                          >
+                            {/* Content card */}
+                            <div className="flex-1">
+                              <div className="card-base border border-brand-border hover:border-brand-gold/40 transition-colors">
+                                <div className="flex items-start gap-4">
+                                  <div className="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center shrink-0">
+                                    <div className="text-brand-gold">{step.icon}</div>
+                                  </div>
+                                  <div>
+                                    <div className="flex items-center gap-3 mb-1">
+                                      <span className="font-mono text-xs text-brand-gold font-semibold">
+                                        Step {idx + 1}
+                                      </span>
+                                    </div>
+                                    <h3 className="font-display text-xl font-semibold text-brand-text-primary mb-2">
+                                      {step.title}
+                                    </h3>
+                                    <p className="text-brand-text-muted leading-relaxed">
+                                      {step.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Step number on connector */}
+                            <div className="hidden lg:flex items-center justify-center w-12 shrink-0">
+                              <div className="w-10 h-10 rounded-full bg-brand-gold text-brand-bg font-display font-bold text-sm flex items-center justify-center shadow-lg">
+                                {idx + 1}
+                              </div>
+                            </div>
+
+                            {/* Empty space for alternating layout */}
+                            <div className="flex-1 hidden lg:block" />
+                          </motion.div>
+                        </StaggerItem>
+                      ))}
+                    </div>
+                  </StaggerContainer>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Prompt to select when nothing chosen yet */}
+          {!guideTab && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-center text-sm text-brand-text-muted/50 font-mono"
+            >
+              Select your applicant type above to see the application steps
+            </motion.p>
+          )}
         </Container>
       </Section>
 

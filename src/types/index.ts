@@ -136,4 +136,12 @@ export interface FloorPlanPin {
   imageSrc?: string
   /** Multiple images — renders a carousel in the detail modal */
   images?: string[]
+  /** Room type label e.g. "Twin Room (loft bed)" */
+  roomType?: string
+  /** Room size e.g. "~14.0m²" */
+  roomSize?: string
+  /** Bed dimensions e.g. "190cm(L) x 84cm(W) x 7.6cm(H)" */
+  bedSize?: string
+  /** Desk dimensions e.g. "142cm(L) x 80cm(W) x 74cm(H)" */
+  deskSize?: string
 }

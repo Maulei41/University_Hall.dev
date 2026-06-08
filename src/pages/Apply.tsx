@@ -170,7 +170,7 @@ const APPLICANT_CARDS: { key: GuideTab; icon: React.ReactNode; title: string; de
     icon: <Globe size={28} />,
     title: 'Non-local Student',
     description: 'I am from outside Hong Kong and need a hall place.',
-    features: ['Valid student visa required', 'Full-time HKU undergraduate', 'Interview in person or Zoom'],
+    features: ['Conditional Offer required', 'Full-time HKU undergraduate', 'Interview in person or Zoom'],
   },
   {
     key: 'local-guide',
@@ -182,9 +182,9 @@ const APPLICANT_CARDS: { key: GuideTab; icon: React.ReactNode; title: string; de
   {
     key: 'readmission-guide',
     icon: <Home size={28} />,
-    title: 'Current Resident',
-    description: 'I already live in an HKU hall and want to continue / transfer.',
-    features: ['Current HKU Hall resident', 'Round 1 Readmission period', 'Priority for active contributors'],
+    title: 'Current Hall Residents & Returning Exchange Students',
+    description: 'u currently reside in an HKU hall and wish to readmit/transfer to University Hall, or if you lived in a residential hall immediately prior to your exchange program',
+    features: ['Current HKU Hall resident / Returning exchange students', 'Round 1 Readmission period', 'Priority for active contributors'],
   },
 ]
 
@@ -194,7 +194,7 @@ const GUIDE_STEPS: Record<GuideTab, GuideStep[]> = {
       icon: <ClipboardList size={24} />,
       title: 'Check Your Eligibility',
       description:
-        'University Hall welcomes full-time non-local HKU undergraduate students. Non-local applicants must hold a valid student visa and meet HKU\'s admission requirements for hall residence.',
+        'University Hall welcomes full-time non-local HKU undergraduate students. Non-local applicants must hold a valid conditional offer and meet HKU\'s admission requirements for hall residence.',
     },
     {
       icon: <Send size={24} />,

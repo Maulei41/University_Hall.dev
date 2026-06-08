@@ -160,6 +160,18 @@ const ROOM_TYPES: FloorPlanPin[] = [
     y: 0,
   },
   {
+    id: 'room-a3',
+    name: 'Room A8',
+    floor: 'A',
+    roomType: 'Triple Room (loft bed)',
+    roomSize: '~22.0m²',
+    bedSize: '190cm(L) x 84cm(W) x 7.6cm(H)',
+    deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
+    description: '',
+    x: 0,
+    y: 0,
+  },
+  {
     id: 'room-a9',
     name: 'Room A9',
     floor: 'A',

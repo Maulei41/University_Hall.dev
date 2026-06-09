@@ -15,6 +15,7 @@ import {
   AlertCircle,
   User,
   BookOpen,
+  Hash,
 } from 'lucide-react'
 
 
@@ -24,6 +25,7 @@ interface NonLocalFormData {
   fullName: string
   email: string
   phone: string
+  uid: string
   nationality: string
   program: string
   yearOfStudy: string
@@ -180,6 +182,7 @@ const initialNonLocalForm: NonLocalFormData = {
   fullName: '',
   email: '',
   phone: '',
+  uid: '',
   nationality: '',
   program: '',
   yearOfStudy: '',
@@ -224,6 +227,7 @@ const NonLocalForm: React.FC = () => {
       `Full Name: ${form.fullName}\n` +
       `Email: ${form.email}\n` +
       `Phone: ${form.phone}\n` +
+      `University ID: ${form.uid}\n` +
       `Nationality: ${form.nationality}\n` +
       `Program of Study: ${form.program}\n` +
       `Year of Study: ${yearLabel}\n` +
@@ -313,6 +317,15 @@ const NonLocalForm: React.FC = () => {
           />
         </FormField>
 
+        <FormField label="University ID" error={errors.uid}>
+          <TextInput
+            value={form.uid}
+            onChange={(v) => update('uid', v)}
+            placeholder="e.g. 3036123456"
+            icon={<Hash size={16} />}
+          />
+        </FormField>
+
         <FormField label="Nationality" required error={errors.nationality}>
           <TextInput
             value={form.nationality}
@@ -368,17 +381,17 @@ const NonLocalForm: React.FC = () => {
         />
       </FormField>
 
-      <div className="flex items-center justify-between pt-2">
-        <p className="text-xs text-brand-text-muted">
-          By submitting this form, you agree to the collection and processing of your personal
-          information for the purpose of hall admission.
-        </p>
+      <div className="flex flex-col items-end gap-3 pt-2">
         <button
           type="submit"
           className="btn-primary flex items-center gap-2"
         >
           Submit <Send size={16} />
         </button>
+        <p className="text-xs text-brand-text-muted text-right max-w-lg">
+          By submitting this form, you agree to the collection and processing of your personal
+          information for the purpose of hall admission.
+        </p>
       </div>
     </form>
   )

@@ -316,7 +316,7 @@ const _PEOPLE_DATA: Person[] = [
     bio: 'Principal Lecturer, HKU Business School',
     role: 'warden',
     imageId: 'person_warden',
-    imageSrc: '/assets/People/Warden.jpeg',
+    imageSrc: '/assets/People/Warden.webp',
     description:"Welcome to University Hall\n" +
         "For over 70 years, University Hall has been a cornerstone of HKU, with a global network of thousands of accomplished alumni. We are a community that proudly honors traditional Hong Kong culture while leading the way in creating a modern, inclusive, and vibrant residential life.\n" + "\n" +
         "Our unique strength lies in our size. Because we are a close-knit community, you won't just be a face in the crowd; you will know everyone here by name. Yet, despite our small numbers, U-Hall consistently punches above its weight, excelling in university affairs, holding amazing events, and showing surprising ability in our cultural and sports teams.\n" + "\n" +
@@ -330,6 +330,11 @@ const _PEOPLE_DATA: Person[] = [
     role: 'Tutoring Team',
     imageId: 'person_Sam',
     imageSrc: '/assets/People/Sam_Liu.jpeg',
+    description:"Hi everyone! I’m Sam Liu. By day, I keep busy as a full-time Lecturer at HKU while still practicing part-time as a solicitor.  \n" +
+        "\n" +
+        "Since becoming your Senior Resident Tutor in February 2025, I’ve loved working with our fantastic management team and participating in our vibrant activities. I joined our Ying Sun last year and it was a wonderful experience—I hope you all love it just as much!  \n" +
+        "\n" +
+        "More than anything, I want to be a supportive friend to all hallmates. Whether you need guidance, want to talk about life, or just need a friendly chat, my door is always open. Please feel free to reach out anytime—let's make this a fantastic year together!"
   },
   {
     id: 'Resident-Tutor',
@@ -376,6 +381,7 @@ const _PEOPLE_DATA: Person[] = [
     role: 'Tutoring Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Bowie_Tang.jpeg',
+    description: "Bowie read law and politics at HKU, during which he was External Vice-chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-5',
@@ -568,34 +574,34 @@ export const TESTIMONIALS: Testimonial[] = [
     author: 'Yusuf Karimli',
     role: 'Castlers 25\'',
   },
-  {
-    id: 'testimonial-3',
-    quote:
-      'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep \- it is a home with a soul.',
-    author: 'Placeholder',
-    role: 'Castlers 25\'',
-  },
-  {
-    id: 'testimonial-4',
-    quote:
-      'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. UHall gave me family away from home.',
-    author: 'Placeholder',
-    role: 'Castlers 23\'',
-  },
-  {
-    id: 'testimonial-5',
-    quote:
-      'What makes UHall special is the people. You show up as a stranger and leave as a brother. The mentorship from senior residents and fellows shaped my character more than any lecture ever did.',
-    author: 'Placeholder',
-    role: 'Castlers 26\'',
-  },
-  {
-    id: 'testimonial-6',
-    quote:
-      'From the Halloween haunted house to the Island Bike Ride, every event brings us closer. The spirit of "One Hall, One Family" is real here \- it is not just a motto, it is how we live.',
-    author: 'Placeholder',
-    role: 'Castlers 24\'',
-  },
+  // {
+  //   id: 'testimonial-3',
+  //   quote:
+  //     'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep \- it is a home with a soul.',
+  //   author: 'Placeholder',
+  //   role: 'Castlers 25\'',
+  // },
+  // {
+  //   id: 'testimonial-4',
+  //   quote:
+  //     'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. UHall gave me family away from home.',
+  //   author: 'Placeholder',
+  //   role: 'Castlers 23\'',
+  // },
+  // {
+  //   id: 'testimonial-5',
+  //   quote:
+  //     'What makes UHall special is the people. You show up as a stranger and leave as a brother. The mentorship from senior residents and fellows shaped my character more than any lecture ever did.',
+  //   author: 'Placeholder',
+  //   role: 'Castlers 26\'',
+  // },
+  // {
+  //   id: 'testimonial-6',
+  //   quote:
+  //     'From the Halloween haunted house to the Island Bike Ride, every event brings us closer. The spirit of "One Hall, One Family" is real here \- it is not just a motto, it is how we live.',
+  //   author: 'Placeholder',
+  //   role: 'Castlers 24\'',
+  // },
 ]
 
 

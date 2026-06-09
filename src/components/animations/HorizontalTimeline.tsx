@@ -79,7 +79,7 @@ const HorizontalTimeline: React.FC<HorizontalTimelineProps> = ({ events }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
                 {/* Content at bottom-left */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 lg:p-16 max-w-2xl">
+                <div className="absolute bottom-10 left-0 right-0 p-8 sm:p-12 lg:p-16 max-w-2xl">
                   <span className="inline-block bg-brand-gold/20 backdrop-blur-sm text-brand-gold px-3 py-1 rounded-full text-xl font-mono font-semibold mb-3 tracking-wide">
                     {event.year}
                   </span>

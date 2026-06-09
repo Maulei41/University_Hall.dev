@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
 import MapSection from '@components/common/MapSection'
-import { OFFICE_INFO } from '@constants/content'
+import { OFFICE_INFO, AFFILIATED_MEMBERSHIP } from '@constants/content'
 import {
   Send,
   ArrowRight,
@@ -16,7 +16,7 @@ import {
   User,
   BookOpen,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+
 
 // ── Types ─────────────────────────────────────────────────────────────
 
@@ -410,12 +410,12 @@ const Apply: React.FC = () => {
               >
                 Apply Now <ArrowRight size={20} />
               </a>
-              <Link
-                to="/affiliated-membership"
+              <a
+                href="#affiliated-membership"
                 className="btn-secondary inline-flex items-center gap-2 text-lg px-8 py-4"
               >
                 Affiliated Membership →
-              </Link>
+              </a>
             </div>
           </FadeInUp>
         </Container>
@@ -437,29 +437,29 @@ const Apply: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Local */}
-            <InfoCard title="Local" icon={<MapPin size={22} />}>
+            <InfoCard title="Local Student" icon={<MapPin size={22} />}>
               <ol className="space-y-4">
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <span>Go to Reg Day and we will arrange a hall tour for you.</span>
+                  <span>Go to Reg Day to visit our booth and we will arrange a hall tour for you.</span>
                 </li>
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">2</span>
-                  <span>Submit your application via the <a href="https://sweb.hku.hk/hallapp/servlet/hall_app/menu" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-gold-light underline">HKU Hall Application System</a> and select University hall as your preference Hall.</span>
+                  <span>Submit your application via the HKU Hall Application System and select University hall as your first choice.</span>
                 </li>
               </ol>
             </InfoCard>
 
             {/* Non-local */}
-            <InfoCard title="Non-local" icon={<Globe size={22} />}>
+            <InfoCard title="Non-local Student" icon={<Globe size={22} />}>
               <ol className="space-y-4 mb-6">
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <span>Submit your application via the <a href="https://sweb.hku.hk/hallapp/servlet/hall_app/menu" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-gold-light underline">HKU Hall Application System</a> and select University hall as your preference Hall.</span>
+                  <span>Submit your application via the HKU Hall Application System and select University hall as your first choice.</span>
                 </li>
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">2</span>
-                  <span>Fill and submit the form below to us for further process.</span>
+                  <span>Fill and submit the form below to us for further process. We may contact you for interview after you submitted the form.</span>
                 </li>
               </ol>
 
@@ -470,6 +470,141 @@ const Apply: React.FC = () => {
                 <NonLocalForm />
               </div>
             </InfoCard>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Affiliated Membership */}
+      <Section id="affiliated-membership">
+        <Container>
+          <FadeInUp>
+            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-brand-gold mb-4 text-center">
+              {AFFILIATED_MEMBERSHIP.title}
+            </h2>
+            <p className="text-xl text-brand-text-muted max-w-3xl mx-auto text-center mb-12">
+              {AFFILIATED_MEMBERSHIP.description}
+            </p>
+          </FadeInUp>
+
+          {/* Eligibility & Benefits */}
+          <div className=" gap-12 lg:gap-16 items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-6">
+                Eligibility & Benefits
+              </h3>
+              <ul className="space-y-4">
+                {AFFILIATED_MEMBERSHIP.details.map((detail, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="flex items-start gap-4 text-brand-text-muted"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-brand-gold flex-shrink-0 mt-2.5" />
+                    <span>{detail}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/*<motion.div*/}
+            {/*  initial={{ opacity: 0, x: 30 }}*/}
+            {/*  whileInView={{ opacity: 1, x: 0 }}*/}
+            {/*  viewport={{ once: true, margin: '-80px' }}*/}
+            {/*  transition={{ duration: 0.6, delay: 0.15 }}*/}
+            {/*  className="relative"*/}
+            {/*>*/}
+            {/*  <div className="absolute -inset-4 bg-brand-gold/10 rounded-card blur-2xl" />*/}
+            {/*  <ImagePlaceholder*/}
+            {/*    width={16}*/}
+            {/*    height={10}*/}
+            {/*    imageId={AFFILIATED_MEMBERSHIP.imageId}*/}
+            {/*    alt="Affiliated Membership programme"*/}
+            {/*    className="rounded-card shadow-xl relative"*/}
+            {/*  />*/}
+            {/*</motion.div>*/}
+          </div>
+
+          {/* How to Apply */}
+          <div className="max-w-3xl mx-auto">
+            <FadeInUp>
+              <h3 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-8 text-center">
+                How to Apply
+              </h3>
+            </FadeInUp>
+
+            {/* Step 1: Get the Form from HKU ASE */}
+            <div className="bg-brand-bg rounded-card p-8 border border-brand-border mb-8">
+              <h4 className="font-display text-2xl font-semibold text-brand-text-primary mb-4">
+                Step 1: Get the Application Form
+              </h4>
+              <p className="text-brand-text-muted mb-4">
+                Download the Affiliated Membership application form from the{' '}
+                <strong className="text-brand-text-primary">HKU Administrative Service E-Portal (ASE)</strong>.
+              </p>
+
+              <a
+                href="https://ase.hku.hk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 bg-brand-gold text-brand-bg font-serif font-semibold rounded-card hover:bg-brand-gold-light transition-colors shadow-lg text-lg mb-6"
+              >
+                Go to ASE Portal
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+
+              <div className="bg-brand-surface border border-brand-border rounded-card p-5">
+                <h5 className="font-serif font-semibold text-brand-text-primary mb-2 text-sm">
+                  Navigate to find the form:
+                </h5>
+                <div className="flex items-center gap-2 text-sm text-brand-text-muted flex-wrap">
+                  <span className="px-2 py-1 bg-brand-bg border border-brand-border rounded text-xs font-mono">
+                    Residential Halls / Residential Colleges / Non-Residential Halls
+                  </span>
+                  <span className="text-brand-gold">→</span>
+                  <span className="px-2 py-1 bg-brand-bg border border-brand-border rounded text-xs font-mono">
+                    Membership
+                  </span>
+                  <span className="text-brand-gold">→</span>
+                  <span className="px-2 py-1 bg-brand-gold/10 border border-brand-gold/30 rounded text-xs font-mono text-brand-gold font-semibold">
+                    Affiliated Membership Form
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2: Submit Method */}
+            <div className="bg-brand-bg rounded-card p-8 border border-brand-border">
+              <h4 className="font-display text-2xl font-semibold text-brand-text-primary mb-4">
+                Step 2: Submit Your Application
+              </h4>
+              <ul className="space-y-4">
+                {AFFILIATED_MEMBERSHIP.howToApply.submitMethod.map((step, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="flex items-start gap-4 text-brand-text-muted"
+                  >
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-brand-gold/20 text-brand-gold font-serif font-semibold text-sm flex-shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span>{step}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Container>
       </Section>

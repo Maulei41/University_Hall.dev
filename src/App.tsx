@@ -28,7 +28,6 @@ const Life = lazy(() => import('@pages/Life'))
 const People = lazy(() => import('@pages/People'))
 const Alumni = lazy(() => import('@pages/Alumni'))
 const Apply = lazy(() => import('@pages/Apply'))
-const AffiliatedMembership = lazy(() => import('@pages/AffiliatedMembership'))
 const TourHall = lazy(() => import('@pages/TourHall'))
 const FAQ = lazy(() => import('@pages/FAQ'))
 
@@ -66,7 +65,6 @@ export default function App() {
                 <Route path="/people" element={<Suspense fallback={null}><People /></Suspense>} />
                 <Route path="/alumni" element={<Suspense fallback={null}><Alumni /></Suspense>} />
                 <Route path="/apply" element={<Suspense fallback={null}><Apply /></Suspense>} />
-                <Route path="/affiliated-membership" element={<Suspense fallback={null}><AffiliatedMembership /></Suspense>} />
                 <Route path="/tour-the-hall" element={<Suspense fallback={null}><TourHall /></Suspense>} />
                 <Route path="/faq" element={<Suspense fallback={null}><FAQ /></Suspense>} />
               </Routes>

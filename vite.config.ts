@@ -2,8 +2,12 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
+const base = process.env.VITE_BUILD_TARGET === 'wordpress'
+  ? '/wp-content/uhall-react-app/'
+  : '/'
+
 export default defineConfig({
-  base: "/wp-content/uhall-react-app/",
+  base,
   plugins: [react()],
   resolve: {
     alias: {

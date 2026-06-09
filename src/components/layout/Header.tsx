@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
             className="flex items-center gap-3 font-display text-3xl font-bold text-brand-gold hover:text-brand-gold-light transition-colors"
           >
             <img
-              src="/wp-content/uhall-react-app/assets/University_Hall_Logo.svg"
+              src="/assets/University_Hall_Logo.svg"
               alt="University Hall"
               className="h-12 sm:h-12 lg:h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}

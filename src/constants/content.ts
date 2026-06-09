@@ -84,7 +84,7 @@ const _FACILITIES_DATA: Facility[] = [
     category: 'Common Area',
     title: 'Gym Room',
     description:
-      'The Gym Room is where hallmates come to train, sweat, and quietly work toward their own transformation, whether for fitness, sports, or a ��secret evolution.��',
+      'The Gym Room is where hallmates come to train, sweat, and quietly work toward their own transformation, whether for fitness, sports, or a \"secret evolution.\"',
     imageId: 'recreation',
     imageSrc: '/assets/Facilities/Gym_1.jpeg',
     images: ['/assets/Facilities/Gym_1.jpeg', '/assets/Facilities/Gym_2.jpeg', '/assets/Facilities/Gym_3.jpeg', '/assets/Facilities/Gym_4.jpeg', '/assets/Facilities/Gym_5.jpeg', '/assets/Facilities/Gym_6.jpeg', '/assets/Facilities/Gym_7.jpeg'],
@@ -95,7 +95,7 @@ const _FACILITIES_DATA: Facility[] = [
     category: 'Common Area',
     title: 'Common Room',
     description:
-      'Equipped with gaming consoles and an electronic mahjong table, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other��s company.',
+      'Equipped with gaming consoles and an electronic mahjong table, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
     imageId: 'accommodation',
     imageSrc: '/assets/Facilities/Common_Room_1.jpeg',
     images: ['/assets/Facilities/Common_Room_1.jpeg', '/assets/Facilities/Common_Room_2.jpg'],
@@ -210,7 +210,7 @@ const _EVENTS_DATA: HallEvent[] = [
     id: 'superpass',
     title: 'Superpass party',
     description:
-      'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives hallmates Superpass ��lai sees�� (red packets, the lucky money). Castlers write Superpass ��fai chuns�� (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
+      'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives hallmates Superpass \"lai sees\" (red packets, the lucky money). Castlers write Superpass \"fai chuns\" (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
     category: 'Social',
     location: 'University Hall',
     images: ['/assets/EventTradition/SuperPass_1.jpg', '/assets/EventTradition/SuperPass_2.jpg', '/assets/EventTradition/SuperPass_3.jpg'],
@@ -324,7 +324,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Senior-Resident-Tutor ',
-    name: 'Mr. Sam LIU Shan �B�s',
+    name: 'Mr. Sam LIU Shan 劉山',
     title: 'Senior Resident Tutor',
     bio: 'Lecturer, Faculty of Law.',
     role: 'Tutoring Team',
@@ -333,7 +333,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Resident-Tutor',
-    name: 'Dr. Vincent CHAN Nok Hang ���տ�',
+    name: 'Dr. Vincent CHAN Nok Hang 陳諾衡',
     title: 'Resident Team',
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
     role: 'Tutoring Team',
@@ -342,7 +342,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-1',
-    name: 'Mr. Raymond CHAN Sai Wai ���@�m',
+    name: 'Mr. Raymond CHAN Sai Wai 陳世煒',
     title: 'Junior fellow',
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
     role: 'Tutoring Team',
@@ -352,7 +352,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-2',
-    name: 'Mr. Jason WONG Ching Hin ���t�a',
+    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
     title: 'Junior fellow',
     bio: 'BSc-HKU',
     role: 'Tutoring Team',
@@ -361,7 +361,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-3',
-    name: 'Mr. Tom TAM Yan Chi �Ӯ���',
+    name: 'Mr. Tom TAM Yan Chi 譚恩智',
     title: 'Non-residential fellow',
     bio: '',
     role: 'Tutoring Team',
@@ -370,7 +370,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-4',
-    name: 'Mr. Bowie TANG Yat Yin �H�@��',
+    name: 'Mr. Bowie TANG Yat Yin 鄧一言',
     title: 'Non-residential fellow',
     bio: '',
     role: 'Tutoring Team',
@@ -379,7 +379,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-5',
-    name: 'Mr. Alex Chan Hok Lam �����M',
+    name: 'Mr. Alex Chan Hok Lam 陳學霖',
     title: 'Non-residential fellow',
     bio: '',
     role: 'Tutoring Team',
@@ -388,7 +388,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Hall-Executive',
-    name: 'Ms. Ivy Chan Sze Man ���ֱ�',
+    name: 'Ms. Ivy Chan Sze Man 陳詩敏',
     title: 'Hall Executive',
     bio: '',
     role: 'Hall Officer',
@@ -396,22 +396,22 @@ const _PEOPLE_DATA: Person[] = [
     imageSrc: "/assets/People/Ivy_Chan.jpeg",
   },
   // Students' Association
-  { id: 'sa-Chairman', name: 'Mr. WOO Chi To', chineseName: '�J����', title: 'Chairman', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-IV', name: 'Mr. CHANG Crispo Shun Man', chineseName: '�G�Ϥ�', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-EV', name: 'Mr. TAM Tsz Ho', chineseName: '�Ӥl�q', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Chairman', name: 'Mr. WOO Chi To', chineseName: '胡智滔', title: 'Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-IV', name: 'Mr. CHANG Crispo Shun Man', chineseName: '鄭舜文', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-EV', name: 'Mr. TAM Tsz Ho', chineseName: '譚子皓', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-secretary', name: 'Mr. PATHAK Atharv', title: 'Honorary Secretary', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-treasurer', name: 'Mr. FU Chit Wa', chineseName: '�ŭ���', title: 'Honorary Treasurer', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Financial', name: 'Mr. HO Ka Kit', chineseName:"��a��", title: 'Financial Secretary', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Welfare', name: 'Mr. LAM Max Yee Hong', chineseName: '�L�H�d', title: 'Welfare Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-treasurer', name: 'Mr. FU Chit Wa', chineseName: '符哲華', title: 'Honorary Treasurer', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Financial', name: 'Mr. HO Ka Kit', chineseName:"何家傑", title: 'Financial Secretary', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Welfare', name: 'Mr. LAM Max Yee Hong', chineseName: '林以康', title: 'Welfare Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-Sports-Secretary', name: 'Mr. Kerem BILGIN', title: 'Sports Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-Sports-Captain', name: 'Mr. Aktan RAKHAT', title: 'Sports Captain ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Cultural', name: 'Mr. ZOU Jiachen', chineseName: '?�Ψ�', title: 'Cultural Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Cultural', name: 'Mr. ZOU Jiachen', chineseName: '邹佳辰', title: 'Cultural Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-Social', name: 'Mr. Kemausuor Winambe TETTEH-KUMAH', title: 'Social Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Publication', name: 'Mr. CHAU Cheuk Hei', chineseName: '�P�ӧ�', title: 'Publication Secretary ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Publication', name: 'Mr. CHAU Cheuk Hei', chineseName: '周倬希', title: 'Publication Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-Publicity', name: 'Mr. Devanshu GUPTA', title: 'Publicity Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-AA', name: 'Mr. HUYNH Duy Khoa', title: 'Alumni and Non-resident Affairs Secretary  ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-CA', name: 'Mr. Yusuf KARIMLI', title: 'Current Affairs Secretary ', bio: 'Session 2026-27', role: 'student-association' },
-  { id: 'sa-Past-Committee-Representative', name: 'Mr. YU Pak Hin', chineseName:"�\�f�a", title: 'Past Committee Representative ', bio: 'Session 2026-27', role: 'student-association' },
+  { id: 'sa-Past-Committee-Representative', name: 'Mr. YU Pak Hin', chineseName:"俞柏軒", title: 'Past Committee Representative ', bio: 'Session 2026-27', role: 'student-association' },
 
   // Alumni Association
   { id: 'aa-chair',
@@ -430,7 +430,7 @@ const _PEOPLE_DATA: Person[] = [
     role: 'alumni-limited',
     imageId: "aa-vice-chair-1",
     imageSrc: "/assets/People/Shek_Ming_San.jpg",
-    description:"Samuel was a resident of University Hall from 2009 to 2012. He was the Internal Vice Chairman of University Hall Students Association in 2010-2011 and Chairman in 2011-2012. He graduated with a degree of Finance from The Faculty of Business and Economics of The University of Hong Kong in 2012. He also obtained a Law Degree from The University of London in 2015. �E Samuel is a senior manager in a manufacturing company. He has joined the Board of Directors of University Hall Alumni Limited since 2016. Samuel is a CFA charterholder."
+    description:"Samuel was a resident of University Hall from 2009 to 2012. He was the Internal Vice Chairman of University Hall Students Association in 2010-2011 and Chairman in 2011-2012. He graduated with a degree of Finance from The Faculty of Business and Economics of The University of Hong Kong in 2012. He also obtained a Law Degree from The University of London in 2015. \n Samuel is a senior manager in a manufacturing company. He has joined the Board of Directors of University Hall Alumni Limited since 2016. Samuel is a CFA charterholder."
   },
   { id: 'aa-Vice-chair-2',
     name: 'Mr. CHEUNG Che-tsuen, Desmond',
@@ -511,7 +511,7 @@ const _PEOPLE_DATA: Person[] = [
     role: 'alumni-limited',
     imageId: "aa-Director-6",
     imageSrc: "/assets/People/Tristan_Lau.jpg",
-    description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn��s Cup in both 1996 and 1997.\n" +
+    description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn\'s Cup in both 1996 and 1997.\n" +
         "\n" +
         "Currently, Tristan is the Head of Electronic Trading Services for the APAC region at an investment bank. He is also involved in various voluntary activities and mentorship programs organized by HKU, JA HK and his organisation."
   },
@@ -571,14 +571,14 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-3',
     quote:
-      'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep �X it is a home with a soul.',
+      'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep \- it is a home with a soul.',
     author: 'Placeholder',
     role: 'Castlers 25\'',
   },
   {
     id: 'testimonial-4',
     quote:
-      'The High Table Dinners, the football nights under the lights, the study sessions in the library �X these are the things I will carry with me long after graduation. UHall gave me family away from home.',
+      'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. UHall gave me family away from home.',
     author: 'Placeholder',
     role: 'Castlers 23\'',
   },
@@ -592,7 +592,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-6',
     quote:
-      'From the Halloween haunted house to the Island Bike Ride, every event brings us closer. The spirit of "One Hall, One Family" is real here �X it is not just a motto, it is how we live.',
+      'From the Halloween haunted house to the Island Bike Ride, every event brings us closer. The spirit of "One Hall, One Family" is real here \- it is not just a motto, it is how we live.',
     author: 'Placeholder',
     role: 'Castlers 24\'',
   },
@@ -672,7 +672,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
     id: 'old-ball-basketball',
     name: 'Basketball Team ',
     description:
-        'We\'re a serious squad �X high standards, real competition �X led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. ??',
+        'We\'re a serious squad \- high standards, real competition \- led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. ??',
     category: 'Old Ball Team',
     imageId: 'recreation',
     imageSrc: '/assets/Life/Uhall_Basketball.jpeg',
@@ -758,7 +758,7 @@ export const AFFILIATED_MEMBERSHIP = {
       'Submit the completed application form via email to uhall@connect.hku.hk',
       'Alternatively, submit the hard copy to the Hall Office during office hours',
       'Applications are reviewed by the Hall Management Committee',
-      'Successful applicants will be notified via email within 2�V3 weeks',
+      'Successful applicants will be notified via email within 2\-3 weeks',
     ],
   },
 }
@@ -780,10 +780,10 @@ const _MENTORSHIP_PROGRAMS_DATA: MentorshipProgram[] = [
   },
   {
     id: 'quo-vadis',
-    title: 'Quo Vadis �X Student Mentorship Project',
+    title: 'Quo Vadis \- Student Mentorship Project',
     images: ['/assets/Alumni/Quo_Vadis_1.jpeg','/assets/Alumni/Quo_Vadis_2.jpg', "/assets/Alumni/Quo_Vadis_3.JPG"],
     description:
-      'Founded by UHall-lites in 2024, ��Quo Vadis�� is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
+      'Founded by UHall-lites in 2024, \"Quo Vadis\" is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
   },
 ]
 
@@ -848,7 +848,7 @@ export const FAQ_ITEMS = [
   {
     question: 'How many people share a room? How big are the rooms at University Hall?',
     answer:
-      'We have rooms for 2 to 4 people, and they\'re super spacious. Most freshman rooms are between 320�V440 square feet�Xthe largest on campus!',
+      'We have rooms for 2 to 4 people, and they\'re super spacious. Most freshman rooms are between 320\-440 square feet\-the largest on campus!',
   },
   {
     question: 'Can senior-entry students apply for University Hall?',
@@ -858,12 +858,12 @@ export const FAQ_ITEMS = [
   {
     question: 'Is it hard to get in? Do people fight for a spot?',
     answer:
-        ' Yeah, spots are pretty limited, so if you\'re interested, don\'t wait�Xapply early and grab your chance!',
+        ' Yeah, spots are pretty limited, so if you\'re interested, don\'t wait\- apply early and grab your chance!',
   },
   {
     question: 'Since it\'s a male-only hall, will I not be able to meet girls? Will it be boring?',
     answer:
-      'Not at all. We have tons of activities�Xjoint floors, Halloween parties, and even formal balls. Plus, our castle is one of the prettiest spots, so bringing friends (or your crush) to visit is a guaranteed win. Visitors are always welcome too!',
+      'Not at all. We have tons of activities\-joint floors, Halloween parties, and even formal balls. Plus, our castle is one of the prettiest spots, so bringing friends (or your crush) to visit is a guaranteed win. Visitors are always welcome too!',
   },
   {
     question: 'Can I stay all four years?',
@@ -898,7 +898,7 @@ export interface HallTreasure {
   description: string
   imageId: string
   imageSrc?: string
-  /** Multiple images �X renders an inline carousel instead of a single image */
+  /** Multiple images - renders an inline carousel instead of a single image */
   images?: string[]
 }
 
@@ -953,7 +953,7 @@ const _ALUMNI_VISITS_DATA: AlumniVisit[] = [
     id: 'family-visit',
     title: 'Family Visit',
     description:
-      'Revisit the hall with your family and share the memories of your alma mater with your loved ones. Walk through the corridors, the dining hall, and the grounds �X showing your family where you lived, studied, and built lifelong friendships.',
+      'Revisit the hall with your family and share the memories of your alma mater with your loved ones. Walk through the corridors, the dining hall, and the grounds \- showing your family where you lived, studied, and built lifelong friendships.',
     images: [],
   },
 ]

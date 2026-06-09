@@ -16,6 +16,7 @@ import {
   User,
   BookOpen,
   Hash,
+  Loader,
 } from 'lucide-react'
 
 
@@ -34,7 +35,7 @@ interface NonLocalFormData {
   comments: string
 }
 
-type FormStatus = 'idle' | 'success'
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 // ── Reusable Input Components ────────────────────────────────────────
 
@@ -195,6 +196,7 @@ const NonLocalForm: React.FC = () => {
   const [form, setForm] = useState<NonLocalFormData>(initialNonLocalForm)
   const [status, setStatus] = useState<FormStatus>('idle')
   const [errors, setErrors] = useState<Partial<Record<keyof NonLocalFormData, string>>>({})
+  const [submitError, setSubmitError] = useState('')
 
   const update = <K extends keyof NonLocalFormData>(field: K, value: NonLocalFormData[K]) => {
     setForm((prev) => ({ ...prev, [field]: value }))
@@ -215,37 +217,31 @@ const NonLocalForm: React.FC = () => {
     return Object.keys(errs).length === 0
   }
 
-  const yearLabel = NON_LOCAL_YEARS.find((o) => o.value === form.yearOfStudy)?.label || form.yearOfStudy
-  const hearLabel = HEAR_ABOUT_OPTIONS.find((o) => o.value === form.hearAbout)?.label || form.hearAbout
-
-  const buildMailTo = () => {
-    const subject = encodeURIComponent(
-      'Non-local Student Interview Info - University Hall Application'
-    )
-    const body = encodeURIComponent(
-      `Non-local Student Interview Information\n\n` +
-      `Full Name: ${form.fullName}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
-      `University ID: ${form.uid}\n` +
-      `Nationality: ${form.nationality}\n` +
-      `Program of Study: ${form.program}\n` +
-      `Year of Study: ${yearLabel}\n` +
-      `Why University Hall: ${form.motivation}\n` +
-      `How did you hear about us: ${hearLabel}\n` +
-      `Additional Comments: ${form.comments}\n`
-    )
-    return `mailto:uhall@connect.hku.hk?subject=${subject}&body=${body}`
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validate()) return
-    // Open default email client with pre-filled form data
-    const a = document.createElement('a')
-    a.href = buildMailTo()
-    a.click()
-    setStatus('success')
+
+    setStatus('submitting')
+    setSubmitError('')
+
+    try {
+      const res = await fetch('/wp-json/uhall/v1/submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setSubmitError(data?.message || 'Server error. Please try again.')
+        setStatus('error')
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.')
+      setStatus('error')
+    }
   }
 
   if (status === 'success') {
@@ -287,6 +283,15 @@ const NonLocalForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {status === 'error' && submitError && (
+        <div className="bg-red-900/20 border border-red-500/40 rounded-card p-4 flex items-start gap-3">
+          <AlertCircle size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-red-300 text-sm font-medium">Submission failed</p>
+            <p className="text-red-400/80 text-xs mt-1">{submitError}</p>
+          </div>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <FormField label="Full Name" required error={errors.fullName}>
           <TextInput
@@ -382,11 +387,22 @@ const NonLocalForm: React.FC = () => {
       </FormField>
 
       <div className="flex flex-col items-end gap-3 pt-2">
+        {submitError && (
+          <p className="text-yellow-400 text-xs flex items-center gap-1">
+            <AlertCircle size={12} />
+            {submitError}
+          </p>
+        )}
         <button
           type="submit"
-          className="btn-primary flex items-center gap-2"
+          disabled={status === 'submitting'}
+          className="btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Submit <Send size={16} />
+          {status === 'submitting' ? (
+            <><Loader size={16} className="animate-spin" /> Submitting...</>
+          ) : (
+            <><Send size={16} /> Submit</>
+          )}
         </button>
         <p className="text-xs text-brand-text-muted text-right max-w-lg">
           By submitting this form, you agree to the collection and processing of your personal

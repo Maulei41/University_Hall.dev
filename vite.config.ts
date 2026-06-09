@@ -8,6 +8,9 @@ const base = process.env.VITE_BUILD_TARGET === 'wordpress'
 
 export default defineConfig({
   base,
+  define: {
+    __BUILD_TIME__: JSON.stringify(Date.now().toString(36)),
+  },
   plugins: [react()],
   resolve: {
     alias: {

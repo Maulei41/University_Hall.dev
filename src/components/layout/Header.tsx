@@ -1,9 +1,10 @@
-﻿import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useMobileMenu } from '@hooks/index'
 import { NAV_LINKS } from '@constants/content'
+import { img } from '@utils/paths'
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -39,7 +40,7 @@ export const Header: React.FC = () => {
             className="flex items-center gap-3 font-display text-3xl font-bold text-brand-gold hover:text-brand-gold-light transition-colors"
           >
             <img
-              src="/assets/University_Hall_Logo.svg"
+              src={img("/assets/University_Hall_Logo.svg")}
               alt="University Hall"
               className="h-12 sm:h-12 lg:h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}

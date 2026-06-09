@@ -186,7 +186,7 @@ const _EVENTS_DATA: HallEvent[] = [
     category: 'Cultural',
     location: 'Pok Fu Lam Village',
     imageId: 'fire_dragon',
-    imageSrc: '/assets/assets/EventTradition/Fire_Dragon_4.jpeg',
+    imageSrc: '/assets/EventTradition/Fire_Dragon_4.jpeg',
     images: [
       '/assets/EventTradition/Fire_Dragon_4.jpeg',
       '/assets/EventTradition/Fire_Dragon_2.jpeg',

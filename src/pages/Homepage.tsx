@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+﻿import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
@@ -65,7 +65,7 @@ const Homepage: React.FC = () => {
       <ParallexSection offset={40} className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/HomePage/University-Hall-1.jpeg"
+            src="/wp-content/uhall-react-app/assets/HomePage/University-Hall-1.jpeg"
             alt="University Hall heritage building"
             className="w-full h-full object-cover"
             loading="eager"

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+﻿import React, { useMemo } from 'react'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem } from '@components/animations/index'
 import FloorPlanInteractive from '@components/animations/FloorPlanInteractive'
@@ -21,7 +21,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
       'Originally a chapel, our Dining Hall is where hallmates gather for daily meals, high table dinners, and major hall occasions, bringing people together in a space rich with history.',
     floor: 'B',
-    images: ['/Facilities/Dining_Hall_1.jpeg', '/Facilities/Dining_Hall_2.jpg'],
+    images: ['/wp-content/uhall-react-app/assets/Facilities/Dining_Hall_1.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Dining_Hall_2.jpg'],
     x: 72,
     y: 55,
   },
@@ -31,7 +31,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
       'Equipped with gaming consoles and an electronic mahjong table, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other’s company.',
     floor: 'A',
-    images: ['/Facilities/Common_Room_1.jpeg', '/Facilities/Common_Room_2.jpg'],
+    images: ['/wp-content/uhall-react-app/assets/Facilities/Common_Room_1.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Common_Room_2.jpg'],
     x: 72,
     y: 82.5,
   },
@@ -41,7 +41,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         'The Gym Room is where hallmates come to train, sweat, and quietly work toward their own transformation, whether for fitness, sports, or a “secret evolution.”',
     floor: 'A',
-    images: ['/Facilities/Gym_1.jpeg', '/Facilities/Gym_2.jpeg', '/Facilities/Gym_3.jpeg', '/Facilities/Gym_4.jpeg', '/Facilities/Gym_5.jpeg', '/Facilities/Gym_6.jpeg', '/Facilities/Gym_7.jpeg'],
+    images: ['/wp-content/uhall-react-app/assets/Facilities/Gym_1.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_2.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_3.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_4.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_5.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_6.jpeg', '/wp-content/uhall-react-app/assets/Facilities/Gym_7.jpeg'],
     x: 84,
     y: 87.5,
   },
@@ -51,7 +51,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         'Designed for creativity and sound, the Music Room is where the band team practices and hallmates bring music to life through rehearsal, rhythm, and collaboration.',
     floor: 'A',
-    images: ['/Facilities/Band_Room.jpeg'],
+    images: ['/wp-content/uhall-react-app/assets/Facilities/Band_Room.jpeg'],
     x: 80,
     y: 82.5,
   },
@@ -61,7 +61,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     description:
         'A quiet haven for bookworms and late-night readers, the Hall Library offers a comfortable place to study, focus, and enjoy the rare bonus of free air conditioning.',
     floor: 'C',
-    imageSrc: '/Facilities/Hall_Library_1.jpeg',
+    imageSrc: '/wp-content/uhall-react-app/assets/Facilities/Hall_Library_1.jpeg',
     x: 72.5,
     y: 31.5,
   },
@@ -77,7 +77,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
     x: 43,
     y: 88,
-    images: ['/TourHall/Room_A3_1.jpeg', '/TourHall/Room_A3_2.jpeg'],
+    images: ['/wp-content/uhall-react-app/assets/TourHall/Room_A3_1.jpeg', '/wp-content/uhall-react-app/assets/TourHall/Room_A3_2.jpeg'],
   },
   {
     id: 'room-a9',
@@ -91,7 +91,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
     x: 31.5,
     y: 83,
-    imageSrc: '/TourHall/Room_A9.jpeg',
+    imageSrc: '/wp-content/uhall-react-app/assets/TourHall/Room_A9.jpeg',
   },
   // {
   //   id: 'room-a13',
@@ -114,7 +114,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
     x: 43,
     y: 60,
-    images: ['/TourHall/Room_B3_1.jpeg', "/TourHall/Room_B3_2.jpeg"],
+    images: ['/wp-content/uhall-react-app/assets/TourHall/Room_B3_1.jpeg', "/wp-content/uhall-react-app/assets/TourHall/Room_B3_2.jpeg"],
   },
   {
     id: 'room-c3',
@@ -126,7 +126,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     roomSize: '~22.0m²',
     bedSize: '190cm(L) x 84cm(W) x 7.6cm(H)',
     deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
-    images: ['/TourHall/Room_B3_1.jpeg', "/TourHall/Room_B3_2.jpeg"],
+    images: ['/wp-content/uhall-react-app/assets/TourHall/Room_B3_1.jpeg', "/wp-content/uhall-react-app/assets/TourHall/Room_B3_2.jpeg"],
     x: 43,
     y: 35,
   },
@@ -140,7 +140,7 @@ const FLOOR_PLAN_PINS: FloorPlanPin[] = [
     roomSize: '~14.0m²',
     bedSize: '190cm(L) x 84cm(W) x 7.6cm(H)',
     deskSize: '142cm(L) x 80cm(W) x 74cm(H)',
-    imageSrc: '/TourHall/Room_C12_1.jpeg',
+    imageSrc: '/wp-content/uhall-react-app/assets/TourHall/Room_C12_1.jpeg',
     x: 34,
     y: 26,
   },
@@ -336,7 +336,7 @@ const TourHall: React.FC = () => {
 
           <FloorPlanInteractive
             pins={FLOOR_PLAN_PINS}
-            imageSrc="/TourHall/Uhall_FloorPlan.jpeg"
+            imageSrc="/wp-content/uhall-react-app/assets/TourHall/Uhall_FloorPlan.jpeg"
             alt="University Hall Floor Plan"
           />
         </Container>

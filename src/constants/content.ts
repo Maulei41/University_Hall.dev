@@ -350,7 +350,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-1',
     name: 'Mr. Raymond CHAN Sai Wai 陳世煒',
-    title: 'Junior fellow',
+    title: 'Junior Fellow',
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
     role: 'Tutorial Team',
     imageId: 'person_fellow_2',
@@ -360,7 +360,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-2',
     name: 'Mr. Jason WONG Ching Hin 黃靖軒',
-    title: 'Junior fellow',
+    title: 'Junior Fellow',
     bio: 'BSc-HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
@@ -369,7 +369,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-3',
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
-    title: 'Non-residential fellow',
+    title: 'Non-residential Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
@@ -378,7 +378,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-4',
     name: 'Mr. Bowie TANG Yat Yin 鄧一言',
-    title: 'Non-residential fellow',
+    title: 'Non-residential Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
@@ -388,7 +388,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-5',
     name: 'Mr. Alex Chan Hok Lam 陳學霖',
-    title: 'Non-residential fellow',
+    title: 'Non-residential Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',

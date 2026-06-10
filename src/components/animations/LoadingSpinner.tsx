@@ -22,7 +22,7 @@ export default function LoadingSpinner() {
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{
-                duration: 3,
+                duration: 2,
                 ease: 'easeInOut',
                 delay: i * 0.028,
               }}

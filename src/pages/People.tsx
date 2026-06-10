@@ -13,7 +13,7 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
       return { label: 'Alumni Limited', className: 'bg-indigo-600 text-white' }
     case 'Hall Officer':
       return { label: 'Hall Officer', className: 'bg-zinc-400 text-brand-bg' }
-    case 'warden':
+    case 'Warden':
       return { label: 'Warden', className: 'bg-brand-gold text-brand-bg' }
     case 'Tutorial Team':
       return { label: 'Tutorial Team', className: 'bg-brand-emerald text-brand-bg' }
@@ -49,7 +49,7 @@ const People: React.FC = () => {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null)
 
   const teamMembers = PEOPLE.filter(
-    (p) => p.role === 'warden' || p.role === 'Tutorial Team' || p.role === 'Hall Officer'
+    (p) => p.role === 'Warden' || p.role === 'Tutorial Team' || p.role === 'Hall Officer'
   )
 
   return (
@@ -111,7 +111,7 @@ const People: React.FC = () => {
                 </span>
               ) : (
                 <Badge
-                  variant={selectedPerson.role === 'warden' ? 'gold' : 'emerald'}
+                  variant={selectedPerson.role === 'Warden' ? 'gold' : 'emerald'}
                   className="mb-4"
                 >
                   {selectedPerson.role}

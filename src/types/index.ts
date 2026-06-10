@@ -56,7 +56,7 @@ export interface Person {
   chineseName?: string
   title: string
   bio: string
-  role: 'warden' | 'Tutorial Team' | 'Hall Officer' | 'student-association' | 'alumni-limited'
+  role: 'Warden' | 'Tutorial Team' | 'Hall Officer' | 'student-association' | 'alumni-limited'
   imageId?: string
   imageSrc?: string
   description?: string

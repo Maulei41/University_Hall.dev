@@ -340,7 +340,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Resident-Tutor',
     name: 'Dr. Vincent CHAN Nok Hang 陳諾衡',
-    title: 'Resident Team',
+    title: 'Resident Tutor',
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
     role: 'Tutorial Team',
     imageId: 'person_fellow_1',

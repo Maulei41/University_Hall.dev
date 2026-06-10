@@ -369,7 +369,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-3',
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
-    title: 'Non-residential Fellow',
+    title: 'Non-residential Junior Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
@@ -378,7 +378,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-4',
     name: 'Mr. Bowie TANG Yat Yin 鄧一言',
-    title: 'Non-residential Fellow',
+    title: 'Non-residential Junior Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
@@ -388,7 +388,7 @@ const _PEOPLE_DATA: Person[] = [
   {
     id: 'Tutor-5',
     name: 'Mr. Alex CHAN Hok Lam 陳學霖',
-    title: 'Non-residential Fellow',
+    title: 'Non-residential Junior Fellow',
     bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',

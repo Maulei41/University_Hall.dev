@@ -8,7 +8,7 @@ import type { HallTeam } from '../types/index'
 const CATEGORIES: { key: HallTeam['category']; label: string }[] = [
   { key: 'New Ball Team', label: 'New Ball Team' },
   { key: 'Old Ball Team', label: 'Old Ball Team' },
-  { key: 'Culture Team', label: 'Culture team' },
+  { key: 'Culture Team', label: 'Culture Team' },
   { key: 'Seasonal Team', label: 'Seasonal Team' },
 ]
 

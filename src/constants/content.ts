@@ -387,7 +387,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Tutor-5',
-    name: 'Mr. Alex Chan Hok Lam 陳學霖',
+    name: 'Mr. Alex CHAN Hok Lam 陳學霖',
     title: 'Non-residential Fellow',
     bio: '',
     role: 'Tutorial Team',
@@ -396,7 +396,7 @@ const _PEOPLE_DATA: Person[] = [
   },
   {
     id: 'Hall-Executive',
-    name: 'Ms. Ivy Chan Sze Man 陳詩敏',
+    name: 'Ms. Ivy CHAN Sze Man 陳詩敏',
     title: 'Hall Executive',
     bio: '',
     role: 'Hall Officer',

@@ -15,14 +15,14 @@ import {  TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
 import { img } from '@utils/paths'
 import { TestimonialCarousel } from '@components/common/index'
 
-/** Splits "Welcome to University Hall" from the rest of the warden's description. */
+/** Splits "Welcome to University Hall" from the rest of the warden's message. */
 const useWardenMessage = () => {
   return useMemo(() => {
-    const desc = PEOPLE.find((p) => p.id === 'warden')?.description ?? ''
+    const msg = PEOPLE.find((p) => p.id === 'warden')?.message ?? ''
     const phrase = 'Welcome to University Hall'
-    const idx = desc.indexOf(phrase)
-    if (idx === -1) return { greeting: '', body: desc }
-    const afterPhrase = desc.slice(idx + phrase.length)
+    const idx = msg.indexOf(phrase)
+    if (idx === -1) return { greeting: '', body: msg }
+    const afterPhrase = msg.slice(idx + phrase.length)
     const bodyStart = afterPhrase.search(/\S/)  // first non-whitespace char
     return {
       greeting: phrase,

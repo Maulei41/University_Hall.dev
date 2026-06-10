@@ -60,6 +60,8 @@ export interface Person {
   imageId?: string
   imageSrc?: string
   description?: string
+  /** Longer welcome message used on the Homepage (warden only) */
+  message?: string
 }
 
 export interface Testimonial {

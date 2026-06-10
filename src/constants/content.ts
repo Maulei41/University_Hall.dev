@@ -317,7 +317,8 @@ const _PEOPLE_DATA: Person[] = [
     role: 'warden',
     imageId: 'person_warden',
     imageSrc: '/assets/People/Warden.webp',
-    description:"Welcome to University Hall\n" +
+    description: 'Beau is a former corporate lawyer. He teaches a variety of law, ethics, and governance related courses at all levels from undergraduate to executive education. He\'s passionate about building great institutions.',
+    message: "Welcome to University Hall\n" +
         "For over 70 years, University Hall has been a cornerstone of HKU, with a global network of thousands of accomplished alumni. We are a community that proudly honors traditional Hong Kong culture while leading the way in creating a modern, inclusive, and vibrant residential life.\n" + "\n" +
         "Our unique strength lies in our size. Because we are a close-knit community, you won't just be a face in the crowd; you will know everyone here by name. Yet, despite our small numbers, U-Hall consistently punches above its weight, excelling in university affairs, holding amazing events, and showing surprising ability in our cultural and sports teams.\n" + "\n" +
         "Living here offers a truly once-in-a-lifetime experience: a historic castle surrounded by nature. But beyond the stunning architecture, U-Hall is a place for personal growth. This is where you will discover your capacity as a leader, push past your limits, and forge lifelong bonds of brotherhood."
@@ -343,7 +344,8 @@ const _PEOPLE_DATA: Person[] = [
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
     role: 'Tutorial Team',
     imageId: 'person_fellow_1',
-    imageSrc: "/assets/People/Vincent_Chan.jpg"
+    imageSrc: "/assets/People/Vincent_Chan.jpg",
+    description:"Vincent is a surveying practitioner with a keen interest in research, particularly in neo-institutional economics. He teaches heritage conservation and land administration in Hong Kong, and is endlessly curious about local history, culture, and all kinds of knowledge. In his free time, he enjoys hiking, dragon boating, volleyball, running, reading and a good game of bridge."
   },
   {
     id: 'Tutor-1',

@@ -327,7 +327,7 @@ const _PEOPLE_DATA: Person[] = [
     id: 'Senior-Resident-Tutor ',
     name: 'Mr. Sam LIU Shan 劉山',
     title: 'Senior Resident Tutor',
-    bio: 'Lecturer, Faculty of Law.',
+    bio: 'Lecturer, Faculty of Law',
     role: 'Tutorial Team',
     imageId: 'person_Sam',
     imageSrc: '/assets/People/Sam_Liu.jpeg',

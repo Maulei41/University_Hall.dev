@@ -897,9 +897,39 @@ export const FAQ_ITEMS = [
       'Super quick. Around 5 minutes by taxi or car, and about 10 minutes by bus.',
   },
   {
-    question: 'What\'s there to eat nearby?\n',
+    question: 'What\'s there to eat nearby?',
     answer:
         'We already have meals sorted, but if you want to head out, Chi Fu Plaza is nearby with a food court, restaurants, fast food, a supermarket, and more. And Pokfulam Village (our neighbour) has old-school local stores and tea shops if you want something more chill and nostalgic.',
+  },
+  {
+    question: 'What is YingSun? Do I need to join?',
+    answer:
+        'We strongly recommend that you join YingSun!!! It is an orientation program organised by the University Hall Students’ Association to help freshmen settle in more easily, learn about the Hall’s history and spirit, get to know your brothers, and gain a first glimpse of hall life in the year ahead.',
+  },
+  {
+    question: 'When can I move in if I am accepted into UHall?',
+    answer:
+        'Successful applicants can usually move in in mid-August.',
+  },
+  {
+    question: 'Can I stay in UHall during the summer holiday?',
+    answer:
+        'Yes, but students must apply for summer residence before the end of the second semester. Successful applicants may stay in UHall during the summer upon payment.',
+  },
+  {
+    question: 'Will life at UHall be more than just staying in a hall?',
+    answer:
+        'Definitely. UHall is not only a place to live, but a place to grow, explore, and build unforgettable memories. Every day brings a new chance to discover the Hall’s traditions, connect with your brothers, and become part of something bigger than yourself..',
+  },
+  {
+    question: 'What makes UHall different from other halls?',
+    answer:
+        'University Hall offers a rare mix of heritage, brotherhood, and character. Living in a historic castle, joining unique traditions, and sharing life with a close-knit community make the Hall experience truly one of a kind.',
+  },
+  {
+    question: 'Can I bring my friends to visit the Castle?',
+    answer:
+        'Yes! Visitors are welcome to explore the Hall with you. Just remember to be respectful of the historic space, as the Castle is not just a residence, but a home for many.',
   },
 ]
 

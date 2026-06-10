@@ -5,11 +5,11 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
   {
     year: '1860s',
     title: 'From Douglas Castle...',
-    description: 'The story of UHall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city\'s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence.\n' +
+    description: 'The story of University Hall began in the nineteenth century with Douglas Lapraik, a Scottish merchant who arrived in Hong Kong during the city\'s early years of development. Through his work in shipping, property, and dock operations, Lapraik became one of the most successful businessmen of his time. In the early 1860s, he acquired the hillside site overlooking Pokfulam and built Douglas Castle as his private residence.\n' +
         '\n' +
         'Completed around 1864, the house was designed to command sweeping views of the sea and surrounding landscape. Although Lapraik spent little time there before retiring to Britain, the castle became the foundation of what would later become University Hall.',
     imageId: 'dining_hall',
-    imageSrc: "/assets/History/Uhall_Douglas_Castle.jpg"
+    imageSrc: "/assets/History/University Hall_Douglas_Castle.jpg"
   },
   {
     year: 1894,
@@ -18,7 +18,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages.',
     imageId: 'common_rooms',
-    imageSrc: '/assets/History/Uhall_Nazarath_House.jpg'
+    imageSrc: '/assets/History/University Hall_Nazarath_House.jpg'
   },
   // {
   //   year: "early 1950s",
@@ -34,7 +34,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, the Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
     imageId: 'dining_hall',
-    imageSrc: '/assets/History/Uhall_Birth.jpg'
+    imageSrc: '/assets/History/University Hall_Birth.jpg'
   },
   {
     year: 1995,
@@ -43,16 +43,16 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'The Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
     imageId: 'library',
-    imageSrc: '/assets/History/Uhall_Heritage_Recognition.jpg'
+    imageSrc: '/assets/History/University Hall_Heritage_Recognition.jpg'
   },
   {
     year: "Today",
     title: 'Present day',
-    description: 'Today, UHall continues to house more than 100 male students and remains one of the most distinctive residential halls at HKU. Our Hall continues to embody a balance of tradition and transformation, offering students a place where the past is not forgotten, but lived alongside the present.\n' +
+    description: 'Today, University Hall continues to house more than 100 male students and remains one of the most distinctive residential halls at HKU. Our Hall continues to embody a balance of tradition and transformation, offering students a place where the past is not forgotten, but lived alongside the present.\n' +
         '\n' +
         'From Douglas Castle to Nazareth House to University Hall, the building has changed names and functions, but its story has always been one of endurance. For those who call it home, University Hall remains a place where history is not only remembered, but carried forward.',
     imageId: 'common_rooms',
-    imageSrc: "/assets/History/Uhall_Today.jpeg"
+    imageSrc: "/assets/History/University Hall_Today.jpeg"
   },
 ]
 
@@ -224,7 +224,7 @@ const _EVENTS_DATA: HallEvent[] = [
     category: 'Inter-Hall',
     location: 'Stanley Ho Sport Centre / Ho Tim Hall / Sun Yat-Sen Place',
     imageId: 'recreation',
-    images: ['/assets/Life/Uhall_Softball_1.jpg', '/assets/Life/Uhall_Hockey_1.jpeg', "/assets/Life/Uhall_Dance_2.jpeg"]
+    images: ['/assets/Life/University Hall_Softball_1.jpg', '/assets/Life/University Hall_Hockey_1.jpeg', "/assets/Life/University Hall_Dance_2.jpeg"]
   },
   {
     id: 'island-bike',
@@ -501,7 +501,7 @@ const _PEOPLE_DATA: Person[] = [
     role: 'alumni-limited',
     imageId: "aa-Director-4",
     imageSrc: "/assets/People/Vincent_Tang.jpg",
-    description:"Vincent was a resident of UHall in1981 to 1985 and he practised law after graduation. He is the founder and senier partner of Tang and Lee, Solicitors.Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90's and is excited to serve the brothers again."
+    description:"Vincent was a resident of University Hall in1981 to 1985 and he practised law after graduation. He is the founder and senier partner of Tang and Lee, Solicitors.Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90's and is excited to serve the brothers again."
   },
   { id: 'aa-Director-5',
     name: 'Dr. WONG Lap-ching',
@@ -557,7 +557,7 @@ const _PEOPLE_DATA: Person[] = [
     role: 'alumni-limited',
     imageId: "aa-Director-10",
     imageSrc: "/assets/People/Vincent_Chan.jpg",
-    description:"Vincent purused his bachelor and doctorate degrees while staying at Uhall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
+    description:"Vincent purused his bachelor and doctorate degrees while staying at University Hall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
 ]
 
 
@@ -565,7 +565,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'testimonial-1',
     quote:
-      'Waking up in these Gothic stone walls every morning is a small, daily reminder of how extraordinary a way of life we enjoy at Uhall.',
+      'Waking up in these Gothic stone walls every morning is a small, daily reminder of how extraordinary a way of life we enjoy at University Hall.',
     author: 'Chung Sun Yeung Dagan',
     role: 'Castlers 25\'',
   },
@@ -579,21 +579,21 @@ export const TESTIMONIALS: Testimonial[] = [
   // {
   //   id: 'testimonial-3',
   //   quote:
-  //     'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. UHall is not just a place to sleep \- it is a home with a soul.',
+  //     'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. University Hall is not just a place to sleep \- it is a home with a soul.',
   //   author: 'Placeholder',
   //   role: 'Castlers 25\'',
   // },
   // {
   //   id: 'testimonial-4',
   //   quote:
-  //     'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. UHall gave me family away from home.',
+  //     'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. University Hall gave me family away from home.',
   //   author: 'Placeholder',
   //   role: 'Castlers 23\'',
   // },
   // {
   //   id: 'testimonial-5',
   //   quote:
-  //     'What makes UHall special is the people. You show up as a stranger and leave as a brother. The mentorship from senior residents and fellows shaped my character more than any lecture ever did.',
+  //     'What makes University Hall special is the people. You show up as a stranger and leave as a brother. The mentorship from senior residents and fellows shaped my character more than any lecture ever did.',
   //   author: 'Placeholder',
   //   role: 'Castlers 26\'',
   // },
@@ -655,7 +655,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Join our hall; join our team. We will show you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball Team',
     imageId: 'recreation',
-    images: ['/assets/Life/Uhall_Hockey_1.jpeg', '/assets/Life/Uhall_Hockey_2.jpeg', '/assets/Life/Uhall_Hockey_3.JPG', '/assets/Life/Uhall_Hockey_4.JPG', '/assets/Life/Uhall_Hockey_5.JPG'],
+    images: ['/assets/Life/University Hall_Hockey_1.jpeg', '/assets/Life/University Hall_Hockey_2.jpeg', '/assets/Life/University Hall_Hockey_3.JPG', '/assets/Life/University Hall_Hockey_4.JPG', '/assets/Life/University Hall_Hockey_5.JPG'],
   },
   {
     id: 'new-ball-Lacrosse',
@@ -663,8 +663,8 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
     description:
       'Lacrosse Grind Begins Today! Lacrosse team is where boys become men and brotherhood is built. Join us to experience the thrill of this prestigious sport!',
     category: 'New Ball Team',
-    imageId: 'Uhall_Lacrosse',
-    imageSrc: '/assets/Life/Uhall_Lacrosse.jpeg',
+    imageId: 'University Hall_Lacrosse',
+    imageSrc: '/assets/Life/University Hall_Lacrosse.jpeg',
   },
   {
     id: 'new-ball-Softball',
@@ -672,8 +672,8 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
     description:
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.??',
     category: 'New Ball Team',
-    imageId: 'Uhall_Softball',
-    images: ['/assets/Life/Uhall_Softball_1.jpg','/assets/Life/Uhall_Softball_2.jpg', '/assets/Life/Uhall_Softball_3.jpg',  '/assets/Life/Uhall_Softball_4.jpeg'],
+    imageId: 'University Hall_Softball',
+    images: ['/assets/Life/University Hall_Softball_1.jpg','/assets/Life/University Hall_Softball_2.jpg', '/assets/Life/University Hall_Softball_3.jpg',  '/assets/Life/University Hall_Softball_4.jpeg'],
   },
   // Old Ball
   {
@@ -683,7 +683,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'We\'re a serious squad \- high standards, real competition \- led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it. ??',
     category: 'Old Ball Team',
     imageId: 'recreation',
-    imageSrc: '/assets/Life/Uhall_Basketball.jpeg',
+    imageSrc: '/assets/Life/University Hall_Basketball.jpeg',
   },
   {
     id: 'old-ball-football',
@@ -692,7 +692,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
     category: 'Old Ball Team',
     imageId: 'recreation',
-    imageSrc: '/assets/Life/Uhall_Football.jpeg',
+    imageSrc: '/assets/Life/University Hall_Football.jpeg',
   },
 
   // Culture
@@ -711,16 +711,16 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'Bring your curiosity, sharpen your skills, and be part of our team that turns every contract into a successful bid!',
     category: 'Culture Team',
     imageId: 'common_rooms',
-    imageSrc: '/assets/Life/Uhall_Bridge.jpeg',
+    imageSrc: '/assets/Life/University Hall_Bridge.jpeg',
   },
   {
     id: 'culture-band',
     name: 'Band Team',
     description:
-      'Bringing together music lovers with passion, energy, and Hall spirit, UHall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!',
+      'Bringing together music lovers with passion, energy, and Hall spirit, University Hall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!',
     category: 'Culture Team',
     imageId: 'dining_hall',
-    imageSrc: '/assets/Life/Uhall_Band.jpeg',
+    imageSrc: '/assets/Life/University Hall_Band.jpeg',
   },
   {
     id: 'culture-dance',
@@ -729,8 +729,8 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!?',
     category: 'Culture Team',
     imageId: 'common_rooms',
-    imageSrc: '/assets/Life/Uhall_Dance_1.jpeg',
-    images:['/assets/Life/Uhall_Dance_2.jpeg', '/assets/Life/Uhall_Dance_1.jpeg']
+    imageSrc: '/assets/Life/University Hall_Dance_1.jpeg',
+    images:['/assets/Life/University Hall_Dance_2.jpeg', '/assets/Life/University Hall_Dance_1.jpeg']
   },
   {
     id: 'seasonal-dragon-boat',
@@ -739,7 +739,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!',
     category: 'Seasonal Team',
     imageId: 'library',
-    imageSrc: '/assets/Life/Uhall_DragonBoat.jpeg',
+    imageSrc: '/assets/Life/University Hall_DragonBoat.jpeg',
   },
 ]
 
@@ -766,7 +766,7 @@ export const AFFILIATED_MEMBERSHIP = {
       href: '/forms/affiliated-membership-application.pdf',
     },
     submitMethod: [
-      'Submit the completed application form via email to uhall@connect.hku.hk',
+      'Submit the completed application form via email to University Hall@connect.hku.hk',
       'Alternatively, submit the hard copy to the Hall Office during office hours',
       'Applications are reviewed by the Hall Management Committee',
       'Successful applicants will be notified via email within 2\-3 weeks',
@@ -794,7 +794,7 @@ const _MENTORSHIP_PROGRAMS_DATA: MentorshipProgram[] = [
     title: 'Quo Vadis \- Student Mentorship Project',
     images: ['/assets/Alumni/Quo_Vadis_1.jpeg','/assets/Alumni/Quo_Vadis_2.jpg', "/assets/Alumni/Quo_Vadis_3.JPG"],
     description:
-      'Founded by UHall-lites in 2024, \"Quo Vadis\" is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
+      'Founded by University Hall-lites in 2024, \"Quo Vadis\" is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
   },
 ]
 
@@ -813,7 +813,7 @@ const _ASSOCIATIONS_DATA: Association[] = [
       'Managing interest clubs and sports teams for intra- and inter-hall competitions',
       'Publishing hall newsletters and maintaining communal spaces',
     ],
-    contactEmail: 'uhall@connect.hku.hk',
+    contactEmail: 'University Hall@connect.hku.hk',
   },
   {
     id: 'alumni-limited',
@@ -826,7 +826,7 @@ const _ASSOCIATIONS_DATA: Association[] = [
       'Placeholder for activities',
 
     ],
-    website: 'https://www.uhall.com.hk/',
+    website: 'https://www.University Hall.com.hk/',
   },
 ]
 
@@ -955,9 +955,9 @@ const _ALUMNI_VISITS_DATA: AlumniVisit[] = [
     description:
       'University Hall\'s historic castle facade, Gothic architecture, and lush gardens provide a breathtaking backdrop for wedding photography. Alumni couples are welcome to return to the hall to capture their special moments amidst the heritage setting where their own stories began.',
     images: [
-      '/assets/Alumni/Uhall_Wedding_4.jpeg',
-      '/assets/Alumni/Uhall_wedding_5.jpeg',
-      '/assets/Alumni/Uhall_wedding_6.jpeg',
+      '/assets/Alumni/University Hall_Wedding_4.jpeg',
+      '/assets/Alumni/University Hall_wedding_5.jpeg',
+      '/assets/Alumni/University Hall_wedding_6.jpeg',
     ],
   },
   {
@@ -981,7 +981,7 @@ export const OFFICE_INFO = {
   address: '144 Pokfulam Road, Hong Kong',
   phone: '+852 2595 0966',
   fax: '+852 2550 6341',
-  email: 'uhall@connect.hku.hk',
+  email: 'University Hall@connect.hku.hk',
   hours: {
     weekday: '9:00 AM - 5:00 PM'
   },

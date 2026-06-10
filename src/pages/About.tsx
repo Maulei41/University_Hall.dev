@@ -342,6 +342,7 @@ const About: React.FC = () => {
               <p className="text-xl text-brand-text-muted font-serif leading-relaxed">
                 Over the years, UHall has become known for its brotherhood, traditions, and strong sense of belonging. Generations of residents, known as Castlers, have passed through its doors, each contributing to the culture and spirit that define the Hall today. The experience of living in UHall has long been shaped by shared meals, hall events, daily routines, and the bonds formed between hallmates.
               </p>
+              <br/>
               <p className="text-xl text-brand-text-muted font-serif leading-relaxed">Life at University Hall has always involved more than accommodation. It has offered students an environment in which to develop independence, responsibility, and leadership, while also learning the value of fellowship and mutual support. Many alumni recall their years in the Hall as some of the most memorable of their university lives.</p>
             </div>
           </FadeInUp>

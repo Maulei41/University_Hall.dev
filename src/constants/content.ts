@@ -13,7 +13,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
   },
   {
     year: 1894,
-    title: 'to Nazareth House...',
+    title: '...to Nazareth House...',
     description: 'After Lapraik\'s death, the property eventually passed into new hands during a period of significant social and historical change. In 1894, amid the bubonic plague outbreak in Hong Kong, the French Mission purchased Douglas Castle and transformed it into Nazareth House. The building was expanded to include a chapel and a printing house, while parts of the original castle were retained within the new complex.\n' +
         '\n' +
         'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages.',

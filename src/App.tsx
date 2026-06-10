@@ -37,9 +37,18 @@ export default function App() {
   useEffect(() => {
     // Show LoadingSpinner on initial load/reload during first route load
     // Give enough time for the crest animation (~3.5s) + buffer
-    const timer = setTimeout(() => setInitialLoading(false), 4500)
+    const timer = setTimeout(() => setInitialLoading(false), 3000)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (initialLoading) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+    return () => document.body.classList.remove('no-scroll')
+  }, [initialLoading])
 
   return (
     <SmoothScrollProvider>

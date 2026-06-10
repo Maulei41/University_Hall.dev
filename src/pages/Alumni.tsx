@@ -382,7 +382,7 @@ const Alumni: React.FC = () => {
                 <img
                   src={selectedPerson.imageSrc}
                   alt={selectedPerson.name}
-                  className="w-full rounded-t-card"
+                  className="w-[60%] rounded-t-card"
                 />
               ) : selectedPerson.imageId ? (
                 <ImagePlaceholder

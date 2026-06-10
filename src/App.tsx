@@ -20,6 +20,24 @@ const ScrollToTop = () => {
   return null
 }
 
+const LoadingScrollLock = ({ loading }: { loading: boolean }) => {
+  const lenis = useLenis()
+  useEffect(() => {
+    if (loading) {
+      document.body.classList.add('no-scroll')
+      lenis?.stop()
+    } else {
+      document.body.classList.remove('no-scroll')
+      lenis?.start()
+    }
+    return () => {
+      document.body.classList.remove('no-scroll')
+      lenis?.start()
+    }
+  }, [loading, lenis])
+  return null
+}
+
 const Homepage = lazy(() => import('@pages/Homepage'))
 const About = lazy(() => import('@pages/About'))
 const Facilities = lazy(() => import('@pages/Facilities'))
@@ -37,24 +55,16 @@ export default function App() {
   useEffect(() => {
     // Show LoadingSpinner on initial load/reload during first route load
     // Give enough time for the crest animation (~3.5s) + buffer
-    const timer = setTimeout(() => setInitialLoading(false), 3000)
+    const timer = setTimeout(() => setInitialLoading(false), 3500)
     return () => clearTimeout(timer)
   }, [])
-
-  useEffect(() => {
-    if (initialLoading) {
-      document.body.classList.add('no-scroll')
-    } else {
-      document.body.classList.remove('no-scroll')
-    }
-    return () => document.body.classList.remove('no-scroll')
-  }, [initialLoading])
 
   return (
     <SmoothScrollProvider>
       {initialLoading && <LoadingSpinner />}
       <Router>
         <ScrollToTop />
+        <LoadingScrollLock loading={initialLoading} />
         <AnimatePresence mode="wait">
           <motion.div
             key="app"

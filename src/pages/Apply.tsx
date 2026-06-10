@@ -163,11 +163,11 @@ const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.t
 
 const NON_LOCAL_YEARS = [
   { value: 'year-1', label: 'Year 1' },
-  { value: 'year-2', label: 'Year 2' },
-  { value: 'year-3', label: 'Year 3' },
-  { value: 'year-4', label: 'Year 4' },
-  { value: 'year-5', label: 'Year 5+' },
-  { value: 'postgrad', label: 'Postgraduate' },
+  // { value: 'year-2', label: 'Year 2' },
+  // { value: 'year-3', label: 'Year 3' },
+  // { value: 'year-4', label: 'Year 4' },
+  // { value: 'year-5', label: 'Year 5+' },
+  // { value: 'postgrad', label: 'Postgraduate' },
 ]
 
 const HEAR_ABOUT_OPTIONS = [
@@ -470,31 +470,31 @@ const Apply: React.FC = () => {
               <ol className="space-y-4">
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <span>Go to Reg Day to visit our booth and we will arrange a hall tour for you.</span>
+                  <span className='text-lg'>Visit our booth in Zone 3 during Registration Day! We will arrange a hall tour for you to show you around..</span>
                 </li>
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">2</span>
-                  <span>Submit your application via the HKU Hall Application System and select University hall as your first choice.</span>
+                  <span className='text-lg'>Submit your application via the HKU Hall Application System and choose University Hall as your first choice. We look forward to your application and will be in touch for an interview!</span>
                 </li>
               </ol>
             </InfoCard>
 
-            {/* Non-local */}
-            <InfoCard title="Non-local Student" icon={<Globe size={22} />}>
+            {/* Non-local — newly admitted students */}
+            <InfoCard title="Newly Admitted Non-local Student" icon={<Globe size={22} />}>
               <ol className="space-y-4 mb-6">
                 <li className="flex items-start gap-3 text-brand-text-muted">
-                  <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <span>Submit your application via the HKU Hall Application System and select University hall as your first choice.</span>
+                  <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-xl flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <span className='text-lg'>Submit your hall application via the HKU Hall Application System and choose University Hall as your preferred hall.</span>
                 </li>
                 <li className="flex items-start gap-3 text-brand-text-muted">
-                  <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">2</span>
-                  <span>Fill and submit the form below to us for further process. We may contact you for interview after you submitted the form.</span>
+                  <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-xl flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <span className='text-lg'>After submitting your application to HKU, newly admitted non-local students should also fill in and submit the form below to help us with interview arrangements.</span>
                 </li>
               </ol>
 
               <div className="border-t border-brand-border pt-6">
                 <h4 className="font-display text-xl font-semibold text-brand-text-primary mb-4">
-                  Interview Information Collection
+                  Newly Admitted Non-local Student Information
                 </h4>
                 <NonLocalForm />
               </div>
@@ -516,7 +516,36 @@ const Apply: React.FC = () => {
           </FadeInUp>
 
           {/* Eligibility & Benefits */}
-          <div className=" gap-12 lg:gap-16 items-center mb-16">
+          <div className="gap-12 lg:gap-16 mb-16">
+            {/* Eligibility */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6 }}
+              className="mb-12"
+            >
+              <h3 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-6">
+                Eligibility
+              </h3>
+              <ul className="space-y-4">
+                {AFFILIATED_MEMBERSHIP.eligibility.map((detail, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="flex items-start gap-4 text-brand-text-muted"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-brand-gold flex-shrink-0 mt-2.5" />
+                    <span>{detail}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Benefits of Affiliated Membership */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -524,10 +553,10 @@ const Apply: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <h3 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-6">
-                Eligibility & Benefits
+                Benefits of Affiliated Membership
               </h3>
               <ul className="space-y-4">
-                {AFFILIATED_MEMBERSHIP.details.map((detail, idx) => (
+                {AFFILIATED_MEMBERSHIP.benefits.map((detail, idx) => (
                   <motion.li
                     key={idx}
                     initial={{ opacity: 0, y: 10 }}

@@ -53,11 +53,20 @@ const Homepage: React.FC = () => {
     target: textScrollRef,
     offset: ['start end', 'end start'],
   })
+  const rowTexts = [
+    'UNIVERSITY HALL',
+    'Step up; Give back',
+    'Unity',
+    'Strive for Excellence',
+    'Brotherhood',
+  ]
+
   const rows = [
     useTransform(scrollYProgress, [0, 1], ['10%', '-60%']),
     useTransform(scrollYProgress, [0, 1], ['-60%', '10%']),
     useTransform(scrollYProgress, [0, 1], ['10%', '-60%']),
     useTransform(scrollYProgress, [0, 1], ['-60%', '10%']),
+    useTransform(scrollYProgress, [0, 1], ['10%', '-60%']),
   ]
 
   return (
@@ -129,7 +138,7 @@ const Homepage: React.FC = () => {
         </Container>
       </ParallexSection>
 
-      {/* Text Scroll Section — 8 rows */}
+      {/* Text Scroll Section — 5 rows */}
       <section
         ref={textScrollRef}
         className="relative bg-brand-surface py-12 md:py-16 overflow-hidden"
@@ -141,7 +150,7 @@ const Homepage: React.FC = () => {
                 style={{ x }}
                 className="inline-flex items-center gap-8 md:gap-12 pr-8 md:pr-12"
               >
-                {Array.from({ length: 4 }).map((_, i) => (
+                {Array.from({ length: 8 }).map((_, i) => (
                   <span
                     key={i}
                     className={`text-[clamp(60px,10vw,140px)] font-display font-bold leading-none select-none ${
@@ -155,7 +164,7 @@ const Homepage: React.FC = () => {
                         : undefined
                     }
                   >
-                    UNIVERSITY HALL
+                    {rowTexts[rowIndex]}
                   </span>
                 ))}
               </motion.div>
@@ -163,6 +172,66 @@ const Homepage: React.FC = () => {
           ))}
         </div>
       </section>
+      {/* Warden's Welcome */}
+      <Section className="bg-brand-surface">
+        <Container>
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+            {/* Photo */}
+            <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                className="w-full lg:w-2/5"
+            >
+              <div className="relative">
+                <div className="absolute -inset-3 bg-brand-gold/10 rounded-card blur-2xl" />
+                <img
+                    src={PEOPLE.find((p) => p.id === 'warden')?.imageSrc ?? ''}
+                    alt={PEOPLE.find((p) => p.id === 'warden')?.name ?? 'Warden'}
+                    className="w-full object-cover rounded-card shadow-xl relative"
+                    style={{ aspectRatio: '4 / 5' }}
+                    loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* Message */}
+            <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+                className="w-full lg:w-3/5"
+            >
+              <p className="text-lxl font-mono font-display text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
+                From the Warden
+              </p>
+
+              <WardenGreeting />
+              <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-base md:text-lg">
+                <WardenBody />
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-brand-border/50">
+                <p className="font-display text-xl font-semibold text-brand-text-primary">
+                  {PEOPLE.find((p) => p.id === 'warden')?.name}
+                </p>
+                <p className="text-lg text-brand-text-muted font-mono mt-0.5">
+                  Warden, University Hall
+                </p>
+              </div>
+              <Link
+                  to="/people"
+                  className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-sm font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
+              >
+                <span className="text-lg font-display">Meet Our Team</span>
+                <ArrowRight size={14} />
+              </Link>
+            </motion.div>
+          </div>
+        </Container>
+      </Section>
 
       {/* Features Section */}
       {/*<Section className="bg-brand-surface">*/}
@@ -250,66 +319,7 @@ const Homepage: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Warden's Welcome */}
-      <Section className="bg-brand-surface">
-        <Container>
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-            {/* Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full lg:w-2/5"
-            >
-              <div className="relative">
-                <div className="absolute -inset-3 bg-brand-gold/10 rounded-card blur-2xl" />
-                <img
-                  src={PEOPLE.find((p) => p.id === 'warden')?.imageSrc ?? ''}
-                  alt={PEOPLE.find((p) => p.id === 'warden')?.name ?? 'Warden'}
-                  className="w-full object-cover rounded-card shadow-xl relative"
-                  style={{ aspectRatio: '4 / 5' }}
-                  loading="lazy"
-                />
-              </div>
-            </motion.div>
 
-            {/* Message */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full lg:w-3/5"
-            >
-              <p className="text-lxl font-mono font-display text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
-                From the Warden
-              </p>
-
-              <WardenGreeting />
-              <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-base md:text-lg">
-                <WardenBody />
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-brand-border/50">
-                <p className="font-display text-xl font-semibold text-brand-text-primary">
-                  {PEOPLE.find((p) => p.id === 'warden')?.name}
-                </p>
-                <p className="text-lg text-brand-text-muted font-mono mt-0.5">
-                  Warden, University Hall
-                </p>
-              </div>
-              <Link
-                to="/people"
-                className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-sm font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
-              >
-                <span className="text-lg font-display">Meet Our Team</span>
-                <ArrowRight size={14} />
-              </Link>
-            </motion.div>
-          </div>
-        </Container>
-      </Section>
 
       {/* Traditions Preview — linked with EVENTS + TRADITIONS data */}
       <HallTraditions />

@@ -746,12 +746,15 @@ export const AFFILIATED_MEMBERSHIP = {
   title: 'Affiliated Membership',
   description:
     'Affiliated Membership offers a pathway for students in HKU who are not currently living in University Hall to maintain a meaningful connection with the Hall community.',
-  details: [
-    'Successful applicants through the system only',
-    'Non-residential members of University Hall',
-    'Allow students in HKU who are not living in University Hall currently to remain a connection with the Hall community',
-    'Approved by the Hall to participate in selected aspects of hall life, including access to designated hall facilities and participation in hall activities, events and team practices, subject to hall rules, hall operation, and the Hall\'s final discretion',
-    'Does not confer residential status and does not entitle the member to accommodation in the Hall, except where overnight stay is separately applied for and approved',
+  eligibility: [
+    'Open to all students of the University of Hong Kong',
+    'Applications from both male and female students are welcome',
+    'Admission as an affiliated member is subject to approval',
+    'A one-time entrance fee is required upon acceptance',
+  ],
+  benefits: [
+    'Access to hall facilities, including: Common Room, Gym Room, Dining Hall',
+    'Eligibility to participate in selected hall events (subject to availability), such as: High Table Dinners, Halloween Haunted House, Pok Fu Lam Village Fire Dragon Dance, Other hall activities and traditions for affiliated membership',
   ],
   imageId: 'affiliated_membership',
   howToApply: {

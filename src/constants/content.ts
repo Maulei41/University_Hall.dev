@@ -95,7 +95,7 @@ const _FACILITIES_DATA: Facility[] = [
     category: 'Common Area',
     title: 'Common Room',
     description:
-      'Equipped with gaming consoles and an electronic mahjong table, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
+      'Equipped with gaming consoles and broad game, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
     imageId: 'accommodation',
     imageSrc: '/assets/Facilities/Common_Room_1.jpeg',
     images: ['/assets/Facilities/Common_Room_1.jpeg', '/assets/Facilities/Common_Room_2.jpg'],

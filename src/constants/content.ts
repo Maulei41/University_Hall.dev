@@ -327,7 +327,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Sam LIU Shan 劉山',
     title: 'Senior Resident Tutor',
     bio: 'Lecturer, Faculty of Law.',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_Sam',
     imageSrc: '/assets/People/Sam_Liu.jpeg',
     description:"Hi everyone! I’m Sam Liu. By day, I keep busy as a full-time Lecturer at HKU while still practicing part-time as a solicitor.  \n" +
@@ -341,7 +341,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Dr. Vincent CHAN Nok Hang 陳諾衡',
     title: 'Resident Team',
     bio: 'PhD (Neo-Institutional Economics) HKU | BSc (Surv) HKU | TechArborA (UK)',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_fellow_1',
     imageSrc: "/assets/People/Vincent_Chan.jpg"
   },
@@ -350,7 +350,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Raymond CHAN Sai Wai 陳世煒',
     title: 'Junior fellow',
     bio: 'BSc (Astronomy), PGDE (Physics), Registered Teacher',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_fellow_2',
     imageSrc: "/assets/People/Raymond_Chan.jpeg",
     description: "As a Junior Tutor, I bring my passion for science education and commitment to fostering student growth in our hall community. Having served as Sports Captain during my university years, I experienced firsthand how hall life is a transformative space for developing leadership abilities and learning to be a contributive community member. These experiences proved invaluable to my teaching career, shaping my understanding of holistic student development. I believe residential halls offer unique opportunities for personal growth beyond academics. I look forward to supporting our residents in their academic journeys while encouraging them to embrace the full spectrum of learning experiences that hall life provides"
@@ -360,7 +360,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Jason WONG Ching Hin 黃靖軒',
     title: 'Junior fellow',
     bio: 'BSc-HKU',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Jason_Wong.jpeg',
   },
@@ -369,7 +369,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
     title: 'Non-residential fellow',
     bio: '',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Tom_Tam.jpeg',
   },
@@ -378,7 +378,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Bowie TANG Yat Yin 鄧一言',
     title: 'Non-residential fellow',
     bio: '',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Bowie_Tang.jpeg',
     description: "Bowie read law and politics at HKU, during which he was External Vice-chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
@@ -388,7 +388,7 @@ const _PEOPLE_DATA: Person[] = [
     name: 'Mr. Alex Chan Hok Lam 陳學霖',
     title: 'Non-residential fellow',
     bio: '',
-    role: 'Tutoring Team',
+    role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Alex_Chan.jpeg',
   },
@@ -753,8 +753,8 @@ export const AFFILIATED_MEMBERSHIP = {
     'A one-time entrance fee is required upon acceptance',
   ],
   benefits: [
-    'Access to hall facilities, including: Common Room, Gym Room, Dining Hall',
-    'Eligibility to participate in selected hall events (subject to availability), such as: High Table Dinners, Halloween Haunted House, Pok Fu Lam Village Fire Dragon Dance, Other hall activities and traditions for affiliated membership',
+    'Access to hall facilities, including:\n  • Common Room\n  • Gym Room\n  • Dining Hall',
+    'Eligibility to participate in selected hall events (subject to availability), such as:\n  • High Table Dinners\n  • Halloween Haunted House\n  • Pok Fu Lam Village Fire Dragon Dance\n  • Other hall activities and traditions event',
   ],
   imageId: 'affiliated_membership',
   howToApply: {

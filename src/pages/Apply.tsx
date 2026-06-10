@@ -470,7 +470,7 @@ const Apply: React.FC = () => {
               <ol className="space-y-4">
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <span className='text-lg'>Visit our booth in Zone 3 during Registration Day! We will arrange a hall tour for you to show you around..</span>
+                  <span className='text-lg'>Visit our booth in Zone 3 during Registration Day! We will arrange a hall tour for you to show you around.</span>
                 </li>
                 <li className="flex items-start gap-3 text-brand-text-muted">
                   <span className="w-7 h-7 rounded-full bg-brand-gold/10 text-brand-gold font-display font-semibold text-lg flex items-center justify-center shrink-0 mt-0.5">2</span>
@@ -553,7 +553,7 @@ const Apply: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <h3 className="font-display text-3xl lg:text-4xl font-semibold text-brand-gold mb-6">
-                Benefits of Affiliated Membership
+                Benefits
               </h3>
               <ul className="space-y-4">
                 {AFFILIATED_MEMBERSHIP.benefits.map((detail, idx) => (
@@ -566,7 +566,7 @@ const Apply: React.FC = () => {
                     className="flex items-start gap-4 text-brand-text-muted"
                   >
                     <span className="w-2 h-2 rounded-full bg-brand-gold flex-shrink-0 mt-2.5" />
-                    <span>{detail}</span>
+                    <span className="whitespace-pre-wrap">{detail}</span>
                   </motion.li>
                 ))}
               </ul>

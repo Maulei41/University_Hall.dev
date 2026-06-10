@@ -15,8 +15,8 @@ const roleLabel = (role: Person['role']): { label: string; className: string } =
       return { label: 'Hall Officer', className: 'bg-zinc-400 text-brand-bg' }
     case 'warden':
       return { label: 'Warden', className: 'bg-brand-gold text-brand-bg' }
-    case 'Tutoring Team':
-      return { label: 'Tutoring Team', className: 'bg-brand-emerald text-brand-bg' }
+    case 'Tutorial Team':
+      return { label: 'Tutorial Team', className: 'bg-brand-emerald text-brand-bg' }
     default:
       return { label: role, className: 'bg-zinc-400 text-brand-bg' }
   }
@@ -49,7 +49,7 @@ const People: React.FC = () => {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null)
 
   const teamMembers = PEOPLE.filter(
-    (p) => p.role === 'warden' || p.role === 'Tutoring Team' || p.role === 'Hall Officer'
+    (p) => p.role === 'warden' || p.role === 'Tutorial Team' || p.role === 'Hall Officer'
   )
 
   return (
@@ -133,7 +133,7 @@ const People: React.FC = () => {
               </p>
 
               {selectedPerson.description && (
-                <p className="text-brand-text-muted text-sm leading-relaxed mb-4 italic whitespace-pre-line">
+                <p className="text-brand-text-muted text-base leading-relaxed mb-4  whitespace-pre-line">
                   <BoldWelcome text={selectedPerson.description} />
                 </p>
               )}

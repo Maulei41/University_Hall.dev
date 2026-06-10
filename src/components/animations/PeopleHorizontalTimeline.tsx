@@ -95,7 +95,7 @@ const PeopleHorizontalTimeline: React.FC<PeopleHorizontalTimelineProps> = ({ peo
                   {/* Content */}
                   <div className="p-3 sm:p-4 flex flex-col flex-1">
                     <span className={`inline-block self-start px-2 py-0.5 rounded text-[10px] font-mono font-semibold mb-2 ${roleBadgeClass(person.role)}`}>
-                      {person.role === 'warden' ? 'Warden' : person.role === 'Tutorial Team' ? 'Tutoring Team' : 'Hall Officer'}
+                      {person.role === 'warden' ? 'Warden' : person.role === 'Tutorial Team' ? 'Tutorial Team' : 'Hall Officer'}
                     </span>
                     <h3 className="font-display text-xl sm:text-lg font-semibold text-brand-text-primary mb-0.5 leading-tight">
                       {person.name}

@@ -128,15 +128,17 @@ const People: React.FC = () => {
                 </p>
               )}
 
-              <p className="font-serif text-brand-gold font-semibold text-lg mb-6">
-                {selectedPerson.title}
-              </p>
-
               {selectedPerson.bio && (
                   <p className="text-brand-text-muted leading-relaxed whitespace-pre-line">
                     {selectedPerson.bio}
                   </p>
               )}
+
+              <p className="font-serif text-brand-gold font-semibold text-lg mb-6">
+                {selectedPerson.title}
+              </p>
+
+
 
               {selectedPerson.description && (
                 <p className="text-brand-text-muted text-base leading-relaxed mb-4  whitespace-pre-line">

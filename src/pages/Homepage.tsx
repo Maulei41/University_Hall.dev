@@ -222,7 +222,7 @@ const Homepage: React.FC = () => {
                 </p>
               </div>
               <Link
-                  to="/people"
+                to="/people#uhsa"
                   className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-gold-light text-sm font-mono font-semibold uppercase tracking-wider transition-colors duration-200 mt-5"
               >
                 <span className="text-lg font-display">Meet Our Team</span>
@@ -230,6 +230,42 @@ const Homepage: React.FC = () => {
               </Link>
             </motion.div>
           </div>
+        </Container>
+      </Section>
+
+      {/* Chairman's Message */}
+      <Section className="bg-brand-surface">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+            className="max-w-4xl mx-auto"
+          >
+            <p className="font-mono text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center">
+              From the Chairman
+            </p>
+
+            <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-lg  md:text-xl text-justify">
+              {PEOPLE.find((p) => p.id === 'sa-Chairman')?.message}
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-brand-border/50 text-center">
+              <p className="font-display text-xl font-semibold text-brand-text-primary">
+                {PEOPLE.find((p) => p.id === 'sa-Chairman')?.name}
+              </p>
+              <p className="font-serif text-xl text-brand-text-muted/70">
+                {PEOPLE.find((p) => p.id === 'sa-Chairman')?.chineseName}
+              </p>
+              <p className="text-lg text-brand-gold font-semibold mt-1">
+                Chairman, University Hall Students&apos; Association
+              </p>
+              <p className="text-base text-brand-text-muted font-mono mt-0.5">
+                {PEOPLE.find((p) => p.id === 'sa-Chairman')?.bio}
+              </p>
+            </div>
+          </motion.div>
         </Container>
       </Section>
 

@@ -8,15 +8,32 @@ import { SmoothScrollProvider } from '@hooks/SmoothScrollProvider'
 import { useLenis } from '@hooks/useSmoothScroll'
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const lenis = useLenis()
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')
+      const tryScroll = (attempt = 0) => {
+        const el = document.getElementById(id)
+        if (el) {
+          if (lenis) {
+            lenis.scrollTo(el, { offset: -80 })
+          } else {
+            el.scrollIntoView({ behavior: 'smooth' })
+          }
+        } else if (attempt < 10) {
+          setTimeout(() => tryScroll(attempt + 1), 200)
+        }
+      }
+      tryScroll()
+      return
+    }
     if (lenis) {
       lenis.scrollTo(0, { immediate: true })
     } else {
       window.scrollTo(0, 0)
     }
-  }, [pathname, lenis])
+  }, [pathname, hash, lenis])
   return null
 }
 

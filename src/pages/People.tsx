@@ -153,7 +153,7 @@ const People: React.FC = () => {
       </Modal>
 
       {/* Student Association Team */}
-      <Section className="bg-brand-surface">
+      <Section id="uhsa" className="bg-brand-surface">
         <Container>
           <FadeInUp>
             <div className="text-center mb-12">

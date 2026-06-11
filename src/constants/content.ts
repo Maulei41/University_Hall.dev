@@ -393,6 +393,8 @@ const _PEOPLE_DATA: Person[] = [
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Alex_Chan.jpeg',
+    description: 'Welcome to University Hall\n' +
+        'I am Alex and I would become a part of the U-Hall management team coming this academic year. Although I would be a non-residential fellow and I would not stay at hall for the major part of time, we could always meet during hall events and sports activities. Apart from being a fellow of U-Hall, I am also an alumni of the hall and I always remember the time I stayed here in U-Hall. I treasured the most with the times spent with brothers here and the memories were the key part of my university life. I hope everyone of you coming to U-Hall could also find the most precious moments and your passion of life here in U-Hall. I always look forward to meeting you in U-Hall!'
   },
   {
     id: 'Hall-Executive',
@@ -404,7 +406,21 @@ const _PEOPLE_DATA: Person[] = [
     imageSrc: "/assets/People/Ivy_Chan.jpeg",
   },
   // Students' Association
-  { id: 'sa-Chairman', name: 'Mr. WOO Chi To', chineseName: '胡智滔', title: 'Chairman', bio: 'Session 2026-27', role: 'student-association' },
+  {
+    id: 'sa-Chairman',
+    name: 'Mr. WOO Chi To',
+    chineseName: '胡智滔',
+    title: 'Chairman',
+    bio: 'Session 2026-27',
+    role: 'student-association',
+    message: 'Living in a historic, castle-like hall is truly a once-in-a-lifetime experience. But living here with your brothers? That is levels above. \n' +
+        '\n' +
+        'Unlike other residences, University Hall has only three stories. That means we live remarkably close to one another, you can easily reach out to anyone, anytime. Which makes our core value—brotherhood not just a slogan, but we are all truly close and familiar with each other. We are an inclusive family where we embrace every member, and together, we find our breakthroughs. \n' +
+        '\n' +
+        'As your Chairman and as a hall mate, I can promise you that no one is left out here. You are welcome at all our activities and events, no matter where you are from or what language you speak. And we have plenty of events. Take a look around our website, you will surely find something that sparks your interest. For me personally, do not overlook our Halloween celebration. It is something truly special, hardly can you find other chances to hold such big events by yourself in an ancient castle anywhere else, make sure you don\'t miss out. \n' +
+        '\n' +
+        'Lastly with only two words to say to our future residents, welcome home.',
+  },
   { id: 'sa-IV', name: 'Mr. CHANG Crispo Shun Man', chineseName: '鄭舜文', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-EV', name: 'Mr. TAM Tsz Ho', chineseName: '譚子皓', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-secretary', name: 'Mr. PATHAK Atharv', title: 'Honorary Secretary', bio: 'Session 2026-27', role: 'student-association' },

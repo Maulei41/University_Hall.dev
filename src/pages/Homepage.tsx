@@ -176,6 +176,17 @@ const Homepage: React.FC = () => {
       <Section className="bg-brand-surface">
         <Container>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+            {/* Mobile: greeting above image */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                className="lg:hidden w-full"
+            >
+              <WardenGreeting />
+            </motion.div>
+
             {/* Photo */}
             <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -208,7 +219,9 @@ const Homepage: React.FC = () => {
                 From the Warden
               </p>
 
-              <WardenGreeting />
+              <div className="hidden lg:block">
+                <WardenGreeting />
+              </div>
               <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-base md:text-lg">
                 <WardenBody />
               </div>
@@ -251,7 +264,7 @@ const Homepage: React.FC = () => {
               {PEOPLE.find((p) => p.id === 'sa-Chairman')?.message}
             </div>
 
-            <div className="mt-8 pt-6 border-t border-brand-border/50 text-center">
+            <div className="mt-8 pt-6 border-t border-brand-border/50 text-left lg:text-center">
               <p className="font-display text-xl font-semibold text-brand-text-primary">
                 {PEOPLE.find((p) => p.id === 'sa-Chairman')?.name}
               </p>

@@ -216,7 +216,7 @@ const Homepage: React.FC = () => {
                 className="w-full lg:w-3/5"
             >
               <p className="text-lxl font-mono font-display text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center lg:text-left">
-                From the Warden
+                Warden&apos;s Words
               </p>
 
               <div className="hidden lg:block">
@@ -257,7 +257,7 @@ const Homepage: React.FC = () => {
             className="max-w-4xl mx-auto"
           >
             <p className="font-mono text-brand-gold font-semibold uppercase tracking-widest mb-4 text-center">
-              From the Chairman
+              Chairman&apos;s Words
             </p>
 
             <div className="space-y-4 text-brand-text-muted leading-relaxed whitespace-pre-line font-serif text-lg  md:text-xl text-justify">
@@ -354,7 +354,7 @@ const Homepage: React.FC = () => {
           <FadeInUp>
             <div className="text-center mb-16">
               <h2 className="font-display text-4xl lg:text-5xl font-semibold mb-4">
-                Resident Voices
+                Residents&apos; Voices
               </h2>
               <p className="text-lg text-brand-text-muted">
                 Experiences from our residential community

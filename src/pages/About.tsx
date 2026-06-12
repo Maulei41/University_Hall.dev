@@ -340,10 +340,10 @@ const About: React.FC = () => {
                 Our Story
               </h1>
               <p className="text-xl text-brand-text-muted font-serif leading-relaxed">
-                Over the years, UHall has become known for its brotherhood, traditions, and strong sense of belonging. Generations of residents, known as Castlers, have passed through its doors, each contributing to the culture and spirit that define the Hall today. The experience of living in UHall has long been shaped by shared meals, hall events, daily routines, and the bonds formed between hallmates.
+                Over the decades, University Hall has become a place defined by close brotherhood, timeless traditions, and a genuine sense of belonging. Generations of residents, known as Castlers, have shaped this unique culture, turning simple routines, shared meals, and hall events into lifelong bonds. The spirit of the Hall today is entirely built on the contributions of every Castler who has called it home.
               </p>
               <br/>
-              <p className="text-xl text-brand-text-muted font-serif leading-relaxed">Life at University Hall has always involved more than accommodation. It has offered students an environment in which to develop independence, responsibility, and leadership, while also learning the value of fellowship and mutual support. Many alumni recall their years in the Hall as some of the most memorable of their university lives.</p>
+              <p className="text-xl text-brand-text-muted font-serif leading-relaxed">Living at University Hall has always been about much more than just accommodation. It gives students the space to grow into independent leaders and responsible individuals, while learning the true value of mutual support and fellowship. This is why so many of our alumni look back on their Castler years as the most meaningful part of their university life.</p>
             </div>
           </FadeInUp>
         </Container>
@@ -390,7 +390,7 @@ const About: React.FC = () => {
                 Milestones in Our History
               </h2>
               <p className="text-brand-text-muted text-xl max-w-xl mx-auto">
-                Charting the defining moments, rich traditions, and historic achievements that shaped the UHall legacy
+                Charting the defining moments, rich traditions, and historic achievements that shaped the legacy of University Hall
               </p>
             </div>
           </FadeInUp>

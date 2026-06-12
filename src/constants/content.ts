@@ -30,9 +30,9 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
   {
     year: '1954-',
     title: '... to University Hall',
-    description: 'In 1954, the University of Hong Kong acquired the site and gave it a new life as a student residence. This transition marked the beginning of University hall as it is known today. Rather than replacing the old building entirely, the University chose to adapt it. The chapel was converted into a dining hall, the crypt became a common room, and the existing structure was furnished for student accommodation.\n' +
+    description: 'In 1954, the University of Hong Kong acquired the site and gave it a new life as a student residence. This transition marked the beginning of University Hall as it is known today. Rather than replacing the old building entirely, the University chose to adapt it. The chapel was converted into a dining hall, the crypt became a common room, and the existing structure was furnished for student accommodation.\n' +
         '\n' +
-        'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, the Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
+        'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, University Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
     imageId: 'dining_hall',
     imageSrc: '/assets/History/Uhall_Birth.jpg'
   },
@@ -41,7 +41,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
     title: 'Declared Monument',
     description: 'In recognition of its architectural and historical importance, University Hall was declared a historical monument in 1995. This designation affirmed its significance not only as a former colonial and missionary building, but also as a living residence that continues to serve students today.\n' +
         '\n' +
-        'The Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
+        'University Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
     imageId: 'library',
     imageSrc: '/assets/History/Uhall_Heritage_Recognition.jpg'
   },
@@ -95,7 +95,7 @@ const _FACILITIES_DATA: Facility[] = [
     category: 'Common Area',
     title: 'Common Room',
     description:
-      'Equipped with gaming consoles and broad game, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
+      'Equipped with gaming consoles and board games, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
     imageId: 'accommodation',
     imageSrc: '/assets/Facilities/Common_Room_1.jpeg',
     images: ['/assets/Facilities/Common_Room_1.jpeg', '/assets/Facilities/Common_Room_2.jpg'],
@@ -361,7 +361,7 @@ const _PEOPLE_DATA: Person[] = [
     id: 'Tutor-2',
     name: 'Mr. Jason WONG Ching Hin 黃靖軒',
     title: 'Junior Fellow',
-    bio: 'BSc(Physic) HKU',
+    bio: 'BSc (Physics) HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Jason_Wong.jpeg',
@@ -370,10 +370,11 @@ const _PEOPLE_DATA: Person[] = [
     id: 'Tutor-3',
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
     title: 'Non-residential Junior Fellow',
-    bio: '',
+    bio: 'BA (Translation & German), HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Tom_Tam.jpeg',
+    description:"Tom takes a keen interest in languages and cross-cultural exchanges. An active member of UHall Archives and the former UHall Global Committee, Tom is more than happy to exchange thoughts on culture, history and arts."
   },
   {
     id: 'Tutor-4',
@@ -383,18 +384,18 @@ const _PEOPLE_DATA: Person[] = [
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Bowie_Tang.jpeg',
-    description: "Bowie read law and politics at HKU, during which he was External Vice-chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
+    description: "Bowie read law and politics at HKU, during which he was External Vice-Chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-5',
     name: 'Mr. Alex CHAN Hok Lam 陳學霖',
     title: 'Non-residential Junior Fellow',
-    bio: '',
+    bio: 'BEng (Electrical Engineering) HKU, MSc (Electrical Engineering) HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Alex_Chan.jpeg',
     description: 'Welcome to University Hall\n' +
-        'I am Alex and I would become a part of the U-Hall management team coming this academic year. Although I would be a non-residential fellow and I would not stay at hall for the major part of time, we could always meet during hall events and sports activities. Apart from being a fellow of U-Hall, I am also an alumni of the hall and I always remember the time I stayed here in U-Hall. I treasured the most with the times spent with brothers here and the memories were the key part of my university life. I hope everyone of you coming to U-Hall could also find the most precious moments and your passion of life here in U-Hall. I always look forward to meeting you in U-Hall!'
+        'My name is Alex, and I am joining the U-Hall management team for the upcoming academic year. Although I am a non-residential fellow and won\'t be staying at the Castle most of the time, we will definitely see each other often during hall events and sports activities. Aside from being a fellow, I am also a proud alumnus of U-Hall. I always look back fondly on my time living here; the moments shared with brothers are my most treasured memories and a key part of my university life. I hope each of you coming to the Hall will also find your own precious moments and life\'s passion here. I look forward to meeting you all soon!'
   },
   {
     id: 'Hall-Executive',
@@ -417,9 +418,9 @@ const _PEOPLE_DATA: Person[] = [
         '\n' +
         'Unlike other residences, University Hall has only three stories. That means we live remarkably close to one another, you can easily reach out to anyone, anytime. Which makes our core value—brotherhood not just a slogan, but we are all truly close and familiar with each other. We are an inclusive family where we embrace every member, and together, we find our breakthroughs. \n' +
         '\n' +
-        'As your Chairman and as a hall mate, I can promise you that no one is left out here. You are welcome at all our activities and events, no matter where you are from or what language you speak. And we have plenty of events. Take a look around our website, you will surely find something that sparks your interest. For me personally, do not overlook our Halloween celebration. It is something truly special, hardly can you find other chances to hold such big events by yourself in an ancient castle anywhere else, make sure you don\'t miss out. \n' +
+        'As your Chairman and hallmate, I can promise you that no one is left out here. You are welcome at all our activities and events, no matter where you are from or what language you speak. And we have plenty of events. Take a look around our website, you will surely find something that sparks your interest. For me personally, do not overlook our Halloween celebration. It is something truly special, hardly can you find other chances to hold such big events, so make sure you don\'t miss out. \n' +
         '\n' +
-        'Lastly with only two words to say to our future residents, welcome home.',
+        'Get ready for an unforgettable journey ahead. To our future residents, welcome home.',
   },
   { id: 'sa-IV', name: 'Mr. CHANG Crispo Shun Man', chineseName: '鄭舜文', title: 'Internal Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-EV', name: 'Mr. TAM Tsz Ho', chineseName: '譚子皓', title: 'External Vice-Chairman', bio: 'Session 2026-27', role: 'student-association' },
@@ -772,7 +773,7 @@ export const AFFILIATED_MEMBERSHIP = {
   ],
   benefits: [
     'Access to hall facilities, including:\n  • Common Room\n  • Gym Room\n  • Dining Hall',
-    'Eligibility to participate in selected hall events (subject to availability), such as:\n  • High Table Dinners\n  • Halloween Haunted House\n  • Pok Fu Lam Village Fire Dragon Dance\n  • Other hall activities and traditions event',
+    'Eligibility to participate in selected hall events (subject to availability), such as:\n  • High Table Dinners\n  • Halloween Haunted House\n  • Pok Fu Lam Village Fire Dragon Dance\n  • Other hall activities and tradition event',
   ],
   imageId: 'affiliated_membership',
   howToApply: {

@@ -593,19 +593,19 @@ export const TESTIMONIALS: Testimonial[] = [
     author: 'Yusuf Karimli',
     role: 'Castlers 25\'',
   },
-  // {
-  //   id: 'testimonial-3',
-  //   quote:
-  //     'Living in a declared monument is surreal. Every corridor holds history, and you feel it the moment you walk through the main entrance. University Hall is not just a place to sleep \- it is a home with a soul.',
-  //   author: 'Placeholder',
-  //   role: 'Castlers 25\'',
-  // },
+  {
+    id: 'testimonial-3',
+    quote:
+      'Saints said learn with history. Living in a 100-year-old historic building and staying with a bunch of enthusiastic peers and wise seniors, you will learn a lot in University Hall. Not only you will get inspirations, but also guidance here.',
+    author: 'Fu Chit Wa Albert',
+    role: 'Castlers 25\'',
+  },
   // {
   //   id: 'testimonial-4',
   //   quote:
-  //     'The High Table Dinners, the football nights under the lights, the study sessions in the library \- these are the things I will carry with me long after graduation. University Hall gave me family away from home.',
-  //   author: 'Placeholder',
-  //   role: 'Castlers 23\'',
+  //     'If you love your son, send him to University Hall, for there he will find brotherhood; if you hate your son, send him to University Hall, for there he will face the challenges that forge a gentleman.',
+  //   author: 'So Kin Kang Ken',
+  //   role: 'Castlers 25\'',
   // },
   // {
   //   id: 'testimonial-5',

@@ -3,7 +3,7 @@
  * Plugin Name: University Hall React App
  * Description: Serves the UHall React SPA from /wp-content/uhall-react-app/
  * Version: 3.0.0
- * Author: UHall Dev Team
+ * Author: Li Ho Yin
  *
  * How it works:
  *   1. On every front-end request, check if the URL matches a real file in
@@ -97,7 +97,7 @@ add_action('init', function () {
                 header('Content-Type: ' . $mimes[$ext]);
                 header('Content-Length: ' . filesize($real_file));
                 header('Cache-Control: public, max-age=31536000, immutable');
-                header('X-Robots-Tag: noindex');
+//                 header('X-Robots-Tag: noindex');
                 readfile($real_file);
                 exit;
             }
@@ -117,7 +117,7 @@ add_action('init', function () {
 
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
-    header('X-Robots-Tag: noindex, follow');
+//     header('X-Robots-Tag: noindex, follow');
     readfile($index_path);
     exit;
 });

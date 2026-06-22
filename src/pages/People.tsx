@@ -2,7 +2,10 @@ import React, { useState, useMemo } from 'react'
 import { Container, Section, ImagePlaceholder, Badge, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
 import PeopleHorizontalTimeline from '@components/animations/PeopleHorizontalTimeline'
-import { PEOPLE, ASSOCIATIONS } from '@constants/content'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
+import { Helmet } from 'react-helmet-async'
+import { PEOPLE, ASSOCIATIONS, _PEOPLE_DATA } from '@constants/content'
 import type { Person } from '../types/index'
 
 const roleLabel = (role: Person['role']): { label: string; className: string } => {
@@ -54,6 +57,34 @@ const People: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/people'].title} description={SEO_DATA['/people'].description} path="/people" />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            itemListElement: _PEOPLE_DATA
+              .filter((p) => p.role === 'Warden' || p.role === 'Tutorial Team')
+              .map((person, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: {
+                  '@type': 'Person',
+                  name: person.name,
+                  jobTitle: person.title,
+                  description: person.bio || person.description || '',
+                  image: person.imageSrc
+                    ? `https://uhall.hku.hk${person.imageSrc}`
+                    : undefined,
+                  affiliation: {
+                    '@type': 'CollegeOrUniversity',
+                    name: 'The University of Hong Kong',
+                  },
+                },
+              })),
+          })}
+        </script>
+      </Helmet>
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -196,7 +227,7 @@ const saOthers = PEOPLE.filter(
 const SACard: React.FC<{ person: Person }> = ({ person }) => (
   <StaggerItem className="h-full">
     <ScaleOnHover className="h-full">
-      <div className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
+      <article className="card-base card-hover p-4 sm:p-5 text-center h-full flex flex-col items-center">
         <h4 className="font-display text-xl sm:text-base font-semibold text-brand-text-primary mb-0.5 leading-tight">
           {person.name}
         </h4>
@@ -209,7 +240,7 @@ const SACard: React.FC<{ person: Person }> = ({ person }) => (
           {person.title}
         </p>
         <p className="text-xl text-brand-text-muted mt-auto">{person.bio}</p>
-      </div>
+      </article>
     </ScaleOnHover>
   </StaggerItem>
 )

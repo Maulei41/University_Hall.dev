@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uhall.hku.hk/sitemap.xml

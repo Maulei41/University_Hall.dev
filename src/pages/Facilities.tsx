@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { FACILITIES } from '@constants/content'
 import type { Facility } from '../types/index'
 
@@ -242,7 +244,7 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     return (
       <div className="relative select-none">
         <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+          <img src={images[0]} alt="" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
         </div>
       </div>
     )
@@ -281,7 +283,7 @@ const FacilityModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
           >
             <img
               src={images[realIndex]}
-              alt={`Photo ${realIndex + 1}`}
+              alt=""
               className="w-full h-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
@@ -331,6 +333,7 @@ const Facilities: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/facilities'].title} description={SEO_DATA['/facilities'].description} path="/facilities" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -399,7 +402,7 @@ const Facilities: React.FC = () => {
 
               <div className="space-y-12">
                 {facilities.map((facility, idx) => (
-                  <motion.div
+                  <motion.article
                     key={facility.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -424,7 +427,7 @@ const Facilities: React.FC = () => {
                         </p>
                       </div>
                     </FadeInUp>
-                  </motion.div>
+                  </motion.article>
                 ))}
               </div>
             </Container>

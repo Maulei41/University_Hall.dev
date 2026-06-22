@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { HALL_TEAMS, MENTORSHIP_PROGRAMS } from '@constants/content'
 import type { HallTeam } from '../types/index'
 
@@ -255,7 +257,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     return (
       <div className="relative select-none">
         <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+          <img src={images[0]} alt="" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
         </div>
       </div>
     )
@@ -294,7 +296,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
           >
             <img
               src={images[realIndex]}
-              alt={`Photo ${realIndex + 1}`}
+              alt=""
               className="w-full h-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
@@ -558,6 +560,7 @@ const Life: React.FC = () => {
   const quoVadis = MENTORSHIP_PROGRAMS.find((p) => p.id === 'quo-vadis')!
   return (
     <>
+      <SEO title={SEO_DATA['/life'].title} description={SEO_DATA['/life'].description} path="/life" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -590,7 +593,7 @@ const Life: React.FC = () => {
 
               <div className="space-y-12">
                 {teams.map((team, idx) => (
-                  <motion.div
+                  <motion.article
                     key={team.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -619,7 +622,7 @@ const Life: React.FC = () => {
                         </p>
                       </div>
                     </FadeInUp>
-                  </motion.div>
+                  </motion.article>
                 ))}
               </div>
             </Container>

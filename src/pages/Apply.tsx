@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
 import MapSection from '@components/common/MapSection'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { OFFICE_INFO, AFFILIATED_MEMBERSHIP } from '@constants/content'
 import {
   Send,
@@ -421,6 +423,7 @@ const Apply: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/apply'].title} description={SEO_DATA['/apply'].description} path="/apply" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>

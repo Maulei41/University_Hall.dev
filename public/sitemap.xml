@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://uhall.hku.hk/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://uhall.hku.hk/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://uhall.hku.hk/facilities</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://uhall.hku.hk/events</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://uhall.hku.hk/life</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://uhall.hku.hk/people</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://uhall.hku.hk/alumni</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://uhall.hku.hk/apply</loc><changefreq>seasonal</changefreq><priority>0.9</priority></url>
+  <url><loc>https://uhall.hku.hk/tour-the-hall</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://uhall.hku.hk/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

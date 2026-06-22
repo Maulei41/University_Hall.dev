@@ -4,6 +4,8 @@ import { FadeInUp, StaggerContainer, StaggerItem } from '@components/animations/
 import FloorPlanInteractive from '@components/animations/FloorPlanInteractive'
 import { Bed, Move, Monitor, Building } from 'lucide-react'
 import type { FloorPlanPin } from '../types/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { img } from '@utils/paths'
 
 const FLOOR_PLAN_PINS: FloorPlanPin[] = [
@@ -247,6 +249,7 @@ const TourHall: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/tour-the-hall'].title} description={SEO_DATA['/tour-the-hall'].description} path="/tour-the-hall" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>

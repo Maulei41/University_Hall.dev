@@ -3,7 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, MapPin } from 'lucide-react'
 import { Container, Section, Badge, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
-import { EVENTS, TRADITIONS } from '@constants/content'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
+import { Helmet } from 'react-helmet-async'
+import { EVENTS, TRADITIONS, _EVENTS_DATA, _TRADITIONS_DATA } from '@constants/content'
 
 interface CarouselData {
   images: string[]
@@ -259,7 +262,7 @@ const EventTraditionalModalCarousel: React.FC<{ data: CarouselData }> = ({ data 
     return (
       <div className="relative select-none">
         <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+          <img src={images[0]} alt="" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
         </div>
       </div>
     )
@@ -298,7 +301,7 @@ const EventTraditionalModalCarousel: React.FC<{ data: CarouselData }> = ({ data 
           >
             <img
               src={images[realIndex]}
-              alt={`Photo ${realIndex + 1}`}
+              alt=""
               className="w-full h-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
@@ -349,6 +352,51 @@ const Events: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/events'].title} description={SEO_DATA['/events'].description} path="/events" />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            itemListElement: [
+              ..._EVENTS_DATA.map((event, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: {
+                  '@type': 'Event',
+                  name: event.title,
+                  description: event.description,
+                  eventStatus: 'https://schema.org/EventScheduled',
+                  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+                  location: { '@type': 'Place', name: event.location },
+                  image: event.imageSrc
+                    ? `https://uhall.hku.hk${event.imageSrc}`
+                    : event.images?.[0]
+                      ? `https://uhall.hku.hk${event.images[0]}`
+                      : undefined,
+                },
+              })),
+              ..._TRADITIONS_DATA.map((tradition, index) => ({
+                '@type': 'ListItem',
+                position: _EVENTS_DATA.length + index + 1,
+                item: {
+                  '@type': 'Event',
+                  name: tradition.title,
+                  description: tradition.description,
+                  eventStatus: 'https://schema.org/EventScheduled',
+                  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+                  location: { '@type': 'Place', name: 'University Hall, HKU' },
+                  image: tradition.imageSrc
+                    ? `https://uhall.hku.hk${tradition.imageSrc}`
+                    : tradition.images?.[0]
+                      ? `https://uhall.hku.hk${tradition.images[0]}`
+                      : undefined,
+                },
+              })),
+            ].filter((item) => item.item.name),
+          })}
+        </script>
+      </Helmet>
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -380,7 +428,7 @@ const Events: React.FC = () => {
 
               <div className="space-y-12">
                 {items.map((event, itemIdx) => (
-                  <motion.div
+                  <motion.article
                     key={event.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -410,7 +458,7 @@ const Events: React.FC = () => {
                         </p>
                       </div>
                     </FadeInUp>
-                  </motion.div>
+                  </motion.article>
                 ))}
               </div>
             </Container>
@@ -434,7 +482,7 @@ const Events: React.FC = () => {
 
               <div className="space-y-12">
                 {items.map((tradition, itemIdx) => (
-                  <motion.div
+                  <motion.article
                     key={tradition.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -467,7 +515,7 @@ const Events: React.FC = () => {
                         </p>
                       </div>
                     </FadeInUp>
-                  </motion.div>
+                  </motion.article>
                 ))}
               </div>
             </Container>

@@ -12,6 +12,9 @@ import HorizontalTimeline from '@components/animations/HorizontalTimeline'
 import SpacesGallery from '@components/animations/SpacesGallery'
 import HallTraditions from '@components/animations/HallTraditions'
 import {  TIMELINE_EVENTS, TESTIMONIALS, PEOPLE } from '@constants/content'
+import { Helmet } from 'react-helmet-async'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { img } from '@utils/paths'
 import { TestimonialCarousel } from '@components/common/index'
 
@@ -71,6 +74,21 @@ const Homepage: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/'].title} description={SEO_DATA['/'].description} path="/" />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'University Hall, The University of Hong Kong',
+            url: 'https://uhall.hku.hk',
+            logo: 'https://uhall.hku.hk/assets/logo.png',
+            description: 'A historic male residential hall at the University of Hong Kong, housed in a declared monument with a 160-year heritage.',
+            address: { '@type': 'PostalAddress', addressLocality: 'Hong Kong', addressRegion: 'Pokfulam' },
+            memberOf: { '@type': 'CollegeOrUniversity', name: 'The University of Hong Kong' },
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <ParallexSection offset={40} className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">

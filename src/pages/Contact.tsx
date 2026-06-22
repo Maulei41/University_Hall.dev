@@ -4,12 +4,15 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
 import MapSection from '@components/common/MapSection'
+import { SEO } from '@components/seo'
+
 import { OFFICE_INFO, SOCIAL_LINKS } from '@constants/content'
 
 const Contact: React.FC = () => {
 
   return (
     <>
+      <SEO title="Contact" description="Get in touch with University Hall, HKU. Find our address, phone, email, and office hours." path="/contact" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>

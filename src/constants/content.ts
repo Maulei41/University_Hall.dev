@@ -165,7 +165,7 @@ const _FACILITIES_DATA: Facility[] = [
 ]
 
 
-const _EVENTS_DATA: HallEvent[] = [
+export const _EVENTS_DATA: HallEvent[] = [
   {
     id: 'Halloween',
     title: 'Halloween Haunted House',
@@ -239,7 +239,7 @@ const _EVENTS_DATA: HallEvent[] = [
 ]
 
 
-const _TRADITIONS_DATA: HallTradition[] = [
+export const _TRADITIONS_DATA: HallTradition[] = [
   {
     id: 'high-table-dinner',
     title: 'High Table Dinner',
@@ -308,7 +308,7 @@ const _TRADITIONS_DATA: HallTradition[] = [
 ]
 
 
-const _PEOPLE_DATA: Person[] = [
+export const _PEOPLE_DATA: Person[] = [
   {
     id: 'warden',
     name: 'Mr. Beau Linton LEFLER',

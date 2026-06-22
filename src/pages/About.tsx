@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import InteractiveTimeline from '@components/animations/InteractiveTimeline'
 // import PathDrawing from '@components/animations/PathDrawing'
 import { TIMELINE_EVENTS, PHILOSOPHY_PILLARS, HALL_TREASURES } from '@constants/content'
@@ -244,7 +246,7 @@ const TreasureModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     return (
       <div className="relative select-none">
         <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+          <img src={images[0]} alt="" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
         </div>
       </div>
     )
@@ -283,7 +285,7 @@ const TreasureModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
           >
             <img
               src={images[realIndex]}
-              alt={`Photo ${realIndex + 1}`}
+              alt=""
               className="w-full h-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"
@@ -331,6 +333,7 @@ const About: React.FC = () => {
   const [modalCarousel, setModalCarousel] = useState<CarouselData | null>(null)
   return (
     <>
+      <SEO title={SEO_DATA['/about'].title} description={SEO_DATA['/about'].description} path="/about" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>

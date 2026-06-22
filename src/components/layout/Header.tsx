@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
             : 'bg-brand-bg bg-opacity-80 backdrop-blur-md'
         }`}
       >
-        <nav className="container-wide flex items-center justify-between py-4 lg:py-5">
+        <nav className="container-wide flex items-center justify-between py-4 lg:py-5" aria-label="Main navigation">
           {/* Logo */}
           <Link
             to="/"
@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
         className="fixed inset-0 top-16 z-30 md:hidden bg-brand-bg bg-opacity-95 backdrop-blur-md"
         style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
       >
-        <nav className="flex flex-col gap-2 p-6">
+        <nav className="flex flex-col gap-2 p-6" aria-label="Mobile navigation">
           {NAV_LINKS.map((link) => {
             const isActive = location.pathname === link.href
             return (

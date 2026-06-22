@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Globe, Camera, Heart, Users } from 'lucide-react'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, StaggerContainer, StaggerItem, ScaleOnHover } from '@components/animations/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
 import { MENTORSHIP_PROGRAMS, PEOPLE, ASSOCIATIONS, ALUMNI_VISITS } from '@constants/content'
 
 interface CarouselData {
@@ -65,6 +67,7 @@ const Alumni: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/alumni'].title} description={SEO_DATA['/alumni'].description} path="/alumni" />
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -509,7 +512,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
     return (
       <div className="relative select-none">
         <div className="overflow-hidden flex items-center bg-brand-bg" style={{ maxHeight: '65vh' }}>
-          <img src={images[0]} alt="Photo" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
+          <img src={images[0]} alt="" className="w-full object-contain pointer-events-none" draggable={false} loading="lazy" />
         </div>
       </div>
     )
@@ -548,7 +551,7 @@ const ModalCarousel: React.FC<{ data: CarouselData }> = ({ data }) => {
           >
             <img
               src={images[realIndex]}
-              alt={`Photo ${realIndex + 1}`}
+              alt=""
               className="max-h-[80vh] max-w-full object-contain pointer-events-none"
               draggable={false}
               loading="lazy"

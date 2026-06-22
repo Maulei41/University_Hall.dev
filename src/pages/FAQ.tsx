@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { Container, Section } from '@components/common/index'
 import { FadeInUp } from '@components/animations/index'
+import { SEO } from '@components/seo'
+import { SEO_DATA } from '@constants/seo'
+import { Helmet } from 'react-helmet-async'
 import { FAQ_ITEMS } from '@constants/content'
 
 const FAQ: React.FC = () => {
@@ -10,6 +13,20 @@ const FAQ: React.FC = () => {
 
   return (
     <>
+      <SEO title={SEO_DATA['/faq'].title} description={SEO_DATA['/faq'].description} path="/faq" />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ_ITEMS.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: { '@type': 'Answer', text: item.answer },
+            })),
+          })}
+        </script>
+      </Helmet>
       {/* Hero */}
       <Section className="bg-brand-surface">
         <Container>
@@ -30,7 +47,7 @@ const FAQ: React.FC = () => {
         <Container>
           <div className="max-w-3xl mx-auto space-y-4">
             {FAQ_ITEMS.map((item, idx) => (
-              <motion.div
+              <motion.article
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +85,7 @@ const FAQ: React.FC = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </Container>

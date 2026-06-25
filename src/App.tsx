@@ -6,6 +6,7 @@ import { Footer } from '@components/layout/Footer'
 import LoadingSpinner from '@components/animations/LoadingSpinner'
 import { SmoothScrollProvider } from '@hooks/SmoothScrollProvider'
 import { useLenis } from '@hooks/useSmoothScroll'
+import PageTracker from '@hooks/usePageTracking'
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation()
@@ -80,6 +81,7 @@ export default function App() {
     <SmoothScrollProvider>
       {initialLoading && <LoadingSpinner />}
       <Router>
+        <PageTracker />
         <ScrollToTop />
         <LoadingScrollLock loading={initialLoading} />
         <AnimatePresence mode="wait">

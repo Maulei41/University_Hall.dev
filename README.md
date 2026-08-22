@@ -1,4 +1,7 @@
 # University Hall HKU — Premium Frontend Website
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A production-grade, fully-responsive React + TypeScript website for University Hall, The University of Hong Kong. Built with Vite, Tailwind CSS, and Framer Motion.
 
@@ -223,7 +226,20 @@ All static content is in `src/constants/content.ts`:
 
 ## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Maulei41"><img src="https://avatars.githubusercontent.com/u/123233056?v=4?s=100" width="100px;" alt="Maulei"/><br /><sub><b>Maulei</b></sub></a><br /><a href="https://github.com/Maulei41/University_Hall.dev/commits?author=Maulei41" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- markdownlint-restore -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 

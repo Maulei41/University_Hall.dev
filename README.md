@@ -231,7 +231,7 @@ All static content is in `src/constants/content.ts`:
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Maulei41"><img src="https://avatars.githubusercontent.com/u/123233056?v=4?s=100" width="100px;" alt="Maulei"/><br /><sub><b>Maulei</b></sub></a><br /><a href="https://github.com/Maulei41/University_Hall.dev/commits?author=Maulei41" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Maulei41"><img src="https://avatars.githubusercontent.com/u/123233056?v=4?s=100" width="100px;" alt="Maulei"/><br /><sub><b>Maulei</b></sub></a><br /><a href="https://github.com/Maulei41/University_Hall.dev/commits?author=Maulei41" title="Code">💻</a> <a href="https://github.com/Maulei41/University_Hall.dev/issues?q=author%3AMaulei41" title="Bug reports">🐛</a> <a href="https://github.com/Maulei41/University_Hall.dev/commits?author=Maulei41" title="Documentation">📖</a> <a href="https://github.com/Maulei41/University_Hall.dev/pulls?q=is%3Apr+reviewed-by%3AMaulei41" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-Maulei41" title="Maintenance">🚧</a> <a href="https://github.com/Maulei41/University_Hall.dev/commits?author=Maulei41" title="Tests">⚠️</a> <a href="#design-Maulei41" title="Design">🎨</a></td>
     </tr>
   </tbody>
 </table>

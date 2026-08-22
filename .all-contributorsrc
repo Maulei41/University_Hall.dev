@@ -21,6 +21,15 @@
         "test",
         "design"
       ]
+    },
+    {
+      "login": "devggupta",
+      "name": "devggupta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/262586873?v=4",
+      "profile": "https://github.com/devggupta",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,

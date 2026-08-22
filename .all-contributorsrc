@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Maulei41",
+      "name": "Maulei",
+      "avatar_url": "https://avatars.githubusercontent.com/u/123233056?v=4",
+      "profile": "https://github.com/Maulei41",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "University_Hall.dev",
+  "projectOwner": "Maulei41"
+}

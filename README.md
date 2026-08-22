@@ -1,4 +1,4 @@
-# University Hall HKU — Premium Frontend Website
+# University Hall HKU — Frontend Website
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -203,13 +203,6 @@ VITE_FORM_ENDPOINT=/submissions
 ```
 
 For WordPress mu-plugin deployment, set `VITE_API_URL` to your WordPress site's REST API base URL (e.g., `https://yoursite.com/wp-json/uhall/v1`).
-
-## Performance Targets
-
-- Lighthouse Performance: 90+
-- Lighthouse Accessibility: 95+
-- Lighthouse Best Practices: 90+
-- Core Web Vitals: Good
 
 ## Testing & Quality
 

@@ -58,32 +58,11 @@ vite.config.ts              # Vite configuration
 tailwind.config.js          # Tailwind CSS configuration
 uhall-form-handler.php      # WordPress plugin — stores form submissions
 uhall-react-app.php         # WordPress mu-plugin — serves the React SPA
-vercel.json                 # Vercel deployment config
 ```
 
 ## Deployment
 
-### Option 1: Vercel (Static SPA)
-
-#### Vercel Dashboard (Recommended)
-
-1. Push code to GitHub/GitLab
-2. Visit [vercel.com](https://vercel.com)
-3. Click "Import Project"
-4. Select your repository (Vite auto-detected)
-5. Click "Deploy"
-
-#### Vercel CLI
-
-```bash
-npm install -g vercel
-vercel
-vercel --prod
-```
-
-The `vercel.json` configures build command, output directory, and SPA rewrites.
-
-### Option 2: WordPress (Self-hosted WordPress)
+### WordPress (Self-hosted WordPress)
 
 The project ships as two separate plugins:
 
@@ -242,6 +221,12 @@ All static content is in `src/constants/content.ts`:
 - Timeline events, Facilities data, Events list, People/team members
 - Testimonials, FAQ items, Social links, Office information
 
+## Contributors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 ## License
 
-© 2026 University Hall, The University of Hong Kong. All rights reserved.
+© 1956 - 2026 University Hall, The University of Hong Kong. All rights reserved.

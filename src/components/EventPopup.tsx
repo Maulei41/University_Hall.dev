@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const POPUP_DISMISSED_KEY = 'event-popup-dismissed'
-
 export default function EventPopup() {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    const dismissed = localStorage.getItem(POPUP_DISMISSED_KEY)
-    if (dismissed) return
     const timer = setTimeout(() => setIsOpen(true), 500)
     return () => clearTimeout(timer)
   }, [])
 
   const handleClose = () => {
     setIsOpen(false)
-    localStorage.setItem(POPUP_DISMISSED_KEY, 'true')
   }
 
   return (

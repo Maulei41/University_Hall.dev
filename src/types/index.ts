@@ -59,6 +59,8 @@ export interface Person {
   role: 'Warden' | 'Tutorial Team' | 'Hall Officer' | 'student-association' | 'alumni-limited'
   imageId?: string
   imageSrc?: string
+  /** CSS object-position value (e.g. "center top", "center 30%") */
+  objectPosition?: string
   description?: string
   /** Longer welcome message used on the Homepage (warden only) */
   message?: string

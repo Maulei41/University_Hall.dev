@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'University Hall - HKU'
-const DEFAULT_OG_IMAGE = '/assets/logo.png'
+const DEFAULT_OG_IMAGE = '/assets/logo.webp'
 const SITE_URL = 'https://uhall.hku.hk'
 
 export default function SEO({

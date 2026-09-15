@@ -82,7 +82,7 @@ const Homepage: React.FC = () => {
             '@type': 'Organization',
             name: 'University Hall, The University of Hong Kong',
             url: 'https://uhall.hku.hk',
-            logo: 'https://uhall.hku.hk/assets/logo.png',
+            logo: 'https://uhall.hku.hk/assets/logo.webp',
             description: 'A historic male residential hall at the University of Hong Kong, housed in a declared monument with a 160-year heritage.',
             address: { '@type': 'PostalAddress', addressLocality: 'Hong Kong', addressRegion: 'Pokfulam' },
             memberOf: { '@type': 'CollegeOrUniversity', name: 'The University of Hong Kong' },
@@ -93,7 +93,7 @@ const Homepage: React.FC = () => {
       <ParallexSection offset={40} className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={img("/assets/HomePage/University-Hall-1.jpeg")}
+            src={img("/assets/HomePage/University-Hall-1.webp")}
             alt="University Hall heritage building"
             className="w-full h-full object-cover"
             loading="eager"

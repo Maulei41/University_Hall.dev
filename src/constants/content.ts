@@ -1,4 +1,4 @@
-import { withImg } from '@/utils/paths'
+﻿import { withImg } from '@/utils/paths'
 import { TimelineEvent, Facility, HallTradition, HallEvent, HallTeam, Person, Testimonial, StatItem, MentorshipProgram, Association } from '../types/index'
 
 const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
@@ -9,7 +9,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'Completed around 1864, the house was designed to command sweeping views of the sea and surrounding landscape. Although Lapraik spent little time there before retiring to Britain, the castle became the foundation of what would later become University Hall.',
     imageId: 'dining_hall',
-    imageSrc: "/assets/History/Uhall_Douglas_Castle.jpg"
+    imageSrc: "/assets/History/Uhall_Douglas_Castle.webp"
   },
   {
     year: 1894,
@@ -18,7 +18,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'For decades, Nazareth served as a retreat and working centre for missionaries across Asia. Its printing press became one of the busiest of its kind in the region, producing religious publications in many languages.',
     imageId: 'common_rooms',
-    imageSrc: '/assets/History/Uhall_Nazarath_House.jpg'
+    imageSrc: '/assets/History/Uhall_Nazarath_House.webp'
   },
   // {
   //   year: "early 1950s",
@@ -34,7 +34,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'When the first group of students moved in in 1956, University Hall began its journey as a residential community rooted in heritage. From the outset, University Hall developed a strong identity of its own. It was not simply a dormitory, but a close-knit community where students lived, learned, and grew together.',
     imageId: 'dining_hall',
-    imageSrc: '/assets/History/Uhall_Birth.jpg'
+    imageSrc: '/assets/History/Uhall_Birth.webp'
   },
   {
     year: 1995,
@@ -43,7 +43,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'University Hall stands as a rare example of a heritage site that remains active and meaningful in modern university life. Its legacy is reflected not only in its preserved architecture, but also in the spirit of its community.',
     imageId: 'library',
-    imageSrc: '/assets/History/Uhall_Heritage_Recognition.jpg'
+    imageSrc: '/assets/History/Uhall_Heritage_Recognition.webp'
   },
   {
     year: "Today",
@@ -52,7 +52,7 @@ const _TIMELINE_EVENTS_DATA: TimelineEvent[] = [
         '\n' +
         'From Douglas Castle to Nazareth House to University Hall, the building has changed names and functions, but its story has always been one of endurance. For those who call it home, University Hall remains a place where history is not only remembered, but carried forward.',
     imageId: 'common_rooms',
-    imageSrc: "/assets/History/Uhall_Today.jpeg"
+    imageSrc: "/assets/History/Uhall_Today.webp"
   },
 ]
 
@@ -65,8 +65,8 @@ const _FACILITIES_DATA: Facility[] = [
     description:
       'Originally a chapel, our Dining Hall is where hallmates gather for daily meals, high table dinners, and major hall occasions, bringing people together in a space rich with history.',
     imageId: 'dining_hall',
-    imageSrc: '/assets/Facilities/Dining_Hall_1.jpeg',
-    images: ['/assets/Facilities/Dining_Hall_1.jpeg', '/assets/Facilities/Dining_Hall_2.jpg'],
+    imageSrc: '/assets/Facilities/Dining_Hall_1.webp',
+    images: ['/assets/Facilities/Dining_Hall_1.webp', '/assets/Facilities/Dining_Hall_2.webp'],
     features: '',
   },
   {
@@ -76,7 +76,7 @@ const _FACILITIES_DATA: Facility[] = [
     description:
       'A quiet haven for bookworms and late-night readers, the Hall Library offers a comfortable place to study, focus, and enjoy the rare bonus of free air conditioning.',
     imageId: 'library',
-    imageSrc: '/assets/Facilities/Hall_Library_1.jpeg',
+    imageSrc: '/assets/Facilities/Hall_Library_1.webp',
     features: 'PlaceHolder',
   },
   {
@@ -86,8 +86,8 @@ const _FACILITIES_DATA: Facility[] = [
     description:
       'The Gym Room is where hallmates come to train, sweat, and quietly work toward their own transformation, whether for fitness, sports, or a \"secret evolution.\"',
     imageId: 'recreation',
-    imageSrc: '/assets/Facilities/Gym_1.jpeg',
-    images: ['/assets/Facilities/Gym_1.jpeg', '/assets/Facilities/Gym_2.jpeg', '/assets/Facilities/Gym_3.jpeg', '/assets/Facilities/Gym_4.jpeg', '/assets/Facilities/Gym_5.jpeg', '/assets/Facilities/Gym_6.jpeg', '/assets/Facilities/Gym_7.jpeg'],
+    imageSrc: '/assets/Facilities/Gym_1.webp',
+    images: ['/assets/Facilities/Gym_1.webp', '/assets/Facilities/Gym_2.webp', '/assets/Facilities/Gym_3.webp', '/assets/Facilities/Gym_4.webp', '/assets/Facilities/Gym_5.webp', '/assets/Facilities/Gym_6.webp', '/assets/Facilities/Gym_7.webp'],
     features: 'PlaceHolder',
   },
   {
@@ -97,8 +97,8 @@ const _FACILITIES_DATA: Facility[] = [
     description:
       'Equipped with gaming consoles and board games, the Common Room is a relaxed hangout spot where hallmates gather to unwind, play, and enjoy each other\'s company.',
     imageId: 'accommodation',
-    imageSrc: '/assets/Facilities/Common_Room_1.jpeg',
-    images: ['/assets/Facilities/Common_Room_1.jpeg', '/assets/Facilities/Common_Room_2.jpg'],
+    imageSrc: '/assets/Facilities/Common_Room_1.webp',
+    images: ['/assets/Facilities/Common_Room_1.webp', '/assets/Facilities/Common_Room_2.webp'],
     features: 'PlaceHolder',
   },
   {
@@ -108,7 +108,7 @@ const _FACILITIES_DATA: Facility[] = [
     description:
       'With a piano and vending machines, the Newspaper Room is a cosy corner for casual relaxation, though it also has a reputation as a place where mosquitoes love to gather.',
     imageId: 'common_rooms',
-    imageSrc: '/assets/Facilities/Nawspaper_Room.jpeg',
+    imageSrc: '/assets/Facilities/Nawspaper_Room.webp',
     features: 'PlaceHolder',
   },
   // {
@@ -129,7 +129,7 @@ const _FACILITIES_DATA: Facility[] = [
     description:
         'The Laundry Room gives hallmates a convenient place to wash, dry, and care for their clothes amid their busy schedules. Make sure to take out the clothes from the machine on time, or else it will be taken by other furious individuals.',
     imageId: 'community_center',
-    imageSrc: '/assets/Facilities/laundry_room.jpg',
+    imageSrc: '/assets/Facilities/laundry_room.webp',
     features: 'PlaceHolder',
   },
   {
@@ -139,7 +139,7 @@ const _FACILITIES_DATA: Facility[] = [
     description:
         'The Pantry provides a shared space for hallmates to cook their meals, making it a practical and familiar stop for late-night refuels and everyday use. Please clean it after use!!!',
     imageId: 'community_center',
-    imageSrc: '/assets/Facilities/pantry.jpg',
+    imageSrc: '/assets/Facilities/pantry.webp',
     features: 'PlaceHolder',
   },
   {
@@ -149,7 +149,7 @@ const _FACILITIES_DATA: Facility[] = [
     description:
         'Designed for creativity and sound, the Music Room is where the band team practices and hallmates bring music to life through rehearsal, rhythm, and collaboration.',
     imageId: 'community_center',
-    imageSrc: '/assets/Facilities/Band_Room.jpeg',
+    imageSrc: '/assets/Facilities/Band_Room.webp',
     features: 'PlaceHolder',
   },
   // {
@@ -159,7 +159,7 @@ const _FACILITIES_DATA: Facility[] = [
   //   description:
   //       'The Farmhouse is our very own  basketball court and a favourite spot for training and casual play, giving hallmates space to stay active and sharpen their game.',
   //   imageId: 'community_center',
-  //   // imageSrc: '/Facilities/pantry.jpg',
+  //   // imageSrc: '/Facilities/pantry.webp',
   //   features: 'PlaceHolder',
   // },
 ]
@@ -174,8 +174,8 @@ export const _EVENTS_DATA: HallEvent[] = [
     category: 'Cultural',
     location: 'University Hall',
     imageId: 'dining_hall',
-    imageSrc: '/assets/EventTradition/Halloween_1.jpeg',
-    images: ['/assets/EventTradition/Halloween_1.jpeg', '/assets/EventTradition/Halloween_2.jpeg'],
+    imageSrc: '/assets/EventTradition/Halloween_1.webp',
+    images: ['/assets/EventTradition/Halloween_1.webp', '/assets/EventTradition/Halloween_2.webp'],
     featured: true,
   },
   {
@@ -186,12 +186,12 @@ export const _EVENTS_DATA: HallEvent[] = [
     category: 'Cultural',
     location: 'Pok Fu Lam Village',
     imageId: 'fire_dragon',
-    imageSrc: '/assets/EventTradition/Fire_Dragon_4.jpeg',
+    imageSrc: '/assets/EventTradition/Fire_Dragon_4.webp',
     images: [
-      '/assets/EventTradition/Fire_Dragon_4.jpeg',
-      '/assets/EventTradition/Fire_Dragon_2.jpeg',
-      '/assets/EventTradition/Fire_Dragon_3.jpeg',
-      '/assets/EventTradition/Fire_Dragon_1.jpeg',
+      '/assets/EventTradition/Fire_Dragon_4.webp',
+      '/assets/EventTradition/Fire_Dragon_2.webp',
+      '/assets/EventTradition/Fire_Dragon_3.webp',
+      '/assets/EventTradition/Fire_Dragon_1.webp',
     ],
     videoSrc: '/assets/EventTradition/Fire_Dragon_1.mp4',
     featured: true,
@@ -213,7 +213,7 @@ export const _EVENTS_DATA: HallEvent[] = [
       'The Superpass Dinner is more of a HKU tradition. Before the dinner, Warden gives hallmates Superpass \"lai sees\" (red packets, the lucky money). Castlers write Superpass \"fai chuns\" (red scrolls) to wish themselves and the others every success in the examinations before the dinner starts.',
     category: 'Social',
     location: 'University Hall',
-    images: ['/assets/EventTradition/SuperPass_1.jpg', '/assets/EventTradition/SuperPass_2.jpg', '/assets/EventTradition/SuperPass_3.jpg'],
+    images: ['/assets/EventTradition/SuperPass_1.webp', '/assets/EventTradition/SuperPass_2.webp', '/assets/EventTradition/SuperPass_3.webp'],
     imageId: 'dining_hall',
   },
   {
@@ -224,7 +224,7 @@ export const _EVENTS_DATA: HallEvent[] = [
     category: 'Inter-Hall',
     location: 'Stanley Ho Sport Centre / Ho Tim Hall / Sun Yat-Sen Place',
     imageId: 'recreation',
-    images: ['/assets/Life/Uhall_Softball_1.jpg', '/assets/Life/Uhall_Hockey_1.jpeg', "/assets/Life/Uhall_Dance_2.jpeg"]
+    images: ['/assets/Life/Uhall_Softball_1.webp', '/assets/Life/Uhall_Hockey_1.webp', "/assets/Life/Uhall_Dance_2.webp"]
   },
   {
     id: 'island-bike',
@@ -234,7 +234,7 @@ export const _EVENTS_DATA: HallEvent[] = [
     category: 'Recreation',
     location: 'Hong Kong Island',
     imageId: 'common_rooms',
-    imageSrc:"/assets/EventTradition/Island_Bike_Ride.jpeg"
+    imageSrc:"/assets/EventTradition/Island_Bike_Ride.webp"
   }
 ]
 
@@ -248,8 +248,8 @@ export const _TRADITIONS_DATA: HallTradition[] = [
     category: 'Social',
     frequency: 'Monthly',
     imageId: 'dining_hall',
-    imageSrc: '/assets/EventTradition/High_Table_1.jpeg',
-    images: ['/assets/EventTradition/High_Table_1.jpeg', '/assets/EventTradition/High_Table_2.jpeg', '/assets/EventTradition/High_Table_3.jpeg'],
+    imageSrc: '/assets/EventTradition/High_Table_1.webp',
+    images: ['/assets/EventTradition/High_Table_1.webp', '/assets/EventTradition/High_Table_2.webp', '/assets/EventTradition/High_Table_3.webp'],
     featured: true,
   },
   {
@@ -260,7 +260,7 @@ export const _TRADITIONS_DATA: HallTradition[] = [
     category: 'Social',
     frequency: 'Annual',
     imageId: 'dining_hall',
-    imageSrc: '/assets/EventTradition/Founders_Nite.jpeg',
+    imageSrc: '/assets/EventTradition/Founders_Nite.webp',
     featured: true,
   },
   // {
@@ -271,7 +271,7 @@ export const _TRADITIONS_DATA: HallTradition[] = [
   //   category: 'Social',
   //   frequency: 'annual',
   //   imageId: 'dining_hall',
-  //   // imageSrc: '/assets/EventTradition/Castlers_Nite.jpeg',
+  //   // imageSrc: '/assets/EventTradition/Castlers_Nite.webp',
   //   featured: true,
   // },
   {
@@ -282,7 +282,7 @@ export const _TRADITIONS_DATA: HallTradition[] = [
       'The Nazarene Night is a moment of celebration and memories. Fresh graduates will come back to the Castle to take their second cup of Hall blood, and they will share with the current Castlers their memories in University Hall. In addition, awards would be presented to acknowledge the achievements of outstanding Castlers in the past year.',
     frequency: 'Annual',
     imageId: 'dining_hall',
-    imageSrc: '/assets/EventTradition/Nazarene_Nite.jpeg',
+    imageSrc: '/assets/EventTradition/Nazarene_Nite.webp',
     featured: true,
   },
   {
@@ -291,7 +291,7 @@ export const _TRADITIONS_DATA: HallTradition[] = [
     description:
       'Bai Sun (also worshipping) is an annual ritual of University Hall and it follows the Chinese tradition. We share some roasted suckling pig from the ceremony and hope for good fortune, health and peace for the coming year.',
     category: 'Community',
-    imageSrc: '/assets/EventTradition/BaiSun.jpg',
+    imageSrc: '/assets/EventTradition/BaiSun.webp',
     frequency: 'Annual',
     imageId: 'dining_hall',
   },
@@ -302,7 +302,7 @@ export const _TRADITIONS_DATA: HallTradition[] = [
       'Every year on this night, graduated hallmates, old or young, come back and have a dinner with current hallmates.',
     category: 'Community',
     frequency: 'Annual',
-    imageSrc:"/assets/EventTradition/ReUnion_Dinner.jpg",
+    imageSrc:"/assets/EventTradition/ReUnion_Dinner.webp",
     imageId: 'dining_hall',
   }
 ]
@@ -330,7 +330,8 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Lecturer, Faculty of Law, HKU',
     role: 'Tutorial Team',
     imageId: 'person_Sam',
-    imageSrc: '/assets/People/Sam_Liu.jpeg',
+    imageSrc: '/assets/People/Sam_Liu.webp',
+    objectPosition: 'center 10%',
     description:"Hi everyone! I’m Sam Liu. By day, I keep busy as a full-time Lecturer at HKU while still practicing part-time as a solicitor.  \n" +
         "\n" +
         "Since becoming your Senior Resident Tutor in February 2025, I’ve loved working with our fantastic management team and participating in our vibrant activities. I joined our Ying Sun last year and it was a wonderful experience—I hope you all love it just as much!  \n" +
@@ -344,7 +345,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'PhD (Neo-Institutional Economics) HKU, BSc (Surv) HKU, TechArborA (UK)',
     role: 'Tutorial Team',
     imageId: 'person_fellow_1',
-    imageSrc: "/assets/People/Vincent_Chan.jpg",
+    imageSrc: "/assets/People/Vincent_Chan_Tutor.webp",
     description:"Vincent is a surveying practitioner with a keen interest in research, particularly in neo-institutional economics. He teaches heritage conservation and land administration in Hong Kong, and is endlessly curious about local history, culture, and all kinds of knowledge. In his free time, he enjoys hiking, dragon boating, volleyball, running, reading and a good game of bridge."
   },
   {
@@ -354,37 +355,41 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'BSc (Astronomy) HKU, PGDE (Physics) HKU, Registered Teacher',
     role: 'Tutorial Team',
     imageId: 'person_fellow_2',
-    imageSrc: "/assets/People/Raymond_Chan.jpeg",
+    imageSrc: "/assets/People/Raymond_Chan.webp",
+    objectPosition: 'center top',
     description: "As a Junior Tutor, I bring my passion for science education and commitment to fostering student growth in our hall community. Having served as Sports Captain during my university years, I experienced firsthand how hall life is a transformative space for developing leadership abilities and learning to be a contributive community member. These experiences proved invaluable to my teaching career, shaping my understanding of holistic student development. I believe residential halls offer unique opportunities for personal growth beyond academics. I look forward to supporting our residents in their academic journeys while encouraging them to embrace the full spectrum of learning experiences that hall life provides"
   },
   {
     id: 'Tutor-2',
-    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
+    name: 'Mr. Bowie TANG Yat Yin 鄧一言',
     title: 'Junior Fellow',
-    bio: 'BSc (Physics) HKU',
+    bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
-    imageSrc: '/assets/People/Jason_Wong.jpeg',
+    imageSrc: '/assets/People/Bowie_Tang.webp',
+    objectPosition: 'center 20%',
+    description: "Bowie read law and politics at HKU, during which he was External Vice-Chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-3',
+    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
+    title: 'Non-residential Junior Fellow',
+    bio: 'BSc (Physics) HKU',
+    role: 'Tutorial Team',
+    imageId: 'person_counselor',
+    objectPosition: 'center top',
+    imageSrc: '/assets/People/Jason_Wong.webp',
+  },
+  {
+    id: 'Tutor-4',
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
     title: 'Non-residential Junior Fellow',
     bio: 'BA (Translation & German), HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
-    imageSrc: '/assets/People/Tom_Tam.jpeg',
+    imageSrc: '/assets/People/Tom_Tam.webp',
+    objectPosition: 'center 20%',
     description:"Tom takes a keen interest in languages and cross-cultural exchanges. An active member of UHall Archives and the former UHall Global Committee, Tom is more than happy to exchange thoughts on culture, history and arts."
-  },
-  {
-    id: 'Tutor-4',
-    name: 'Mr. Bowie TANG Yat Yin 鄧一言',
-    title: 'Non-residential Junior Fellow',
-    bio: '',
-    role: 'Tutorial Team',
-    imageId: 'person_counselor',
-    imageSrc: '/assets/People/Bowie_Tang.jpeg',
-    description: "Bowie read law and politics at HKU, during which he was External Vice-Chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-5',
@@ -393,7 +398,8 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'BEng (Electrical Engineering) HKU, MSc (Electrical Engineering) HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
-    imageSrc: '/assets/People/Alex_Chan.jpeg',
+    imageSrc: '/assets/People/Alex_Chan.webp',
+    objectPosition: 'center 20%',
     description: 'Welcome to University Hall\n' +
         'My name is Alex, and I am joining the U-Hall management team for the upcoming academic year. Although I am a non-residential fellow and won\'t be staying at the Castle most of the time, we will definitely see each other often during hall events and sports activities. Aside from being a fellow, I am also a proud alumnus of U-Hall. I always look back fondly on my time living here; the moments shared with brothers are my most treasured memories and a key part of my university life. I hope each of you coming to the Hall will also find your own precious moments and life\'s passion here. I look forward to meeting you all soon!'
   },
@@ -404,7 +410,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: '',
     role: 'Hall Officer',
     imageId: 'person_admin',
-    imageSrc: "/assets/People/Ivy_Chan.jpeg",
+    imageSrc: "/assets/People/Ivy_Chan.webp",
   },
   // Students' Association
   {
@@ -445,7 +451,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId:"aa-chair",
-    imageSrc: "/assets/People/Ken_Sit.jpg",
+    imageSrc: "/assets/People/Ken_Sit.webp",
     description: "Ken SIT was a resident of University Hall from 1994 to 1997. He was the Honorary Secretary of University Hall Students Association in 1995-1996. He has joined University Hall Alumni Limited since 2018. He was the founder of Rich Beauty International Limited in 2006 and he was the President of Lions Club of Happy Valley 2023 to 2024. He is currently the President of Lions Clubs International Foundation (LCIF) and also the director of Lions Kidney Educational Centre and Research Foundation (LKEC)."
   },
   { id: 'aa-vice-chair-1',
@@ -454,7 +460,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-vice-chair-1",
-    imageSrc: "/assets/People/Shek_Ming_San.jpg",
+    imageSrc: "/assets/People/Shek_Ming_San.webp",
     description:"Samuel was a resident of University Hall from 2009 to 2012. He was the Internal Vice Chairman of University Hall Students Association in 2010-2011 and Chairman in 2011-2012. He graduated with a degree of Finance from The Faculty of Business and Economics of The University of Hong Kong in 2012. He also obtained a Law Degree from The University of London in 2015. \n Samuel is a senior manager in a manufacturing company. He has joined the Board of Directors of University Hall Alumni Limited since 2016. Samuel is a CFA charterholder."
   },
   { id: 'aa-Vice-chair-2',
@@ -463,7 +469,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-vice-chair-2",
-    imageSrc: "/assets/People/Desmond_Cheung.jpg",
+    imageSrc: "/assets/People/Desmond_Cheung.webp",
     description:" Desmond is a regulatory lawyer at the Hong Kong Stock Exchange. Before that, he was a disputes/ regulatory lawyer at various international law firms, including DLA Piper Hong Kong. He used to be a dragon boat team captain for the Hong Kong Law Society. He is now a keen distance runner and football player."
   },
   { id: 'aa-Secretary',
@@ -472,7 +478,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Secretary",
-    imageSrc: "/assets/People/Joseph_Ng.jpg",
+    imageSrc: "/assets/People/Joseph_Ng.webp",
     description:"Joseph read law and graduated in 2015. He completed the PCLL in 2016. He called the University Hall home for the 5 years in HKU. He was the Hockey Team Captain from 2012 to 2014. He also played alongside his brothers in various sports teams and cultural teams. We go with brothers, as they say."
   },
   { id: 'aa-Treasurer',
@@ -481,7 +487,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Treasurer",
-    imageSrc: "/assets/People/Michael_Shih.jpg",
+    imageSrc: "/assets/People/Michael_Shih.webp",
     description:"Michael had admitted as Fellow of Society of Actuaries in 2010, now working in Prudential as insurance consultant. He has joined the Board of Director of UHAL since 2016."
   },
   { id: 'aa-Director-1',
@@ -490,7 +496,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-1",
-    imageSrc: "/assets/People/Eric_Cheng.jpg",
+    imageSrc: "/assets/People/Eric_Cheng.webp",
     description:"Resided in UH 1975-1978, Eric is one of the first batch of HKU quantity surveyors. Qualified HKIS Surveyor since 1984. Helped build the HK Bank Headquarters Building at No. 1 QRC. Stayed in the academia for 37 years educating surveyors. Sidetracked to pest management including termite and bedbug research. Joined the plumbing and drainage industry and specialized in stainless steel pipe and construction contract administration. Currently a Pipe Company Director and a QS Manager in a plumbing contractor. Previously a Vice Chairman of the Hong Kong Institution of Plumbing and Drainage and a Senior Lecturer and assistant head with the City University of Hong Kong."
   },
   { id: 'aa-Director-2',
@@ -499,7 +505,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-2",
-    imageSrc: "/assets/People/Jonathan_Wai.jpg",
+    imageSrc: "/assets/People/Jonathan_Wai.webp",
     description:"Jonathan resided in University Hall from 1975 to 1979. \"Boot-boot\" was a sports enthusiast in representing UH and Faculty of Medicine. He is currently the Medical Superintendent of Precious Blood Hospital(Caritas); holding several professorships in teaching medical students in HKU and CUHK. He has engaged in various voluntary works and lately retired as Deputy Commissioner of the Auxiliary Medical Service of HKSAR in 2023."
   },
   { id: 'aa-Director-3',
@@ -508,7 +514,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-3",
-    imageSrc: "/assets/People/Danny_Tsoi.jpg",
+    imageSrc: "/assets/People/Danny_Tsoi.webp",
     description:"As a U hallite from 1978 to 1983, Danny was tennis and soccer team captain during his residency in U hall. He graduated with a MBBS degree in 1983 and became a specialist in Orthopaedics and Traumatology since 1993. Currently he is in private practice as Orthopaedic Surgeon. Throughout the past 40 years Danny was actively involved in many U hall alumni events especially in golf tournaments."
   },
   { id: 'aa-Director-4',
@@ -517,7 +523,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-4",
-    imageSrc: "/assets/People/Vincent_Tang.jpg",
+    imageSrc: "/assets/People/Vincent_Tang.webp",
     description:"Vincent was a resident of University Hall in1981 to 1985 and he practised law after graduation. He is the founder and senier partner of Tang and Lee, Solicitors.Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90's and is excited to serve the brothers again."
   },
   { id: 'aa-Director-5',
@@ -526,7 +532,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-5",
-    imageSrc: "/assets/People/Wong_Lap_ching.jpg",
+    imageSrc: "/assets/People/Wong_Lap_ching.webp",
     description:"Dr. Wong is a specialist of Ear, Nose & Throat in private practice and a keen golfer."
   },
   { id: 'aa-Director-6',
@@ -535,7 +541,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-6",
-    imageSrc: "/assets/People/Tristan_Lau.jpg",
+    imageSrc: "/assets/People/Tristan_Lau.webp",
     description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn\'s Cup in both 1996 and 1997.\n" +
         "\n" +
         "Currently, Tristan is the Head of Electronic Trading Services for the APAC region at an investment bank. He is also involved in various voluntary activities and mentorship programs organized by HKU, JA HK and his organisation."
@@ -546,7 +552,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-7",
-    imageSrc: "/assets/People/Jack_Chen.jpg",
+    imageSrc: "/assets/People/Jack_Chen.webp",
     description:"Now VP at a top tier investment bank as a tech lead. He is also a co-host of Codeaholics (the largest community of local software engineers) and a volunteer IT Manager at InspiringHK Sports Foundation"
   },
   { id: 'aa-Director-8',
@@ -555,7 +561,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-8",
-    imageSrc: "/assets/People/Albert_Yung.jpg",
+    imageSrc: "/assets/People/Albert_Yung.webp",
     description:"Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA . He has been working in the banking indsutry. He has joined the Board of Directors of University Hall Alumni Limited since 2020."
   },
   { id: 'aa-Director-9',
@@ -564,7 +570,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-9",
-    imageSrc: "/assets/People/Alfred_Tse.jpg",
+    imageSrc: "/assets/People/Alfred_Tse.webp",
     description:"Now working in The Hong Kong Jockey Club with a focus on strategic procurement."
   },
   { id: 'aa-Director-10',
@@ -573,7 +579,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'Session 2024-26',
     role: 'alumni-limited',
     imageId: "aa-Director-10",
-    imageSrc: "/assets/People/Vincent_Chan.jpg",
+    imageSrc: "/assets/People/Vincent_Chan.webp",
     description:"Vincent purused his bachelor and doctorate degrees while staying at University Hall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
 ]
 
@@ -672,7 +678,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Join our hall; join our team. We will show you how brotherhood can be shaped by (hockey) sticks.',
     category: 'New Ball Team',
     imageId: 'recreation',
-    images: ['/assets/Life/Uhall_Hockey_1.jpeg', '/assets/Life/Uhall_Hockey_2.jpeg', '/assets/Life/Uhall_Hockey_3.JPG', '/assets/Life/Uhall_Hockey_4.JPG', '/assets/Life/Uhall_Hockey_5.JPG'],
+    images: ['/assets/Life/Uhall_Hockey_1.webp', '/assets/Life/Uhall_Hockey_2.webp', '/assets/Life/Uhall_Hockey_3.webp', '/assets/Life/Uhall_Hockey_4.webp', '/assets/Life/Uhall_Hockey_5.webp'],
   },
   {
     id: 'new-ball-Lacrosse',
@@ -681,7 +687,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Lacrosse Grind Begins Today! Lacrosse team is where boys become men and brotherhood is built. Join us to experience the thrill of this prestigious sport!',
     category: 'New Ball Team',
     imageId: 'Uhall_Lacrosse',
-    imageSrc: '/assets/Life/Uhall_Lacrosse.jpeg',
+    imageSrc: '/assets/Life/Uhall_Lacrosse.webp',
   },
   {
     id: 'new-ball-Softball',
@@ -690,7 +696,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Looking for a fast-paced, intense, and unforgettable sport? Look no further than the University Hall Softball team! Join us for a strong and inclusive sport team, holistic enrichment.',
     category: 'New Ball Team',
     imageId: 'Uhall_Softball',
-    images: ['/assets/Life/Uhall_Softball_1.jpg','/assets/Life/Uhall_Softball_2.jpg', '/assets/Life/Uhall_Softball_3.jpg',  '/assets/Life/Uhall_Softball_4.jpeg'],
+    images: ['/assets/Life/Uhall_Softball_1.webp','/assets/Life/Uhall_Softball_2.webp', '/assets/Life/Uhall_Softball_3.webp',  '/assets/Life/Uhall_Softball_4.webp'],
   },
   // Old Ball
   {
@@ -700,7 +706,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'We\'re a serious squad \- high standards, real competition \- led by a Turkish captain bringing EuroLeague culture to the court. Come find us if you want to be part of it.',
     category: 'Old Ball Team',
     imageId: 'recreation',
-    imageSrc: '/assets/Life/Uhall_Basketball.jpeg',
+    imageSrc: '/assets/Life/Uhall_Basketball.webp',
   },
   {
     id: 'old-ball-football',
@@ -709,7 +715,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'As the University Hall Football Team, we are committed to teamwork, discipline, and sportsmanship. We aim to represent University Hall with pride, strengthen our bond through football, and create a competitive and supportive environment where every player can improve and contribute.',
     category: 'Old Ball Team',
     imageId: 'recreation',
-    imageSrc: '/assets/Life/Uhall_Football.jpeg',
+    imageSrc: '/assets/Life/Uhall_Football.webp',
   },
 
   // Culture
@@ -728,7 +734,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
         'Bring your curiosity, sharpen your skills, and be part of our team that turns every contract into a successful bid!',
     category: 'Culture Team',
     imageId: 'common_rooms',
-    imageSrc: '/assets/Life/Uhall_Bridge.jpeg',
+    imageSrc: '/assets/Life/Uhall_Bridge.webp',
   },
   {
     id: 'culture-band',
@@ -737,7 +743,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Bringing together music lovers with passion, energy, and Hall spirit, University Hall Band Team turns late-night jams, Halloween Live Band, and Joint Hall Music Performance into some of the most unforgettable memories in Hall. Join us!',
     category: 'Culture Team',
     imageId: 'dining_hall',
-    imageSrc: '/assets/Life/Uhall_Band.jpeg',
+    imageSrc: '/assets/Life/Uhall_Band.webp',
   },
   {
     id: 'culture-dance',
@@ -746,8 +752,8 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Step into the spotlight with the University Hall Dance Team! Beyond spectacular performances and rhythm, we are a tight-knit family. Join our diverse crew to train hard, grow, and shine together!?',
     category: 'Culture Team',
     imageId: 'common_rooms',
-    imageSrc: '/assets/Life/Uhall_Dance_1.jpeg',
-    images:['/assets/Life/Uhall_Dance_2.jpeg', '/assets/Life/Uhall_Dance_1.jpeg']
+    imageSrc: '/assets/Life/Uhall_Dance_1.webp',
+    images:['/assets/Life/Uhall_Dance_2.webp', '/assets/Life/Uhall_Dance_1.webp']
   },
   {
     id: 'seasonal-dragon-boat',
@@ -756,7 +762,7 @@ const _HALL_TEAMS_DATA: HallTeam[] = [
       'Take part in the dragon boat team to experience this unique local sport. Win interhall champions with your brothers amidst oceanic splashes and sweats of passion!',
     category: 'Seasonal Team',
     imageId: 'library',
-    imageSrc: '/assets/Life/Uhall_DragonBoat.jpeg',
+    imageSrc: '/assets/Life/Uhall_DragonBoat.webp',
   },
 ]
 
@@ -804,12 +810,12 @@ const _MENTORSHIP_PROGRAMS_DATA: MentorshipProgram[] = [
       'Networking events connecting students, mentors, and alumni',
       'Expand professional connections and career prospects',
     ],
-    imageSrc:"/assets/Alumni/HKU_Mentorship.jpeg"
+    imageSrc:"/assets/Alumni/HKU_Mentorship.webp"
   },
   {
     id: 'quo-vadis',
     title: 'Quo Vadis \- Student Mentorship Project',
-    images: ['/assets/Alumni/Quo_Vadis_1.jpeg','/assets/Alumni/Quo_Vadis_2.jpg', "/assets/Alumni/Quo_Vadis_3.JPG"],
+    images: ['/assets/Alumni/Quo_Vadis_1.webp','/assets/Alumni/Quo_Vadis_2.webp', "/assets/Alumni/Quo_Vadis_3.webp"],
     description:
       'Founded by UHall-lites in 2024, \"Quo Vadis\" is a mentorship project connecting the university with multi-ethnic Pokfulam youth. Through monthly activities, mentors broaden participants\' horizons and build lasting, supportive bonds.',
   },
@@ -967,8 +973,8 @@ const _HALL_TREASURES_DATA: HallTreasure[] = [
     description:
       'The beautiful and decorative cast iron spiral staircase at the corner of the chapel connects the three floors and facilitates speedy commute.',
     imageId: 'golden_staircase',
-    imageSrc: '/assets/Facilities/Golden_Spiral_Staircase_1.jpeg',
-    images: ['/assets/Facilities/Golden_Spiral_Staircase_1.jpeg', '/assets/Facilities/Golden_Spiral_Staircase_2.jpeg', '/assets/Facilities/Golden_Spiral_Staircase_3.jpg'],
+    imageSrc: '/assets/Facilities/Golden_Spiral_Staircase_1.webp',
+    images: ['/assets/Facilities/Golden_Spiral_Staircase_1.webp', '/assets/Facilities/Golden_Spiral_Staircase_2.webp', '/assets/Facilities/Golden_Spiral_Staircase_3.webp'],
   },
   {
     id: 'davids-deers',
@@ -976,7 +982,7 @@ const _HALL_TREASURES_DATA: HallTreasure[] = [
     description:
       'Positioned at the main entrance stairs, two adults, and one child. Students touching the deers risk being cursed to never graduate.',
     imageId: 'davids_deers',
-    imageSrc: '/assets/Facilities/Davids_Deer.jpeg',
+    imageSrc: '/assets/Facilities/Davids_Deer.webp',
   },
   {
     id: 'sam-so',
@@ -984,7 +990,7 @@ const _HALL_TREASURES_DATA: HallTreasure[] = [
     description:
       'A cherished figure of University Hall, Ms Yuen So Moy ("Sam So") served as a cook and motherly presence for generations. Her symbolic "Hall Blood" ritual continues to bless Castlers through life\'s milestones.',
     imageId: 'sam_so',
-    imageSrc: '/assets/Facilities/Sam_So.JPG',
+    imageSrc: '/assets/Facilities/Sam_So.webp',
   },
 ]
 
@@ -1002,9 +1008,9 @@ const _ALUMNI_VISITS_DATA: AlumniVisit[] = [
     description:
       'University Hall\'s historic castle facade, Gothic architecture, and lush gardens provide a breathtaking backdrop for wedding photography. Alumni couples are welcome to return to the hall to capture their special moments amidst the heritage setting where their own stories began.',
     images: [
-      '/assets/Alumni/Uhall_Wedding_4.jpeg',
-      '/assets/Alumni/Uhall_wedding_5.jpeg',
-      '/assets/Alumni/Uhall_wedding_6.jpeg',
+      '/assets/Alumni/Uhall_Wedding_4.webp',
+      '/assets/Alumni/Uhall_wedding_5.webp',
+      '/assets/Alumni/Uhall_wedding_6.webp',
     ],
   },
   {

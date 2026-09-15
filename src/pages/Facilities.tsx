@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+﻿import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container, Section, ImagePlaceholder, Modal } from '@components/common/index'
 import { FadeInUp, ScaleOnHover } from '@components/animations/index'
@@ -361,7 +361,7 @@ const Facilities: React.FC = () => {
       {/*      >*/}
       {/*        <div className="absolute -inset-4 bg-brand-gold/10 rounded-card blur-2xl" />*/}
       {/*        <img*/}
-      {/*          src="/Facilities/Main_Façade.jpg"*/}
+      {/*          src="/Facilities/Main_Façade.webp"*/}
       {/*          alt="Main Façade of University Hall — Tudor and Neo-Gothic architecture"*/}
       {/*          className="w-full object-cover rounded-card shadow-xl relative"*/}
       {/*          style={{ aspectRatio: '16 / 10' }}*/}

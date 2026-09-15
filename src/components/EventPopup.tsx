@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const images = [
-  '/assets/Uhall_70th_OpenDay.webp',
-  '/assets/EventTradition/High_Table_1.webp',
-  '/assets/EventTradition/Fire_Dragon_1.webp',
+  '/assets/Uhall_70th_OpenDay_1.webp',
+  '/assets/Uhall_70th_OpenDay_2.webp',
 ]
+
+const POPUP_DEADLINE = '2026-10-04'
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -28,6 +29,8 @@ export default function EventPopup() {
   const [[currentIndex, direction], setPage] = useState([0, 0])
 
   useEffect(() => {
+    const deadline = new Date(POPUP_DEADLINE)
+    if (new Date() > deadline) return
     const timer = setTimeout(() => setIsOpen(true), 500)
     return () => clearTimeout(timer)
   }, [])
@@ -73,7 +76,7 @@ export default function EventPopup() {
               </button>
 
               {/* Image Carousel */}
-              <div className="relative w-full h-64 bg-brand-cream overflow-hidden">
+              <div className="relative w-full h-[60lvh] bg-brand-cream overflow-hidden">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -130,11 +133,16 @@ export default function EventPopup() {
 
               {/* Content */}
               <div className="p-6 text-center">
-                <h2 className="text-2xl font-display font-bold text-brand-text mb-3">
-                  New Event Coming Soon
+                <h2 className="text-2xl font-display font-bold text-brand-gold mb-3">
+                  University Hall 70th Anniversary Open Day
                 </h2>
-                <p className="text-brand-text/70 mb-6 leading-relaxed">
-                  Stay tuned for our upcoming event. We have exciting activities planned for the University Hall community.
+                <p className="text-black mb-6 leading-relaxed">
+                  Guided Tour Details: <br/>
+                  October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
+                  October 3: 2:00 PM – 3:00 PM (English)<br/>
+                  October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
+                  October 4: 4:30 PM – 5:30 PM  (English)<br/>
+                  Maximum quota for each tour is 20, first come first served.
                 </p>
                 <a
                   href="https://forms.gle/4u6ujTm2B2KQcvpt9"
@@ -143,7 +151,7 @@ export default function EventPopup() {
                   onClick={handleClose}
                   className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors"
                 >
-                  Learn More
+                  Register Now
                 </a>
               </div>
             </div>

@@ -331,6 +331,7 @@ export const _PEOPLE_DATA: Person[] = [
     role: 'Tutorial Team',
     imageId: 'person_Sam',
     imageSrc: '/assets/People/Sam_Liu.webp',
+    objectPosition: 'center 10%',
     description:"Hi everyone! I’m Sam Liu. By day, I keep busy as a full-time Lecturer at HKU while still practicing part-time as a solicitor.  \n" +
         "\n" +
         "Since becoming your Senior Resident Tutor in February 2025, I’ve loved working with our fantastic management team and participating in our vibrant activities. I joined our Ying Sun last year and it was a wonderful experience—I hope you all love it just as much!  \n" +
@@ -344,7 +345,7 @@ export const _PEOPLE_DATA: Person[] = [
     bio: 'PhD (Neo-Institutional Economics) HKU, BSc (Surv) HKU, TechArborA (UK)',
     role: 'Tutorial Team',
     imageId: 'person_fellow_1',
-    imageSrc: "/assets/People/Vincent_Chan.webp",
+    imageSrc: "/assets/People/Vincent_Chan_Tutor.webp",
     description:"Vincent is a surveying practitioner with a keen interest in research, particularly in neo-institutional economics. He teaches heritage conservation and land administration in Hong Kong, and is endlessly curious about local history, culture, and all kinds of knowledge. In his free time, he enjoys hiking, dragon boating, volleyball, running, reading and a good game of bridge."
   },
   {
@@ -355,36 +356,40 @@ export const _PEOPLE_DATA: Person[] = [
     role: 'Tutorial Team',
     imageId: 'person_fellow_2',
     imageSrc: "/assets/People/Raymond_Chan.webp",
+    objectPosition: 'center top',
     description: "As a Junior Tutor, I bring my passion for science education and commitment to fostering student growth in our hall community. Having served as Sports Captain during my university years, I experienced firsthand how hall life is a transformative space for developing leadership abilities and learning to be a contributive community member. These experiences proved invaluable to my teaching career, shaping my understanding of holistic student development. I believe residential halls offer unique opportunities for personal growth beyond academics. I look forward to supporting our residents in their academic journeys while encouraging them to embrace the full spectrum of learning experiences that hall life provides"
   },
   {
     id: 'Tutor-2',
-    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
+    name: 'Mr. Bowie TANG Yat Yin 鄧一言',
     title: 'Junior Fellow',
-    bio: 'BSc (Physics) HKU',
+    bio: '',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
-    imageSrc: '/assets/People/Jason_Wong.webp',
+    imageSrc: '/assets/People/Bowie_Tang.webp',
+    objectPosition: 'center 20%',
+    description: "Bowie read law and politics at HKU, during which he was External Vice-Chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-3',
+    name: 'Mr. Jason WONG Ching Hin 黃靖軒',
+    title: 'Non-residential Junior Fellow',
+    bio: 'BSc (Physics) HKU',
+    role: 'Tutorial Team',
+    imageId: 'person_counselor',
+    objectPosition: 'center top',
+    imageSrc: '/assets/People/Jason_Wong.webp',
+  },
+  {
+    id: 'Tutor-4',
     name: 'Mr. Tom TAM Yan Chi 譚恩智',
     title: 'Non-residential Junior Fellow',
     bio: 'BA (Translation & German), HKU',
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Tom_Tam.webp',
+    objectPosition: 'center 20%',
     description:"Tom takes a keen interest in languages and cross-cultural exchanges. An active member of UHall Archives and the former UHall Global Committee, Tom is more than happy to exchange thoughts on culture, history and arts."
-  },
-  {
-    id: 'Tutor-4',
-    name: 'Mr. Bowie TANG Yat Yin 鄧一言',
-    title: 'Non-residential Junior Fellow',
-    bio: '',
-    role: 'Tutorial Team',
-    imageId: 'person_counselor',
-    imageSrc: '/assets/People/Bowie_Tang.webp',
-    description: "Bowie read law and politics at HKU, during which he was External Vice-Chairman of UHSA. He is passionate about social justice, civic education, and arts and culture. His mission as tutor is to nurture visionaries and revolutionaries."
   },
   {
     id: 'Tutor-5',
@@ -394,6 +399,7 @@ export const _PEOPLE_DATA: Person[] = [
     role: 'Tutorial Team',
     imageId: 'person_counselor',
     imageSrc: '/assets/People/Alex_Chan.webp',
+    objectPosition: 'center 20%',
     description: 'Welcome to University Hall\n' +
         'My name is Alex, and I am joining the U-Hall management team for the upcoming academic year. Although I am a non-residential fellow and won\'t be staying at the Castle most of the time, we will definitely see each other often during hall events and sports activities. Aside from being a fellow, I am also a proud alumnus of U-Hall. I always look back fondly on my time living here; the moments shared with brothers are my most treasured memories and a key part of my university life. I hope each of you coming to the Hall will also find your own precious moments and life\'s passion here. I look forward to meeting you all soon!'
   },

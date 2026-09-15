@@ -80,6 +80,7 @@ const PeopleHorizontalTimeline: React.FC<PeopleHorizontalTimelineProps> = ({ peo
                         src={person.imageSrc}
                         alt={person.name}
                         className="w-full h-full object-cover"
+                        style={person.objectPosition ? { objectPosition: person.objectPosition } : undefined}
                         loading="lazy"
                       />
                     ) : (

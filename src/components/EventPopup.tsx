@@ -1,8 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+const images = [
+  '/assets/Uhall_70th_OpenDay.webp',
+  '/assets/EventTradition/High_Table_1.webp',
+  '/assets/EventTradition/Fire_Dragon_1.webp',
+]
+
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 200 : -200,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? 200 : -200,
+    opacity: 0,
+  }),
+}
 
 export default function EventPopup() {
   const [isOpen, setIsOpen] = useState(false)
+  const [[currentIndex, direction], setPage] = useState([0, 0])
 
   useEffect(() => {
     const timer = setTimeout(() => setIsOpen(true), 500)
@@ -12,6 +35,13 @@ export default function EventPopup() {
   const handleClose = () => {
     setIsOpen(false)
   }
+
+  const paginate = useCallback((newDirection: number) => {
+    setPage(([prev]) => {
+      const nextIndex = (prev + newDirection + images.length) % images.length
+      return [nextIndex, newDirection]
+    })
+  }, [])
 
   return (
     <AnimatePresence>
@@ -42,14 +72,61 @@ export default function EventPopup() {
                 ✕
               </button>
 
-              {/* Image */}
-              <div className="w-full h-full bg-brand-cream">
-                <img
-                  src="/assets/Uhall_70th_OpenDay.webp"
-                  alt="University Hall Event"
-                  className="w-full h-full object-cover"
-                />
+              {/* Image Carousel */}
+              <div className="relative w-full h-64 bg-brand-cream overflow-hidden">
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.img
+                    key={currentIndex}
+                    src={images[currentIndex]}
+                    alt="University Hall Event"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  />
+                </AnimatePresence>
+
+                {/* Navigation arrows */}
+                {images.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => paginate(-1)}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      onClick={() => paginate(1)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </>
+                )}
               </div>
+
+              {/* Dot indicators */}
+              {images.length > 1 && (
+                <div className="flex justify-center gap-2 mt-3">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setPage([index, index > currentIndex ? 1 : -1])}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        index === currentIndex
+                          ? 'bg-brand-gold w-6'
+                          : 'bg-brand-gold/30 hover:bg-brand-gold/50 w-2'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Content */}
               <div className="p-6 text-center">

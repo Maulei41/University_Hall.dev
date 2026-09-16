@@ -114,7 +114,7 @@ export default function EventPopup() {
               </div>
 
               {/* Content — right on desktop, bottom on mobile */}
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2">
+              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2 overflow-y-auto">
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
                   University Hall 70th Anniversary Open Day
                 </h2>
@@ -133,19 +133,14 @@ export default function EventPopup() {
                 <p className="text-black mb-4 leading-relaxed text-sm sm:text-base italic">
                   We long to welcome old friends and new kindred spirits.
                 </p>
-                <p className="text-black font-semibold mb-6 leading-relaxed">
-                  Open Day Highlights:<br/>
-                  • Green Gown Photography • Historical Guided Tours • Wishing Upon an Ema<br/>
-                  • UHall Movies Q&A • Hockey Experience • Student-led Stalls
-                </p>
                 <a
-                  href="https://forms.gle/4u6ujTm2B2KQcvpt9"
+                  href="https://www.instagram.com/p/DdTILUvEivr/?img_index=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleClose}
                   className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
                 >
-                  Registration for Guided Tour
+                  Follow to know more
                 </a>
               </div>
             </div>

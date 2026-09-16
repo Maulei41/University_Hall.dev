@@ -131,7 +131,16 @@ export default function EventPopup() {
               {/* Content */}
               <div className="p-6 sm:p-8 flex flex-col items-center text-center">
                 <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
-                  Celebrate 70 years of community and tradition with us! In honor of University Hall's Diamond Jubilee, we warmly invite you to our Open Day on 3 and 4 October 2026. No prior registration is required — simply drop by to explore, reconnect, and commemorate seven decades of history. We look forward to welcoming you!
+                  Celebrate 70 years of community and tradition with us!
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  In honor of University Hall's Diamond Jubilee, we warmly invite you to our Open Day on 3 and 4 October 2026.
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  No prior registration is required — simply drop by to explore, reconnect, and commemorate seven decades of history.
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  We look forward to welcoming you!
                 </p>
                 <p className="text-red-600 text-sm mb-4">
                   *No prior registration is needed for Open Day visit
@@ -143,7 +152,7 @@ export default function EventPopup() {
                   onClick={handleClose}
                   className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors"
                 >
-                  Visit us at IG
+                  Find out more in our IG
                 </a>
               </div>
             </div>

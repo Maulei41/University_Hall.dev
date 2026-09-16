@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useLenis } from '@hooks/useSmoothScroll'
 
 const images = [
   '/assets/Uhall_70th_OpenDay_1.webp',
@@ -27,6 +28,7 @@ const slideVariants = {
 export default function EventPopup() {
   const [isOpen, setIsOpen] = useState(false)
   const [[currentIndex, direction], setPage] = useState([0, 0])
+  const lenis = useLenis()
 
   useEffect(() => {
     const deadline = new Date(POPUP_DEADLINE)
@@ -34,6 +36,15 @@ export default function EventPopup() {
     const timer = setTimeout(() => setIsOpen(true), 500)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (!isOpen) return
+    if (lenis) lenis.stop()
+    document.documentElement.style.overflow = ''
+    return () => {
+      if (lenis) lenis.start()
+    }
+  }, [isOpen, lenis])
 
   const handleClose = () => {
     setIsOpen(false)
@@ -49,23 +60,20 @@ export default function EventPopup() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm"
-            onClick={handleClose}
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
+        <div
+          className="fixed inset-0 z-[200] overflow-y-auto"
+          data-lenis-prevent
+          onClick={handleClose}
+        >
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+
+          {/* Card container */}
+          <div
+            className="relative mx-auto my-10 max-w-4xl w-[calc(100%-2rem)] pointer-events-auto"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full h-full md:h-auto md:max-h-[90vh] overflow-y-auto md:overflow-hidden pointer-events-auto flex flex-col md:flex-row">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
               {/* X Button */}
               <button
                 onClick={handleClose}
@@ -114,7 +122,7 @@ export default function EventPopup() {
               </div>
 
               {/* Content — right on desktop, bottom on mobile */}
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2 overflow-y-auto">
+              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2">
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
                   University Hall 70th Anniversary Open Day
                 </h2>
@@ -144,8 +152,8 @@ export default function EventPopup() {
                 </a>
               </div>
             </div>
-          </motion.div>
-        </>
+          </div>
+        </div>
       )}
     </AnimatePresence>
   )

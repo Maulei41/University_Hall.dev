@@ -82,7 +82,7 @@ export default function EventPopup() {
                     key={currentIndex}
                     src={images[currentIndex]}
                     alt="University Hall Event"
-                    className="absolute inset-0 w-full h-full object-contain md:object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                     custom={direction}
                     variants={slideVariants}
                     initial="enter"

@@ -118,6 +118,9 @@ export default function EventPopup() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
                   University Hall 70th Anniversary Open Day
                 </h2>
+                <p className="text-red-600 text-sm mb-4">
+                  *No prior registration is needed for Open Day visit
+                </p>
                 <p className="text-black mb-6 leading-relaxed">
                   Guided Tour Details:<br/>
                   October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
@@ -133,7 +136,7 @@ export default function EventPopup() {
                   onClick={handleClose}
                   className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
                 >
-                  Register Now
+                  Registration for Guided Tour
                 </a>
               </div>
             </div>

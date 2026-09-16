@@ -130,6 +130,9 @@ export default function EventPopup() {
 
               {/* Content */}
               <div className="p-6 sm:p-8 flex flex-col items-center text-center">
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  Celebrate 70 years of community and tradition with us! In honor of University Hall's Diamond Jubilee, we warmly invite you to our Open Day on 3 and 4 October 2026. No prior registration is required — simply drop by to explore, reconnect, and commemorate seven decades of history. We look forward to welcoming you!
+                </p>
                 <p className="text-red-600 text-sm mb-4">
                   *No prior registration is needed for Open Day visit
                 </p>

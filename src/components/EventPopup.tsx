@@ -4,8 +4,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLenis } from '@hooks/useSmoothScroll'
 
 const images = [
-  '/assets/Uhall_70th_OpenDay_1.webp',
-  '/assets/Uhall_70th_OpenDay_2.webp',
+  '/wp-content/uhall-react-app/assets/Uhall_70th_OpenDay_1.webp',
+  '/wp-content/uhall-react-app/assets/Uhall_70th_OpenDay_2.webp',
 ]
 
 const POPUP_DEADLINE = '2026-10-04'

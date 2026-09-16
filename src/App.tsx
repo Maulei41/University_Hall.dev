@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
 import LoadingSpinner from '@components/animations/LoadingSpinner'
+import EventPopup from '@components/EventPopup'
 import { SmoothScrollProvider } from '@hooks/SmoothScrollProvider'
 import { useLenis } from '@hooks/useSmoothScroll'
 import PageTracker from '@hooks/usePageTracking'
@@ -111,6 +112,7 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
       </Router>
+      {!initialLoading && <EventPopup />}
     </SmoothScrollProvider>
   )
 }

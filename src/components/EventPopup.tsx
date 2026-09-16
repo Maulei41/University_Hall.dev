@@ -65,7 +65,7 @@ export default function EventPopup() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col md:flex-row">
+            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto md:overflow-hidden pointer-events-auto flex flex-col md:flex-row">
               {/* X Button */}
               <button
                 onClick={handleClose}

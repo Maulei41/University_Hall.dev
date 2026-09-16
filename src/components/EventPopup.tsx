@@ -75,32 +75,8 @@ export default function EventPopup() {
                 ✕
               </button>
 
-              {/* Content — left on desktop, bottom on mobile */}
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center overflow-y-auto order-2 md:order-1">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
-                  University Hall 70th Anniversary Open Day
-                </h2>
-                <p className="text-black mb-6 leading-relaxed">
-                  Guided Tour Details:<br/>
-                  October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
-                  October 3: 2:00 PM – 3:00 PM (English)<br/>
-                  October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
-                  October 4: 4:30 PM – 5:30 PM (English)<br/>
-                  Maximum quota for each tour is 20, first come first served.
-                </p>
-                <a
-                  href="https://forms.gle/4u6ujTm2B2KQcvpt9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleClose}
-                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
-                >
-                  Register Now
-                </a>
-              </div>
-
-              {/* Image Carousel — right on desktop, top on mobile */}
-              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-auto bg-brand-cream overflow-hidden order-1 md:order-2">
+              {/* Image Carousel — left on desktop, top on mobile */}
+              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-full min-h-[300px] bg-brand-cream overflow-hidden order-1">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -135,6 +111,30 @@ export default function EventPopup() {
                     </button>
                   </>
                 )}
+              </div>
+
+              {/* Content — right on desktop, bottom on mobile */}
+              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center overflow-y-auto order-2">
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
+                  University Hall 70th Anniversary Open Day
+                </h2>
+                <p className="text-black mb-6 leading-relaxed">
+                  Guided Tour Details:<br/>
+                  October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
+                  October 3: 2:00 PM – 3:00 PM (English)<br/>
+                  October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
+                  October 4: 4:30 PM – 5:30 PM (English)<br/>
+                  Maximum quota for each tour is 20, first come first served.
+                </p>
+                <a
+                  href="https://forms.gle/4u6ujTm2B2KQcvpt9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleClose}
+                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
+                >
+                  Register Now
+                </a>
               </div>
             </div>
           </motion.div>

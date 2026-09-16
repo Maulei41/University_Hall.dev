@@ -121,13 +121,22 @@ export default function EventPopup() {
                 <p className="text-red-600 text-sm mb-4">
                   *No prior registration is needed for Open Day visit
                 </p>
-                <p className="text-black mb-6 leading-relaxed">
-                  Guided Tour Details:<br/>
-                  October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
-                  October 3: 2:00 PM – 3:00 PM (English)<br/>
-                  October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
-                  October 4: 4:30 PM – 5:30 PM (English)<br/>
-                  Maximum quota for each tour is 20, first come first served.
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  As University Hall marks its diamond jubilee of seventy years, we warmly invite you, with a heart of leisure, to step into an appointment across eras, and gather the scattered fragments where light and shadow intertwine upon the ancient castle.
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  Perched high upon the verdant heights of Pokfulam, overlooking the seamless merge of sea and sky, this late-nineteenth-century Gothic fortress was transformed into a residential hall of the University of Hong Kong in 1956, and declared a monument in 1995. Between weathered bricks, deep corridors, and arched gateways are etched the footprints and warmth left by generations of residents over the past seven decades.
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
+                  Stones lie in solemn grace; time leaves its tender trace. This is not merely a sanctuary for scholarly respite, but the fertile soil of HKU's hall culture, and a cinematic canvas where classic films found their timeless frames. With every step you take, echoes of the past linger, and time itself seems to gently stand still.
+                </p>
+                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base italic">
+                  We long to welcome old friends and new kindred spirits.
+                </p>
+                <p className="text-black font-semibold mb-6 leading-relaxed">
+                  Open Day Highlights:<br/>
+                  • Green Gown Photography • Historical Guided Tours • Wishing Upon an Ema<br/>
+                  • UHall Movies Q&A • Hockey Experience • Student-led Stalls
                 </p>
                 <a
                   href="https://forms.gle/4u6ujTm2B2KQcvpt9"

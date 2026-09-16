@@ -76,7 +76,7 @@ export default function EventPopup() {
               </button>
 
               {/* Image Carousel — left on desktop, top on mobile */}
-              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-full min-h-[300px] bg-brand-cream overflow-hidden order-1">
+              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-auto min-h-[300px] bg-brand-cream overflow-hidden order-1">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -114,7 +114,7 @@ export default function EventPopup() {
               </div>
 
               {/* Content — right on desktop, bottom on mobile */}
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center overflow-y-auto order-2">
+              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2">
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
                   University Hall 70th Anniversary Open Day
                 </h2>

@@ -65,7 +65,7 @@ export default function EventPopup() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto md:overflow-hidden pointer-events-auto flex flex-col md:flex-row">
+            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full h-full md:h-auto md:max-h-[90vh] overflow-y-auto md:overflow-hidden pointer-events-auto flex flex-col md:flex-row">
               {/* X Button */}
               <button
                 onClick={handleClose}
@@ -76,7 +76,7 @@ export default function EventPopup() {
               </button>
 
               {/* Image Carousel — left on desktop, top on mobile */}
-              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-auto min-h-[300px] bg-brand-cream overflow-hidden order-1">
+              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-auto md:min-h-[300px] bg-brand-cream overflow-hidden order-1 shrink-0">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentIndex}

@@ -73,7 +73,7 @@ export default function EventPopup() {
             className="relative mx-auto my-10 max-w-4xl w-[calc(100%-2rem)] pointer-events-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
               {/* X Button */}
               <button
                 onClick={handleClose}
@@ -83,8 +83,15 @@ export default function EventPopup() {
                 ✕
               </button>
 
-              {/* Image Carousel — left on desktop, top on mobile */}
-              <div className="relative w-full md:w-1/2 md:shrink-0 h-[40vh] md:h-auto md:min-h-[300px] bg-brand-cream overflow-hidden order-1 shrink-0">
+              {/* Title */}
+              <div className="p-6 sm:p-8 pb-0 text-center">
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold">
+                  University Hall 70th Anniversary Open Day
+                </h2>
+              </div>
+
+              {/* Image Carousel */}
+              <div className="relative w-full h-[40vh] md:h-[50vh] bg-brand-cream overflow-hidden shrink-0">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -121,34 +128,19 @@ export default function EventPopup() {
                 )}
               </div>
 
-              {/* Content — right on desktop, bottom on mobile */}
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center order-2">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
-                  University Hall 70th Anniversary Open Day
-                </h2>
+              {/* Content */}
+              <div className="p-6 sm:p-8 flex flex-col items-center text-center">
                 <p className="text-red-600 text-sm mb-4">
                   *No prior registration is needed for Open Day visit
-                </p>
-                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
-                  As University Hall marks its diamond jubilee of seventy years, we warmly invite you, with a heart of leisure, to step into an appointment across eras, and gather the scattered fragments where light and shadow intertwine upon the ancient castle.
-                </p>
-                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
-                  Perched high upon the verdant heights of Pokfulam, overlooking the seamless merge of sea and sky, this late-nineteenth-century Gothic fortress was transformed into a residential hall of the University of Hong Kong in 1956, and declared a monument in 1995. Between weathered bricks, deep corridors, and arched gateways are etched the footprints and warmth left by generations of residents over the past seven decades.
-                </p>
-                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
-                  Stones lie in solemn grace; time leaves its tender trace. This is not merely a sanctuary for scholarly respite, but the fertile soil of HKU's hall culture, and a cinematic canvas where classic films found their timeless frames. With every step you take, echoes of the past linger, and time itself seems to gently stand still.
-                </p>
-                <p className="text-black mb-4 leading-relaxed text-sm sm:text-base italic">
-                  We long to welcome old friends and new kindred spirits.
                 </p>
                 <a
                   href="https://www.instagram.com/p/DdTILUvEivr/?img_index=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleClose}
-                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
+                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors"
                 >
-                  Follow to know more
+                  Visit us at IG
                 </a>
               </div>
             </div>

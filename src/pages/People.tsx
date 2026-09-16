@@ -119,7 +119,7 @@ const People: React.FC = () => {
                   src={selectedPerson.imageSrc}
                   alt={selectedPerson.name}
                   className="w-full h-full object-cover rounded-t-card md:rounded-tr-none md:rounded-l-card"
-                  style={{ maxHeight: '60vh' }}
+                  style={{ maxHeight: '60vh', ...(selectedPerson.objectPosition ? { objectPosition: selectedPerson.objectPosition } : {}) }}
                 />
               ) : selectedPerson.imageId ? (
                 <div className="h-full" style={{ maxHeight: '60vh' }}>

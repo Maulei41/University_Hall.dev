@@ -90,42 +90,55 @@ export default function EventPopup() {
                 </h2>
               </div>
 
-              {/* Image Carousel */}
+              {/* Image Carousel — carousel on mobile, side-by-side on desktop */}
               <div className="relative w-full h-[40vh] md:h-[50vh] bg-brand-cream overflow-hidden shrink-0">
-                <AnimatePresence mode="wait" custom={direction}>
-                  <motion.img
-                    key={currentIndex}
-                    src={images[currentIndex]}
-                    alt="University Hall Event"
-                    className="absolute inset-0 w-full h-full object-contain"
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  />
-                </AnimatePresence>
+                {/* Mobile: carousel */}
+                <div className="md:hidden relative w-full h-full">
+                  <AnimatePresence mode="wait" custom={direction}>
+                    <motion.img
+                      key={currentIndex}
+                      src={images[currentIndex]}
+                      alt="University Hall Event"
+                      className="absolute inset-0 w-full h-full object-contain"
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                    />
+                  </AnimatePresence>
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => paginate(-1)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={() => paginate(1)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                </div>
 
-                {/* Navigation arrows */}
-                {images.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => paginate(-1)}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={() => paginate(1)}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                  </>
-                )}
+                {/* Desktop: two images side by side */}
+                <div className="hidden md:flex w-full h-full">
+                  {images.map((src, index) => (
+                    <img
+                      key={index}
+                      src={src}
+                      alt={`University Hall Event ${index + 1}`}
+                      className="w-1/2 h-full object-contain"
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Content */}

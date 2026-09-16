@@ -65,7 +65,7 @@ export default function EventPopup() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden pointer-events-auto">
+            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden pointer-events-auto">
               {/* X Button */}
               <button
                 onClick={handleClose}
@@ -75,84 +75,68 @@ export default function EventPopup() {
                 ✕
               </button>
 
-              {/* Image Carousel */}
-              <div className="relative w-full h-[60lvh] bg-brand-cream overflow-hidden">
-                <AnimatePresence mode="wait" custom={direction}>
-                  <motion.img
-                    key={currentIndex}
-                    src={images[currentIndex]}
-                    alt="University Hall Event"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  />
-                </AnimatePresence>
-
-                {/* Navigation arrows */}
-                {images.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => paginate(-1)}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={() => paginate(1)}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                  </>
-                )}
-              </div>
-
-              {/* Dot indicators */}
-              {images.length > 1 && (
-                <div className="flex justify-center gap-2 mt-3">
-                  {images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setPage([index, index > currentIndex ? 1 : -1])}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex
-                          ? 'bg-brand-gold w-6'
-                          : 'bg-brand-gold/30 hover:bg-brand-gold/50 w-2'
-                      }`}
-                      aria-label={`Go to image ${index + 1}`}
+              <div className="flex flex-col md:flex-row">
+                {/* Image Carousel — left on desktop, top on mobile */}
+                <div className="relative w-full md:w-1/2 md:shrink-0 h-[60lvh] md:h-[60vh] bg-brand-cream overflow-hidden">
+                  <AnimatePresence mode="wait" custom={direction}>
+                    <motion.img
+                      key={currentIndex}
+                      src={images[currentIndex]}
+                      alt="University Hall Event"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     />
-                  ))}
-                </div>
-              )}
+                  </AnimatePresence>
 
-              {/* Content */}
-              <div className="p-6 text-center">
-                <h2 className="text-2xl font-display font-bold text-brand-gold mb-3">
-                  University Hall 70th Anniversary Open Day
-                </h2>
-                <p className="text-black mb-6 leading-relaxed">
-                  Guided Tour Details: <br/>
-                  October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
-                  October 3: 2:00 PM – 3:00 PM (English)<br/>
-                  October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
-                  October 4: 4:30 PM – 5:30 PM  (English)<br/>
-                  Maximum quota for each tour is 20, first come first served.
-                </p>
-                <a
-                  href="https://forms.gle/4u6ujTm2B2KQcvpt9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleClose}
-                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors"
-                >
-                  Register Now
-                </a>
+                  {/* Navigation arrows */}
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => paginate(-1)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={() => paginate(1)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Content — right on desktop, bottom on mobile */}
+                <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-gold mb-3">
+                    University Hall 70th Anniversary Open Day
+                  </h2>
+                  <p className="text-black mb-6 leading-relaxed">
+                    Guided Tour Details:<br/>
+                    October 3: 10:00 AM – 11:00 AM (Cantonese)<br/>
+                    October 3: 2:00 PM – 3:00 PM (English)<br/>
+                    October 4: 11:00 AM – 12:00 NN (Cantonese)<br/>
+                    October 4: 4:30 PM – 5:30 PM (English)<br/>
+                    Maximum quota for each tour is 20, first come first served.
+                  </p>
+                  <a
+                    href="https://forms.gle/4u6ujTm2B2KQcvpt9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleClose}
+                    className="inline-block px-6 py-3 bg-brand-gold text-white rounded-full font-medium hover:bg-brand-gold/90 transition-colors text-center"
+                  >
+                    Register Now
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

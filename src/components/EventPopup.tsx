@@ -147,7 +147,7 @@ export default function EventPopup() {
                   Celebrate 70 years of community and tradition with us!
                 </p>
                 <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
-                  In honor of University Hall's Diamond Jubilee, we warmly invite you to our Open Day on 3 and 4 October 2026.
+                  In honor of University Hall's Platinum Jubilee, we warmly invite you to our Open Day on 3 and 4 October 2026.
                 </p>
                 <p className="text-black mb-4 leading-relaxed text-sm sm:text-base">
                   No prior registration is required — simply drop by to explore, reconnect, and commemorate seven decades of history.

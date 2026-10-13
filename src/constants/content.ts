@@ -188,12 +188,16 @@ export const _EVENTS_DATA: HallEvent[] = [
     imageId: 'fire_dragon',
     imageSrc: '/assets/EventTradition/Fire_Dragon_4.webp',
     images: [
-      '/assets/EventTradition/Fire_Dragon_4.webp',
-      '/assets/EventTradition/Fire_Dragon_2.webp',
       '/assets/EventTradition/Fire_Dragon_3.webp',
+      '/assets/EventTradition/Fire_Dragon_2.webp',
       '/assets/EventTradition/Fire_Dragon_1.webp',
+      '/assets/EventTradition/Fire_Dragon_4.webp',
+      '/assets/EventTradition/Fire_Dragon_5.webp',
+      '/assets/EventTradition/Fire_Dragon_6.webp',
+      '/assets/EventTradition/Fire_Dragon_7.webp',
+      '/assets/EventTradition/Fire_Dragon_8.webp'
     ],
-    videoSrc: '/assets/EventTradition/Fire_Dragon_1.mp4',
+    // videoSrc: '/assets/EventTradition/Fire_Dragon_1.mp4',
     featured: true,
   },
   // {

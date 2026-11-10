@@ -448,143 +448,172 @@ export const _PEOPLE_DATA: Person[] = [
   { id: 'sa-CA', name: 'Mr. Yusuf KARIMLI', title: 'Current Affairs Secretary ', bio: 'Session 2026-27', role: 'student-association' },
   { id: 'sa-Past-Committee-Representative', name: 'Mr. YU Pak Hin', chineseName:"俞柏軒", title: 'Past Committee Representative ', bio: 'Session 2026-27', role: 'student-association' },
 
-  // Alumni Association
-  { id: 'aa-chair',
-    name: 'Mr. SIT Loi-keung, Ken',
+  // Alumni Association — Board of Directors (source: https://www.uhall.com.hk/about-uhal/board-of-directors)
+  {
+    id: 'aa-chair',
+    name: 'Mr. LAU Tin Yan, Tristan',
     title: 'Chairman',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId:"aa-chair",
-    imageSrc: "/assets/People/Ken_Sit.webp",
-    description: "Ken SIT was a resident of University Hall from 1994 to 1997. He was the Honorary Secretary of University Hall Students Association in 1995-1996. He has joined University Hall Alumni Limited since 2018. He was the founder of Rich Beauty International Limited in 2006 and he was the President of Lions Club of Happy Valley 2023 to 2024. He is currently the President of Lions Clubs International Foundation (LCIF) and also the director of Lions Kidney Educational Centre and Research Foundation (LKEC)."
+    imageId: 'aa-chair',
+    imageSrc: '/assets/People/Tristan_Lau.webp',
+    description:
+      'Tristan resided at University Hall from 1994 to 1998, serving as Internal Vice Chairman of the University Hall Students\' Association (UHSA) during the 1995–1996 academic year. He graduated in 1998 with a Bachelor of Engineering in Electrical and Electronic Engineering. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn\'s Cup in both 1996 and 1997. Professionally, Tristan serves as the Head of Electronic Trading Services for the APAC region at J.P. Morgan. Driven by a strong commitment to youth development and community service, he actively serves as a mentor and volunteer across initiatives with HKU, Junior Achievement Hong Kong (JA HK), and J.P. Morgan, alongside his continued leadership within the U-Hall community.',
   },
-  { id: 'aa-vice-chair-1',
-    name: 'Mr. SHEK Ming-san',
+  {
+    id: 'aa-vice-chair-1',
+    name: 'Mr. SUEN Ka Po, Alex',
     title: 'Vice Chairman',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-vice-chair-1",
-    imageSrc: "/assets/People/Shek_Ming_San.webp",
-    description:"Samuel was a resident of University Hall from 2009 to 2012. He was the Internal Vice Chairman of University Hall Students Association in 2010-2011 and Chairman in 2011-2012. He graduated with a degree of Finance from The Faculty of Business and Economics of The University of Hong Kong in 2012. He also obtained a Law Degree from The University of London in 2015. \n Samuel is a senior manager in a manufacturing company. He has joined the Board of Directors of University Hall Alumni Limited since 2016. Samuel is a CFA charterholder."
+    imageId: 'aa-vice-chair-1',
+    imageSrc: '/assets/People/Alex_Suen.webp',
+    description:
+      'Alex studied Sociology in the Faculty of Social Science and was a resident of University Hall from 1993 to 1996. He was elected Social Secretary of the Students\' Association (UHSA) for the 1993–1994 term. He was also an accomplished sportsman, serving as captain of the Hockey Team in 1994 and the Soccer Team in 1995. With a mission to promote hockey in hall, he led U-Hallites to participate in the Tertiary Institution Hockey League and served as Chairman of the Tertiary Institution Hockey Association in 1996. Dedicated to giving back, he later served as a Director of the University Hall Alumni from 2016 to 2022. In his professional life, Alex has dedicated 30 years to the container terminal industry. He is currently the Director & General Manager of River Trade Terminal, where he oversees all port-related business for Sun Hung Kai Properties Ltd.',
   },
-  { id: 'aa-Vice-chair-2',
+  {
+    id: 'aa-vice-chair-2',
     name: 'Mr. CHEUNG Che-tsuen, Desmond',
     title: 'Vice Chairman',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-vice-chair-2",
-    imageSrc: "/assets/People/Desmond_Cheung.webp",
-    description:" Desmond is a regulatory lawyer at the Hong Kong Stock Exchange. Before that, he was a disputes/ regulatory lawyer at various international law firms, including DLA Piper Hong Kong. He used to be a dragon boat team captain for the Hong Kong Law Society. He is now a keen distance runner and football player."
+    imageId: 'aa-vice-chair-2',
+    imageSrc: '/assets/People/Desmond_Cheung.webp',
+    description:
+      'BSocSc (Govt & Laws) 2008; LLB 2011; PCLL 2012; LLM (Chinese Law) 2016; LLM (CR) 2022. Resident of University Hall from 2005 to 2008 and 2012. Honorary Resident Tutor, University Hall 2011-2012. Chairman, UHSA 2007-2008. Honorary Secretary, UHSA 2006-2007. Director of UHAL since 2020.\n\nDesmond is a regulatory lawyer at the Hong Kong Stock Exchange. Before that, he was a disputes/regulatory lawyer at various international law firms, including DLA Piper Hong Kong. He used to be a dragon boat team captain for the Hong Kong Law Society. He is now a keen distance runner and football player.',
   },
-  { id: 'aa-Secretary',
-    name: 'Mr. Ng Cheuk Sau Joseph',
+  {
+    id: 'aa-Secretary',
+    name: 'Mr. NG Cheuk Sau Joseph',
     title: 'Honorary Secretary',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Secretary",
-    imageSrc: "/assets/People/Joseph_Ng.webp",
-    description:"Joseph read law and graduated in 2015. He completed the PCLL in 2016. He called the University Hall home for the 5 years in HKU. He was the Hockey Team Captain from 2012 to 2014. He also played alongside his brothers in various sports teams and cultural teams. We go with brothers, as they say."
+    imageId: 'aa-Secretary',
+    imageSrc: '/assets/People/Joseph_Ng.webp',
+    description:
+      'LLB 2015; PCLL 2016. University Hall Hockey Team Captain 2012-2014.\n\nJoseph read law and graduated in 2015. He completed the PCLL in 2016. He called University Hall home for the 5 years in HKU. He was the Hockey Team Captain from 2012 to 2014. He also played alongside his brothers in various sports teams and cultural teams. We go with brothers, as they say.',
   },
-  { id: 'aa-Treasurer',
+  {
+    id: 'aa-Treasurer',
     name: 'Mr. SHIH Chi-san, Michael',
     title: 'Honorary Treasurer',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Treasurer",
-    imageSrc: "/assets/People/Michael_Shih.webp",
-    description:"Michael had admitted as Fellow of Society of Actuaries in 2010, now working in Prudential as insurance consultant. He has joined the Board of Director of UHAL since 2016."
+    imageId: 'aa-Treasurer',
+    imageSrc: '/assets/People/Michael_Shih.webp',
+    description:
+      'BSc (Actuarial Science) graduated in 2004. Resident at University Hall from 2001 to 2004.\n\nMichael was admitted as a Fellow of the Society of Actuaries in 2010 and now works at Prudential as an insurance consultant. He has joined the Board of Directors of UHAL since 2016.',
   },
-  { id: 'aa-Director-1',
-    name: 'Dr. CHENG Shing-kwong, Eric',
+  {
+    id: 'aa-Director-1',
+    name: 'Mr. TANG Chi Chung, Vincent',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-1",
-    imageSrc: "/assets/People/Eric_Cheng.webp",
-    description:"Resided in UH 1975-1978, Eric is one of the first batch of HKU quantity surveyors. Qualified HKIS Surveyor since 1984. Helped build the HK Bank Headquarters Building at No. 1 QRC. Stayed in the academia for 37 years educating surveyors. Sidetracked to pest management including termite and bedbug research. Joined the plumbing and drainage industry and specialized in stainless steel pipe and construction contract administration. Currently a Pipe Company Director and a QS Manager in a plumbing contractor. Previously a Vice Chairman of the Hong Kong Institution of Plumbing and Drainage and a Senior Lecturer and assistant head with the City University of Hong Kong."
+    imageId: 'aa-Director-1',
+    imageSrc: '/assets/People/Vincent_Tang.webp',
+    description:
+      'Vincent was a resident of University Hall from 1981 to 1985 and he practised law after graduation. He is the founder and senior partner of Tang and Lee, Solicitors. Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90\'s and is excited to serve the brothers again.',
   },
-  { id: 'aa-Director-2',
-    name: 'Dr. Wai Heung-on, Jonathan',
-    title: 'Director',
-    bio: 'Session 2024-26',
-    role: 'alumni-limited',
-    imageId: "aa-Director-2",
-    imageSrc: "/assets/People/Jonathan_Wai.webp",
-    description:"Jonathan resided in University Hall from 1975 to 1979. \"Boot-boot\" was a sports enthusiast in representing UH and Faculty of Medicine. He is currently the Medical Superintendent of Precious Blood Hospital(Caritas); holding several professorships in teaching medical students in HKU and CUHK. He has engaged in various voluntary works and lately retired as Deputy Commissioner of the Auxiliary Medical Service of HKSAR in 2023."
-  },
-  { id: 'aa-Director-3',
-    name: 'Dr. Danny Tsoi',
-    title: 'Director',
-    bio: 'Session 2024-26',
-    role: 'alumni-limited',
-    imageId: "aa-Director-3",
-    imageSrc: "/assets/People/Danny_Tsoi.webp",
-    description:"As a U hallite from 1978 to 1983, Danny was tennis and soccer team captain during his residency in U hall. He graduated with a MBBS degree in 1983 and became a specialist in Orthopaedics and Traumatology since 1993. Currently he is in private practice as Orthopaedic Surgeon. Throughout the past 40 years Danny was actively involved in many U hall alumni events especially in golf tournaments."
-  },
-  { id: 'aa-Director-4',
-    name: 'Mr. Vincent Tang',
-    title: 'Director',
-    bio: 'Session 2024-26',
-    role: 'alumni-limited',
-    imageId: "aa-Director-4",
-    imageSrc: "/assets/People/Vincent_Tang.webp",
-    description:"Vincent was a resident of University Hall in1981 to 1985 and he practised law after graduation. He is the founder and senier partner of Tang and Lee, Solicitors.Vincent is a good singer and an excellent debater. He used to be a director of UHAL in the 90's and is excited to serve the brothers again."
-  },
-  { id: 'aa-Director-5',
+  {
+    id: 'aa-Director-2',
     name: 'Dr. WONG Lap-ching',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-5",
-    imageSrc: "/assets/People/Wong_Lap_ching.webp",
-    description:"Dr. Wong is a specialist of Ear, Nose & Throat in private practice and a keen golfer."
+    imageId: 'aa-Director-2',
+    imageSrc: '/assets/People/Wong_Lap_ching.webp',
+    description:
+      'MBBS 1988. Resident at University Hall 1983-1988. Publication Secretary, UHSA 1984-1985. Chairman, UHSA 1985-1986. Director of UHAL since 2020.\n\nDr. Wong is a specialist of Ear, Nose & Throat in private practice and a keen golfer.',
   },
-  { id: 'aa-Director-6',
-    name: 'Mr. Tristan Lau',
+  {
+    id: 'aa-Director-3',
+    name: 'Mr. MAK Ting Pong, Lendus',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-6",
-    imageSrc: "/assets/People/Tristan_Lau.webp",
-    description:"Tristan resided at University Hall from 1994 to 1998. During the 1995-1996 academic year, he served as the Internal Vice Chairman of the University Hall Students Association. He graduated in 1998 with a degree in Engineering from the Faculty of Electrical and Electronic Engineering at The University of Hong Kong. A sports enthusiast, he captained and excelled as the best player on the soccer, tennis, and table tennis teams, earning the Llewellyn\'s Cup in both 1996 and 1997.\n" +
-        "\n" +
-        "Currently, Tristan is the Head of Electronic Trading Services for the APAC region at an investment bank. He is also involved in various voluntary activities and mentorship programs organized by HKU, JA HK and his organisation."
+    imageId: 'aa-Director-3',
+    imageSrc: '/assets/People/Lendus_Mak.webp',
+    description:
+      'Makting was a resident of University Hall from 1996 to 1999. He was the Chairman of University Hall Students Association in 1996-1997 and softball team captain in 1998-1999. Upon graduation, he joined the Government and worked in various works departments, where he was chartered as a professional civil engineer responsible for managing and supervising various infrastructure projects. This is the first time he joined the Board of Directors of University Hall Alumni Limited and he is excited to serve the brothers.',
   },
-  { id: 'aa-Director-7',
-    name: 'Mr. CHEN Songyong, Jack',
+  {
+    id: 'aa-Director-4',
+    name: 'Mr. MAN Kai Fai, Michael',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-7",
-    imageSrc: "/assets/People/Jack_Chen.webp",
-    description:"Now VP at a top tier investment bank as a tech lead. He is also a co-host of Codeaholics (the largest community of local software engineers) and a volunteer IT Manager at InspiringHK Sports Foundation"
+    imageId: 'aa-Director-4',
+    imageSrc: '/assets/People/Michael_Man.webp',
+    description:
+      'Michael was a resident of University Hall from 1997 to 2000. He served as the Sports Secretary of the University Hall Student Association from 1998 to 1999 and graduated in 2000 with a Bachelor of Engineering (Mechanical). Michael is the Principal and Founder of Elite Makeup, which certifies practitioners for Hong Kong Qualifications Framework qualifications in Beauty and Aesthetics.',
   },
-  { id: 'aa-Director-8',
+  {
+    id: 'aa-Director-5',
+    name: 'Mr. Leung Kam Chuen',
+    title: 'Director',
+    bio: 'Session 2026-28',
+    role: 'alumni-limited',
+    imageId: 'aa-Director-5',
+    imageSrc: '/assets/People/Kam_Leung.webp',
+    description:
+      'Kam resided at University Hall from 2004 to 2006. He holds a BSc in Actuarial Science (2007) and an MSc in Computer Science (2014). A seasoned actuary and FSA (2012) with multiple designations (FASHK, CERA, FRM, FHKSI), he serves as Director of Pricing at a global reinsurance company. In this role, he leads a regional team and directs cross-product pricing strategies. Beyond his actuarial work, Kam is deeply engaged in industry and local leadership. He serves on committees for the Hong Kong Federation of Insurers and the Actuarial Society of Hong Kong, and is the former Chairman of his estate\'s Owners\' Committee.',
+  },
+  {
+    id: 'aa-Director-6',
     name: 'Mr. YUNG Albert',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-8",
-    imageSrc: "/assets/People/Albert_Yung.webp",
-    description:"Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA . He has been working in the banking indsutry. He has joined the Board of Directors of University Hall Alumni Limited since 2020."
+    imageId: 'aa-Director-6',
+    imageSrc: '/assets/People/Albert_Yung.webp',
+    description:
+      'Albert was a resident of University Hall from 2008 to 2011. He was the Internal Vice Chairman of University Hall Students Association in 2009-2010 and Chairman in 2010-2011. He graduated in 2011 with a BA. He has been working in the banking industry. He has joined the Board of Directors of University Hall Alumni Limited since 2020.',
   },
-  { id: 'aa-Director-9',
+  {
+    id: 'aa-Director-7',
     name: 'Mr. TSE Ho-yin, Alfred',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-9",
-    imageSrc: "/assets/People/Alfred_Tse.webp",
-    description:"Now working in The Hong Kong Jockey Club with a focus on strategic procurement."
+    imageId: 'aa-Director-7',
+    imageSrc: '/assets/People/Alfred_Tse.webp',
+    description:
+      'BSc (Surveying) graduated in 2013. Resident of University Hall from 2009 to 2013. External Vice-chairman, UHSA 2010-2011.\n\nNow working in The Hong Kong Jockey Club with a focus on strategic procurement.',
   },
-  { id: 'aa-Director-10',
+  {
+    id: 'aa-Director-8',
+    name: 'Mr. TANG Yat Long, Laurence',
+    title: 'Director',
+    bio: 'Session 2026-28',
+    role: 'alumni-limited',
+    imageId: 'aa-Director-8',
+    imageSrc: '/assets/People/Laurence_Tang.webp',
+    description:
+      'Laurence was a resident of U-Hall from 2010 to 2014, serving as Internal Vice Chairman of the UHSA in 2011, Chairman in 2012, and playing on the Hockey Team. He graduated with a Bachelor of Social Sciences in 2014 and later earned a Master of Public Health in 2019. He continued his connection with U-Hall as Resident Tutor and Senior Resident Tutor from 2016 to 2023. During this period, he also served as Honorary Secretary and a member of the Board of Directors of UHAL from 2016 to 2022, a board he has recently rejoined. Laurence works in higher education and is currently Director of Centre of Development and Resources for Students at The University of Hong Kong.',
+  },
+  {
+    id: 'aa-Director-9',
+    name: 'Mr. LIU Chun Kit, Tommy',
+    title: 'Director',
+    bio: 'Session 2026-28',
+    role: 'alumni-limited',
+    imageId: 'aa-Director-9',
+    imageSrc: '/assets/People/Tommy_Liu.webp',
+    description:
+      'Tommy was a resident of University Hall from 2011 to 2015 and graduated with a Bachelor of Science in Quantitative Finance. He has built his career in proprietary trading and asset management and is the founder of Vicuna Asset Management, an SFC-licensed corporation for Type 4 and Type 9 regulated activities. As a Director of University Hall Alumni Limited, he hopes to contribute his experience in finance, entrepreneurship and technology, while strengthening connections among U Hallites across generations.',
+  },
+  {
+    id: 'aa-Director-10',
     name: 'Dr. CHAN Nok-hang, Vincent',
     title: 'Director',
-    bio: 'Session 2024-26',
+    bio: 'Session 2026-28',
     role: 'alumni-limited',
-    imageId: "aa-Director-10",
-    imageSrc: "/assets/People/Vincent_Chan.webp",
-    description:"Vincent purused his bachelor and doctorate degrees while staying at University Hall. Apart from his role as a resident tutor, he is active in working with hallmats on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property right economics reseacher and surveying professional, he always extend his wam welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics." },
+    imageId: 'aa-Director-10',
+    imageSrc: '/assets/People/Vincent_Chan.webp',
+    description:
+      'BSc(Surv) 2018. PDHALM 2020. PhD (New Institutional Economics) 2024. Resident of University Hall from 2013 to present. External Vice-chairman, UHSA 2014-2015. University Hall Junior Hall Tutor/Fellow 2018 - present.\n\nVincent pursued his bachelor and doctorate degrees while staying at University Hall. Apart from his role as a resident tutor, he is active in working with hallmates on the archives, bridge team, and Pokfulam Village Fire Dragon Dance and Crafting. As a property rights economics researcher and surveying professional, he always extends his warm welcome to hallmates to join his field trips focusing on the conservation of Hong Kong WWII Relics.',
+  },
 ]
 
 
